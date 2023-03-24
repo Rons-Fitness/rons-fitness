@@ -1,0 +1,148 @@
+/* ============ Contact section Start ================*/
+.contact-section {
+    padding: 0px 0px;
+
+    .contact-header {
+        // width: (100% - 30px , 300px);
+        // margin-inline: auto;
+        display: flex;
+        justify-content: center;
+
+        .contact {
+            position: relative;
+            font-weight: 600;
+            font-size: 30px !important;
+            z-index: 0;
+
+            span {
+                background-color: var(--them-colour);
+                opacity: 0.9;
+                height: 25px;
+                width: 100px;
+                border-radius: 128px 0px 144px;
+                position: absolute;
+                // right: 545px;
+                left: 141px;
+                top: 10px;
+                text-align: center;
+                transform: rotate(176deg);
+                z-index: -1;
+
+            }
+        }
+    }
+
+    .from-contact-body {
+        padding: 20px 0px;
+    }
+
+    .contact-body {
+        background-color: white;
+
+        .contact-box {
+            padding: 10px 20px;
+
+            p {
+                color: #5A5B5A;
+                margin: 0;
+                font-size: 16px;
+                line-height: 22px;
+            }
+
+            i {
+                color: #5A5B5A;
+            }
+
+            .contact-detailes {
+                border-bottom: 1px solid var(--black);
+
+                .num-email-colour {
+                    color: #B56807;
+                }
+            }
+        }
+    }
+
+    .get-touch-body {
+        p {
+            font-size: 16px;
+            margin-bottom: 0%;
+        }
+
+        form {
+            .first-name {
+                width: 48%;
+                padding: 10px 0px;
+            }
+
+            .email-name {
+                width: 48%;
+                padding: 10px 0px;
+
+            }
+
+            .number {
+                padding: 10px 0px;
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
+
+            .Subject {
+                padding: 10px 0px;
+            }
+
+            .message {
+                padding: 10px 0px;
+            }
+
+            .submit-btn {
+                width: 25%;
+
+                input {
+                    background-color: var(--white);
+                    border: 1px solid var(--them-colour);
+                    color: var(--black);
+                    border-radius: 5px;
+                    padding: 7px 9px;
+                    font-weight: 600;
+                    -webkit-transition: ease-out 0.4s;
+                    -moz-transition: ease-out 0.4s;
+                    transition: ease-out 0.4s;
+
+                    &:hover {
+                        // background-color: var(--them-colour);
+                        color: white;
+                        // transform: translateX(-100%);
+                        box-shadow: inset 400px 0 0 0 var(--btn-hover);
+                    }
+
+
+                }
+            }
+
+            input {
+                width: 100%;
+                padding: 5px 10px;
+                border: 1px solid #2F271D;
+            }
+
+            textarea {
+                width: 100%;
+                border: 1px solid #2F271D;
+                padding: 5px 10px;
+
+            }
+        }
+    }
+}
+
+/* ============ Contact section End ================*/

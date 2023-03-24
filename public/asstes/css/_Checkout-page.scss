@@ -1,0 +1,196 @@
+/* =================== Checkout section Start =============== */
+.Checkout-section {
+    padding: 10px 0px;
+
+    .Checkout-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h4 {
+            font-size: 30px;
+            font-weight: 600;
+            font-family: poppins;
+            position: relative;
+
+            &::after {
+                content: "";
+                background-color: var(--them-colour);
+                height: 19px;
+                width: 107px;
+                border-radius: 128px 0px 144px 0px;
+                position: absolute;
+                right: -15px;
+                top: 11px;
+                /* left: 0px; */
+                transform: rotate(173deg);
+                z-index: -999;
+            }
+
+        }
+    }
+
+    .Checkout-left-body {
+        // border: 1px solid red;
+        padding: 10px 0px;
+
+        .checkout-p {
+            font-size: 19px;
+        }
+
+        .alredy-p {
+            background: #FFF5EA;
+            border: 1px solid #FFE4C7;
+            border-radius: 3px;
+            padding: 7px 0px;
+            margin-bottom: 1rem;
+
+            span a {
+                color: #9B5701;
+            }
+        }
+
+        .edit-p a {
+            color: #9B5701;
+            font-weight: 600;
+            font-size: 17px;
+        }
+
+        .billing-p {
+            color: var(--black);
+            font-size: 19px;
+            font-weight: 500;
+        }
+
+        .checkout-input-wid {
+            width: 47%;
+        }
+
+        input {
+            padding: 5px 5px;
+            margin: 5px 0px;
+            color: #828282;
+            border: 1px solid #828282;
+            border-radius: 3px;
+
+
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        select {
+            padding: 5px 5px;
+            margin: 5px 0px;
+            color: #828282;
+            border: 1px solid #828282;
+            border-radius: 3px;
+            background-color: white;
+
+        }
+    }
+
+    .billing-body {
+        padding-top: 108px;
+
+        .edit-p a {
+            color: #9B5701;
+            font-weight: 600;
+            font-size: 17px;
+        }
+
+        .billing-p {
+            color: var(--black);
+            font-size: 19px;
+            font-weight: 500;
+        }
+
+        form {
+
+            .checkout-input-wid {
+                width: 47%;
+            }
+
+            .address-types-body {
+                padding-top: 10px;
+                padding-left: 10px;
+
+                p {
+                    color: #827E7E;
+                    margin: 0;
+                }
+
+                input,
+                label {
+                    color: #827E7E;
+                }
+
+                input[type=radio] {
+                    accent-color: #B56807;
+                }
+            }
+
+            input {
+                padding: 5px 5px;
+                margin: 5px 0px;
+                color: #828282;
+                border: 1px solid #828282;
+                border-radius: 3px;
+
+
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
+
+            select {
+                padding: 5px 5px;
+                margin: 5px 0px;
+                color: #828282;
+                border: 1px solid #828282;
+                border-radius: 3px;
+                background-color: white;
+
+            }
+        }
+
+        .shipping-btn {
+            background-color: var(--white);
+
+            border: 1px solid var(--them-colour);
+            border-radius: 5px;
+            color: var(--black);
+            font-size: 17px;
+            font-weight: 600;
+            padding: 7px 30px;
+            -webkit-transition: ease-out 0.4s;
+            -moz-transition: ease-out 0.4s;
+            transition: ease-out 0.4s;
+
+            &:hover {
+                // background-color: var(--them-colour);
+                color: white;
+                // transform: translateX(-100%);
+                box-shadow: inset 400px 0 0 0 var(--btn-hover);
+            }
+        }
+    }
+}
+
+/* =================== Checkout section End =============== */
