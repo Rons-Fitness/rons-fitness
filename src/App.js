@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -13,8 +13,8 @@ import {
 // const ViewHome = React.lazy(() =>
 //   import(/* webpackChunkName: "views" */ './views/user/login')
 // );
-
-const Dashboard = React.lazy(() =>
+const Navbar = lazy(() => import('components/navbar/Navbar'));
+const Dashboard = lazy(() =>
   import(/* webpackChunkName: "views" */ './containers/Dashboard')
 );
 
@@ -25,6 +25,7 @@ const App = () => {
         {/* <NotificationContainer /> */}
 
         <Suspense fallback={<div className="loading">loading</div>}>
+          <Navbar />
           <Router>
             <Switch>
               {/* <ProtectedRoute
