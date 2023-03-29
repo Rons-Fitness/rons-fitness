@@ -6,6 +6,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
+import './app.css';
 // import { NotificationContainer } from './components/common/react-notifications';
 
 // import { ProtectedRoute } from './helpers/authHelper';
