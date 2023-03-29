@@ -281,7 +281,6 @@ function* changePassword({ payload }) {
       status,
       data: { success, message },
     } = yield call(changePasswordAsync, oldPassword, newPassword);
-    console.log(message, 'message');
     if (status === 200 && success) {
       yield put(changePasswordSuccess(message));
     } else {

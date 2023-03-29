@@ -152,7 +152,6 @@ export default (state = INIT_STATE, action) => {
         success: '',
       };
     case CHANGE_PASSWORD_SUCCESS:
-      console.log(action.payload.message, '00000');
       return {
         ...state,
         loading: false,

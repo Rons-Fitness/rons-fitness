@@ -4,7 +4,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 
-const BrandListing = ({ brands }) => {
+const BrandListing = ({ brands = [] }) => {
   return (
     <div className="brnad-home-section">
       <div className="container-fluid">

@@ -56,7 +56,6 @@ export default (state = INIT_STATE, action) => {
       return { ...state, loading: true, error: '' };
     case GET_PRODUCTS_SUCCESS: {
       const type = action.payload.key ?? 'products';
-      console.log({ type });
       return {
         ...state,
         [type]: action.payload.list,
@@ -127,7 +126,6 @@ export default (state = INIT_STATE, action) => {
       };
     }
     case GET_HOMESCREEN_DATA: {
-      console.log('lala');
       return {
         ...state,
         loading: true,

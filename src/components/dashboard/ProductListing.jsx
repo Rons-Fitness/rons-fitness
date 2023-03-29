@@ -4,7 +4,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 
-const ProductListing = ({ type, products }) => {
+const ProductListing = ({ type, products = [] }) => {
   return (
     <section id="trendinslider-cardg-sec">
       <div className="container-fluid">

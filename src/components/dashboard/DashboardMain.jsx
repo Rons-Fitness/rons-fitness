@@ -8,7 +8,6 @@ import Blogs from './Blogs';
 import Categories from './Categories';
 
 const DashboardMain = ({ homeScreenData }) => {
-  console.log({ homeScreenData });
   return (
     <>
       <section className="banner-wrapper ">
