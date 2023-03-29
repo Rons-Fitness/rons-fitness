@@ -7,6 +7,7 @@ import {
   UPDATE_PRODUCT,
   GET_PRODUCTS,
   GET_SINGLE_PRODUCT,
+  GET_HOMESCREEN_DATA,
 } from '../contants';
 import {
   addProductSuccess,
@@ -19,6 +20,8 @@ import {
   deleteProductError,
   updateProductSuccess,
   updateProductError,
+  getHomeScreenDataSuccess,
+  getHomeScreenDataError,
 } from './actions';
 
 const addProductAsync = async (product) => {
@@ -140,6 +143,27 @@ export function* watchDeleteProduct() {
   yield takeEvery(DELETE_PRODUCT, deleteProductWorker);
 }
 
+const getHomeScreenDataAsync = async () => {
+  const res = await API.get('/product/home');
+  return res;
+};
+function* getHomeScreenDataWorker() {
+  try {
+    const { data, status } = yield call(getHomeScreenDataAsync);
+    if (status === 200) {
+      yield put(getHomeScreenDataSuccess(data));
+    } else {
+      yield put(getHomeScreenDataError('something went wrong'));
+    }
+  } catch (error) {
+    yield put(getHomeScreenDataError(error));
+  }
+}
+
+export function* watchGetHomeScreenData() {
+  yield takeEvery(GET_HOMESCREEN_DATA, getHomeScreenDataWorker);
+}
+
 export default function* rootSaga() {
   yield all([
     fork(watchAddProduct),
@@ -147,5 +171,6 @@ export default function* rootSaga() {
     fork(watchGetSingleProduct),
     fork(watchDeleteProduct),
     fork(watchUpdateProduct),
+    fork(watchGetHomeScreenData),
   ]);
 }

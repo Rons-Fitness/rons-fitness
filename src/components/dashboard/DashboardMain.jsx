@@ -2,11 +2,13 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
-import OrderListing from './OrderListing';
+import ProductListing from './ProductListing';
 import BrandListing from './BrandListing';
 import Blogs from './Blogs';
+import Categories from './Categories';
 
-const DashboardMain = () => {
+const DashboardMain = ({ homeScreenData }) => {
+  console.log({ homeScreenData });
   return (
     <>
       <section className="banner-wrapper ">
@@ -56,100 +58,11 @@ const DashboardMain = () => {
           </div>
         </div>
       </section>
-
-      <div className="cat-round">
-        <div className="container">
-          <div className="carte-body">
-            <div className="swiper carte-slider">
-              <Swiper
-                className="swiper-wrapper"
-                slidesPerView={5}
-                autoplay={{
-                  delay: 2500,
-                  disableOnInteraction: false,
-                }}
-                navigation
-                modules={[Autoplay, Pagination, Navigation]}
-              >
-                <SwiperSlide className="swiper-slide">
-                  <div className="carte-contain">
-                    <div className="carte carte-img-box ">
-                      <a href="product grid page.html">
-                        {' '}
-                        <img src="asstes/img/carte/1.png" alt="" />
-                      </a>
-                    </div>
-                    <p className="text-center">
-                      <a href="product grid page.html"> Gym Supplementary</a>
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide className="swiper-slide">
-                  <div className="carte-contain">
-                    <div className="carte carte-img-box ">
-                      <a href="product grid page.html">
-                        {' '}
-                        <img src="asstes/img/carte/2.png" alt="" />
-                      </a>
-                    </div>
-                    <p className="text-center">
-                      <a href="product grid page.html"> Vitamin Capsul</a>
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide className="swiper-slide">
-                  <div className="carte-contain">
-                    <div className="carte carte-img-box ">
-                      <img src="asstes/img/carte/3.png" alt="" />
-                    </div>
-                    <p className="text-center">Gym Equipments</p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide className="swiper-slide">
-                  <div className="carte-contain">
-                    <div className="carte carte-img-box ">
-                      <a href="product grid page.html">
-                        {' '}
-                        <img src="asstes/img/carte/2.png" alt="" />
-                      </a>
-                    </div>
-                    <p className="text-center">
-                      <a href="product grid page.html"> Vitamin Capsul</a>
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide className="swiper-slide">
-                  <div className="carte-contain">
-                    <div className="carte carte-img-box ">
-                      <a href="product grid page.html">
-                        {' '}
-                        <img src="asstes/img/carte/4.png" alt="" />
-                      </a>
-                    </div>
-                    <p className="text-center">
-                      <a href="product grid page.html"> Gym Outfits </a>
-                    </p>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide className="swiper-slide">
-                  <div className="carte-contain">
-                    <div className="carte carte-img-box ">
-                      <a href="product grid page.html">
-                        {' '}
-                        <img src="asstes/img/carte/5.png" alt="" />
-                      </a>
-                    </div>
-                    <p className="text-center">
-                      <a href="product grid page.html"> Ayurvadic Product </a>
-                    </p>
-                  </div>
-                </SwiperSlide>
-              </Swiper>
-            </div>
-          </div>
-        </div>
-      </div>
-      <OrderListing type="TRENDING NOW" />
+      <Categories category={homeScreenData.category} />
+      <ProductListing
+        type="TRENDING NOW"
+        products={homeScreenData.trendingProducts}
+      />
       <div className="container ">
         <div className=" col-lg-12  col-md-12 col-sm-12 ">
           <div className="img-bg-box">
@@ -157,8 +70,11 @@ const DashboardMain = () => {
           </div>
         </div>
       </div>
-      <OrderListing type="NEW ARRIVAL" />
-      <BrandListing />
+      <ProductListing
+        type="NEW ARRIVAL"
+        products={homeScreenData.newArrivals}
+      />
+      <BrandListing brands={homeScreenData.brands} />
       <Blogs />
     </>
   );

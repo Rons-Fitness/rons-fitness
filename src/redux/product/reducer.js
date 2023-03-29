@@ -15,9 +15,18 @@ import {
   GET_SINGLE_PRODUCT,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
+  GET_HOMESCREEN_DATA,
+  GET_HOMESCREEN_DATA_SUCCESS,
+  GET_HOMESCREEN_DATA_ERROR,
 } from '../contants';
 
 const INIT_STATE = {
+  homeScreenData: {
+    brands: [],
+    category: [],
+    newArrivals: [],
+    trendingProducts: [],
+  },
   products: null,
   selectedProduct: null,
   loading: false,
@@ -101,7 +110,6 @@ export default (state = INIT_STATE, action) => {
     case DELETE_PRODUCT_SUCCESS: {
       const { _id } = action.payload;
       const index = [...state.products.data].map((e) => e._id).indexOf(_id);
-      console.log({ index, product: state.products.data });
       const dataToUpdate = [...state.products.data];
       dataToUpdate.splice(index, 1);
 
@@ -118,6 +126,26 @@ export default (state = INIT_STATE, action) => {
         error: action.payload.message,
       };
     }
+    case GET_HOMESCREEN_DATA: {
+      console.log('lala');
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case GET_HOMESCREEN_DATA_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        homeScreenData: action.payload,
+      };
+    }
+    case GET_HOMESCREEN_DATA_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.message,
+      };
     default:
       return { ...state };
   }

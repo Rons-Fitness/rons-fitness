@@ -2219,10 +2219,12 @@ select:focus {
 .cat-round .carte-body .swiper-button-next {
   right: 0;
   color: var(--them-colour);
+  top: 70px;
 }
 .cat-round .carte-body .swiper-button-prev {
   left: 0;
   color: var(--them-colour);
+  top: 70px;
 }
 .cat-round .carte-body .aero {
   color: var(--them-colour);
@@ -2458,7 +2460,7 @@ select:focus {
   padding-left: 20px;
   z-index: 0;
 }
-.brnad-home-section .brand-section h1 span {
+.brnad-home-section .brand-section h1 ::after {
   background-color: var(--them-colour);
   opacity: 0.9;
   height: 25px;

@@ -14,8 +14,24 @@ import {
   GET_SINGLE_PRODUCT,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
+  GET_HOMESCREEN_DATA,
+  GET_HOMESCREEN_DATA_SUCCESS,
+  GET_HOMESCREEN_DATA_ERROR,
 } from '../contants';
 
+export const getHomeScreenData = () => ({
+  type: GET_HOMESCREEN_DATA,
+});
+
+export const getHomeScreenDataSuccess = (data) => ({
+  type: GET_HOMESCREEN_DATA_SUCCESS,
+  payload: data,
+});
+
+export const getHomeScreenDataError = (message) => ({
+  type: GET_HOMESCREEN_DATA_ERROR,
+  payload: { message },
+});
 export const addProduct = (product, history) => {
   return {
     type: ADD_PRODUCT,
