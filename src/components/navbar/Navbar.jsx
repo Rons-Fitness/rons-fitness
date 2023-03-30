@@ -1,9 +1,52 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { getUserDetails } from 'redux/actions';
+import { changeSearchText, loginUser, verifyOtp } from 'redux/auth/actions';
 
-const Navbar = () => {
+const Navbar = ({
+  currentUser,
+  sendOtp,
+  verifyUserOtp,
+  getLoggedInUserDetails,
+  setSearchText,
+}) => {
+  const history = useHistory();
+  const [mobileNo, setMobileNo] = useState('');
+  const [otp, setOtp] = useState('');
+  const [otpSent, setOtpSent] = useState(false);
+  const [text, settext] = useState('');
+
+  useEffect(() => {
+    const token = localStorage.getItem('auth_token');
+    if (token && !currentUser) getLoggedInUserDetails();
+  }, [currentUser]);
+
+  React.useEffect(() => {
+    const setData = setTimeout(() => {
+      setSearchText(text);
+    }, 1000);
+
+    return () => clearTimeout(setData);
+  }, [text]);
+
+  const handleSubmit = () => {
+    if (mobileNo !== '') {
+      if (otpSent) {
+        verifyUserOtp({ otp, mobileNo }, history);
+      } else {
+        setOtpSent(true);
+        sendOtp(mobileNo);
+      }
+    }
+  };
+
   return (
     <>
       <div className="header">
@@ -184,76 +227,98 @@ const Navbar = () => {
           <div className="head-section">
             <div className=" col-md-3  col-sm-0 " />
             <div className="col-md-6 col-sm-6">
-              <form action="" method="post" className="inputcontainer">
-                <input type="text" placeholder="Search for product" />
-                <button type="submit">
+              <form action="" className="inputcontainer">
+                <input
+                  type="text"
+                  placeholder="Search for product"
+                  onChange={(e) => settext(e.target.value)}
+                />
+                <button type="button">
                   <i className="bi bi-search" />
                 </button>
               </form>
             </div>
             <div className="col-md-3 col-sm-6 ">
               <div className=" login-section">
-                <a href="#">
-                  <p
-                    className="login-btn "
-                    data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
-                  >
-                    Login
-                  </p>
-                </a>
+                {!currentUser ? (
+                  <>
+                    <a href="#">
+                      <p
+                        className="login-btn "
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                      >
+                        Login
+                      </p>
+                    </a>
 
-                <div
-                  className="modal fade "
-                  id="staticBackdrop"
-                  tabIndex="-1"
-                  aria-labelledby="staticBackdrop"
-                  aria-hidden="true"
-                >
-                  <div className="modal-dialog">
-                    <div className="modal-content">
-                      <div className="text-end">
-                        {' '}
-                        <button
-                          type="button"
-                          className="btn-close "
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        />
-                      </div>
-                      <div className="modal-header">
-                        <div>
-                          <h4
-                            className="modal-title  text-center col-md-12"
-                            id="staticBackdropLabel"
-                          >
-                            Login
-                          </h4>
-                          <p>Please login using account details below.</p>
-                        </div>
-                      </div>
-                      <div className="modal-body">
-                        <form method="post">
-                          <input type="number" placeholder="Contact Number" />
-                          <input type="number" placeholder="OTP" />
-                          <p className="resend-p ">
-                            Didn’t Receive? <span> Resend </span>
-                          </p>
-                          <div className="col-12 d-flex justify-content-center">
-                            <input
-                              type="submit"
-                              className=" submit-profile"
-                              value="Verify"
+                    <div
+                      className="modal fade "
+                      id="staticBackdrop"
+                      tabIndex="-1"
+                      aria-labelledby="staticBackdrop"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="text-end">
+                            {' '}
+                            <button
+                              type="button"
+                              className="btn-close "
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
                             />
                           </div>
-                        </form>
-                        <p className="text-center">
-                          Don’t have an account? Create account
-                        </p>
+                          <div className="modal-header">
+                            <div>
+                              <h4
+                                className="modal-title  text-center col-md-12"
+                                id="staticBackdropLabel"
+                              >
+                                Login
+                              </h4>
+                              <p>Please login using account details below.</p>
+                            </div>
+                          </div>
+                          <div className="modal-body">
+                            <input
+                              type="number"
+                              placeholder="Contact Number"
+                              name="mobileNo"
+                              onChange={(e) => setMobileNo(e.target.value)}
+                            />
+                            {otpSent ? (
+                              <>
+                                <input
+                                  type="number"
+                                  placeholder="OTP"
+                                  name="otp"
+                                  onChange={(e) => setOtp(e.target.value)}
+                                />
+                                <p className="resend-p ">
+                                  Didn’t Receive?{' '}
+                                  <span onClick={() => sendOtp(mobileNo)}>
+                                    Resend
+                                  </span>
+                                </p>
+                              </>
+                            ) : (
+                              ''
+                            )}
+                            <div className="col-12 d-flex justify-content-center">
+                              <input
+                                className=" submit-profile"
+                                onClick={handleSubmit}
+                                value={otpSent ? 'Verify' : 'send OTP'}
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  </>
+                ) : null}
                 <p className="shoping-cart">
                   <a href="cart-page.html">
                     <i className="bi bi-cart2" />
@@ -267,5 +332,16 @@ const Navbar = () => {
     </>
   );
 };
+const mapStateToProps = ({ user }) => {
+  const { currentUser } = user;
+  return { currentUser };
+};
+const mapDispatchToProps = (dispatch) => ({
+  setSearchText: (text) => dispatch(changeSearchText(text)),
+  getLoggedInUserDetails: () => dispatch(getUserDetails()),
+  sendOtp: (mobileNo) => dispatch(loginUser(mobileNo)),
+  verifyUserOtp: (otpValues, history) =>
+    dispatch(verifyOtp(otpValues, history)),
+});
 
-export default Navbar;
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

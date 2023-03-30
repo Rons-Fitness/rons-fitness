@@ -23,6 +23,7 @@ import {
   CHANGE_PASSWORD_ERROR,
   CHANGE_PASSWORD_SUCCESS,
   USER_AUTH_SUCCESS,
+  SET_SEARCH_TEXT,
 } from '../contants';
 
 const INIT_STATE = {
@@ -33,10 +34,13 @@ const INIT_STATE = {
   loading: false,
   error: '',
   success: '',
+  keyWord: '',
 };
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
+    case SET_SEARCH_TEXT:
+      return { ...state, keyWord: action.payload };
     case GET_USER_DETAILS:
       return { ...state, loading: true, error: '' };
     case GET_USER_DETAILS_SUCCESS:

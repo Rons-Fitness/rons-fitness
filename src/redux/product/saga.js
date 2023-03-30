@@ -119,12 +119,10 @@ export function* watchUpdateProduct() {
 }
 
 const deleteProductAsync = async (_id) => {
-  console.log({ _id });
   const res = await API.delete(`/product/${_id}`);
   return res;
 };
 function* deleteProductWorker({ payload }) {
-  console.log({ payload });
   const { _id } = payload;
   try {
     const { status, data } = yield call(deleteProductAsync, _id);

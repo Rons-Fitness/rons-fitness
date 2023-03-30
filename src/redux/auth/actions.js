@@ -22,7 +22,13 @@ import {
   CHANGE_PASSWORD_SUCCESS,
   CHANGE_PASSWORD,
   USER_AUTH_SUCCESS,
+  SET_SEARCH_TEXT,
 } from '../contants';
+
+export const changeSearchText = (text) => ({
+  type: SET_SEARCH_TEXT,
+  payload: text,
+});
 
 export const getUserDetails = (history) => ({
   type: GET_USER_DETAILS,
@@ -37,9 +43,9 @@ export const getUserDetailsError = (message) => ({
   payload: { message },
 });
 
-export const loginUser = (user, history) => ({
+export const loginUser = (mobileNo) => ({
   type: LOGIN_USER,
-  payload: { user, history },
+  payload: { mobileNo },
 });
 export const loginUserSuccess = (user) => ({
   type: LOGIN_USER_SUCCESS,

@@ -26,8 +26,8 @@ const App = () => {
         {/* <NotificationContainer /> */}
 
         <Suspense fallback={<div className="loading">loading</div>}>
-          <Navbar />
           <Router>
+            <Navbar />
             <Switch>
               {/* <ProtectedRoute
                   path={adminRoot}

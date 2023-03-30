@@ -66,18 +66,6 @@ export function* watchGetUser() {
   yield takeEvery(GET_USER_DETAILS, getUserWorker);
 }
 
-const loginWithPhoneNumberPasswordAsync = async (mobileNo, password) => {
-  try {
-    const res = await API.post('/user/login', {
-      mobileNo,
-      password,
-    });
-    return res;
-  } catch (error) {
-    return error;
-  }
-};
-
 const GenerateOtpAsync = async (mobileNo) => {
   try {
     const res = await API.post('/user/generate-otp', {
@@ -89,25 +77,19 @@ const GenerateOtpAsync = async (mobileNo) => {
   }
 };
 
-function* loginWithPhoneNumberPassword({ payload }) {
-  const { mobileNo, password } = payload.user;
-  const { history } = payload;
+function* loginWithPhoneNumber({ payload }) {
+  const { mobileNo } = payload;
+
   try {
-    const loginUser = yield call(
-      loginWithPhoneNumberPasswordAsync,
-      mobileNo,
-      password
-    );
+    const loginUser = yield call(GenerateOtpAsync, mobileNo);
     const {
       data: { message },
       status,
     } = loginUser;
 
     if (status === 200) {
-      yield call(GenerateOtpAsync, mobileNo);
-      yield put(authSuccess());
       localStorage.setItem('mobileNo', JSON.stringify({ mobileNo }));
-      history.push('/user/otp');
+      yield put(authSuccess());
     } else {
       yield put(loginUserError(message));
     }
@@ -117,14 +99,14 @@ function* loginWithPhoneNumberPassword({ payload }) {
 }
 
 export function* watchLoginUser() {
-  yield takeLatest(LOGIN_USER, loginWithPhoneNumberPassword);
+  yield takeLatest(LOGIN_USER, loginWithPhoneNumber);
 }
 
 const verifyOtpAsync = async (mobileNo, otp) => {
   try {
     const { data, status } = await API.post('/user/verify-otp', {
-      mobileNo,
-      otp,
+      mobileNo: Number(mobileNo),
+      otp: Number(otp),
     });
     return { data, status };
   } catch (error) {
@@ -133,8 +115,7 @@ const verifyOtpAsync = async (mobileNo, otp) => {
 };
 function* verifyOtp({ payload }) {
   const {
-    otpValues: { mobileNo, otp, resetPass },
-    history,
+    otpValues: { mobileNo, otp },
   } = payload;
 
   try {
@@ -145,12 +126,9 @@ function* verifyOtp({ payload }) {
     if (status === 200 && success) {
       yield put(verifyOtpSuccess());
       localStorage.removeItem('mobileNo');
-      if (resetPass) history.push(`/user/reset-password/${token}`);
-      else {
-        localStorage.setItem('auth_token', token);
-        yield put(getUserDetailSuccess(user));
-        history.push('/app/dashboards/ecommerce');
-      }
+      localStorage.setItem('auth_token', token);
+      yield put(getUserDetailSuccess(user));
+      window.location.reload();
     } else {
       yield put(verifyOtpError(message));
     }

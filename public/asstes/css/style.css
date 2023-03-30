@@ -1527,6 +1527,7 @@
   color: var(--black);
 }
 .profile-section .profile-right-body .submit-profile {
+  cursor: pointer;
   background-color: var(--white);
   border: 1px solid var(--them-colour);
   border-radius: 5px;
