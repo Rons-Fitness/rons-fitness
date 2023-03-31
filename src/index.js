@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import Loader from 'components/common/loader/Loader';
 import configureStore from './redux/store';
 import reportWebVitals from './reportWebVitals';
 
@@ -9,7 +10,7 @@ const App = React.lazy(() => import(/* webpackChunkName: "App" */ './App'));
 const Main = () => {
   return (
     <Provider store={configureStore}>
-      <Suspense fallback={<div className="loading" />}>
+      <Suspense fallback={<Loader />}>
         <App />
       </Suspense>
     </Provider>

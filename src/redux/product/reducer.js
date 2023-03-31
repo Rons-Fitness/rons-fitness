@@ -27,7 +27,7 @@ const INIT_STATE = {
     newArrivals: [],
     trendingProducts: [],
   },
-  products: null,
+  products: { data: [], page: 1, pages: 1 },
   selectedProduct: null,
   loading: false,
   error: '',
@@ -55,10 +55,9 @@ export default (state = INIT_STATE, action) => {
     case GET_PRODUCTS:
       return { ...state, loading: true, error: '' };
     case GET_PRODUCTS_SUCCESS: {
-      const type = action.payload.key ?? 'products';
       return {
         ...state,
-        [type]: action.payload.list,
+        products: action.payload,
       };
     }
     case GET_PRODUCTS_ERROR:

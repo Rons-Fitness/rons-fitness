@@ -49,17 +49,16 @@ export function* watchAddProduct() {
   yield takeEvery(ADD_PRODUCT, addProductWorker);
 }
 
-const getProductAsync = async (filterBy, unit) => {
-  const res = await API.get('/product', { params: { filterBy, unit } });
+const getProductAsync = async (payload) => {
+  const res = await API.get('/product', { params: { ...payload } });
   return res;
 };
 function* getProductWorker({ payload }) {
-  const { key, filterBy, unit } = payload;
   try {
-    const { data, status } = yield call(getProductAsync, filterBy, unit);
+    const { data, status } = yield call(getProductAsync, payload);
     const { message } = data;
     if (status === 200 && data) {
-      yield put(getProductSuccess(data, key));
+      yield put(getProductSuccess(data));
     } else {
       yield put(getProductsError(message));
     }

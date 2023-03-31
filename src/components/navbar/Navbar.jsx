@@ -6,7 +6,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getUserDetails } from 'redux/actions';
 import { changeSearchText, loginUser, verifyOtp } from 'redux/auth/actions';
 
@@ -17,7 +17,6 @@ const Navbar = ({
   getLoggedInUserDetails,
   setSearchText,
 }) => {
-  const history = useHistory();
   const [mobileNo, setMobileNo] = useState('');
   const [otp, setOtp] = useState('');
   const [otpSent, setOtpSent] = useState(false);
@@ -31,7 +30,7 @@ const Navbar = ({
   React.useEffect(() => {
     const setData = setTimeout(() => {
       setSearchText(text);
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(setData);
   }, [text]);
@@ -39,7 +38,7 @@ const Navbar = ({
   const handleSubmit = () => {
     if (mobileNo !== '') {
       if (otpSent) {
-        verifyUserOtp({ otp, mobileNo }, history);
+        verifyUserOtp({ otp, mobileNo });
       } else {
         setOtpSent(true);
         sendOtp(mobileNo);
@@ -52,7 +51,16 @@ const Navbar = ({
       <div className="header">
         <nav className="navbar navbar-expand-lg nav-section">
           <div className="container">
-            <a className="navbar-brand img-nav" href="index.html" />
+            <Link
+              class="navbar-brand img-nav"
+              to="/"
+              onClick={() => {
+                setSearchText('');
+              }}
+            >
+              <img src="asstes/img/logo/vector black.png" alt="" class="pe-3" />
+              GymCart
+            </Link>
             <button
               className="navbar-toggler btn-nav"
               type="button"
@@ -227,7 +235,7 @@ const Navbar = ({
           <div className="head-section">
             <div className=" col-md-3  col-sm-0 " />
             <div className="col-md-6 col-sm-6">
-              <form action="" className="inputcontainer">
+              <div action="" className="inputcontainer">
                 <input
                   type="text"
                   placeholder="Search for product"
@@ -236,7 +244,7 @@ const Navbar = ({
                 <button type="button">
                   <i className="bi bi-search" />
                 </button>
-              </form>
+              </div>
             </div>
             <div className="col-md-3 col-sm-6 ">
               <div className=" login-section">

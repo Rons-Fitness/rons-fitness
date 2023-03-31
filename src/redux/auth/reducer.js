@@ -34,13 +34,13 @@ const INIT_STATE = {
   loading: false,
   error: '',
   success: '',
-  keyWord: '',
+  keyword: '',
 };
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
     case SET_SEARCH_TEXT:
-      return { ...state, keyWord: action.payload };
+      return { ...state, keyword: action.payload };
     case GET_USER_DETAILS:
       return { ...state, loading: true, error: '' };
     case GET_USER_DETAILS_SUCCESS:

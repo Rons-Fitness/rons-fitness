@@ -53,9 +53,9 @@ export const getProducts = (data) => ({
   type: GET_PRODUCTS,
   payload: data,
 });
-export const getProductSuccess = (list, key) => ({
+export const getProductSuccess = (data) => ({
   type: GET_PRODUCTS_SUCCESS,
-  payload: { list, key },
+  payload: data,
 });
 export const getProductsError = (message) => ({
   type: GET_PRODUCTS_ERROR,

@@ -7,6 +7,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import './app.css';
+import Loader from 'components/common/loader/Loader';
 // import { NotificationContainer } from './components/common/react-notifications';
 
 // import { ProtectedRoute } from './helpers/authHelper';
@@ -15,9 +16,8 @@ import './app.css';
 //   import(/* webpackChunkName: "views" */ './views/user/login')
 // );
 const Navbar = lazy(() => import('components/navbar/Navbar'));
-const Dashboard = lazy(() =>
-  import(/* webpackChunkName: "views" */ './containers/Dashboard')
-);
+const Dashboard = lazy(() => import('./containers/Dashboard'));
+const ProductList = lazy(() => import('./containers/ProductList'));
 
 const App = () => {
   return (
@@ -25,7 +25,7 @@ const App = () => {
       <>
         {/* <NotificationContainer /> */}
 
-        <Suspense fallback={<div className="loading">loading</div>}>
+        <Suspense fallback={<Loader />}>
           <Router>
             <Navbar />
             <Switch>
@@ -34,7 +34,16 @@ const App = () => {
                   component={ViewApp}
                   roles={[UserRole.Admin, UserRole.Editor]}
                 /> */}
-              <Route path="/" render={(props) => <Dashboard {...props} />} />
+              <Route
+                exact
+                path="/"
+                render={(props) => <Dashboard {...props} />}
+              />
+              <Route
+                exact
+                path="/products"
+                render={(props) => <ProductList {...props} />}
+              />
               {/* <Route
                   path="/user"
                   render={(props) => <ViewUser {...props} />}
