@@ -57,12 +57,14 @@ export default (state = INIT_STATE, action) => {
     case GET_PRODUCTS_SUCCESS: {
       return {
         ...state,
+        loading: false,
         products: action.payload,
       };
     }
     case GET_PRODUCTS_ERROR:
       return {
         ...state,
+        loading: false,
         error: action.payload.message,
       };
 

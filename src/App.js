@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import './app.css';
 import Loader from 'components/common/loader/Loader';
+
 // import { NotificationContainer } from './components/common/react-notifications';
 
 // import { ProtectedRoute } from './helpers/authHelper';
@@ -18,6 +19,7 @@ import Loader from 'components/common/loader/Loader';
 const Navbar = lazy(() => import('components/navbar/Navbar'));
 const Dashboard = lazy(() => import('./containers/Dashboard'));
 const ProductList = lazy(() => import('./containers/ProductList'));
+const NotFound = lazy(() => import('containers/NotFound'));
 
 const App = () => {
   return (
@@ -58,11 +60,12 @@ const App = () => {
                   exact
                   render={(props) => <ViewUnauthorized {...props} />}
                 /> */}
-
-              {/*
-                <Redirect exact from="/" to={adminRoot} />
-                */}
-              <Redirect to="/error" />
+              <Route
+                path="/notfound"
+                exact
+                render={(props) => <NotFound {...props} />}
+              />
+              <Redirect to="/notfound" />
             </Switch>
           </Router>
         </Suspense>

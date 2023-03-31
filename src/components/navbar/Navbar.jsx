@@ -30,7 +30,7 @@ const Navbar = ({
   React.useEffect(() => {
     const setData = setTimeout(() => {
       setSearchText(text);
-    }, 500);
+    }, 1500);
 
     return () => clearTimeout(setData);
   }, [text]);
