@@ -6,7 +6,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { getUserDetails } from 'redux/actions';
 import { changeSearchText, loginUser, verifyOtp } from 'redux/auth/actions';
 
@@ -25,7 +26,7 @@ const Navbar = ({
   useEffect(() => {
     const token = localStorage.getItem('auth_token');
     if (token && !currentUser) getLoggedInUserDetails();
-  }, [currentUser]);
+  }, [currentUser, getLoggedInUserDetails]);
 
   React.useEffect(() => {
     const setData = setTimeout(() => {
@@ -33,7 +34,7 @@ const Navbar = ({
     }, 1500);
 
     return () => clearTimeout(setData);
-  }, [text]);
+  }, [text, setSearchText]);
 
   const handleSubmit = () => {
     if (mobileNo !== '') {
@@ -52,13 +53,17 @@ const Navbar = ({
         <nav className="navbar navbar-expand-lg nav-section">
           <div className="container">
             <Link
-              class="navbar-brand img-nav"
+              className="navbar-brand img-nav"
               to="/"
               onClick={() => {
                 setSearchText('');
               }}
             >
-              <img src="asstes/img/logo/vector black.png" alt="" class="pe-3" />
+              <img
+                src="asstes/img/logo/vector black.png"
+                alt=""
+                className="pe-3"
+              />
               GymCart
             </Link>
             <button
@@ -319,6 +324,7 @@ const Navbar = ({
                                 className=" submit-profile"
                                 onClick={handleSubmit}
                                 value={otpSent ? 'Verify' : 'send OTP'}
+                                onChange={() => console.log()}
                               />
                             </div>
                           </div>

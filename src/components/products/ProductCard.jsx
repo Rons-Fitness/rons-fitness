@@ -1,4 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
   return (
@@ -30,15 +32,17 @@ const ProductCard = ({ product }) => {
             </a>
           </sapn>
         </div>
-        <div className="card-img">
-          <a href="productsviewdetailes.html">
-            <img
-              src={product.image.find((elem) => elem.url !== '').url}
-              alt=""
-              className=""
-            />
-          </a>
-        </div>
+        <Link to={`/product/${product._id}`}>
+          <div className="card-img">
+            <a href="productsviewdetailes.html">
+              <img
+                src={product.image.find((elem) => elem.url !== '').url}
+                alt=""
+                className=""
+              />
+            </a>
+          </div>
+        </Link>
 
         <div className="card-body">
           <div className="card-con">

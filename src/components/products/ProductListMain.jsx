@@ -14,7 +14,7 @@ const ProductListMain = ({ products }) => {
           <div className="product-grid-section-header">
             <h1>Gym Equipments</h1>
           </div>
-          <div class="products-grid-body">
+          <div className="products-grid-body">
             {products.data.length
               ? products.data.map((product) => (
                   <ProductCard product={product} key={product._id} />

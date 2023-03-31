@@ -3,6 +3,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
+import { Link } from 'react-router-dom';
 
 const ProductListing = ({ type, products = [] }) => {
   return (
@@ -48,15 +49,17 @@ const ProductListing = ({ type, products = [] }) => {
                       </svg>
                     </sapn>
                   </div>
-                  <div className="card-img">
-                    <a href="productsviewdetailes.html">
-                      <img
-                        src={elem.image.find((el) => el.url !== '').url}
-                        alt=""
-                        className=""
-                      />
-                    </a>
-                  </div>
+                  <Link to={`/product/${elem._id}`}>
+                    <div className="card-img">
+                      <a href="productsviewdetailes.html">
+                        <img
+                          src={elem.image.find((el) => el.url !== '').url}
+                          alt=""
+                          className=""
+                        />
+                      </a>
+                    </div>
+                  </Link>
 
                   <div className="card-body">
                     <div className="card-con">
