@@ -2,6 +2,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper';
 
 const ProductDetailsMain = ({ selectedProduct }) => {
   return (
@@ -33,7 +35,11 @@ const ProductDetailsMain = ({ selectedProduct }) => {
               </div>
               <div className="col-lg-10   ">
                 <div className="xzoom_container">
-                  <div className="xzoom-body-responsive">
+                  <div
+                    className="xzoom-body-responsive"
+                    id="img-container"
+                    style={{ width: '400px' }}
+                  >
                     <img
                       src={
                         selectedProduct &&
@@ -41,25 +47,32 @@ const ProductDetailsMain = ({ selectedProduct }) => {
                       }
                       alt=""
                       className="xzoom"
-                      id="xzoom-default"
                     />
                   </div>
+                  {console.log({ img: selectedProduct })}
                   <div className="container">
                     <div className="xzoom-thumbs">
                       <div className="swiper mySwiper">
-                        <div className="swiper-wrapper">
-                          <div className="swiper-slide">
-                            <a href="asstes/img/produtcs details page/1 produts/main-1.webp">
-                              <img
-                                src="asstes/img/produtcs details page/1 produts/main-1.webp"
-                                alt=""
-                                className="xzoom-gallery"
-                                width="80"
-                                xpreview="asstes/img/produtcs details page/1 produts/main-1.webp"
-                              />
-                            </a>
-                          </div>
-                        </div>
+                        <Swiper
+                          className="swiper-wrapper"
+                          navigation
+                          modules={[Autoplay, Pagination, Navigation]}
+                          slidesPerView={5}
+                          spaceBetween={25}
+                        >
+                          {selectedProduct &&
+                            selectedProduct.image.map(({ url, key }) => (
+                              <SwiperSlide className="swiper-slide" key={key}>
+                                <img
+                                  src={url}
+                                  alt=""
+                                  className="xzoom-gallery"
+                                  width="80"
+                                  xpreview={url}
+                                />
+                              </SwiperSlide>
+                            ))}
+                        </Swiper>
                         {/* <div className="swiper-button-next"></div>
                         <div className="swiper-button-prev"></div> */}
                       </div>
