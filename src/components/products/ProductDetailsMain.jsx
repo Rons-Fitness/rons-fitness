@@ -1,11 +1,22 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
+import { Link } from 'react-router-dom';
 
 const ProductDetailsMain = ({ selectedProduct }) => {
+  const [activeImage, setActiveImage] = useState('');
+
+  useEffect(() => {
+    // console.log({ selectedProduct });
+    if (selectedProduct && selectedProduct.image) {
+      setActiveImage(selectedProduct.image.find((img) => img.url !== '').url);
+    }
+  }, [selectedProduct]);
+
   return (
     <>
       <section className="xzoom_part">
@@ -40,14 +51,7 @@ const ProductDetailsMain = ({ selectedProduct }) => {
                     id="img-container"
                     style={{ width: '400px' }}
                   >
-                    <img
-                      src={
-                        selectedProduct &&
-                        selectedProduct.image.find((img) => img.url !== '').url
-                      }
-                      alt=""
-                      className="xzoom"
-                    />
+                    <img src={activeImage} alt="" className="xzoom" />
                   </div>
                   {console.log({ img: selectedProduct })}
                   <div className="container">
@@ -61,17 +65,24 @@ const ProductDetailsMain = ({ selectedProduct }) => {
                           spaceBetween={25}
                         >
                           {selectedProduct &&
-                            selectedProduct.image.map(({ url, key }) => (
-                              <SwiperSlide className="swiper-slide" key={key}>
-                                <img
-                                  src={url}
-                                  alt=""
-                                  className="xzoom-gallery"
-                                  width="80"
-                                  xpreview={url}
-                                />
-                              </SwiperSlide>
-                            ))}
+                            selectedProduct.image.map(
+                              ({ url, key }) =>
+                                url && (
+                                  <SwiperSlide
+                                    className="swiper-slide"
+                                    key={key}
+                                    onClick={() => setActiveImage(url)}
+                                  >
+                                    <img
+                                      src={url}
+                                      alt=""
+                                      className="xzoom-gallery"
+                                      width="80"
+                                      xpreview={url}
+                                    />
+                                  </SwiperSlide>
+                                )
+                            )}
                         </Swiper>
                         {/* <div className="swiper-button-next"></div>
                         <div className="swiper-button-prev"></div> */}
@@ -113,10 +124,7 @@ const ProductDetailsMain = ({ selectedProduct }) => {
                   </span>{' '}
                 </h4>
 
-                <h6>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Dolore vero temporibus, accusamus magnam maxime quis{' '}
-                </h6>
+                <h6>{selectedProduct && selectedProduct.brand}</h6>
                 <p className="star">
                   <i className="fas fa-star" />
                   4.5
@@ -131,44 +139,72 @@ const ProductDetailsMain = ({ selectedProduct }) => {
                   </span>{' '}
                 </h3>
                 <div className=" btn-contain mb-2">
-                  <p>Weight</p>
+                  <p>Unit</p>
                   <div className="btn-body">
-                    <p className="btn-views btn-views-1">
-                      <a href="#">5kg</a>
-                    </p>
-                    <p className="btn-views">
-                      <a href="#">10kg</a>
-                    </p>
+                    {selectedProduct &&
+                      selectedProduct.otherUnit.map(
+                        ({ mainProduct, value }) => (
+                          <Link
+                            to={`/product/${value._id}`}
+                            key={value._id}
+                            className={
+                              mainProduct
+                                ? 'btn-views btn-views-1 btn-views-active'
+                                : 'btn-views btn-views-1'
+                            }
+                          >
+                            <a href="#"> {value.value + value.unit}</a>
+                          </Link>
+                        )
+                      )}
                   </div>
                 </div>
-                <div className=" btn-contain mb-2">
-                  <p>Flavour</p>
-                  <div className="btn-body">
-                    <p className="btn-views btn-views-1">
-                      <a href="#">Chocolate</a>
-                    </p>
-                    <p className="btn-views">
-                      <a href="#">Vanila</a>
-                    </p>
-                    <p className="btn-views">
-                      <a href="#">Strawberry</a>
-                    </p>
+                {selectedProduct && selectedProduct.flavour && (
+                  <div className=" btn-contain mb-2">
+                    <p>Flavour</p>
+                    <div className="btn-body">
+                      {selectedProduct &&
+                        selectedProduct.otherFlavour.map(
+                          ({ mainProduct, value }) => (
+                            <Link
+                              to={`/product/${value._id}`}
+                              key={value._id}
+                              className={
+                                mainProduct
+                                  ? 'btn-views btn-views-1 btn-views-active'
+                                  : 'btn-views btn-views-1'
+                              }
+                            >
+                              <a href="#">{value.flavour}</a>
+                            </Link>
+                          )
+                        )}
+                    </div>
                   </div>
-                </div>
-                <div className=" btn-contain">
-                  <p>Color</p>
-                  <div className="btn-body">
-                    <p className="btn-views  btn-views-1">
-                      <a href="#">Blue</a>
-                    </p>
-                    <p className="btn-views">
-                      <a href="#">Black</a>
-                    </p>
-                    <p className="btn-views">
-                      <a href="#">Red</a>
-                    </p>
+                )}
+                {selectedProduct && selectedProduct.color && (
+                  <div className=" btn-contain">
+                    <p>Color</p>
+                    <div className="btn-body">
+                      {selectedProduct &&
+                        selectedProduct.otherColor.map(
+                          ({ value, mainProduct }) => (
+                            <Link
+                              to={`/product/${value._id}`}
+                              key={value._id}
+                              className={
+                                mainProduct
+                                  ? 'btn-views btn-views-1 btn-views-active'
+                                  : 'btn-views btn-views-1'
+                              }
+                            >
+                              <a href="#">{value.color}</a>
+                            </Link>
+                          )
+                        )}
+                    </div>
                   </div>
-                </div>
+                )}
                 <div className="d-flex align-items-center mt-3">
                   <label for=""> Qty: </label>
                   <input type="number" value="1" className="form-control" />

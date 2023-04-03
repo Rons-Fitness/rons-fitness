@@ -420,10 +420,13 @@
 .xzoom_part .xzoom_details .btn-body .btn-views {
   padding: 5px 10px;
   border: 1px solid var(--them-colour);
-  margin-left: 10px;
+  margin-right: 10px;
   cursor: pointer;
 }
 .xzoom_part .xzoom_details .btn-body .btn-views:hover {
+  background-color: var(--them-colour);
+}
+.xzoom_part .xzoom_details .btn-body .btn-views-active {
   background-color: var(--them-colour);
 }
 .xzoom_part .xzoom_details .btn-body .btn-views a {
