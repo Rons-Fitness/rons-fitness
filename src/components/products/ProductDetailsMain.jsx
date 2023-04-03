@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 import { Link } from 'react-router-dom';
+import ProductReviewsAndDes from './ProductReviewsAndDes';
 
 const ProductDetailsMain = ({ selectedProduct }) => {
   const [activeImage, setActiveImage] = useState('');
@@ -223,6 +224,10 @@ const ProductDetailsMain = ({ selectedProduct }) => {
           </div>
         </div>
       </section>
+      <ProductReviewsAndDes
+        description={selectedProduct?.description}
+        sellerInformation={selectedProduct?.sellerInformation}
+      />
     </>
   );
 };

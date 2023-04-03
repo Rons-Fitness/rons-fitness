@@ -13,7 +13,7 @@ const ProductDetails = ({ getProductById, selectedProduct }) => {
   }, [id, getProductById]);
   console.log({ selectedProduct });
   return (
-    <div>
+    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
       <ProductDetailsMain selectedProduct={selectedProduct} />
     </div>
   );
