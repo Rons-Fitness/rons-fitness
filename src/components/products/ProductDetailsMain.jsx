@@ -50,7 +50,7 @@ const ProductDetailsMain = ({ selectedProduct }) => {
                   <div
                     className="xzoom-body-responsive"
                     id="img-container"
-                    style={{ width: '400px' }}
+                    style={{ width: '400px', margin: 'auto' }}
                   >
                     <img src={activeImage} alt="" className="xzoom" />
                   </div>

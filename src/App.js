@@ -21,6 +21,7 @@ import Navbar from 'components/navbar/Navbar';
 const Dashboard = lazy(() => import('./containers/Dashboard'));
 const ProductList = lazy(() => import('./containers/ProductList'));
 const ProductDetails = lazy(() => import('./containers/ProductDetails'));
+const Cart = lazy(() => import('./containers/Cart'));
 const NotFound = lazy(() => import('containers/NotFound'));
 
 const App = () => {
@@ -53,6 +54,11 @@ const App = () => {
               exact
               path="/product/:id"
               render={(props) => <ProductDetails {...props} />}
+            />
+            <Route
+              exact
+              path="/user/cart"
+              render={(props) => <Cart {...props} />}
             />
             {/* <Route
                   path="/user"

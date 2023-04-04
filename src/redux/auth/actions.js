@@ -23,6 +23,7 @@ import {
   CHANGE_PASSWORD,
   USER_AUTH_SUCCESS,
   SET_SEARCH_TEXT,
+  // GET_CART_DETAILS,
 } from '../contants';
 
 export const changeSearchText = (text) => ({
@@ -126,3 +127,9 @@ export const logoutUser = (history) => ({
   type: LOGOUT_USER,
   payload: { history },
 });
+
+// cart
+// export const getCartDetails = () => ({
+//   type: GET_CART_DETAILS,
+// });
+// export const addToCart = (productId, quantity) => ({});
