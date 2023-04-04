@@ -1,3 +1,4 @@
+import Loader from 'components/common/loader/Loader';
 import ProductDetailsMain from 'components/products/ProductDetailsMain';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
@@ -5,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { getSingleProduct } from 'redux/actions';
 // import Error404 from 'components/notFound/Error404';
 
-const ProductDetails = ({ getProductById, selectedProduct }) => {
+const ProductDetails = ({ getProductById, selectedProduct, loading }) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -14,7 +15,11 @@ const ProductDetails = ({ getProductById, selectedProduct }) => {
   console.log({ selectedProduct });
   return (
     <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
-      <ProductDetailsMain selectedProduct={selectedProduct} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <ProductDetailsMain selectedProduct={selectedProduct} />
+      )}
     </div>
   );
 };
