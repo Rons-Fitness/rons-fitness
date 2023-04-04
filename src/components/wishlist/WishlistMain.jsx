@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const WishlistMain = ({ wishlist }) => {
   return (
@@ -17,12 +18,12 @@ const WishlistMain = ({ wishlist }) => {
               <div className="row">
                 <div className="col-lg-2 col-md- col-sm-12 d-flex justify-content-center">
                   <div className="my-whish-img-box">
-                    <a href="productsviewdetailes.html">
+                    <Link to={`/product/${wish._id}`}>
                       <img
                         src={wish.image.find((img) => img.url !== '').url}
                         alt=""
                       />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="col-lg-9 com-md- col-sm-12">

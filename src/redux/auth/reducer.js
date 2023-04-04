@@ -27,6 +27,9 @@ import {
   GET_WISHLIST_DETAILS,
   GET_WISHLIST_DETAILS_SUCCESS,
   GET_WISHLIST_DETAILS_ERROR,
+  ADD_PRODUCT_TO_CART,
+  ADD_PRODUCT_TO_CART_SUCCESS,
+  ADD_PRODUCT_TO_CART_ERROR,
 } from '../contants';
 
 const INIT_STATE = {
@@ -175,6 +178,15 @@ export default (state = INIT_STATE, action) => {
       return { ...state, wishlist: action.payload, loading: false };
     case GET_WISHLIST_DETAILS_ERROR:
       return { ...state, loading: false, error: action.payload.message };
+    case ADD_PRODUCT_TO_CART:
+      return { ...state };
+    case ADD_PRODUCT_TO_CART_SUCCESS:
+      return {
+        ...state,
+        currentUser: { ...state.currentUser, cart: action.payload },
+      };
+    case ADD_PRODUCT_TO_CART_ERROR:
+      return { ...state, error: action.payload.message };
     default:
       return { ...state };
   }

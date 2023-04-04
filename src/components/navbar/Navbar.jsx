@@ -325,6 +325,7 @@ const Navbar = ({
                                 onClick={handleSubmit}
                                 value={otpSent ? 'Verify' : 'send OTP'}
                                 onChange={() => console.log()}
+                                style={{ textAlign: 'center' }}
                               />
                             </div>
                           </div>

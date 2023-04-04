@@ -26,6 +26,9 @@ import {
   GET_WISHLIST_DETAILS,
   GET_WISHLIST_DETAILS_SUCCESS,
   GET_WISHLIST_DETAILS_ERROR,
+  ADD_PRODUCT_TO_CART,
+  ADD_PRODUCT_TO_CART_SUCCESS,
+  ADD_PRODUCT_TO_CART_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -141,5 +144,20 @@ export const getUserWishListSuccess = (list) => ({
 });
 export const getUserWIshLIstError = (message) => ({
   type: GET_WISHLIST_DETAILS_ERROR,
+  payload: { message },
+});
+
+// cart
+export const addProductToCart = (data, history) => ({
+  type: ADD_PRODUCT_TO_CART,
+  payload: { data, history },
+});
+
+export const addToCartSuccess = (cart) => ({
+  type: ADD_PRODUCT_TO_CART_SUCCESS,
+  payload: cart,
+});
+export const addToCartError = (message) => ({
+  type: ADD_PRODUCT_TO_CART_ERROR,
   payload: { message },
 });

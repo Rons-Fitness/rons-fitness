@@ -19,6 +19,7 @@ import {
   OTP_VERIFY,
   CHANGE_PASSWORD,
   GET_WISHLIST_DETAILS,
+  ADD_PRODUCT_TO_CART,
 } from '../contants';
 
 import {
@@ -38,6 +39,8 @@ import {
   authSuccess,
   getUserWishListSuccess,
   getUserWIshLIstError,
+  addToCartSuccess,
+  addToCartError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -295,6 +298,35 @@ function* getUserWishList() {
 export function* watchGetUserWishList() {
   yield takeEvery(GET_WISHLIST_DETAILS, getUserWishList);
 }
+
+const AddtoCartAsync = async ({ _id, qty = 1 }) => {
+  const res = await API.post(`/user/cart/${_id}`, { qty });
+  return res;
+};
+function* addProductToCart({ payload }) {
+  console.log({ payload });
+  const { data, history } = payload;
+  try {
+    const {
+      data: {
+        data: { cart },
+      },
+      status,
+    } = yield call(AddtoCartAsync, data);
+    if (status === 200) {
+      console.log({ cart });
+      yield put(addToCartSuccess(cart));
+      history.push('/user/cart');
+    } else {
+      yield put(addToCartError('something went wrong'));
+    }
+  } catch (err) {
+    yield put(addToCartError(err));
+  }
+}
+export function* addProductToCartWatch() {
+  yield takeEvery(ADD_PRODUCT_TO_CART, addProductToCart);
+}
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -306,5 +338,6 @@ export default function* rootSaga() {
     fork(watchVerifyOtp),
     fork(watchChangePassword),
     fork(watchGetUserWishList),
+    fork(addProductToCartWatch),
   ]);
 }

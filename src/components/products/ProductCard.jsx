@@ -1,8 +1,12 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, addtoCart }) => {
+  const history = useHistory();
   return (
     <>
       <div className="  box-card  ">
@@ -58,7 +62,19 @@ const ProductCard = ({ product }) => {
                 </span>
               </a>
             </p>
-            <a href="cart-page.html" className="">
+            <a
+              className=""
+              style={{ pointer: 'cursor' }}
+              onClick={() =>
+                addtoCart(
+                  {
+                    _id: product._id,
+                    qty: 1,
+                  },
+                  history
+                )
+              }
+            >
               <p className="shpoing-btn">
                 <i className="bi bi-cart2" />
                 Add to Cart

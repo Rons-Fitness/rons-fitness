@@ -4,9 +4,15 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleProduct } from 'redux/actions';
+import { addProductToCart } from 'redux/auth/actions';
 // import Error404 from 'components/notFound/Error404';
 
-const ProductDetails = ({ getProductById, selectedProduct, loading }) => {
+const ProductDetails = ({
+  getProductById,
+  selectedProduct,
+  loading,
+  addtoCart,
+}) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -18,7 +24,10 @@ const ProductDetails = ({ getProductById, selectedProduct, loading }) => {
       {loading ? (
         <Loader />
       ) : (
-        <ProductDetailsMain selectedProduct={selectedProduct} />
+        <ProductDetailsMain
+          selectedProduct={selectedProduct}
+          addtoCart={addtoCart}
+        />
       )}
     </div>
   );
@@ -31,6 +40,7 @@ const mapStateToProps = ({ product, user }) => {
 };
 const mapDispatchToProps = (dispatch) => ({
   getProductById: (id) => dispatch(getSingleProduct(id)),
+  addtoCart: (_id, history) => dispatch(addProductToCart(_id, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);

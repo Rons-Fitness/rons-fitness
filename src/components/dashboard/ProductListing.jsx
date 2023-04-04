@@ -1,11 +1,15 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-const ProductListing = ({ type, products = [] }) => {
+const ProductListing = ({ type, products = [], addtoCart }) => {
+  const history = useHistory();
   return (
     <section id="trendinslider-cardg-sec">
       <div className="container-fluid">
@@ -94,7 +98,19 @@ const ProductListing = ({ type, products = [] }) => {
                           </span>
                         </a>
                       </p>
-                      <a href="cart-page.html" className="">
+                      <a
+                        className=""
+                        style={{ cursor: 'pointer' }}
+                        onClick={() =>
+                          addtoCart(
+                            {
+                              _id: elem._id,
+                              qty: 1,
+                            },
+                            history
+                          )
+                        }
+                      >
                         <p className="shpoing-btn">
                           <i className="bi bi-cart2" />
                           Add to Cart

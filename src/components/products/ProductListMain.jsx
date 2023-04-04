@@ -4,7 +4,7 @@ import React from 'react';
 import ProductCard from './ProductCard';
 import ProductsFilters from './ProductsFilters';
 
-const ProductListMain = ({ products }) => {
+const ProductListMain = ({ products, addtoCart }) => {
   console.log({ products });
   return (
     <div className=" container-fluid">
@@ -17,7 +17,11 @@ const ProductListMain = ({ products }) => {
           <div className="products-grid-body">
             {products.data.length
               ? products.data.map((product) => (
-                  <ProductCard product={product} key={product._id} />
+                  <ProductCard
+                    product={product}
+                    key={product._id}
+                    addtoCart={addtoCart}
+                  />
                 ))
               : null}
           </div>

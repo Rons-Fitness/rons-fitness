@@ -4,8 +4,15 @@ import ProductListMain from 'components/products/ProductListMain';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getProducts } from 'redux/actions';
+import { addProductToCart } from 'redux/auth/actions';
 
-function ProductList({ products, getProductList, keyword, loading }) {
+function ProductList({
+  products,
+  getProductList,
+  keyword,
+  loading,
+  addtoCart,
+}) {
   console.log({ loading });
   useEffect(() => {
     getProductList({ keyword });
@@ -13,7 +20,11 @@ function ProductList({ products, getProductList, keyword, loading }) {
 
   return (
     <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
-      {loading ? <Loader /> : <ProductListMain products={products} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <ProductListMain products={products} addtoCart={addtoCart} />
+      )}
       <Footer />
     </div>
   );
@@ -27,6 +38,7 @@ const mapStateToProps = ({ product, user }) => {
 };
 const mapDispatchToProps = (dispatch) => ({
   getProductList: (data) => dispatch(getProducts(data)),
+  addtoCart: (_id, history) => dispatch(addProductToCart(_id, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -5,11 +7,13 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ProductReviewsAndDes from './ProductReviewsAndDes';
 
-const ProductDetailsMain = ({ selectedProduct }) => {
+const ProductDetailsMain = ({ selectedProduct, addtoCart }) => {
+  const history = useHistory();
   const [activeImage, setActiveImage] = useState('');
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     // console.log({ selectedProduct });
@@ -208,9 +212,26 @@ const ProductDetailsMain = ({ selectedProduct }) => {
                 )}
                 <div className="d-flex align-items-center mt-3">
                   <label for=""> Qty: </label>
-                  <input type="number" value="1" className="form-control" />
+                  <input
+                    type="number"
+                    value={qty}
+                    onChange={(e) => setQty(e.target.value)}
+                    className="form-control"
+                    min="1"
+                  />
                   <div className="btn-xzone-body ">
-                    <a href="cart-page.html">
+                    <a
+                      style={{ cursor: 'pointer' }}
+                      onClick={() =>
+                        addtoCart(
+                          {
+                            _id: selectedProduct && selectedProduct._id,
+                            qty,
+                          },
+                          history
+                        )
+                      }
+                    >
                       <p className="btn-xzone">
                         {' '}
                         <i className="bi bi-cart2" />

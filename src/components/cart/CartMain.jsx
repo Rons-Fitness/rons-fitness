@@ -3,6 +3,7 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CartMain = ({ cart }) => {
   console.log({ cart });
@@ -17,7 +18,7 @@ const CartMain = ({ cart }) => {
                   My Cart<span>({cart && cart?.products.length})</span>
                 </h1>
                 <p>
-                  <a href="wishlist page.html"> My Wishlist</a>
+                  <Link to="/user/wishlist"> My Wishlist</Link>
                 </p>
               </div>
               {cart &&
@@ -26,7 +27,7 @@ const CartMain = ({ cart }) => {
                     <div className="row">
                       <div className="col-lg-2 col-md- col-sm-12 d-flex align-items-center justify-content-center m-0 p-0">
                         <div className="my-cart-img-box">
-                          <a href="productsviewdetailes.html">
+                          <Link to={`/product/${value._id}`}>
                             {' '}
                             <img
                               src={
@@ -34,7 +35,7 @@ const CartMain = ({ cart }) => {
                               }
                               alt=""
                             />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="col-lg-8 com-md- col-sm-12">
