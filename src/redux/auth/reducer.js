@@ -24,6 +24,9 @@ import {
   CHANGE_PASSWORD_SUCCESS,
   USER_AUTH_SUCCESS,
   SET_SEARCH_TEXT,
+  GET_WISHLIST_DETAILS,
+  GET_WISHLIST_DETAILS_SUCCESS,
+  GET_WISHLIST_DETAILS_ERROR,
 } from '../contants';
 
 const INIT_STATE = {
@@ -35,6 +38,7 @@ const INIT_STATE = {
   error: '',
   success: '',
   keyword: '',
+  wishlist: [],
 };
 
 export default (state = INIT_STATE, action) => {
@@ -164,6 +168,13 @@ export default (state = INIT_STATE, action) => {
       };
     case LOGOUT_USER:
       return { ...state, currentUser: null, error: '' };
+
+    case GET_WISHLIST_DETAILS:
+      return { ...state, loading: true };
+    case GET_WISHLIST_DETAILS_SUCCESS:
+      return { ...state, wishlist: action.payload, loading: false };
+    case GET_WISHLIST_DETAILS_ERROR:
+      return { ...state, loading: false, error: action.payload.message };
     default:
       return { ...state };
   }

@@ -333,11 +333,13 @@ const Navbar = ({
                     </div>
                   </>
                 ) : null}
-                <p className="shoping-cart">
-                  <a href="cart-page.html">
-                    <i className="bi bi-cart2" />
-                  </a>
-                </p>
+                <Link to="/user/cart">
+                  <p className="shoping-cart">
+                    <a href="cart-page.html">
+                      <i className="bi bi-cart2" />
+                    </a>
+                  </p>
+                </Link>
               </div>
             </div>
           </div>

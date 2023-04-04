@@ -18,6 +18,7 @@ import {
   GET_USER_DETAILS,
   OTP_VERIFY,
   CHANGE_PASSWORD,
+  GET_WISHLIST_DETAILS,
 } from '../contants';
 
 import {
@@ -35,6 +36,8 @@ import {
   changePasswordError,
   changePasswordSuccess,
   authSuccess,
+  getUserWishListSuccess,
+  getUserWIshLIstError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -272,6 +275,26 @@ export function* watchChangePassword() {
   yield takeEvery(CHANGE_PASSWORD, changePassword);
 }
 
+const getUserWishListAsync = async () => {
+  const res = await API.get('/product/wishlist');
+  return res;
+};
+function* getUserWishList() {
+  try {
+    const { data, status } = yield call(getUserWishListAsync);
+    if (status === 200) {
+      yield put(getUserWishListSuccess(data));
+    } else {
+      yield put(getUserWIshLIstError('someting went wrong'));
+    }
+  } catch (error) {
+    put(getUserWIshLIstError(error));
+  }
+}
+
+export function* watchGetUserWishList() {
+  yield takeEvery(GET_WISHLIST_DETAILS, getUserWishList);
+}
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -282,5 +305,6 @@ export default function* rootSaga() {
     fork(watchGetUser),
     fork(watchVerifyOtp),
     fork(watchChangePassword),
+    fork(watchGetUserWishList),
   ]);
 }

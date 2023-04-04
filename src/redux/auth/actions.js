@@ -23,6 +23,9 @@ import {
   CHANGE_PASSWORD,
   USER_AUTH_SUCCESS,
   SET_SEARCH_TEXT,
+  GET_WISHLIST_DETAILS,
+  GET_WISHLIST_DETAILS_SUCCESS,
+  GET_WISHLIST_DETAILS_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -128,8 +131,15 @@ export const logoutUser = (history) => ({
   payload: { history },
 });
 
-// cart
-// export const getCartDetails = () => ({
-//   type: GET_CART_DETAILS,
-// });
-// export const addToCart = (productId, quantity) => ({});
+// wishlist
+export const getUserWishList = () => ({
+  type: GET_WISHLIST_DETAILS,
+});
+export const getUserWishListSuccess = (list) => ({
+  type: GET_WISHLIST_DETAILS_SUCCESS,
+  payload: list,
+});
+export const getUserWIshLIstError = (message) => ({
+  type: GET_WISHLIST_DETAILS_ERROR,
+  payload: { message },
+});
