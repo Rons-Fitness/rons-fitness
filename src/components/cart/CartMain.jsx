@@ -14,14 +14,14 @@ const CartMain = ({ cart }) => {
             <div className="my-cart-body">
               <div className=" my-cart-head">
                 <h1>
-                  My Cart<span>(3)</span>
+                  My Cart<span>({cart && cart?.products.length})</span>
                 </h1>
                 <p>
                   <a href="wishlist page.html"> My Wishlist</a>
                 </p>
               </div>
               {cart &&
-                cart?.products.map(({ value }) => (
+                cart?.products.map(({ value, qty }) => (
                   <div className="my-cart-contain" key={value._id}>
                     <div className="row">
                       <div className="col-lg-2 col-md- col-sm-12 d-flex align-items-center justify-content-center m-0 p-0">
@@ -29,7 +29,9 @@ const CartMain = ({ cart }) => {
                           <a href="productsviewdetailes.html">
                             {' '}
                             <img
-                              src="asstes/img/Wishlist page img/2.png"
+                              src={
+                                value.image.find((elem) => elem.url !== '').url
+                              }
                               alt=""
                             />
                           </a>
@@ -40,17 +42,14 @@ const CartMain = ({ cart }) => {
                           <a href="productsviewdetailes.html">
                             <h5>{value.name}</h5>
                           </a>
-                          <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Harum sed nemo
-                          </p>
-                          <div className="fw-semibold"> ₹ 8389 </div>
+                          <p>{value.brand}</p>
+                          <div className="fw-semibold"> ₹ {value.price} </div>
                           <div className=" form-box ">
                             <div className="d-flex">
                               <label for="number"> Qty :</label>
                               <input
                                 type="number"
-                                value="1"
+                                value={qty}
                                 className="form-control"
                                 id="number"
                               />
