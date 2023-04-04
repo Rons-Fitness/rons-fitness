@@ -227,6 +227,10 @@ const ProductDetailsMain = ({ selectedProduct }) => {
       <ProductReviewsAndDes
         description={selectedProduct?.description}
         sellerInformation={selectedProduct?.sellerInformation}
+        reviews={selectedProduct?.reviews}
+        rating={selectedProduct?.rating}
+        ratingDetails={selectedProduct?.ratingDetails}
+        numReviews={selectedProduct?.numReviews}
       />
     </>
   );

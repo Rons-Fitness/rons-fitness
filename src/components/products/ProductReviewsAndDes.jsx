@@ -2,7 +2,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 
-const ProductReviewsAndDes = ({ description = '', sellerInformation = '' }) => {
+const ProductReviewsAndDes = ({
+  description = '',
+  sellerInformation = '',
+  reviews = [],
+  rating = 0,
+  ratingDetails = {},
+}) => {
   return (
     <div className="container">
       <div className="reviews-body">
@@ -73,10 +79,10 @@ const ProductReviewsAndDes = ({ description = '', sellerInformation = '' }) => {
                     <div>
                       <p className="text-center">
                         <i className="fas fa-star" />
-                        <span className="ms-2">4.5</span>
+                        <span className="ms-2">{rating}</span>
                       </p>
                       <p className="Verified">
-                        1627 Verified <br />
+                        {reviews.length} Verified <br />
                         Buyers
                       </p>
                     </div>
@@ -98,10 +104,16 @@ const ProductReviewsAndDes = ({ description = '', sellerInformation = '' }) => {
                       >
                         <div
                           className="progress-bar"
-                          style={{ width: '94%' }}
+                          style={{
+                            width: `${
+                              (100 * ratingDetails['5']) / reviews.length
+                            }%`,
+                          }}
                         />
                       </div>
-                      <span className="percent">878</span>
+                      <span className="percent">
+                        {ratingDetails && ratingDetails['5']}
+                      </span>
                     </div>
                     <div className="review">
                       <span className="icon-container">
@@ -117,10 +129,16 @@ const ProductReviewsAndDes = ({ description = '', sellerInformation = '' }) => {
                       >
                         <div
                           className="progress-bar"
-                          style={{ width: '75%' }}
+                          style={{
+                            width: `${
+                              (100 * ratingDetails['4']) / reviews.length
+                            }%`,
+                          }}
                         />
                       </div>
-                      <span className="percent">484</span>
+                      <span className="percent">
+                        {ratingDetails && ratingDetails['4']}
+                      </span>
                     </div>
                     <div className="review">
                       <span className="icon-container">
@@ -136,10 +154,16 @@ const ProductReviewsAndDes = ({ description = '', sellerInformation = '' }) => {
                       >
                         <div
                           className="progress-bar"
-                          style={{ width: '55%' }}
+                          style={{
+                            width: `${
+                              (100 * ratingDetails['3']) / reviews.length
+                            }%`,
+                          }}
                         />
                       </div>
-                      <span className="percent">158</span>
+                      <span className="percent">
+                        {ratingDetails && ratingDetails['3']}
+                      </span>
                     </div>
                     <div className="review">
                       <span className="icon-container">
@@ -155,10 +179,16 @@ const ProductReviewsAndDes = ({ description = '', sellerInformation = '' }) => {
                       >
                         <div
                           className="progress-bar"
-                          style={{ width: '22%' }}
+                          style={{
+                            width: `${
+                              (100 * ratingDetails['2']) / reviews.length
+                            }%`,
+                          }}
                         />
                       </div>
-                      <span className="percent">78</span>
+                      <span className="percent">
+                        {ratingDetails && ratingDetails['2']}
+                      </span>
                     </div>
                     <div className="review">
                       <span className="icon-container">
@@ -172,9 +202,18 @@ const ProductReviewsAndDes = ({ description = '', sellerInformation = '' }) => {
                         aria-valuemin="0"
                         aria-valuemax="100"
                       >
-                        <div className="progress-bar" style={{ width: '7%' }} />
+                        <div
+                          className="progress-bar"
+                          style={{
+                            width: `${
+                              (100 * ratingDetails['1']) / reviews.length
+                            }%`,
+                          }}
+                        />
                       </div>
-                      <span className="percent">29</span>
+                      <span className="percent">
+                        {ratingDetails && ratingDetails['1']}
+                      </span>
                     </div>
                   </div>
                 </div>
