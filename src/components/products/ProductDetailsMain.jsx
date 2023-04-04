@@ -58,7 +58,6 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart }) => {
                   >
                     <img src={activeImage} alt="" className="xzoom" />
                   </div>
-                  {console.log({ img: selectedProduct })}
                   <div className="container">
                     <div className="xzoom-thumbs">
                       <div className="swiper mySwiper">
@@ -66,7 +65,11 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart }) => {
                           className="swiper-wrapper"
                           navigation
                           modules={[Autoplay, Pagination, Navigation]}
-                          slidesPerView={5}
+                          slidesPerView={Math.min(
+                            (selectedProduct && selectedProduct.image.length) ||
+                              0,
+                            5
+                          )}
                           spaceBetween={25}
                         >
                           {selectedProduct &&
