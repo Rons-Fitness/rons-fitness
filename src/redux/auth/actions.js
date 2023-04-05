@@ -35,6 +35,9 @@ import {
   DELETE_PRODUCT_FROM_WISHLIST,
   DELETE_PRODUCT_FROM_WISHLIST_SUCCESS,
   DELETE_PRODUCT_FROM_WISHLIST_ERROR,
+  DELETE_PRODUCT_FROM_CART,
+  DELETE_PRODUCT_FROM_CART_ERROR,
+  DELETE_PRODUCT_FROM_CART_SUCCESS,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -193,5 +196,19 @@ export const addToCartSuccess = (cart) => ({
 });
 export const addToCartError = (message) => ({
   type: ADD_PRODUCT_TO_CART_ERROR,
+  payload: { message },
+});
+
+export const reomveProductFromCart = (data) => ({
+  type: DELETE_PRODUCT_FROM_CART,
+  payload: { data },
+});
+
+export const reomveFromCartSuccess = (cart) => ({
+  type: DELETE_PRODUCT_FROM_CART_SUCCESS,
+  payload: cart,
+});
+export const reomveFromCartError = (message) => ({
+  type: DELETE_PRODUCT_FROM_CART_ERROR,
   payload: { message },
 });

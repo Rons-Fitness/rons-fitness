@@ -22,6 +22,7 @@ import {
   ADD_PRODUCT_TO_CART,
   ADD_PRODUCT_TO_WISHLIST,
   DELETE_PRODUCT_FROM_WISHLIST,
+  DELETE_PRODUCT_FROM_CART,
 } from '../contants';
 
 import {
@@ -47,6 +48,8 @@ import {
   addProductToWishListError,
   removeProductToWishListSuccess,
   removeProductToWishListError,
+  reomveFromCartSuccess,
+  reomveFromCartError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -372,7 +375,7 @@ function* addProductToCart({ payload }) {
     } = yield call(AddtoCartAsync, data);
     if (status === 200) {
       yield put(addToCartSuccess(cart));
-      history.push('/user/cart');
+      if (history) history.push('/user/cart');
     } else {
       yield put(addToCartError('something went wrong'));
     }
@@ -383,6 +386,32 @@ function* addProductToCart({ payload }) {
 export function* addProductToCartWatch() {
   yield takeEvery(ADD_PRODUCT_TO_CART, addProductToCart);
 }
+const removeFromCartAsync = async ({ _id }) => {
+  const res = await API.put(`/user/cart/${_id}`);
+  return res;
+};
+function* removeProductFromCart({ payload }) {
+  const { data } = payload;
+  try {
+    const {
+      data: {
+        data: { cart },
+      },
+      status,
+    } = yield call(removeFromCartAsync, data);
+    if (status === 200) {
+      yield put(reomveFromCartSuccess(cart));
+    } else {
+      yield put(reomveFromCartError('something went wrong'));
+    }
+  } catch (err) {
+    yield put(reomveFromCartError(err));
+  }
+}
+export function* removeProductFromCartWatch() {
+  yield takeEvery(DELETE_PRODUCT_FROM_CART, removeProductFromCart);
+}
+
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -397,5 +426,6 @@ export default function* rootSaga() {
     fork(addProductToCartWatch),
     fork(watchAddToWishList),
     fork(watchRemoveFromWishList),
+    fork(removeProductFromCartWatch),
   ]);
 }

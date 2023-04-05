@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unknown-property */
@@ -5,8 +7,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CartMain = ({ cart }) => {
-  console.log({ cart });
+const CartMain = ({ cart, removeItemFromCart, addtoCart }) => {
   return (
     <div className="cart-section">
       <div className="container">
@@ -49,8 +50,15 @@ const CartMain = ({ cart }) => {
                             <div className="d-flex">
                               <label for="number"> Qty :</label>
                               <input
+                                min="1"
                                 type="number"
                                 value={qty}
+                                onChange={(e) =>
+                                  addtoCart({
+                                    _id: value._id,
+                                    qty: e.target.value,
+                                  })
+                                }
                                 className="form-control"
                                 id="number"
                               />
@@ -68,7 +76,12 @@ const CartMain = ({ cart }) => {
                       <div className="col-lg-2 col-md- col-sm-12 d-flex justify-content-end bin-box">
                         <p className="bin-body ">
                           <a href="#">
-                            <i className="far fa-trash-alt" />
+                            <i
+                              className="far fa-trash-alt"
+                              onClick={() =>
+                                removeItemFromCart({ _id: value._id })
+                              }
+                            />
                           </a>
                         </p>
                       </div>

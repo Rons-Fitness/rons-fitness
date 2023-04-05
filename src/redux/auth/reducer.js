@@ -34,6 +34,8 @@ import {
   DELETE_PRODUCT_FROM_WISHLIST_ERROR,
   ADD_PRODUCT_TO_WISHLIST_SUCCESS,
   ADD_PRODUCT_TO_WISHLIST_ERROR,
+  DELETE_PRODUCT_FROM_CART_ERROR,
+  DELETE_PRODUCT_FROM_CART_SUCCESS,
 } from '../contants';
 
 const INIT_STATE = {
@@ -200,6 +202,13 @@ export default (state = INIT_STATE, action) => {
         currentUser: { ...state.currentUser, cart: action.payload },
       };
     case ADD_PRODUCT_TO_CART_ERROR:
+      return { ...state, error: action.payload.message };
+    case DELETE_PRODUCT_FROM_CART_SUCCESS:
+      return {
+        ...state,
+        currentUser: { ...state.currentUser, cart: action.payload },
+      };
+    case DELETE_PRODUCT_FROM_CART_ERROR:
       return { ...state, error: action.payload.message };
     default:
       return { ...state };
