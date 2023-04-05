@@ -36,6 +36,9 @@ import {
   ADD_PRODUCT_TO_WISHLIST_ERROR,
   DELETE_PRODUCT_FROM_CART_ERROR,
   DELETE_PRODUCT_FROM_CART_SUCCESS,
+  GET_USER_ADDRESS,
+  GET_USER_ADDRESS_SUCCESS,
+  GET_USER_ADDRESS_ERROR,
 } from '../contants';
 
 const INIT_STATE = {
@@ -48,6 +51,7 @@ const INIT_STATE = {
   success: '',
   keyword: '',
   wishlist: [],
+  addresses: [],
 };
 
 export default (state = INIT_STATE, action) => {
@@ -210,6 +214,23 @@ export default (state = INIT_STATE, action) => {
       };
     case DELETE_PRODUCT_FROM_CART_ERROR:
       return { ...state, error: action.payload.message };
+    case GET_USER_ADDRESS:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_USER_ADDRESS_SUCCESS:
+      return {
+        ...state,
+        addresses: action.payload,
+        loading: false,
+      };
+    case GET_USER_ADDRESS_ERROR:
+      return {
+        ...state,
+        addresses: action.payload,
+        loading: false,
+      };
     default:
       return { ...state };
   }

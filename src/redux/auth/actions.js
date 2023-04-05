@@ -38,6 +38,9 @@ import {
   DELETE_PRODUCT_FROM_CART,
   DELETE_PRODUCT_FROM_CART_ERROR,
   DELETE_PRODUCT_FROM_CART_SUCCESS,
+  GET_USER_ADDRESS,
+  GET_USER_ADDRESS_SUCCESS,
+  GET_USER_ADDRESS_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -210,5 +213,19 @@ export const reomveFromCartSuccess = (cart) => ({
 });
 export const reomveFromCartError = (message) => ({
   type: DELETE_PRODUCT_FROM_CART_ERROR,
+  payload: { message },
+});
+
+// address
+export const getUserAddresses = () => ({
+  type: GET_USER_ADDRESS,
+});
+export const getUserAddressesSuccess = (list) => ({
+  type: GET_USER_ADDRESS_SUCCESS,
+  payload: list,
+});
+
+export const getUserAddressesError = (message) => ({
+  type: GET_USER_ADDRESS_ERROR,
   payload: { message },
 });

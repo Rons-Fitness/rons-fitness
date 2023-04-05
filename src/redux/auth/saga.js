@@ -23,6 +23,7 @@ import {
   ADD_PRODUCT_TO_WISHLIST,
   DELETE_PRODUCT_FROM_WISHLIST,
   DELETE_PRODUCT_FROM_CART,
+  GET_USER_ADDRESS,
 } from '../contants';
 
 import {
@@ -50,6 +51,8 @@ import {
   removeProductToWishListError,
   reomveFromCartSuccess,
   reomveFromCartError,
+  getUserAddressesSuccess,
+  getUserAddressesError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -412,6 +415,28 @@ export function* removeProductFromCartWatch() {
   yield takeEvery(DELETE_PRODUCT_FROM_CART, removeProductFromCart);
 }
 
+// address
+const getUserAddressAsync = async () => {
+  const res = await API.get('/address');
+  return res;
+};
+
+function* getUserAddress() {
+  try {
+    const { data, status } = yield call(getUserAddressAsync);
+    if (status === 200) {
+      yield put(getUserAddressesSuccess(data || []));
+    } else {
+      getUserAddressesError('something went wrong');
+    }
+  } catch (err) {
+    getUserAddressesError(err);
+  }
+}
+
+export function* watchUserAddress() {
+  yield takeEvery(GET_USER_ADDRESS, getUserAddress);
+}
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -427,5 +452,6 @@ export default function* rootSaga() {
     fork(watchAddToWishList),
     fork(watchRemoveFromWishList),
     fork(removeProductFromCartWatch),
+    fork(watchUserAddress),
   ]);
 }
