@@ -23,6 +23,7 @@ const ProductList = lazy(() => import('./containers/ProductList'));
 const ProductDetails = lazy(() => import('./containers/ProductDetails'));
 const Cart = lazy(() => import('./containers/Cart'));
 const Wishlist = lazy(() => import('containers/Wishlist'));
+const Address = lazy(() => import('./containers/Address'));
 const NotFound = lazy(() => import('containers/NotFound'));
 
 const App = () => {
@@ -65,6 +66,11 @@ const App = () => {
               exact
               path="/user/wishlist"
               render={(props) => <Wishlist {...props} />}
+            />
+            <Route
+              exact
+              path="/user/address"
+              render={(props) => <Address {...props} />}
             />
             {/* <Route
                   path="/user"

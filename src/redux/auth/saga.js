@@ -20,6 +20,8 @@ import {
   CHANGE_PASSWORD,
   GET_WISHLIST_DETAILS,
   ADD_PRODUCT_TO_CART,
+  ADD_PRODUCT_TO_WISHLIST,
+  DELETE_PRODUCT_FROM_WISHLIST,
 } from '../contants';
 
 import {
@@ -41,6 +43,10 @@ import {
   getUserWIshLIstError,
   addToCartSuccess,
   addToCartError,
+  addProductToWishListSuccess,
+  addProductToWishListError,
+  removeProductToWishListSuccess,
+  removeProductToWishListError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -278,6 +284,7 @@ export function* watchChangePassword() {
   yield takeEvery(CHANGE_PASSWORD, changePassword);
 }
 
+// wish list
 const getUserWishListAsync = async () => {
   const res = await API.get('/product/wishlist');
   return res;
@@ -299,12 +306,62 @@ export function* watchGetUserWishList() {
   yield takeEvery(GET_WISHLIST_DETAILS, getUserWishList);
 }
 
+const addToWishListAsync = async (_id) => {
+  const res = await API.post(`/product/wishlist/${_id}`);
+  return res;
+};
+function* addToWishList({ payload }) {
+  const { _id } = payload;
+  try {
+    const {
+      data: { data },
+      status,
+    } = yield call(addToWishListAsync, _id);
+    if (status === 200) {
+      yield put(addProductToWishListSuccess(data));
+    } else {
+      yield put(addProductToWishListError('add product to wishlist error'));
+    }
+  } catch (error) {
+    yield put(addProductToWishListError(error));
+  }
+}
+
+export function* watchAddToWishList() {
+  yield takeEvery(ADD_PRODUCT_TO_WISHLIST, addToWishList);
+}
+
+const removeFromWishListAsync = async (_id) => {
+  const res = await API.put(`/product/wishlist/${_id}`);
+  return res;
+};
+function* removeFromWishList({ payload }) {
+  const { _id } = payload;
+  try {
+    const {
+      data: { data },
+      status,
+    } = yield call(removeFromWishListAsync, _id);
+    if (status === 200) {
+      yield put(removeProductToWishListSuccess(data));
+    } else {
+      yield put(removeProductToWishListError('add product to wishlist error'));
+    }
+  } catch (error) {
+    yield put(removeProductToWishListError(error));
+  }
+}
+
+export function* watchRemoveFromWishList() {
+  yield takeEvery(DELETE_PRODUCT_FROM_WISHLIST, removeFromWishList);
+}
+
+// cart
 const AddtoCartAsync = async ({ _id, qty = 1 }) => {
   const res = await API.post(`/user/cart/${_id}`, { qty });
   return res;
 };
 function* addProductToCart({ payload }) {
-  console.log({ payload });
   const { data, history } = payload;
   try {
     const {
@@ -314,7 +371,6 @@ function* addProductToCart({ payload }) {
       status,
     } = yield call(AddtoCartAsync, data);
     if (status === 200) {
-      console.log({ cart });
       yield put(addToCartSuccess(cart));
       history.push('/user/cart');
     } else {
@@ -339,5 +395,7 @@ export default function* rootSaga() {
     fork(watchChangePassword),
     fork(watchGetUserWishList),
     fork(addProductToCartWatch),
+    fork(watchAddToWishList),
+    fork(watchRemoveFromWishList),
   ]);
 }

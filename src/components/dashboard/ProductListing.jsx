@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 import { Link, useHistory } from 'react-router-dom';
 
-const ProductListing = ({ type, products = [], addtoCart }) => {
+const ProductListing = ({ type, products = [], addtoCart, addToWishlist }) => {
   const history = useHistory();
   return (
     <section id="trendinslider-cardg-sec">
@@ -37,9 +37,12 @@ const ProductListing = ({ type, products = [], addtoCart }) => {
                       <i className="fas fa-star  me-1" />
                       {elem.rating}
                     </sapn>
-                    <sapn className="false-seal ">
+                    <sapn
+                      className="false-seal "
+                      onClick={() => addToWishlist(elem._id)}
+                    >
                       <svg
-                        className="heart"
+                        className={elem.inWishlist ? 'activeHeart' : 'heart'}
                         viewBox="0 0 24 22"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"

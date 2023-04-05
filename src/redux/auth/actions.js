@@ -29,6 +29,12 @@ import {
   ADD_PRODUCT_TO_CART,
   ADD_PRODUCT_TO_CART_SUCCESS,
   ADD_PRODUCT_TO_CART_ERROR,
+  ADD_PRODUCT_TO_WISHLIST,
+  ADD_PRODUCT_TO_WISHLIST_SUCCESS,
+  ADD_PRODUCT_TO_WISHLIST_ERROR,
+  DELETE_PRODUCT_FROM_WISHLIST,
+  DELETE_PRODUCT_FROM_WISHLIST_SUCCESS,
+  DELETE_PRODUCT_FROM_WISHLIST_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -144,6 +150,34 @@ export const getUserWishListSuccess = (list) => ({
 });
 export const getUserWIshLIstError = (message) => ({
   type: GET_WISHLIST_DETAILS_ERROR,
+  payload: { message },
+});
+
+export const addProductToWishList = (_id) => ({
+  type: ADD_PRODUCT_TO_WISHLIST,
+  payload: { _id },
+});
+export const addProductToWishListSuccess = (list) => ({
+  type: ADD_PRODUCT_TO_WISHLIST_SUCCESS,
+  payload: list,
+});
+
+export const addProductToWishListError = (message) => ({
+  type: ADD_PRODUCT_TO_WISHLIST_ERROR,
+  payload: { message },
+});
+
+export const removeProductToWishList = (_id) => ({
+  type: DELETE_PRODUCT_FROM_WISHLIST,
+  payload: { _id },
+});
+export const removeProductToWishListSuccess = (list) => ({
+  type: DELETE_PRODUCT_FROM_WISHLIST_SUCCESS,
+  payload: list,
+});
+
+export const removeProductToWishListError = (message) => ({
+  type: DELETE_PRODUCT_FROM_WISHLIST_ERROR,
   payload: { message },
 });
 

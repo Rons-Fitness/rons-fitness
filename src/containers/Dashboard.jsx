@@ -5,13 +5,14 @@ import DashboardMain from 'components/dashboard/DashboardMain';
 import { getHomeScreenData } from 'redux/product/actions';
 import { Link, useHistory } from 'react-router-dom';
 import Footer from 'components/footer/Footer';
-import { addProductToCart } from 'redux/auth/actions';
+import { addProductToCart, addProductToWishList } from 'redux/auth/actions';
 
 const Dashboard = ({
   homeScreenData,
   getHomeScreenDetails,
   keyword,
   addtoCart,
+  addToWishlist,
 }) => {
   const history = useHistory();
 
@@ -28,7 +29,11 @@ const Dashboard = ({
   }, [keyword]);
   return (
     <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
-      <DashboardMain homeScreenData={homeScreenData} addtoCart={addtoCart} />
+      <DashboardMain
+        homeScreenData={homeScreenData}
+        addtoCart={addtoCart}
+        addToWishlist={addToWishlist}
+      />
       <Footer />
     </div>
   );
@@ -42,6 +47,7 @@ const mapStateToProps = ({ product, user }) => {
 const mapDispatchToProps = (dispatch) => ({
   getHomeScreenDetails: () => dispatch(getHomeScreenData()),
   addtoCart: (_id, history) => dispatch(addProductToCart(_id, history)),
+  addToWishlist: (_id) => dispatch(addProductToWishList(_id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

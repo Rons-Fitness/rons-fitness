@@ -7,7 +7,7 @@ import BrandListing from './BrandListing';
 import Blogs from './Blogs';
 import Categories from './Categories';
 
-const DashboardMain = ({ homeScreenData, addtoCart }) => {
+const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
   return (
     <>
       <section className="banner-wrapper ">
@@ -62,6 +62,7 @@ const DashboardMain = ({ homeScreenData, addtoCart }) => {
         type="TRENDING NOW"
         products={homeScreenData.trendingProducts}
         addtoCart={addtoCart}
+        addToWishlist={addToWishlist}
       />
       <div className="container ">
         <div className=" col-lg-12  col-md-12 col-sm-12 ">
@@ -74,6 +75,7 @@ const DashboardMain = ({ homeScreenData, addtoCart }) => {
         type="NEW ARRIVAL"
         products={homeScreenData.newArrivals}
         addtoCart={addtoCart}
+        addToWishlist={addToWishlist}
       />
       <BrandListing brands={homeScreenData.brands} />
       <Blogs />

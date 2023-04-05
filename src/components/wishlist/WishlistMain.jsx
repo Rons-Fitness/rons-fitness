@@ -1,15 +1,18 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const WishlistMain = ({ wishlist }) => {
+const WishlistMain = ({ wishlist, removeFromWishList }) => {
   return (
     <div className="my-whish-section" style={{ height: 'calc(100vh - 115px)' }}>
       <div className="container">
         <div className="my-whish-head">
           <h1>
-            My Wishlist <span>(4)</span>
+            My Wishlist <span>({wishlist.length})</span>
           </h1>
         </div>
         <div className="my-whish-body">
@@ -44,9 +47,7 @@ const WishlistMain = ({ wishlist }) => {
                     </p>
                     <div className="btn-mywish-body">
                       <p className="bin-body">
-                        <a href="#">
-                          <i className="far fa-trash-alt" />
-                        </a>
+                        <i className="far fa-trash-alt" />
                       </p>
                       <a href="cart-page.html">
                         <p className="btn-mywhish">
@@ -60,7 +61,10 @@ const WishlistMain = ({ wishlist }) => {
                 <div className="col-lg-1 col-md- col-sm-12 d-flex justify-content-end">
                   <div className="bin-body">
                     <a href="#">
-                      <i className="far fa-trash-alt" />
+                      <i
+                        className="far fa-trash-alt"
+                        onClick={() => removeFromWishList(wish._id)}
+                      />
                     </a>
                   </div>
                 </div>

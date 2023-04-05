@@ -58,6 +58,13 @@ const ProductReviewsAndDes = ({
                         __html: description,
                       }}
                     />
+                  </div>
+                </div>
+                <div
+                  className="col-md-6  Description-body"
+                  style={{ border: 'none' }}
+                >
+                  <div className="Description-contain">
                     <p
                       dangerouslySetInnerHTML={{
                         __html: sellerInformation,

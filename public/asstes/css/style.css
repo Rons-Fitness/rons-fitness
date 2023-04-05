@@ -238,6 +238,10 @@
   stroke: var(--them-colour);
 }
 
+.activeHeart path {
+  fill: var(--them-colour);
+  stroke: var(--them-colour);
+}
 /* ============== Product grid detils End ============= */
 /* =========================== policy setion start ======================== */
 .policy-hed {

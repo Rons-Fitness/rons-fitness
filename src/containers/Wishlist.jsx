@@ -3,9 +3,15 @@ import Footer from 'components/footer/Footer';
 import { connect } from 'react-redux';
 import Loader from 'components/common/loader/Loader';
 import WishlistMain from 'components/wishlist/WishlistMain';
-import { getUserWishList } from 'redux/auth/actions';
+import { getUserWishList, removeProductToWishList } from 'redux/auth/actions';
 
-const Wishlist = ({ keyword, loading, wishlist, getWishList }) => {
+const Wishlist = ({
+  keyword,
+  loading,
+  wishlist,
+  getWishList,
+  removeFromWishList,
+}) => {
   useEffect(() => {
     getWishList();
   }, [getWishList]);
@@ -20,7 +26,11 @@ const Wishlist = ({ keyword, loading, wishlist, getWishList }) => {
       {loading ? (
         <Loader />
       ) : (
-        <WishlistMain wishlist={wishlist} keyword={keyword} />
+        <WishlistMain
+          wishlist={wishlist}
+          keyword={keyword}
+          removeFromWishList={removeFromWishList}
+        />
       )}
       <Footer />
     </div>
@@ -34,6 +44,7 @@ const mapStateToProps = ({ user }) => {
 };
 const mapDispatchToProps = (dispatch) => ({
   getWishList: () => dispatch(getUserWishList()),
+  removeFromWishList: (_id) => dispatch(removeProductToWishList(_id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wishlist);
