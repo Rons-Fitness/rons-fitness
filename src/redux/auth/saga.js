@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
 import {
   all,
   call,
@@ -25,6 +27,8 @@ import {
   DELETE_PRODUCT_FROM_CART,
   GET_USER_ADDRESS,
   CREATE_USER_ADDRESS,
+  UPDATE_USER_ADDRESS,
+  GET_ADDRESS_BY_ID,
 } from '../contants';
 
 import {
@@ -56,6 +60,9 @@ import {
   getUserAddressesError,
   createUserAddressSuccess,
   createUserAddressError,
+  updateUserAddressError,
+  getAddressByIdSuccess,
+  getAddressByIdError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -465,6 +472,50 @@ export function* watchCreateAddress() {
   yield takeEvery(CREATE_USER_ADDRESS, createAddress);
 }
 
+const updateAddressAsync = async (address) => {
+  const { _id } = address;
+  delete address._id;
+  const res = await API.put(`/address/${_id}`, address);
+  return res;
+};
+function* updateAddress({ payload }) {
+  const { address, history } = payload;
+  try {
+    const { status } = yield call(updateAddressAsync, address);
+    if (status === 200) {
+      history.push('/user/address');
+    } else {
+      yield put(updateUserAddressError('Something went wrong'));
+    }
+  } catch (err) {
+    yield put(updateUserAddressError(err));
+  }
+}
+export function* watchUpdateAddress() {
+  yield takeEvery(UPDATE_USER_ADDRESS, updateAddress);
+}
+
+const getAddressByID = async (_id) => {
+  const res = await API.get(`/address/${_id}`);
+  return res;
+};
+function* getAddressById({ payload }) {
+  const { _id } = payload;
+  try {
+    const { data, status } = yield call(getAddressByID, _id);
+    if (status === 200) {
+      yield put(getAddressByIdSuccess(data));
+    } else {
+      yield put(getAddressByIdError('Something went wrong'));
+    }
+  } catch (err) {
+    yield put(getAddressByIdError(err));
+  }
+}
+export function* watchAddressById() {
+  yield takeEvery(GET_ADDRESS_BY_ID, getAddressById);
+}
+
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -482,5 +533,7 @@ export default function* rootSaga() {
     fork(removeProductFromCartWatch),
     fork(watchUserAddress),
     fork(watchCreateAddress),
+    fork(watchUpdateAddress),
+    fork(watchAddressById),
   ]);
 }

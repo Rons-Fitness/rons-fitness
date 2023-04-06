@@ -44,6 +44,10 @@ import {
   CREATE_USER_ADDRESS,
   CREATE_USER_ADDRESS_SUCCESS,
   CREATE_USER_ADDRESS_ERROR,
+  UPDATE_USER_ADDRESS,
+  GET_ADDRESS_BY_ID,
+  GET_ADDRESS_BY_ID_SUCCESS,
+  GET_ADDRESS_BY_ID_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -237,19 +241,38 @@ export const createUserAddress = (address, history) => ({
   type: CREATE_USER_ADDRESS,
   payload: { address, history },
 });
-export const createUserAddressSuccess = (list) => ({
+export const createUserAddressSuccess = (data) => ({
   type: CREATE_USER_ADDRESS_SUCCESS,
-  payload: list,
+  payload: data,
 });
 export const createUserAddressError = (message) => ({
   type: CREATE_USER_ADDRESS_ERROR,
   payload: { message },
 });
 
-// export const updateUserAddress = (address) => ({});
-// export const updateUserAddressSuccess = (list) => ({});
-// export const updateUserAddressError = (messgae) => ({});
+export const updateUserAddress = (address, history) => ({
+  type: UPDATE_USER_ADDRESS,
+  payload: { address, history },
+});
+// export const updateUserAddressSuccess = (data) => ({});
+export const updateUserAddressError = (message) => ({
+  type: CREATE_USER_ADDRESS_ERROR,
+  payload: { message },
+});
 
 // export const deleteUserAddress = (address) => ({});
 // export const deleteUserAddressSuccess = (list) => ({});
 // export const deleteUserAddressError = (messgae) => ({});
+
+export const getAddressById = (_id) => ({
+  type: GET_ADDRESS_BY_ID,
+  payload: { _id },
+});
+export const getAddressByIdSuccess = (data) => ({
+  type: GET_ADDRESS_BY_ID_SUCCESS,
+  payload: data,
+});
+export const getAddressByIdError = (message) => ({
+  type: GET_ADDRESS_BY_ID_ERROR,
+  payload: { message },
+});

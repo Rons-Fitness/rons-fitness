@@ -5,32 +5,32 @@ import { createUserAddress } from 'redux/auth/actions';
 
 const NewAddress = ({ addNewAddress }) => {
   const [address, setAddress] = useState({
-    addressType: 'home',
+    addressType: '',
     shippingAddress: {
-      firstName: 'Rishi',
-      lastName: 'Patel',
-      addressLine1: 'addressLine1',
-      addressLine2: 'addressLine2',
-      pinCode: 393002,
-      city: 'ankleshwar',
-      state: 'Gujrat',
-      country: 'india',
-      phoneNo: 7621937212,
+      firstName: '',
+      lastName: '',
+      addressLine1: '',
+      addressLine2: '',
+      pinCode: '',
+      city: '',
+      state: '',
+      country: '',
+      phoneNo: '',
     },
     billingAddress: {
-      firstName: 'firstName',
-      lastName: 'lastName',
-      addressLine1: 'addressLine1',
-      addressLine2: 'addressLine2',
-      pinCode: 393002,
-      city: 'ankleshwar',
-      state: 'Gujrat',
-      country: 'india',
-      phoneNo: 7621937212,
+      firstName: '',
+      lastName: '',
+      addressLine1: '',
+      addressLine2: '',
+      pinCode: '',
+      city: '',
+      state: '',
+      country: '',
+      phoneNo: '',
     },
   });
   return (
-    <div>
+    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
       <AddressForm
         address={address}
         setAddress={setAddress}

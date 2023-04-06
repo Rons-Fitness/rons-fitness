@@ -1,37 +1,64 @@
 import AddressForm from 'components/address/AddressForm';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getAddressById, updateUserAddress } from 'redux/auth/actions';
 
-const EditAddress = () => {
+const EditAddress = ({ getAddressFromId, selectedAddress, updateAddress }) => {
+  const { id } = useParams();
   const [address, setAddress] = useState({
-    addressType: 'home',
+    addressType: '',
     shippingAddress: {
-      firstName: 'Rishi',
-      lastName: 'Patel',
-      addressLine1: 'addressLine1',
-      addressLine2: 'addressLine2',
-      pinCode: 393002,
-      city: 'ankleshwar',
-      state: 'Gujrat',
-      country: 'india',
-      phoneNo: 7621937212,
+      firstName: '',
+      lastName: '',
+      addressLine1: '',
+      addressLine2: '',
+      pinCode: '',
+      city: '',
+      state: '',
+      country: '',
+      phoneNo: '',
     },
     billingAddress: {
-      firstName: 'firstName',
-      lastName: 'lastName',
-      addressLine1: 'addressLine1',
-      addressLine2: 'addressLine2',
-      pinCode: 393002,
-      city: 'ankleshwar',
-      state: 'Gujrat',
-      country: 'india',
-      phoneNo: 7621937212,
+      firstName: '',
+      lastName: '',
+      addressLine1: '',
+      addressLine2: '',
+      pinCode: '',
+      city: '',
+      state: '',
+      country: '',
+      phoneNo: '',
     },
   });
+  useEffect(() => {
+    if (selectedAddress) {
+      setAddress(selectedAddress);
+    }
+  }, [selectedAddress]);
+  useEffect(() => {
+    if (id) getAddressFromId(id);
+  }, [id, getAddressFromId]);
+
   return (
-    <div>
-      <AddressForm address={address} setAddress={setAddress} />
+    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
+      <AddressForm
+        address={address}
+        setAddress={setAddress}
+        saveAddress={updateAddress}
+      />
     </div>
   );
 };
+const mapStateToProps = ({ user }) => {
+  const { keyword, selectedAddress, loading } = user;
 
-export default EditAddress;
+  return { selectedAddress, keyword, loading };
+};
+const mapDispatchToProps = (dispatch) => ({
+  updateAddress: (address, history) =>
+    dispatch(updateUserAddress(address, history)),
+  getAddressFromId: (_id) => dispatch(getAddressById(_id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditAddress);

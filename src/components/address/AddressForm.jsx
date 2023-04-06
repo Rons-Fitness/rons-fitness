@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 const AddressForm = ({ address, setAddress, saveAddress }) => {
   const history = useHistory();
-  const { shippingAddress, billingAddress, addressType } = address;
+  const { shippingAddress, billingAddress, addressType, _id } = address;
 
   const changeDetails = (type, key, value) => {
     setAddress((oldVal) => {
@@ -367,7 +367,17 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     type="button"
                     value="Save & Continue"
                     className="shipping-btn"
-                    onClick={() => saveAddress(address, history)}
+                    onClick={() =>
+                      saveAddress(
+                        {
+                          shippingAddress,
+                          billingAddress,
+                          addressType,
+                          _id,
+                        },
+                        history
+                      )
+                    }
                   />
                 </div>
               </form>

@@ -41,6 +41,9 @@ import {
   GET_USER_ADDRESS_ERROR,
   CREATE_USER_ADDRESS_SUCCESS,
   CREATE_USER_ADDRESS_ERROR,
+  GET_ADDRESS_BY_ID,
+  GET_ADDRESS_BY_ID_SUCCESS,
+  GET_ADDRESS_BY_ID_ERROR,
 } from '../contants';
 
 const INIT_STATE = {
@@ -54,6 +57,7 @@ const INIT_STATE = {
   keyword: '',
   wishlist: [],
   addresses: [],
+  selectedAddress: null,
 };
 
 export default (state = INIT_STATE, action) => {
@@ -239,6 +243,18 @@ export default (state = INIT_STATE, action) => {
         addresses: [action.payload, ...state.addresses],
       };
     case CREATE_USER_ADDRESS_ERROR:
+      return {
+        ...state,
+        error: action.payload.message,
+      };
+    case GET_ADDRESS_BY_ID:
+      return { ...state, loading: true };
+    case GET_ADDRESS_BY_ID_SUCCESS:
+      return {
+        ...state,
+        selectedAddress: action.payload,
+      };
+    case GET_ADDRESS_BY_ID_ERROR:
       return {
         ...state,
         error: action.payload.message,

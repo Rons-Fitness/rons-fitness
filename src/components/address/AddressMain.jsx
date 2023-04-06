@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const AddressMain = ({ addresses }) => {
   console.log({ addresses });
@@ -37,7 +38,7 @@ const AddressMain = ({ addresses }) => {
                       </p>
                     </div>
                     <div className="fw-semibold edit">
-                      <a href="#"> Edit </a>
+                      <Link to={`/user/address/edit/${_id}`}> Edit </Link>
                       <span className="Delete-colour">Delete</span>
                     </div>
                     <div className="delivery-btn">

@@ -10,10 +10,10 @@ const Address = ({ getAddresses, addresses }) => {
   }, [getAddresses]);
 
   return (
-    <>
+    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
       <AddressMain addresses={addresses} />
       <Footer />
-    </>
+    </div>
   );
 };
 const mapStateToProps = ({ user }) => {
