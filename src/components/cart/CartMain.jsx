@@ -7,7 +7,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CartMain = ({ cart, removeItemFromCart, addtoCart }) => {
+const CartMain = ({
+  cart,
+  removeItemFromCart,
+  addtoCart,
+  addressToDeliver,
+}) => {
   return (
     <div className="cart-section">
       <div className="container">
@@ -145,17 +150,22 @@ const CartMain = ({ cart, removeItemFromCart, addtoCart }) => {
                   <div className="Delivery-at">
                     <p>
                       {' '}
-                      Delivery at <span className="tag"> Home</span>
+                      Delivery at{' '}
+                      <span className="tag">
+                        {' '}
+                        {addressToDeliver?.addressType}
+                      </span>
                     </p>{' '}
                     <span className="">
-                      <a href="Delivery-address-page.html" className="Change">
-                        Change
-                      </a>
+                      <Link to="/user/address" className="Change">
+                        <a>Change</a>
+                      </Link>
                     </span>
                   </div>
                   <p className="addres">
-                    Ramkrishna Apartment, Near Sardar Bhavan Society,mg Road 78,
-                    udaipur.{' '}
+                    {addressToDeliver?.shippingAddress.addressLine1}
+                    <br />
+                    {addressToDeliver?.shippingAddress.addressLine2}
                   </p>
                 </div>
               </div>

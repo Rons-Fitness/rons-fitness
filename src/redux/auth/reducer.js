@@ -58,6 +58,7 @@ const INIT_STATE = {
   wishlist: [],
   addresses: [],
   selectedAddress: null,
+  addressToDeliver: null,
 };
 
 export default (state = INIT_STATE, action) => {
@@ -229,6 +230,7 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         addresses: action.payload,
+        addressToDeliver: action.payload[0],
         loading: false,
       };
     case GET_USER_ADDRESS_ERROR:
