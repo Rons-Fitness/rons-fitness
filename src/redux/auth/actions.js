@@ -41,6 +41,9 @@ import {
   GET_USER_ADDRESS,
   GET_USER_ADDRESS_SUCCESS,
   GET_USER_ADDRESS_ERROR,
+  CREATE_USER_ADDRESS,
+  CREATE_USER_ADDRESS_SUCCESS,
+  CREATE_USER_ADDRESS_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -229,3 +232,24 @@ export const getUserAddressesError = (message) => ({
   type: GET_USER_ADDRESS_ERROR,
   payload: { message },
 });
+
+export const createUserAddress = (address, history) => ({
+  type: CREATE_USER_ADDRESS,
+  payload: { address, history },
+});
+export const createUserAddressSuccess = (list) => ({
+  type: CREATE_USER_ADDRESS_SUCCESS,
+  payload: list,
+});
+export const createUserAddressError = (message) => ({
+  type: CREATE_USER_ADDRESS_ERROR,
+  payload: { message },
+});
+
+// export const updateUserAddress = (address) => ({});
+// export const updateUserAddressSuccess = (list) => ({});
+// export const updateUserAddressError = (messgae) => ({});
+
+// export const deleteUserAddress = (address) => ({});
+// export const deleteUserAddressSuccess = (list) => ({});
+// export const deleteUserAddressError = (messgae) => ({});

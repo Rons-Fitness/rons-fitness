@@ -24,6 +24,7 @@ import {
   DELETE_PRODUCT_FROM_WISHLIST,
   DELETE_PRODUCT_FROM_CART,
   GET_USER_ADDRESS,
+  CREATE_USER_ADDRESS,
 } from '../contants';
 
 import {
@@ -53,6 +54,8 @@ import {
   reomveFromCartError,
   getUserAddressesSuccess,
   getUserAddressesError,
+  createUserAddressSuccess,
+  createUserAddressError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -437,6 +440,31 @@ function* getUserAddress() {
 export function* watchUserAddress() {
   yield takeEvery(GET_USER_ADDRESS, getUserAddress);
 }
+
+const createAddressAsync = async (address) => {
+  console.log({ address });
+  const res = await API.post('/address', address);
+  return res;
+};
+function* createAddress({ payload }) {
+  const { address, history } = payload;
+  console.log({ history });
+  try {
+    const { data, status } = yield call(createAddressAsync, address);
+    if (status === 201) {
+      history.push('/user/address');
+      yield put(createUserAddressSuccess(data));
+    } else {
+      yield put(createUserAddressError('Something went wrong'));
+    }
+  } catch (err) {
+    yield put(createUserAddressError(err));
+  }
+}
+export function* watchCreateAddress() {
+  yield takeEvery(CREATE_USER_ADDRESS, createAddress);
+}
+
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -453,5 +481,6 @@ export default function* rootSaga() {
     fork(watchRemoveFromWishList),
     fork(removeProductFromCartWatch),
     fork(watchUserAddress),
+    fork(watchCreateAddress),
   ]);
 }

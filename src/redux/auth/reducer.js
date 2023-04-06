@@ -39,6 +39,8 @@ import {
   GET_USER_ADDRESS,
   GET_USER_ADDRESS_SUCCESS,
   GET_USER_ADDRESS_ERROR,
+  CREATE_USER_ADDRESS_SUCCESS,
+  CREATE_USER_ADDRESS_ERROR,
 } from '../contants';
 
 const INIT_STATE = {
@@ -230,6 +232,16 @@ export default (state = INIT_STATE, action) => {
         ...state,
         addresses: action.payload,
         loading: false,
+      };
+    case CREATE_USER_ADDRESS_SUCCESS:
+      return {
+        ...state,
+        addresses: [action.payload, ...state.addresses],
+      };
+    case CREATE_USER_ADDRESS_ERROR:
+      return {
+        ...state,
+        error: action.payload.message,
       };
     default:
       return { ...state };

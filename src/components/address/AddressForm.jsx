@@ -3,8 +3,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import API from 'helpers/API';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-const AddressForm = ({ address, setAddress }) => {
+const AddressForm = ({ address, setAddress, saveAddress }) => {
+  const history = useHistory();
   const { shippingAddress, billingAddress, addressType } = address;
 
   const changeDetails = (type, key, value) => {
@@ -63,138 +65,132 @@ const AddressForm = ({ address, setAddress }) => {
                 <div className=" d-flex justify-content-between">
                   <p className="billing-p">Shipping address</p>
                 </div>
-                <form action="" method="post">
-                  <div className="col-12 d-flex justify-content-between">
-                    <input
-                      type="text"
-                      placeholder="First name"
-                      className="checkout-input-wid"
-                      value={shippingAddress.firstName}
-                      onChange={(e) =>
-                        changeDetails(
-                          'shippingAddress',
-                          'firstName',
-                          e.target.value
-                        )
-                      }
-                    />
-                    <input
-                      type="text"
-                      placeholder="Last name"
-                      className="checkout-input-wid"
-                      value={shippingAddress.lastName}
-                      onChange={(e) =>
-                        changeDetails(
-                          'shippingAddress',
-                          'lastName',
-                          e.target.value
-                        )
-                      }
-                    />
-                  </div>
+                <div className="col-12 d-flex justify-content-between">
                   <input
-                    className="col-12"
                     type="text"
-                    placeholder="Address line - 1"
-                    value={shippingAddress.addressLine1}
+                    placeholder="First name"
+                    className="checkout-input-wid"
+                    value={shippingAddress.firstName}
                     onChange={(e) =>
                       changeDetails(
                         'shippingAddress',
-                        'addressLine1',
+                        'firstName',
                         e.target.value
                       )
-                    }
-                  />{' '}
-                  <br />
-                  <input
-                    className="col-12"
-                    type="text"
-                    placeholder="Address line - 2"
-                    value={shippingAddress.addressLine2}
-                    onChange={(e) =>
-                      changeDetails(
-                        'shippingAddress',
-                        'addressLine2',
-                        e.target.value
-                      )
-                    }
-                  />{' '}
-                  <br />
-                  <input
-                    className="col-12"
-                    type="text"
-                    placeholder="City"
-                    value={shippingAddress.city}
-                    onChange={(e) =>
-                      changeDetails('shippingAddress', 'city', e.target.value)
                     }
                   />
-                  <br />
-                  <div className="col-12 d-flex justify-content-between">
-                    <input
-                      type="number"
-                      placeholder="Pincode"
-                      className="checkout-input-wid"
-                      value={shippingAddress.pinCode}
-                      onChange={(e) => {
-                        changeDetails(
-                          'shippingAddress',
-                          'pinCode',
-                          e.target.value
-                        );
-                        updateDetailsBasedOnPin(
-                          e.target.value,
-                          'shippingAddress'
-                        );
-                      }}
-                    />
+                  <input
+                    type="text"
+                    placeholder="Last name"
+                    className="checkout-input-wid"
+                    value={shippingAddress.lastName}
+                    onChange={(e) =>
+                      changeDetails(
+                        'shippingAddress',
+                        'lastName',
+                        e.target.value
+                      )
+                    }
+                  />
+                </div>
+                <input
+                  className="col-12"
+                  type="text"
+                  placeholder="Address line - 1"
+                  value={shippingAddress.addressLine1}
+                  onChange={(e) =>
+                    changeDetails(
+                      'shippingAddress',
+                      'addressLine1',
+                      e.target.value
+                    )
+                  }
+                />{' '}
+                <br />
+                <input
+                  className="col-12"
+                  type="text"
+                  placeholder="Address line - 2"
+                  value={shippingAddress.addressLine2}
+                  onChange={(e) =>
+                    changeDetails(
+                      'shippingAddress',
+                      'addressLine2',
+                      e.target.value
+                    )
+                  }
+                />{' '}
+                <br />
+                <input
+                  className="col-12"
+                  type="text"
+                  placeholder="City"
+                  value={shippingAddress.city}
+                  onChange={(e) =>
+                    changeDetails('shippingAddress', 'city', e.target.value)
+                  }
+                />
+                <br />
+                <div className="col-12 d-flex justify-content-between">
+                  <input
+                    type="number"
+                    placeholder="Pincode"
+                    className="checkout-input-wid"
+                    value={shippingAddress.pinCode}
+                    onChange={(e) => {
+                      changeDetails(
+                        'shippingAddress',
+                        'pinCode',
+                        e.target.value
+                      );
+                      updateDetailsBasedOnPin(
+                        e.target.value,
+                        'shippingAddress'
+                      );
+                    }}
+                  />
 
-                    <input
-                      id=""
-                      name="cars"
-                      placeholder="State"
-                      className="checkout-input-wid"
-                      value={shippingAddress.state}
-                      onChange={(e) =>
-                        changeDetails(
-                          'shippingAddress',
-                          'state',
-                          e.target.value
-                        )
-                      }
-                    />
-                  </div>
-                  <div className="col-12 d-flex justify-content-between">
-                    <input
-                      id=""
-                      name="cars"
-                      placeholder="Country"
-                      className="checkout-input-wid"
-                      value={shippingAddress.country}
-                      onChange={(e) =>
-                        changeDetails(
-                          'shippingAddress',
-                          'country',
-                          e.target.value
-                        )
-                      }
-                    />
+                  <input
+                    id=""
+                    name="cars"
+                    placeholder="State"
+                    className="checkout-input-wid"
+                    value={shippingAddress.state}
+                    onChange={(e) =>
+                      changeDetails('shippingAddress', 'state', e.target.value)
+                    }
+                  />
+                </div>
+                <div className="col-12 d-flex justify-content-between">
+                  <input
+                    id=""
+                    name="cars"
+                    placeholder="Country"
+                    className="checkout-input-wid"
+                    value={shippingAddress.country}
+                    onChange={(e) =>
+                      changeDetails(
+                        'shippingAddress',
+                        'country',
+                        e.target.value
+                      )
+                    }
+                  />
 
-                    <input
-                      type="number"
-                      placeholder="Number"
-                      className="checkout-input-wid"
-                      value={shippingAddress.phoneNo}
-                      onChange={(e) =>
-                        changeDetails(
-                          'shippingAddress',
-                          'phoneNo',
-                          e.target.value
-                        )
-                      }
-                    />
-                  </div>
-                </form>
+                  <input
+                    type="number"
+                    placeholder="Number"
+                    className="checkout-input-wid"
+                    value={shippingAddress.phoneNo}
+                    onChange={(e) =>
+                      changeDetails(
+                        'shippingAddress',
+                        'phoneNo',
+                        e.target.value
+                      )
+                    }
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -206,7 +202,7 @@ const AddressForm = ({ address, setAddress }) => {
                   <a href="#"> Edit details </a>
                 </p> */}
               </div>
-              <form action="" method="post">
+              <form>
                 <div className="col-12 d-flex justify-content-between">
                   <input
                     type="text"
@@ -368,9 +364,10 @@ const AddressForm = ({ address, setAddress }) => {
                 </div>
                 <div className="d-flex justify-content-center my-3">
                   <input
-                    type="submit"
+                    type="button"
                     value="Save & Continue"
                     className="shipping-btn"
+                    onClick={() => saveAddress(address, history)}
                   />
                 </div>
               </form>
