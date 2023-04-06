@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import API from 'helpers/API';
 import React from 'react';
 
 const AddressForm = ({ address, setAddress }) => {
@@ -24,6 +25,28 @@ const AddressForm = ({ address, setAddress }) => {
         addressType: value,
       };
     });
+  };
+
+  const updateDetailsBasedOnPin = async (pin, type) => {
+    if (pin.length === 6) {
+      const {
+        data: { data, success },
+      } = await API.get(`/address/pincode/${pin}`);
+      if (success) {
+        const { stateName, taluk, country } = data;
+        setAddress((oldVal) => {
+          return {
+            ...oldVal,
+            [type]: {
+              ...oldVal[type],
+              state: stateName,
+              city: taluk,
+              country,
+            },
+          };
+        });
+      }
+    }
   };
   return (
     <div className="Checkout-section">
@@ -113,13 +136,17 @@ const AddressForm = ({ address, setAddress }) => {
                       placeholder="Pincode"
                       className="checkout-input-wid"
                       value={shippingAddress.pinCode}
-                      onChange={(e) =>
+                      onChange={(e) => {
                         changeDetails(
                           'shippingAddress',
                           'pinCode',
                           e.target.value
-                        )
-                      }
+                        );
+                        updateDetailsBasedOnPin(
+                          e.target.value,
+                          'shippingAddress'
+                        );
+                      }}
                     />
 
                     <input
@@ -252,9 +279,14 @@ const AddressForm = ({ address, setAddress }) => {
                     placeholder="Pincode"
                     className="checkout-input-wid"
                     value={billingAddress.pinCode}
-                    onChange={(e) =>
-                      changeDetails('billingAddress', 'pinCode', e.target.value)
-                    }
+                    onChange={(e) => {
+                      changeDetails(
+                        'billingAddress',
+                        'pinCode',
+                        e.target.value
+                      );
+                      updateDetailsBasedOnPin(e.target.value, 'billingAddress');
+                    }}
                   />
 
                   <input
