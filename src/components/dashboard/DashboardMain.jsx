@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 import ProductListing from './ProductListing';
@@ -8,6 +8,20 @@ import Blogs from './Blogs';
 import Categories from './Categories';
 
 const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <section className="banner-wrapper ">
@@ -57,12 +71,13 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
           </div>
         </div>
       </section>
-      <Categories category={homeScreenData.category} />
+      <Categories category={homeScreenData.category} isMobile={isMobile} />
       <ProductListing
         type="TRENDING NOW"
         products={homeScreenData.trendingProducts}
         addtoCart={addtoCart}
         addToWishlist={addToWishlist}
+        isMobile={isMobile}
       />
       <div className="container ">
         <div className=" col-lg-12  col-md-12 col-sm-12 ">
@@ -76,8 +91,9 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
         products={homeScreenData.newArrivals}
         addtoCart={addtoCart}
         addToWishlist={addToWishlist}
+        isMobile={isMobile}
       />
-      <BrandListing brands={homeScreenData.brands} />
+      <BrandListing brands={homeScreenData.brands} isMobile={isMobile} />
       <Blogs />
     </>
   );

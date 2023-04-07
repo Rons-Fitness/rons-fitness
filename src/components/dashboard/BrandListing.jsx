@@ -4,7 +4,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 
-const BrandListing = ({ brands = [] }) => {
+const BrandListing = ({ brands = [], isMobile }) => {
   return (
     <div className="brnad-home-section">
       <div className="container-fluid">
@@ -20,7 +20,7 @@ const BrandListing = ({ brands = [] }) => {
                 delay: 2500,
                 disableOnInteraction: false,
               }}
-              slidesPerView={5}
+              slidesPerView={isMobile ? 1 : 5}
             >
               {brands.map((elem) => (
                 <SwiperSlide className="swiper-slide" key={elem._id}>

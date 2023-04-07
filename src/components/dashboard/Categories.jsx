@@ -4,7 +4,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 
-const Categories = ({ category = [] }) => {
+const Categories = ({ category = [], isMobile }) => {
   return (
     <div className="cat-round">
       <div className="container">
@@ -12,7 +12,7 @@ const Categories = ({ category = [] }) => {
           <div className="swiper carte-slider">
             <Swiper
               className="swiper-wrapper"
-              slidesPerView={5}
+              slidesPerView={isMobile ? 1 : 5}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,

@@ -8,7 +8,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 import { Link, useHistory } from 'react-router-dom';
 
-const ProductListing = ({ type, products = [], addtoCart, addToWishlist }) => {
+const ProductListing = ({
+  type,
+  products = [],
+  addtoCart,
+  addToWishlist,
+  isMobile = false,
+}) => {
   const history = useHistory();
   return (
     <section id="trendinslider-cardg-sec">
@@ -26,7 +32,7 @@ const ProductListing = ({ type, products = [], addtoCart, addToWishlist }) => {
               }}
               navigation
               modules={[Autoplay, Pagination, Navigation]}
-              slidesPerView={5}
+              slidesPerView={isMobile ? 1 : 5}
               spaceBetween={25}
             >
               {products.map((elem) => (
