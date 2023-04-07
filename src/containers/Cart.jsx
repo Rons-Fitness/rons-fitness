@@ -8,6 +8,7 @@ import {
   addProductToCart,
   deliverToThisAddress,
   getUserAddresses,
+  getUserDetails,
   reomveProductFromCart,
 } from 'redux/auth/actions';
 
@@ -20,10 +21,11 @@ function Cart({
   setDeliveryAddress,
   addressToDeliver,
   currentUser,
+  getLoggedInUserDetails,
 }) {
   const selectedAdd = JSON.parse(localStorage.getItem('selected_address'));
   useEffect(() => {
-    console.log({ selectedAdd });
+    getLoggedInUserDetails();
     if (selectedAdd) setDeliveryAddress(selectedAdd);
   }, []);
 
@@ -63,6 +65,7 @@ const mapDispatchToProps = (dispatch) => ({
   addtoCart: (data, history) => dispatch(addProductToCart(data, history)),
   getAddresses: () => dispatch(getUserAddresses()),
   setDeliveryAddress: (address) => dispatch(deliverToThisAddress(address)),
+  getLoggedInUserDetails: () => dispatch(getUserDetails()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
