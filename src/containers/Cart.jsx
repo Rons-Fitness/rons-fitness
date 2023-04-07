@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from 'components/footer/Footer';
 import { connect } from 'react-redux';
 import { getProducts } from 'redux/actions';
@@ -6,6 +6,7 @@ import CartMain from 'components/cart/CartMain';
 import Loader from 'components/common/loader/Loader';
 import {
   addProductToCart,
+  deliverToThisAddress,
   getUserAddresses,
   reomveProductFromCart,
 } from 'redux/auth/actions';
@@ -16,12 +17,15 @@ function Cart({
   cart,
   removeItemFromCart,
   addtoCart,
-  // getAddresses,
+  setDeliveryAddress,
   addressToDeliver,
+  currentUser,
 }) {
-  // useEffect(() => {
-  //   getAddresses();
-  // }, [getAddresses]);
+  const selectedAdd = JSON.parse(localStorage.getItem('selected_address'));
+  useEffect(() => {
+    console.log({ selectedAdd });
+    if (selectedAdd) setDeliveryAddress(selectedAdd);
+  }, []);
 
   return (
     <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
@@ -34,6 +38,7 @@ function Cart({
           removeItemFromCart={removeItemFromCart}
           addtoCart={addtoCart}
           addressToDeliver={addressToDeliver}
+          currentUser={currentUser}
         />
       )}
       <Footer />
@@ -44,13 +49,20 @@ function Cart({
 const mapStateToProps = ({ user }) => {
   const { keyword, currentUser, loading, addressToDeliver } = user;
 
-  return { keyword, loading, cart: currentUser?.cart, addressToDeliver };
+  return {
+    keyword,
+    loading,
+    cart: currentUser?.cart,
+    addressToDeliver,
+    currentUser,
+  };
 };
 const mapDispatchToProps = (dispatch) => ({
   getProductList: (data) => dispatch(getProducts(data)),
   removeItemFromCart: (data) => dispatch(reomveProductFromCart(data)),
   addtoCart: (data, history) => dispatch(addProductToCart(data, history)),
   getAddresses: () => dispatch(getUserAddresses()),
+  setDeliveryAddress: (address) => dispatch(deliverToThisAddress(address)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

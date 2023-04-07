@@ -60,6 +60,16 @@ const AddressMain = ({ addresses, setDeliveryAddress, deleteAddress }) => {
                             shippingAddress,
                             billingAddress,
                           });
+
+                          localStorage.setItem(
+                            'selected_address',
+                            JSON.stringify({
+                              _id,
+                              addressType,
+                              shippingAddress,
+                              billingAddress,
+                            })
+                          );
                           history.push('/user/cart');
                         }}
                       >

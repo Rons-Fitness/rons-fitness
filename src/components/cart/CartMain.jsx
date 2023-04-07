@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
@@ -5,14 +7,63 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import useRazorpay from 'react-razorpay';
+import API from 'helpers/API';
 
 const CartMain = ({
   cart,
   removeItemFromCart,
   addtoCart,
   addressToDeliver,
+  currentUser,
 }) => {
+  const history = useHistory();
+  const Razorpay = useRazorpay();
+  const { lastName, firstName, mobileNo } = currentUser;
+
+  const handlePayment = async (addressId) => {
+    try {
+      const order = await API.post('/order', {
+        addressId,
+      });
+      const {
+        data: {
+          data: { id, amount },
+        },
+      } = order;
+      localStorage.setItem('order_id', id);
+      const options = {
+        key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
+        amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: 'INR',
+        name: 'Gym Cart',
+        description: 'Test Transaction',
+        image: 'https://example.com/your_logo',
+        order_id: id,
+        prefill: {
+          name: firstName + lastName,
+          contact: mobileNo,
+        },
+        notes: {
+          address: 'Razorpay Corporate Office',
+        },
+        theme: {
+          color: '#3399cc',
+        },
+        callback_url: 'http://localhost:3000',
+        handler: (response) => {
+          localStorage.removeItem('order_id');
+          if (response.razorpay_payment_id) history.push('/');
+        },
+      };
+      const rzp1 = new Razorpay(options);
+      rzp1.open();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="cart-section">
       <div className="container">
@@ -170,7 +221,10 @@ const CartMain = ({
                     </p>
                   </div>
                 </div>
-                <a href="#" className="place-btn">
+                <a
+                  onClick={() => handlePayment(addressToDeliver._id)}
+                  className="place-btn"
+                >
                   <p>Place Order</p>
                 </a>
               </div>
