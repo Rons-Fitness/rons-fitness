@@ -44,6 +44,9 @@ import {
   GET_ADDRESS_BY_ID,
   GET_ADDRESS_BY_ID_SUCCESS,
   GET_ADDRESS_BY_ID_ERROR,
+  DELIVER_TO_THIS_ADDRESS,
+  DELETE_USER_ADDRESS_ERROR,
+  DELETE_USER_ADDRESS_SUCCESS,
 } from '../contants';
 
 const INIT_STATE = {
@@ -260,6 +263,22 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         error: action.payload.message,
+      };
+    case DELIVER_TO_THIS_ADDRESS:
+      return {
+        ...state,
+        error: action.payload.message,
+        addressToDeliver: action.payload,
+      };
+    case DELETE_USER_ADDRESS_SUCCESS:
+      return {
+        ...state,
+        addresses: action.payload,
+      };
+    case DELETE_USER_ADDRESS_ERROR:
+      return {
+        ...state,
+        message: action.payload.message,
       };
     default:
       return { ...state };

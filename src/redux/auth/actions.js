@@ -48,6 +48,10 @@ import {
   GET_ADDRESS_BY_ID,
   GET_ADDRESS_BY_ID_SUCCESS,
   GET_ADDRESS_BY_ID_ERROR,
+  DELIVER_TO_THIS_ADDRESS,
+  DELETE_USER_ADDRESS,
+  DELETE_USER_ADDRESS_SUCCESS,
+  DELETE_USER_ADDRESS_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -231,7 +235,6 @@ export const getUserAddressesSuccess = (list) => ({
   type: GET_USER_ADDRESS_SUCCESS,
   payload: list,
 });
-
 export const getUserAddressesError = (message) => ({
   type: GET_USER_ADDRESS_ERROR,
   payload: { message },
@@ -260,9 +263,18 @@ export const updateUserAddressError = (message) => ({
   payload: { message },
 });
 
-// export const deleteUserAddress = (address) => ({});
-// export const deleteUserAddressSuccess = (list) => ({});
-// export const deleteUserAddressError = (messgae) => ({});
+export const deleteUserAddress = (_id) => ({
+  type: DELETE_USER_ADDRESS,
+  payload: { _id },
+});
+export const deleteUserAddressSuccess = (list) => ({
+  type: DELETE_USER_ADDRESS_SUCCESS,
+  payload: list,
+});
+export const deleteUserAddressError = (message) => ({
+  type: DELETE_USER_ADDRESS_ERROR,
+  payload: { message },
+});
 
 export const getAddressById = (_id) => ({
   type: GET_ADDRESS_BY_ID,
@@ -275,4 +287,9 @@ export const getAddressByIdSuccess = (data) => ({
 export const getAddressByIdError = (message) => ({
   type: GET_ADDRESS_BY_ID_ERROR,
   payload: { message },
+});
+
+export const deliverToThisAddress = (address) => ({
+  type: DELIVER_TO_THIS_ADDRESS,
+  payload: address,
 });

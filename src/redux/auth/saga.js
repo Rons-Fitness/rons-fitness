@@ -29,6 +29,7 @@ import {
   CREATE_USER_ADDRESS,
   UPDATE_USER_ADDRESS,
   GET_ADDRESS_BY_ID,
+  DELETE_USER_ADDRESS,
 } from '../contants';
 
 import {
@@ -63,6 +64,8 @@ import {
   updateUserAddressError,
   getAddressByIdSuccess,
   getAddressByIdError,
+  deleteUserAddressSuccess,
+  deleteUserAddressError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -516,6 +519,30 @@ export function* watchAddressById() {
   yield takeEvery(GET_ADDRESS_BY_ID, getAddressById);
 }
 
+const deleteAddressByID = async (_id) => {
+  const res = await API.delete(`/address/${_id}`);
+  return res;
+};
+function* deleteAddressById({ payload }) {
+  const { _id } = payload;
+  try {
+    const {
+      data: { data },
+      status,
+    } = yield call(deleteAddressByID, _id);
+    if (status === 200) {
+      yield put(deleteUserAddressSuccess(data));
+    } else {
+      yield put(deleteUserAddressError('Something went wrong'));
+    }
+  } catch (err) {
+    yield put(deleteUserAddressError(err));
+  }
+}
+export function* watchDeleteAddress() {
+  yield takeEvery(DELETE_USER_ADDRESS, deleteAddressById);
+}
+
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -535,5 +562,6 @@ export default function* rootSaga() {
     fork(watchCreateAddress),
     fork(watchUpdateAddress),
     fork(watchAddressById),
+    fork(watchDeleteAddress),
   ]);
 }

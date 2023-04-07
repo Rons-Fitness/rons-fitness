@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Footer from 'components/footer/Footer';
 import { connect } from 'react-redux';
 import { getProducts } from 'redux/actions';
@@ -16,12 +16,12 @@ function Cart({
   cart,
   removeItemFromCart,
   addtoCart,
-  getAddresses,
+  // getAddresses,
   addressToDeliver,
 }) {
-  useEffect(() => {
-    getAddresses();
-  }, [getAddresses]);
+  // useEffect(() => {
+  //   getAddresses();
+  // }, [getAddresses]);
 
   return (
     <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>

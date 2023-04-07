@@ -141,38 +141,46 @@ const CartMain = ({
                 </tbody>
               </table>
             </div>
-            <div className="Delivery-fix-body">
-              <div className="Delivery-at-contain">
-                <div className="icon-box">
-                  <iconify-icon icon="mdi:map-marker-outline" />{' '}
-                </div>
-                <div>
-                  <div className="Delivery-at">
-                    <p>
-                      {' '}
-                      Delivery at{' '}
-                      <span className="tag">
-                        {' '}
-                        {addressToDeliver?.addressType}
-                      </span>
-                    </p>{' '}
-                    <span className="">
-                      <Link to="/user/address" className="Change">
-                        <a>Change</a>
-                      </Link>
-                    </span>
+            {addressToDeliver ? (
+              <div className="Delivery-fix-body">
+                <div className="Delivery-at-contain">
+                  <div className="icon-box">
+                    <iconify-icon icon="mdi:map-marker-outline" />{' '}
                   </div>
-                  <p className="addres">
-                    {addressToDeliver?.shippingAddress.addressLine1}
-                    <br />
-                    {addressToDeliver?.shippingAddress.addressLine2}
-                  </p>
+                  <div>
+                    <div className="Delivery-at">
+                      <p>
+                        {' '}
+                        Delivery at{' '}
+                        <span className="tag">
+                          {' '}
+                          {addressToDeliver?.addressType}
+                        </span>
+                      </p>{' '}
+                      <span className="">
+                        <Link to="/user/address" className="Change">
+                          <a>Change</a>
+                        </Link>
+                      </span>
+                    </div>
+                    <p className="addres">
+                      {addressToDeliver?.shippingAddress.addressLine1}
+                      <br />
+                      {addressToDeliver?.shippingAddress.addressLine2}
+                    </p>
+                  </div>
                 </div>
+                <a href="#" className="place-btn">
+                  <p>Place Order</p>
+                </a>
               </div>
-              <a href="#" className="place-btn">
-                <p>Place Order</p>
-              </a>
-            </div>
+            ) : (
+              <div className="Delivery-fix-body">
+                <Link to="/user/address" className="place-btn">
+                  <p>Add or select Address</p>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
