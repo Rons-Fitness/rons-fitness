@@ -29,6 +29,7 @@ const Wishlist = lazy(() => import('containers/Wishlist'));
 const Address = lazy(() => import('./containers/Address'));
 const NewAddress = lazy(() => import('./containers/NewAddress'));
 const EditAddress = lazy(() => import('./containers/EditAddress'));
+const UserProfile = lazy(() => import('./containers/UserProfile'));
 const NotFound = lazy(() => import('containers/NotFound'));
 
 const App = () => {
@@ -81,6 +82,11 @@ const App = () => {
               exact
               path="/user/address/edit/:id"
               render={(props) => <EditAddress {...props} />}
+            />
+            <ProtectedRoute
+              exact
+              path="/user/profile"
+              render={(props) => <UserProfile {...props} />}
             />
             {/* <Route
                   path="/user"

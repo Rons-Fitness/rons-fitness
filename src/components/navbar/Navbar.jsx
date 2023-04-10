@@ -262,7 +262,7 @@ const Navbar = ({
                     </a>
                   </>
                 ) : (
-                  <Link to="/user/cart">
+                  <Link to="/user/profile">
                     <p className="shoping-cart">
                       <a href="cart-page.html">
                         <i class="bi bi-person" />
