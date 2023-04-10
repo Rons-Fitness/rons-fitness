@@ -1978,7 +1978,7 @@ select:focus {
   width: 100%;
   top: -2px;
   border-bottom: 1px solid #e8e8e8;
-  z-index: 999999;
+  z-index: 1;
 }
 .min-hed .head-section {
   display: flex;

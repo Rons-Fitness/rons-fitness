@@ -1,15 +1,22 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import AuthPopup from 'components/auth/AuthPopup';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 import { getUserDetails } from 'redux/actions';
-import { changeSearchText, loginUser, verifyOtp } from 'redux/auth/actions';
+import {
+  changeSearchText,
+  loginUser,
+  setAuthPopup,
+  verifyOtp,
+} from 'redux/auth/actions';
 
 const Navbar = ({
   currentUser,
@@ -17,16 +24,15 @@ const Navbar = ({
   verifyUserOtp,
   getLoggedInUserDetails,
   setSearchText,
+  authPopupState,
+  changePopupState,
 }) => {
-  const [mobileNo, setMobileNo] = useState('');
-  const [otp, setOtp] = useState('');
-  const [otpSent, setOtpSent] = useState(false);
+  const history = useHistory();
   const [text, settext] = useState('');
 
   useEffect(() => {
-    const token = localStorage.getItem('auth_token');
-    if (token && !currentUser) getLoggedInUserDetails();
-  }, [currentUser, getLoggedInUserDetails]);
+    if (!currentUser) getLoggedInUserDetails(history);
+  }, [currentUser, getLoggedInUserDetails, history]);
 
   React.useEffect(() => {
     const setData = setTimeout(() => {
@@ -35,17 +41,6 @@ const Navbar = ({
 
     return () => clearTimeout(setData);
   }, [text, setSearchText]);
-
-  const handleSubmit = () => {
-    if (mobileNo !== '') {
-      if (otpSent) {
-        verifyUserOtp({ otp, mobileNo });
-      } else {
-        setOtpSent(true);
-        sendOtp(mobileNo);
-      }
-    }
-  };
 
   return (
     <>
@@ -260,80 +255,21 @@ const Navbar = ({
                         className="login-btn "
                         data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop"
+                        onClick={() => changePopupState(true)}
                       >
                         Login
                       </p>
                     </a>
-
-                    <div
-                      className="modal fade "
-                      id="staticBackdrop"
-                      tabIndex="-1"
-                      aria-labelledby="staticBackdrop"
-                      aria-hidden="true"
-                    >
-                      <div className="modal-dialog">
-                        <div className="modal-content">
-                          <div className="text-end">
-                            {' '}
-                            <button
-                              type="button"
-                              className="btn-close "
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            />
-                          </div>
-                          <div className="modal-header">
-                            <div>
-                              <h4
-                                className="modal-title  text-center col-md-12"
-                                id="staticBackdropLabel"
-                              >
-                                Login
-                              </h4>
-                              <p>Please login using account details below.</p>
-                            </div>
-                          </div>
-                          <div className="modal-body">
-                            <input
-                              type="number"
-                              placeholder="Contact Number"
-                              name="mobileNo"
-                              onChange={(e) => setMobileNo(e.target.value)}
-                            />
-                            {otpSent ? (
-                              <>
-                                <input
-                                  type="number"
-                                  placeholder="OTP"
-                                  name="otp"
-                                  onChange={(e) => setOtp(e.target.value)}
-                                />
-                                <p className="resend-p ">
-                                  Didn’t Receive?{' '}
-                                  <span onClick={() => sendOtp(mobileNo)}>
-                                    Resend
-                                  </span>
-                                </p>
-                              </>
-                            ) : (
-                              ''
-                            )}
-                            <div className="col-12 d-flex justify-content-center">
-                              <input
-                                className=" submit-profile"
-                                onClick={handleSubmit}
-                                value={otpSent ? 'Verify' : 'send OTP'}
-                                onChange={() => console.log()}
-                                style={{ textAlign: 'center' }}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </>
-                ) : null}
+                ) : (
+                  <Link to="/user/cart">
+                    <p className="shoping-cart">
+                      <a href="cart-page.html">
+                        <i class="bi bi-person" />
+                      </a>
+                    </p>
+                  </Link>
+                )}
                 <Link to="/user/cart">
                   <p className="shoping-cart">
                     <a href="cart-page.html">
@@ -346,19 +282,26 @@ const Navbar = ({
           </div>
         </div>
       </div>
+      <AuthPopup
+        sendOtp={sendOtp}
+        verifyUserOtp={verifyUserOtp}
+        authPopupState={authPopupState}
+        changePopupState={changePopupState}
+      />
     </>
   );
 };
 const mapStateToProps = ({ user }) => {
-  const { currentUser } = user;
-  return { currentUser };
+  const { currentUser, authPopupState } = user;
+  return { currentUser, authPopupState };
 };
 const mapDispatchToProps = (dispatch) => ({
   setSearchText: (text) => dispatch(changeSearchText(text)),
-  getLoggedInUserDetails: () => dispatch(getUserDetails()),
+  getLoggedInUserDetails: (hsitory) => dispatch(getUserDetails(hsitory)),
   sendOtp: (mobileNo) => dispatch(loginUser(mobileNo)),
   verifyUserOtp: (otpValues, history) =>
     dispatch(verifyOtp(otpValues, history)),
+  changePopupState: (state) => dispatch(setAuthPopup(state)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

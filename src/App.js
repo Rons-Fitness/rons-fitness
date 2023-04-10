@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import React, { lazy } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -8,6 +9,8 @@ import {
 } from 'react-router-dom';
 import './app.css';
 import Navbar from 'components/navbar/Navbar';
+import ProtectedRoute from 'helpers/authHelper.js';
+
 // import Loader from 'components/common/loader/Loader';
 
 // import { NotificationContainer } from './components/common/react-notifications';
@@ -38,11 +41,6 @@ const App = () => {
         <Router>
           <Navbar />
           <Switch>
-            {/* <ProtectedRoute
-                  path={adminRoot}
-                  component={ViewApp}
-                  roles={[UserRole.Admin, UserRole.Editor]}
-                /> */}
             <Route
               exact
               path="/"
@@ -59,27 +57,27 @@ const App = () => {
               path="/product/:id"
               render={(props) => <ProductDetails {...props} />}
             />
-            <Route
+            <ProtectedRoute
               exact
               path="/user/cart"
               render={(props) => <Cart {...props} />}
             />
-            <Route
+            <ProtectedRoute
               exact
               path="/user/wishlist"
               render={(props) => <Wishlist {...props} />}
             />
-            <Route
+            <ProtectedRoute
               exact
               path="/user/address"
               render={(props) => <Address {...props} />}
             />
-            <Route
+            <ProtectedRoute
               exact
               path="/user/address/new"
               render={(props) => <NewAddress {...props} />}
             />
-            <Route
+            <ProtectedRoute
               exact
               path="/user/address/edit/:id"
               render={(props) => <EditAddress {...props} />}

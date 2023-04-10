@@ -66,6 +66,7 @@ import {
   getAddressByIdError,
   deleteUserAddressSuccess,
   deleteUserAddressError,
+  setAuthPopup,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -80,16 +81,19 @@ const getUSerDetailsAsync = async () => {
 export function* getUserWorker({ payload }) {
   const { history } = payload;
   try {
-    const { data } = yield call(getUSerDetailsAsync);
-    if (data) {
+    const { data, status } = yield call(getUSerDetailsAsync);
+    if (status === 200) {
       yield put(getUserDetailSuccess(data));
+      yield put(setAuthPopup(false));
     } else {
       history.push('/');
+      yield put(setAuthPopup(true));
       yield put(getUserDetailsError('token expired'));
     }
   } catch (error) {
     history.push('/');
     yield put(getUserDetailsError('something went wrong'));
+    yield put(setAuthPopup(true));
   }
 }
 
@@ -159,7 +163,7 @@ function* verifyOtp({ payload }) {
       localStorage.removeItem('mobileNo');
       localStorage.setItem('auth_token', token);
       yield put(getUserDetailSuccess(user));
-      window.location.reload();
+      yield put(setAuthPopup(false));
     } else {
       yield put(verifyOtpError(message));
     }
@@ -339,9 +343,11 @@ function* addToWishList({ payload }) {
     if (status === 200) {
       yield put(addProductToWishListSuccess(data));
     } else {
+      yield put(setAuthPopup(true));
       yield put(addProductToWishListError('add product to wishlist error'));
     }
   } catch (error) {
+    yield put(setAuthPopup(true));
     yield put(addProductToWishListError(error));
   }
 }
@@ -393,9 +399,11 @@ function* addProductToCart({ payload }) {
       yield put(addToCartSuccess(cart));
       if (history) history.push('/user/cart');
     } else {
+      yield put(setAuthPopup(true));
       yield put(addToCartError('something went wrong'));
     }
   } catch (err) {
+    yield put(setAuthPopup(true));
     yield put(addToCartError(err));
   }
 }

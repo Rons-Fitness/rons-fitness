@@ -52,8 +52,14 @@ import {
   DELETE_USER_ADDRESS,
   DELETE_USER_ADDRESS_SUCCESS,
   DELETE_USER_ADDRESS_ERROR,
+  SET_AUTH_POPUP,
   // GET_CART_DETAILS,
 } from '../contants';
+
+export const setAuthPopup = (state) => ({
+  type: SET_AUTH_POPUP,
+  payload: state,
+});
 
 export const changeSearchText = (text) => ({
   type: SET_SEARCH_TEXT,

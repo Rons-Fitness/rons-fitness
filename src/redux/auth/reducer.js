@@ -47,6 +47,7 @@ import {
   DELIVER_TO_THIS_ADDRESS,
   DELETE_USER_ADDRESS_ERROR,
   DELETE_USER_ADDRESS_SUCCESS,
+  SET_AUTH_POPUP,
 } from '../contants';
 
 const INIT_STATE = {
@@ -62,10 +63,16 @@ const INIT_STATE = {
   addresses: [],
   selectedAddress: null,
   addressToDeliver: null,
+  authPopupState: false,
 };
 
 export default (state = INIT_STATE, action) => {
   switch (action.type) {
+    case SET_AUTH_POPUP:
+      return {
+        ...state,
+        authPopupState: action.payload,
+      };
     case SET_SEARCH_TEXT:
       return { ...state, keyword: action.payload };
     case GET_USER_DETAILS:
