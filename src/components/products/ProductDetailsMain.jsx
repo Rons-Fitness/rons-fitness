@@ -143,10 +143,17 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                   {selectedProduct && selectedProduct.name}{' '}
                   <span>
                     {' '}
-                    <iconify-icon
-                      icon="mdi:lacto-vegetarian"
-                      className="veg-nonveg-icon"
-                    />
+                    {selectedProduct && selectedProduct.flavour && (
+                      <iconify-icon
+                        icon="mdi:lacto-vegetarian"
+                        className="veg-nonveg-icon"
+                        style={
+                          selectedProduct && selectedProduct.nonVeg
+                            ? { color: 'red' }
+                            : { color: 'green' }
+                        }
+                      />
+                    )}
                   </span>{' '}
                 </h4>
 

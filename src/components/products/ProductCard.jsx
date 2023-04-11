@@ -58,7 +58,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
 
         <div className="card-body">
           <div className="card-con">
-            <a href="productsviewdetailes.html">
+            <a>
               <h1
                 style={{
                   whiteSpace: 'nowrap',
@@ -71,7 +71,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
             </a>
             <h6>The specific products included</h6>
             <p>
-              <a href="productsviewdetailes.html" className="card-price">
+              <a className="card-price">
                 <span className="px-1">{product.price}</span>
                 <span className="px-1">
                   MRP<del>{product.mrp}</del>

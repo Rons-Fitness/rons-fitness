@@ -92,7 +92,7 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
       </div>
       <Link to={`/product/${product._id}`}>
         <div className="card-img">
-          <a href="productsviewdetailes.html">
+          <a>
             <img
               src={product.image.find((el) => el.url !== '').url}
               alt=""
@@ -103,8 +103,8 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
       </Link>
 
       <div className="card-body">
-        <div className="card-con">
-          <a href="productsviewdetailes.html">
+        <div className="card-con" style={{ position: 'relative' }}>
+          <a>
             <h1
               className="align-items-center"
               style={{
@@ -114,18 +114,26 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
                 textOverflow: 'ellipsis',
               }}
             >
-              {product.name}{' '}
+              {product.name} {/* {product.flavour !== '' && ( */}
+              {/* )} */}
+            </h1>
+            {product.flavour !== '' && (
               <span className="text-end">
                 <iconify-icon
                   icon="mdi:lacto-vegetarian"
                   className="veg-icon"
+                  style={
+                    product.nonVeg
+                      ? { color: 'red', position: 'absolute', right: 17 }
+                      : { color: 'green', position: 'absolute', right: 17 }
+                  }
                 />
-              </span>{' '}
-            </h1>
+              </span>
+            )}
           </a>
           <h6>The specific products included</h6>
           <p>
-            <a href="productsviewdetailes.html" className="card-price">
+            <a className="card-price">
               <span className="px-1">₹{product.price}</span>
               <span className="px-1">
                 MRP<del>:₹{product.mrp}</del>
