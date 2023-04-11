@@ -49,6 +49,9 @@
   .High-light-p:hover {
   color: var(--them-colour);
 }
+.High-light-p-active {
+  color: var(--them-colour);
+}
 .product-grid-left-section
   .product-grid-left-box
   .left-box-main
@@ -238,6 +241,10 @@
   stroke: var(--them-colour);
 }
 
+.activeHeart path {
+  fill: var(--them-colour);
+  stroke: var(--them-colour);
+}
 /* ============== Product grid detils End ============= */
 /* =========================== policy setion start ======================== */
 .policy-hed {
@@ -420,10 +427,13 @@
 .xzoom_part .xzoom_details .btn-body .btn-views {
   padding: 5px 10px;
   border: 1px solid var(--them-colour);
-  margin-left: 10px;
+  margin-right: 10px;
   cursor: pointer;
 }
 .xzoom_part .xzoom_details .btn-body .btn-views:hover {
+  background-color: var(--them-colour);
+}
+.xzoom_part .xzoom_details .btn-body .btn-views-active {
   background-color: var(--them-colour);
 }
 .xzoom_part .xzoom_details .btn-body .btn-views a {
@@ -1527,6 +1537,7 @@
   color: var(--black);
 }
 .profile-section .profile-right-body .submit-profile {
+  cursor: pointer;
   background-color: var(--white);
   border: 1px solid var(--them-colour);
   border-radius: 5px;
@@ -1641,7 +1652,7 @@
   background-color: white;
 }
 .Checkout-section .billing-body {
-  padding-top: 108px;
+  padding-top: 52px;
 }
 .Checkout-section .billing-body .edit-p a {
   color: #9b5701;
@@ -2316,7 +2327,6 @@
   position: absolute;
   color: #868583;
 }
-
 * {
   margin: 0%;
   padding: 0%;
@@ -2518,7 +2528,7 @@ select:focus {
   width: 100%;
   top: -2px;
   border-bottom: 1px solid #e8e8e8;
-  z-index: 999999;
+  z-index: 1;
 }
 .min-hed .head-section {
   display: flex;
@@ -2766,9 +2776,13 @@ select:focus {
 }
 .cat-round .carte-body .swiper-button-next {
   right: 0;
+  color: var(--them-colour);
+  top: 70px;
 }
 .cat-round .carte-body .swiper-button-prev {
   left: 0;
+  color: var(--them-colour);
+  top: 70px;
 }
 .cat-round .carte-body .aero {
   color: var(--them-colour);
@@ -3004,7 +3018,7 @@ select:focus {
   padding-left: 20px;
   z-index: 0;
 }
-.brnad-home-section .brand-section h1 span {
+.brnad-home-section .brand-section h1 ::after {
   background-color: var(--them-colour);
   opacity: 0.9;
   height: 25px;
