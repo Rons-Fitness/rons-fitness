@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -53,10 +54,9 @@ const CartMain = ({
         theme: {
           color: '#3399cc',
         },
-        callback_url: 'http://localhost:3000',
         handler: (response) => {
           localStorage.removeItem('order_id');
-          if (response.razorpay_payment_id) history.push('/');
+          if (response.razorpay_payment_id) history.push('/user/orders');
         },
       };
       const rzp1 = new Razorpay(options);
