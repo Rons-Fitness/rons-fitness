@@ -216,9 +216,9 @@ const Navbar = ({
                   </ul>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="blog.html">
+                  <Link className="nav-link" to="/blog">
                     Blog
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link " to="/contact-us">
