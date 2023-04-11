@@ -54,6 +54,9 @@ import {
   DELETE_USER_ADDRESS_ERROR,
   SET_AUTH_POPUP,
   LIKE_DISLIKE_PRODUCT_REVIEW,
+  GET_USER_ORDERS,
+  GET_USER_ORDERS_SUCCESS,
+  GET_USER_ORDERS_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -304,4 +307,18 @@ export const deliverToThisAddress = (address) => ({
 export const likeDislikeProductReview = (_id, liked) => ({
   type: LIKE_DISLIKE_PRODUCT_REVIEW,
   payload: { _id, liked },
+});
+
+export const getUserOrders = () => ({
+  type: GET_USER_ORDERS,
+});
+
+export const getUserOrdersSuccess = (list) => ({
+  type: GET_USER_ORDERS_SUCCESS,
+  payload: list,
+});
+
+export const getUserOrderError = (mesage) => ({
+  type: GET_USER_ORDERS_ERROR,
+  payload: { mesage },
 });

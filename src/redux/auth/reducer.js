@@ -48,6 +48,9 @@ import {
   DELETE_USER_ADDRESS_ERROR,
   DELETE_USER_ADDRESS_SUCCESS,
   SET_AUTH_POPUP,
+  GET_USER_ORDERS,
+  GET_USER_ORDERS_SUCCESS,
+  GET_USER_ORDERS_ERROR,
 } from '../contants';
 
 const INIT_STATE = {
@@ -61,6 +64,7 @@ const INIT_STATE = {
   keyword: '',
   wishlist: [],
   addresses: [],
+  orders: [],
   selectedAddress: null,
   addressToDeliver: null,
   authPopupState: false,
@@ -286,6 +290,23 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         message: action.payload.message,
+      };
+    case GET_USER_ORDERS:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_USER_ORDERS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        orders: action.payload,
+      };
+    case GET_USER_ORDERS_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.message,
       };
     default:
       return { ...state };

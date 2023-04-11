@@ -31,6 +31,7 @@ import {
   GET_ADDRESS_BY_ID,
   DELETE_USER_ADDRESS,
   LIKE_DISLIKE_PRODUCT_REVIEW,
+  GET_USER_ORDERS,
 } from '../contants';
 
 import {
@@ -68,6 +69,8 @@ import {
   deleteUserAddressSuccess,
   deleteUserAddressError,
   setAuthPopup,
+  getUserOrdersSuccess,
+  getUserOrderError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -575,6 +578,31 @@ function* likeDislikeProductReview({ payload }) {
 export function* watchLikeDislikeProductReview() {
   yield takeEvery(LIKE_DISLIKE_PRODUCT_REVIEW, likeDislikeProductReview);
 }
+
+const getUserOrdersAsync = async () => {
+  const res = await API.get('/order/myorders');
+  return res;
+};
+
+function* getUserOrders() {
+  try {
+    const {
+      data: { data },
+      status,
+    } = yield call(getUserOrdersAsync);
+    if (status === 200) {
+      yield put(getUserOrdersSuccess(data));
+    } else {
+      yield put(getUserOrderError('someting went wrong '));
+    }
+  } catch (err) {
+    yield put(getUserOrderError(err));
+  }
+}
+
+export function* watchGetUserOrders() {
+  yield takeEvery(GET_USER_ORDERS, getUserOrders);
+}
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -596,5 +624,6 @@ export default function* rootSaga() {
     fork(watchAddressById),
     fork(watchDeleteAddress),
     fork(watchLikeDislikeProductReview),
+    fork(watchGetUserOrders),
   ]);
 }
