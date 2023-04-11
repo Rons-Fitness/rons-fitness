@@ -58,6 +58,7 @@ function* getProductWorker({ payload }) {
     const { data, status } = yield call(getProductAsync, payload);
     const { message } = data;
     if (status === 200 && data) {
+      console.log({ data });
       yield put(getProductSuccess(data));
     } else {
       yield put(getProductsError(message));

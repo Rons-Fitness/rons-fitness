@@ -176,9 +176,9 @@ export const getUserWIshLIstError = (message) => ({
   payload: { message },
 });
 
-export const addProductToWishList = (_id) => ({
+export const addProductToWishList = (_id, inWishlist) => ({
   type: ADD_PRODUCT_TO_WISHLIST,
-  payload: { _id },
+  payload: { _id, inWishlist },
 });
 export const addProductToWishListSuccess = (list) => ({
   type: ADD_PRODUCT_TO_WISHLIST_SUCCESS,

@@ -329,31 +329,35 @@ export function* watchGetUserWishList() {
   yield takeEvery(GET_WISHLIST_DETAILS, getUserWishList);
 }
 
-const addToWishListAsync = async (_id) => {
-  const res = await API.post(`/product/wishlist/${_id}`);
+const addToWishListAsync = async (_id, inWishlist) => {
+  let res;
+  if (inWishlist) res = await API.put(`/product/wishlist/${_id}`);
+  else res = await API.post(`/product/wishlist/${_id}`);
   return res;
 };
 function* addToWishList({ payload }) {
-  const { _id } = payload;
+  console.log({ payload });
+  const { _id, inWishlist } = payload;
   try {
+    console.log({ inWishlist });
     const {
       data: { data },
       status,
-    } = yield call(addToWishListAsync, _id);
+    } = yield call(addToWishListAsync, _id, inWishlist);
     if (status === 200) {
       yield put(addProductToWishListSuccess(data));
     } else {
-      yield put(setAuthPopup(true));
+      // yield put(setAuthPopup(true));
       yield put(addProductToWishListError('add product to wishlist error'));
     }
   } catch (error) {
-    yield put(setAuthPopup(true));
+    // yield put(setAuthPopup(true));
     yield put(addProductToWishListError(error));
   }
 }
 
 export function* watchAddToWishList() {
-  yield takeEvery(ADD_PRODUCT_TO_WISHLIST, addToWishList);
+  yield takeLatest(ADD_PRODUCT_TO_WISHLIST, addToWishList);
 }
 
 const removeFromWishListAsync = async (_id) => {

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
@@ -25,13 +26,13 @@ const Categories = ({ category = [], isMobile }) => {
                 <SwiperSlide className="swiper-slide" key={elem._id}>
                   <div className="carte-contain">
                     <div className="carte carte-img-box ">
-                      <a href="product grid page.html">
+                      <a>
                         {' '}
                         <img src={elem.image} alt={elem.name} />
                       </a>
                     </div>
                     <p className="text-center">
-                      <a href="product grid page.html"> {elem.name}</a>
+                      <a> {elem.name}</a>
                     </p>
                   </div>
                 </SwiperSlide>

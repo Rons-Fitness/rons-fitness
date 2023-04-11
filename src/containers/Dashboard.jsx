@@ -47,7 +47,8 @@ const mapStateToProps = ({ product, user }) => {
 const mapDispatchToProps = (dispatch) => ({
   getHomeScreenDetails: () => dispatch(getHomeScreenData()),
   addtoCart: (data, history) => dispatch(addProductToCart(data, history)),
-  addToWishlist: (_id) => dispatch(addProductToWishList(_id)),
+  addToWishlist: (_id, inWishlist) =>
+    dispatch(addProductToWishList(_id, inWishlist)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

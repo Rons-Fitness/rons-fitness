@@ -2,24 +2,32 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-const ProductCard = ({ product, addtoCart }) => {
+const ProductCard = ({ product, addtoCart, addToWishlist }) => {
+  const [wishList, setWishlist] = useState(product.inWishlist);
   const history = useHistory();
   return (
     <>
-      <div className="  box-card  ">
-        <div className=" head-stars">
-          <sapn className=" reviews">
+      <div className="box-card">
+        <div className="head-stars">
+          <sapn className="reviews">
             {' '}
             <i className="fas fa-star  me-1" />
             {product.rating}
           </sapn>
-          <sapn className="false-seal ">
-            <a href="wishlist page.html">
+          <sapn
+            className="false-seal "
+            onClick={() => {
+              addToWishlist(product._id, wishList);
+              setWishlist(!wishList);
+            }}
+            style={{ cursor: 'pointer' }}
+          >
+            <a>
               <svg
-                className="heart"
+                className={wishList ? 'activeHeart' : 'heart'}
                 width="17"
                 height="20"
                 viewBox="0 0 24 22"
@@ -38,7 +46,7 @@ const ProductCard = ({ product, addtoCart }) => {
         </div>
         <Link to={`/product/${product._id}`}>
           <div className="card-img">
-            <a href="productsviewdetailes.html">
+            <a>
               <img
                 src={product.image.find((elem) => elem.url !== '').url}
                 alt=""
@@ -51,7 +59,15 @@ const ProductCard = ({ product, addtoCart }) => {
         <div className="card-body">
           <div className="card-con">
             <a href="productsviewdetailes.html">
-              <h1>{product.name} </h1>
+              <h1
+                style={{
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {product.name}{' '}
+              </h1>
             </a>
             <h6>The specific products included</h6>
             <p>

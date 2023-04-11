@@ -1,8 +1,49 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useState } from 'react';
 
-const ProductsFilters = () => {
+const ProductsFilters = ({ homeScreenData, getProductList }) => {
+  const { brands } = homeScreenData;
+
+  const [sortBy, setSortBy] = useState('');
+  const [filterState, setFilterState] = useState({
+    brand: [],
+    rating: [],
+  });
+
+  const handleChangeFilter = (key, val) => {
+    const include = filterState[key].includes(val);
+    let updatedFilter = [];
+    if (!include) updatedFilter = [...filterState[key], val];
+    else updatedFilter = filterState[key].filter((item) => item !== val);
+
+    setFilterState((oldVal) => {
+      return { ...oldVal, [key]: updatedFilter };
+    });
+    const filter = {
+      ...filterState,
+      brand: filterState.brand.join(';'),
+      rating: filterState.rating.join(';'),
+      [key]: updatedFilter.join(';'),
+    };
+    getProductList({ ...filter, sortBy });
+  };
+
+  const changeSortBy = (val) => {
+    if (sortBy !== val) setSortBy(val);
+    else setSortBy('');
+    const filter = {
+      ...filterState,
+      brand: filterState.brand.join(';'),
+      rating: filterState.rating.join(';'),
+    };
+    getProductList({ ...filter, sortBy: val });
+  };
+
   return (
     <div
       className="col-lg-3 col-md-12 col-sm-12  order-lg-1 order-2 order-md-2"
@@ -13,19 +54,51 @@ const ProductsFilters = () => {
           <div className="left-box-main">
             <p className="main-white">Sort By</p>
             <div className="Left-contain">
-              <p className="High-light-p">
+              <p
+                className={
+                  sortBy === 'ratingHighToLow'
+                    ? 'High-light-p-active'
+                    : 'High-light-p'
+                }
+                onClick={() => changeSortBy('ratingHighToLow')}
+                style={{ cursor: 'pointer' }}
+              >
                 <iconify-icon icon="lucide:check-circle" />
                 <span className="circle-m">Popularity</span>
               </p>
-              <p className="High-light-p">
+              <p
+                className={
+                  sortBy === 'ratingLowToHigh'
+                    ? 'High-light-p-active'
+                    : 'High-light-p'
+                }
+                onClick={() => changeSortBy('ratingLowToHigh')}
+                style={{ cursor: 'pointer' }}
+              >
                 <iconify-icon icon="lucide:check-circle" />
                 <span className="circle-m">Rating: Low To High</span>
               </p>
-              <p className="High-light-p">
+              <p
+                className={
+                  sortBy === 'costHighToLow'
+                    ? 'High-light-p-active'
+                    : 'High-light-p'
+                }
+                onClick={() => changeSortBy('costHighToLow')}
+                style={{ cursor: 'pointer' }}
+              >
                 <iconify-icon icon="lucide:check-circle" />
                 <span className="circle-m">Cost: High to Low</span>
               </p>
-              <p className="High-light-p">
+              <p
+                className={
+                  sortBy === 'costHighLowToHigh'
+                    ? 'High-light-p-active'
+                    : 'High-light-p'
+                }
+                onClick={() => changeSortBy('costHighLowToHigh')}
+                style={{ cursor: 'pointer' }}
+              >
                 <iconify-icon icon="lucide:check-circle" />
                 <span className="circle-m">Cost: Low To High</span>
               </p>
@@ -38,22 +111,23 @@ const ProductsFilters = () => {
             <p className="main-white">Brands</p>
             <div className="Left-contain">
               <form action="" method="post">
-                <p>
-                  <input type="checkbox" className="check" id="Complain" />
-                  <label for="Complain">Complain</label>{' '}
-                </p>
-                <p>
-                  <input type="checkbox" className="check" id="Horlicks" />
-                  <label for="Horlicks">Horlicks</label>{' '}
-                </p>
-                <p>
-                  <input type="checkbox" className="check" id="Vanilla" />{' '}
-                  <label for="Vanilla">Vanilla</label>{' '}
-                </p>
-                <p>
-                  <input type="checkbox" className="check" id="Chocos" />
-                  <label for="Chocos">Chocos</label>
-                </p>
+                {brands &&
+                  brands.map((brand) => (
+                    <p key={brand._id}>
+                      <input
+                        type="checkbox"
+                        className="check"
+                        id={brand.name}
+                        value={brand.name}
+                        onChange={(e) =>
+                          handleChangeFilter('brand', e.target.value)
+                        }
+                        checked={filterState.brand.includes(brand.name)}
+                        style={{ cursor: 'pointer' }}
+                      />
+                      <label for={brand.name}>{brand.name}</label>{' '}
+                    </p>
+                  ))}
               </form>
             </div>
           </div>
@@ -64,7 +138,15 @@ const ProductsFilters = () => {
             <p className="main-white">Rating</p>
             <div className="Left-contain">
               <p>
-                <input type="checkbox" className="check" id="star5" />
+                <input
+                  type="checkbox"
+                  className="check"
+                  id="star5"
+                  value="5"
+                  onChange={(e) => handleChangeFilter('rating', e.target.value)}
+                  checked={filterState.rating.includes('5')}
+                  style={{ cursor: 'pointer' }}
+                />
                 <label for="star5" className="star">
                   <i className="fas fa-star" />
                   <i className="fas fa-star" />
@@ -74,7 +156,15 @@ const ProductsFilters = () => {
                 </label>{' '}
               </p>
               <p>
-                <input type="checkbox" className="check" id="star4" />
+                <input
+                  type="checkbox"
+                  className="check"
+                  id="star4"
+                  value="4"
+                  onChange={(e) => handleChangeFilter('rating', e.target.value)}
+                  checked={filterState.rating.includes('4')}
+                  style={{ cursor: 'pointer' }}
+                />
                 <label for="star4" className="star">
                   <i className="fas fa-star" />
                   <i className="fas fa-star" />
@@ -84,7 +174,15 @@ const ProductsFilters = () => {
                 </label>{' '}
               </p>
               <p>
-                <input type="checkbox" className="check" id="star3" />
+                <input
+                  type="checkbox"
+                  className="check"
+                  id="star3"
+                  value="3"
+                  onChange={(e) => handleChangeFilter('rating', e.target.value)}
+                  checked={filterState.rating.includes('3')}
+                  style={{ cursor: 'pointer' }}
+                />
                 <label for="star3" className="star">
                   <i className="fas fa-star" />
                   <i className="fas fa-star" />
@@ -94,7 +192,15 @@ const ProductsFilters = () => {
                 </label>{' '}
               </p>
               <p>
-                <input type="checkbox" className="check" id="star2" />
+                <input
+                  type="checkbox"
+                  className="check"
+                  id="star2"
+                  value="2"
+                  onChange={(e) => handleChangeFilter('rating', e.target.value)}
+                  checked={filterState.rating.includes('2')}
+                  style={{ cursor: 'pointer' }}
+                />
                 <label for="star2" className="star">
                   <i className="fas fa-star" />
                   <i className="fas fa-star " />
@@ -104,7 +210,15 @@ const ProductsFilters = () => {
                 </label>{' '}
               </p>
               <p>
-                <input type="checkbox" className="check" id="star1" />
+                <input
+                  type="checkbox"
+                  className="check"
+                  id="star1"
+                  value="1"
+                  onChange={(e) => handleChangeFilter('rating', e.target.value)}
+                  checked={filterState.rating.includes('1')}
+                  style={{ cursor: 'pointer' }}
+                />
                 <label for="star1" className="star">
                   <i className="fas fa-star" />
                   <i className="fas fa-star no-colour" />

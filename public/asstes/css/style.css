@@ -49,6 +49,9 @@
   .High-light-p:hover {
   color: var(--them-colour);
 }
+.High-light-p-active {
+  color: var(--them-colour);
+}
 .product-grid-left-section
   .product-grid-left-box
   .left-box-main

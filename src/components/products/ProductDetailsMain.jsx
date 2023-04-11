@@ -135,7 +135,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart }) => {
                 <h6>{selectedProduct && selectedProduct.brand}</h6>
                 <p className="star">
                   <i className="fas fa-star" />
-                  4.5
+                  {selectedProduct && selectedProduct.rating}
                 </p>
                 <h3>
                   ₹{selectedProduct && selectedProduct.price}{' '}
