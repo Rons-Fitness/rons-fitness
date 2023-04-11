@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unknown-property */
 import React from 'react';
 import Loader from 'components/common/loader/Loader';
+import NoItemsFound from 'components/notFound/NoItemsFound';
 import ProductCard from './ProductCard';
 import ProductsFilters from './ProductsFilters';
 
@@ -31,16 +32,18 @@ const ProductListMain = ({
               <h1>Gym Equipments</h1>
             </div>
             <div className="products-grid-body">
-              {products.data.length
-                ? products.data.map((product) => (
-                    <ProductCard
-                      product={product}
-                      key={product._id}
-                      addtoCart={addtoCart}
-                      addToWishlist={addToWishlist}
-                    />
-                  ))
-                : null}
+              {products.data.length ? (
+                products.data.map((product) => (
+                  <ProductCard
+                    product={product}
+                    key={product._id}
+                    addtoCart={addtoCart}
+                    addToWishlist={addToWishlist}
+                  />
+                ))
+              ) : (
+                <NoItemsFound />
+              )}
             </div>
           </div>
         )}
