@@ -109,7 +109,7 @@
     font-size: 15px;
   }
   .min-hed .inputcontainer button i {
-    color: #ABABAB;
+    color: #ababab;
     font-size: 14px;
     left: 0;
   }
@@ -154,7 +154,7 @@
     gap: 10px;
     width: 100px;
     height: 100px;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 50%;
   }
   /* ==================  Tranding section Start ==============  */
@@ -553,7 +553,7 @@
     font-size: 20px;
   }
   .contact-section .contact-body .contact-box p {
-    color: #5A5B5A;
+    color: #5a5b5a;
     margin: 0;
     font-size: 15px;
     line-height: 22px;
@@ -602,6 +602,60 @@
     padding: 0px;
   }
   /* ===================== about us page End ======================*/
+  /* ========= My-order-section Start =========== */
+  .my-order-section .my-order-head h1 {
+    font-size: 22px;
+  }
+  .my-order-section .my-order-head h1::after {
+    top: 10px;
+    /* left: 0px; */
+  }
+  .my-order-section .my-order-contain .my-order-img-box {
+    padding: 10px !important;
+    height: 60px !important;
+    width: 60px !important;
+    margin: 8px !important;
+  }
+  .my-order-section .my-order-contain .my-order-img-box-green {
+    padding: 15px !important;
+    height: 60px !important;
+    width: 60px !important;
+    margin: 8px !important;
+  }
+  .my-order-section .my-order-contain .my-order-img-box-red {
+    padding: 15px !important;
+    height: 60px !important;
+    width: 60px !important;
+    margin: 8px !important;
+  }
+  /* ========= My-order-section End =========== */
+  /* ============ user-rateing-revies section Start ============*/
+  .User-rating-review-section .Rating-Review-head h1 {
+    font-size: 22px;
+  }
+  .User-rating-review-section .Rating-Review-head h1::after {
+    top: 10px;
+    /* left: 0px; */
+  }
+  /* ============ user-rateing-revies section End ============*/
+  .Order-Details-traking-section .traking-progress-section .stepper-wrapper {
+    left: 0px !important;
+  }
+  .Order-Details-traking-section
+    .traking-progress-section
+    .stepper-item.completed::after {
+    top: 56px;
+  }
+  .Order-Details-traking-section
+    .traking-progress-section
+    .stepper-item.completed::before {
+    top: 56px;
+  }
+  .Order-Details-traking-section
+    .traking-progress-section
+    .stepper-item::before {
+    top: 56px;
+  }
 }
 /* ======== custom css ======= */
 @media (max-width: 1024px) {
@@ -621,7 +675,10 @@
   .blog-setion .blog-body .blog-contaion {
     width: 30%;
   }
-  .product-grid-left-section .product-grid-left-box .left-box-main .Left-contain {
+  .product-grid-left-section
+    .product-grid-left-box
+    .left-box-main
+    .Left-contain {
     padding: 0px 9px;
   }
 }
@@ -673,7 +730,7 @@
     font-size: 13px;
   }
   .min-hed .inputcontainer button i {
-    color: #ABABAB;
+    color: #ababab;
     font-size: 14px;
     left: 0;
   }
@@ -717,10 +774,18 @@
   .product-grid-section-header {
     padding-left: 0px;
   }
-  .product-grid-left-section .product-grid-left-box .left-box-main .Left-contain {
+  .product-grid-left-section
+    .product-grid-left-box
+    .left-box-main
+    .Left-contain {
     padding: 0px 10px;
   }
   .contact-section .contact-body .contact-box {
     padding: 10px 5px;
   }
-}/*# sourceMappingURL=responsive.css.map */
+}
+@media (max-width: 767px) {
+  .my-order-section .my-order-body .my-order-contain .my-order-list {
+    text-align: center;
+  }
+} /*# sourceMappingURL=responsive.css.map */

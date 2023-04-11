@@ -33,6 +33,7 @@ const UserProfile = lazy(() => import('./containers/UserProfile'));
 const ContactUs = lazy(() => import('./containers/ContactUs'));
 const Blog = lazy(() => import('./containers/Blog'));
 const BlogDetails = lazy(() => import('./containers/BlogDetails'));
+const OrderList = lazy(() => import('./containers/OrderList'));
 const NotFound = lazy(() => import('containers/NotFound'));
 
 const App = () => {
@@ -101,6 +102,11 @@ const App = () => {
               exact
               path="/user/profile"
               render={(props) => <UserProfile {...props} />}
+            />
+            <ProtectedRoute
+              exact
+              path="/user/orders"
+              render={(props) => <OrderList {...props} />}
             />
             {/* <Route
                   path="/user"
