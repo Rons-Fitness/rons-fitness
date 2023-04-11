@@ -10,10 +10,13 @@ import { Autoplay, Pagination, Navigation } from 'swiper';
 import { Link, useHistory } from 'react-router-dom';
 import ProductReviewsAndDes from './ProductReviewsAndDes';
 
-const ProductDetailsMain = ({ selectedProduct, addtoCart }) => {
+const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
   const history = useHistory();
   const [activeImage, setActiveImage] = useState('');
   const [qty, setQty] = useState(1);
+  const [wishList, setWishlist] = useState(
+    selectedProduct ? selectedProduct.inWishlist : false
+  );
 
   useEffect(() => {
     // console.log({ selectedProduct });
@@ -31,9 +34,16 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart }) => {
               <div className="x-zoomin-responsive">
                 <div className="xzoom-heart xzoom-heart-hide">
                   <p className="false-seal  ">
-                    <a href="wishlist page.html">
+                    <a>
                       <svg
                         className="heart"
+                        onClick={() => {
+                          addToWishlist(
+                            selectedProduct && selectedProduct,
+                            wishList
+                          );
+                          setWishlist(!wishList);
+                        }}
                         viewBox="0 0 24 22"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -103,12 +113,20 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart }) => {
             <div className="col-md-6 col-lg-7 col-sm-12 xzoom-body-contain">
               <div className="xzoom-heart heart-hide-responsive">
                 <p className="false-seal ">
-                  <a href="wishlist page.html">
+                  <a>
                     <svg
-                      className="heart"
+                      className={wishList ? 'activeHeart' : 'heart'}
                       viewBox="0 0 24 22"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => {
+                        addToWishlist(
+                          selectedProduct && selectedProduct._id,
+                          wishList
+                        );
+                        setWishlist(!wishList);
+                      }}
                     >
                       <path
                         d="M11.0162 2.62457L11.733 3.36138L12.4498 2.62457C15.1694 -0.171114 20.0664 0.825498 21.8274 4.2646C22.6749 5.91956 22.8251 8.24441 21.368 11.1192C19.9471 13.9225 17.0001 17.228 11.7329 20.7968C6.46578 17.2284 3.51885 13.923 2.09797 11.1198C0.640872 8.24511 0.791039 5.92021 1.63851 4.26513C3.39962 0.825768 8.29658 -0.171037 11.0162 2.62457Z"

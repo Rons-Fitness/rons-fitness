@@ -6,8 +6,8 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 const ProductCard = ({ product, addtoCart, addToWishlist }) => {
-  const [wishList, setWishlist] = useState(product.inWishlist);
   const history = useHistory();
+  const [wishList, setWishlist] = useState(product.inWishlist);
   return (
     <>
       <div className="box-card">

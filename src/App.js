@@ -30,6 +30,7 @@ const Address = lazy(() => import('./containers/Address'));
 const NewAddress = lazy(() => import('./containers/NewAddress'));
 const EditAddress = lazy(() => import('./containers/EditAddress'));
 const UserProfile = lazy(() => import('./containers/UserProfile'));
+const ContactUs = lazy(() => import('./containers/ContactUs'));
 const NotFound = lazy(() => import('containers/NotFound'));
 
 const App = () => {
@@ -57,6 +58,11 @@ const App = () => {
               exact
               path="/product/:id"
               render={(props) => <ProductDetails {...props} />}
+            />
+            <Route
+              exact
+              path="/contact-us"
+              render={(props) => <ContactUs {...props} />}
             />
             <ProtectedRoute
               exact

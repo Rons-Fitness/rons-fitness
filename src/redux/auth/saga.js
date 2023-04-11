@@ -30,6 +30,7 @@ import {
   UPDATE_USER_ADDRESS,
   GET_ADDRESS_BY_ID,
   DELETE_USER_ADDRESS,
+  LIKE_DISLIKE_PRODUCT_REVIEW,
 } from '../contants';
 
 import {
@@ -555,6 +556,25 @@ export function* watchDeleteAddress() {
   yield takeEvery(DELETE_USER_ADDRESS, deleteAddressById);
 }
 
+const likeDislikeProductReviewAsync = async (_id, liked) => {
+  let res = {};
+  if (liked) res = await API.post(`/product/${_id}/review/like`);
+  else res = await API.post(`/product/${_id}/review/dislike`);
+  return res;
+};
+
+function* likeDislikeProductReview({ payload }) {
+  const { _id, liked } = payload;
+  try {
+    yield call(likeDislikeProductReviewAsync, _id, liked);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* watchLikeDislikeProductReview() {
+  yield takeEvery(LIKE_DISLIKE_PRODUCT_REVIEW, likeDislikeProductReview);
+}
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -575,5 +595,6 @@ export default function* rootSaga() {
     fork(watchUpdateAddress),
     fork(watchAddressById),
     fork(watchDeleteAddress),
+    fork(watchLikeDislikeProductReview),
   ]);
 }

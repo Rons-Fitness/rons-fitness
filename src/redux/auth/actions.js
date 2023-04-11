@@ -53,6 +53,7 @@ import {
   DELETE_USER_ADDRESS_SUCCESS,
   DELETE_USER_ADDRESS_ERROR,
   SET_AUTH_POPUP,
+  LIKE_DISLIKE_PRODUCT_REVIEW,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -298,4 +299,9 @@ export const getAddressByIdError = (message) => ({
 export const deliverToThisAddress = (address) => ({
   type: DELIVER_TO_THIS_ADDRESS,
   payload: address,
+});
+
+export const likeDislikeProductReview = (_id, liked) => ({
+  type: LIKE_DISLIKE_PRODUCT_REVIEW,
+  payload: { _id, liked },
 });
