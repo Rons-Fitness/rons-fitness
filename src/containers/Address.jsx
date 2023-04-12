@@ -7,19 +7,26 @@ import {
   deliverToThisAddress,
   getUserAddresses,
 } from 'redux/auth/actions';
+import { useHistory } from 'react-router-dom';
 
 const Address = ({
   getAddresses,
   addresses,
   setDeliveryAddress,
   deleteAddress,
+  keyword,
 }) => {
+  const history = useHistory();
+  useEffect(() => {
+    if (keyword && keyword.length > 0) history.push('/products');
+  }, [keyword]);
+
   useEffect(() => {
     getAddresses();
   }, [getAddresses]);
 
   return (
-    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
+    <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
       <AddressMain
         addresses={addresses}
         setDeliveryAddress={setDeliveryAddress}

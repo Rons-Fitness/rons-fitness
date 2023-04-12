@@ -10,6 +10,7 @@ import {
 import './app.css';
 import Navbar from 'components/navbar/Navbar';
 import ProtectedRoute from 'helpers/authHelper.js';
+import ProductList from 'containers/ProductList';
 
 // import Loader from 'components/common/loader/Loader';
 
@@ -22,7 +23,7 @@ import ProtectedRoute from 'helpers/authHelper.js';
 // );
 // const Navbar = lazy(() => import('components/navbar/Navbar'));
 const Dashboard = lazy(() => import('./containers/Dashboard'));
-const ProductList = lazy(() => import('./containers/ProductList'));
+// const ProductList = lazy(() => import('./containers/ProductList'));
 const ProductDetails = lazy(() => import('./containers/ProductDetails'));
 const Cart = lazy(() => import('./containers/Cart'));
 const Wishlist = lazy(() => import('containers/Wishlist'));

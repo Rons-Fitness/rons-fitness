@@ -168,6 +168,7 @@ function* verifyOtp({ payload }) {
       localStorage.setItem('auth_token', token);
       yield put(getUserDetailSuccess(user));
       yield put(setAuthPopup(false));
+      window.location.reload();
     } else {
       yield put(verifyOtpError(message));
     }

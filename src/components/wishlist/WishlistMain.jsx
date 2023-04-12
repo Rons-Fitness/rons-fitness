@@ -8,7 +8,10 @@ import { Link } from 'react-router-dom';
 
 const WishlistMain = ({ wishlist, removeFromWishList }) => {
   return (
-    <div className="my-whish-section" style={{ height: 'calc(100vh - 115px)' }}>
+    <div
+      className="my-whish-section"
+      style={{ minHeight: 'calc(100vh - 115px)' }}
+    >
       <div className="container">
         <div className="my-whish-head">
           <h1>

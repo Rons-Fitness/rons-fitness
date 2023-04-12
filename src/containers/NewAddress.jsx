@@ -1,9 +1,11 @@
 import AddressForm from 'components/address/AddressForm';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { createUserAddress } from 'redux/auth/actions';
 
-const NewAddress = ({ addNewAddress }) => {
+const NewAddress = ({ addNewAddress, keyword }) => {
+  const history = useHistory();
   const [address, setAddress] = useState({
     addressType: 'home',
     shippingAddress: {
@@ -29,8 +31,12 @@ const NewAddress = ({ addNewAddress }) => {
       phoneNo: '',
     },
   });
+  useEffect(() => {
+    if (keyword && keyword.length > 0) history.push('/products');
+  }, [keyword]);
+
   return (
-    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
+    <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
       <AddressForm
         address={address}
         setAddress={setAddress}

@@ -189,6 +189,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         e.target.value
                       )
                     }
+                    maxLength={12}
                   />
                 </div>
               </div>
@@ -316,6 +317,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     onChange={(e) =>
                       changeDetails('billingAddress', 'phoneNo', e.target.value)
                     }
+                    maxLength={12}
                   />
                 </div>
                 <div className="address-types-body">

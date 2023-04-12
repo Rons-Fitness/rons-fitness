@@ -10,14 +10,21 @@ import Categories from './Categories';
 const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
   const [isMobile, setIsMobile] = useState(false);
 
+  const [isTablet, setIsTablet] = useState(false);
+
   const handleResize = () => {
     if (window.innerWidth < 720) {
       setIsMobile(true);
     } else {
       setIsMobile(false);
     }
+    if (window.innerWidth > 720 && window.innerWidth < 1200) {
+      setIsTablet(true);
+    } else {
+      setIsTablet(false);
+    }
   };
-
+  console.log({ innder: window.innerWidth, isTablet, isMobile });
   useEffect(() => {
     window.addEventListener('resize', handleResize);
   }, []);
@@ -71,13 +78,18 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
           </div>
         </div>
       </section>
-      <Categories category={homeScreenData.category} isMobile={isMobile} />
+      <Categories
+        category={homeScreenData.category}
+        isMobile={isMobile}
+        isTablet={isTablet}
+      />
       <ProductListing
         type="TRENDING NOW"
         products={homeScreenData.trendingProducts}
         addtoCart={addtoCart}
         addToWishlist={addToWishlist}
         isMobile={isMobile}
+        isTablet={isTablet}
       />
       <div className="container ">
         <div className=" col-lg-12  col-md-12 col-sm-12 ">
@@ -92,8 +104,13 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
         addtoCart={addtoCart}
         addToWishlist={addToWishlist}
         isMobile={isMobile}
+        isTablet={isTablet}
       />
-      <BrandListing brands={homeScreenData.brands} isMobile={isMobile} />
+      <BrandListing
+        brands={homeScreenData.brands}
+        isMobile={isMobile}
+        isTablet={isTablet}
+      />
       <Blogs />
     </>
   );

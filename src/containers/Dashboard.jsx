@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import DashboardMain from 'components/dashboard/DashboardMain';
 import { getHomeScreenData } from 'redux/product/actions';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Footer from 'components/footer/Footer';
 import { addProductToCart, addProductToWishList } from 'redux/auth/actions';
 
@@ -15,9 +15,8 @@ const Dashboard = ({
   addToWishlist,
 }) => {
   const history = useHistory();
-
   useEffect(() => {
-    if (keyword && keyword.length > 0) <Link exact to="/products" />;
+    if (keyword && keyword.length > 0) history.push('/products');
   }, [keyword]);
 
   useEffect(() => {
@@ -28,7 +27,7 @@ const Dashboard = ({
     if (keyword && keyword.length > 0) history.push('/products');
   }, [keyword]);
   return (
-    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
+    <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
       <DashboardMain
         homeScreenData={homeScreenData}
         addtoCart={addtoCart}

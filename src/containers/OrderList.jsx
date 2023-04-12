@@ -3,15 +3,20 @@ import Loader from 'components/common/loader/Loader';
 import moment from 'moment';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { getUserOrders } from 'redux/auth/actions';
 
-const OrderList = ({ getOrders, loading, orders }) => {
+const OrderList = ({ getOrders, loading, orders, keyword }) => {
   useEffect(() => {
     getOrders();
   }, [getOrders]);
 
+  const history = useHistory();
+  useEffect(() => {
+    if (keyword && keyword.length > 0) history.push('/products');
+  }, [keyword]);
   return (
-    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
+    <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
       {loading ? (
         <Loader />
       ) : (

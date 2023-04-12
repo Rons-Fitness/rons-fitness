@@ -6,10 +6,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { logOutUser } from 'redux/auth/actions';
 
-const UserProfile = ({ currentUser, logOut }) => {
+const UserProfile = ({ currentUser, logOut, keyword }) => {
+  const history = useHistory();
   const [userDetails, setUserDetails] = useState({
     firstName: '',
     lastName: '',
@@ -24,6 +25,11 @@ const UserProfile = ({ currentUser, logOut }) => {
         mobileNo: currentUser.mobileNo,
       });
   }, [currentUser]);
+
+  useEffect(() => {
+    if (keyword && keyword.length > 0) history.push('/products');
+  }, [keyword]);
+
   return (
     <div>
       <div className="profile-section">
@@ -203,8 +209,8 @@ const UserProfile = ({ currentUser, logOut }) => {
 };
 
 const mapStateToProps = ({ user }) => {
-  const { currentUser, authPopupState } = user;
-  return { currentUser, authPopupState };
+  const { currentUser, authPopupState, keyword } = user;
+  return { currentUser, authPopupState, keyword };
 };
 const mapDispatchToProps = (dispatch) => ({
   logOut: () => dispatch(logOutUser()),

@@ -61,7 +61,11 @@ const AuthPopup = ({
                   type="number"
                   placeholder="Contact Number"
                   name="mobileNo"
-                  onChange={(e) => setMobileNo(e.target.value)}
+                  value={mobileNo}
+                  onChange={(e) =>
+                    e.target.value.length < 13 && setMobileNo(e.target.value)
+                  }
+                  maxLength={12}
                 />
                 {otpSent ? (
                   <>
@@ -86,7 +90,7 @@ const AuthPopup = ({
                     onClick={handleSubmit}
                     value={otpSent ? 'Verify' : 'send OTP'}
                     onChange={() => console.log()}
-                    style={{ textAlign: 'center' }}
+                    style={{ textAlign: 'center', cursor: 'pointer' }}
                   />
                 </div>
               </div>

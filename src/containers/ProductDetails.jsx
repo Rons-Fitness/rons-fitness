@@ -2,7 +2,7 @@ import Loader from 'components/common/loader/Loader';
 import ProductDetailsMain from 'components/products/ProductDetailsMain';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { getSingleProduct } from 'redux/actions';
 import { addProductToCart, addProductToWishList } from 'redux/auth/actions';
 // import Error404 from 'components/notFound/Error404';
@@ -13,15 +13,21 @@ const ProductDetails = ({
   loading,
   addtoCart,
   addToWishlist,
+  keyword,
 }) => {
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     if (id) getProductById(id);
   }, [id, getProductById]);
-  console.log({ selectedProduct });
+
+  useEffect(() => {
+    if (keyword && keyword.length > 0) history.push('/products');
+  }, [keyword]);
+
   return (
-    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
+    <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
       {loading ? (
         <Loader />
       ) : (

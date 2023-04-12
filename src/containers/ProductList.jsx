@@ -22,7 +22,7 @@ function ProductList({
   }, [keyword]);
 
   return (
-    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
+    <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
       <ProductListMain
         products={products}
         addtoCart={addtoCart}

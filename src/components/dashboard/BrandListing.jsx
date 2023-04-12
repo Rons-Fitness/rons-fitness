@@ -1,10 +1,11 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 
-const BrandListing = ({ brands = [], isMobile }) => {
+const BrandListing = ({ brands = [], isMobile, isTablet }) => {
   return (
     <div className="brnad-home-section">
       <div className="container-fluid">
@@ -16,11 +17,11 @@ const BrandListing = ({ brands = [], isMobile }) => {
             <Swiper
               className="swiper-wrapper"
               modules={[Autoplay, Pagination, Navigation]}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              slidesPerView={isMobile ? 1 : 5}
+              // autoplay={{
+              //   delay: 2500,
+              //   disableOnInteraction: false,
+              // }}
+              slidesPerView={isTablet ? 3 : isMobile ? 1 : 5}
             >
               {brands.map((elem) => (
                 <SwiperSlide className="swiper-slide" key={elem._id}>

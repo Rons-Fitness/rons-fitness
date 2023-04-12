@@ -6,6 +6,7 @@ import Loader from 'components/common/loader/Loader';
 import WishlistMain from 'components/wishlist/WishlistMain';
 import { getUserWishList, removeProductToWishList } from 'redux/auth/actions';
 import NoItemsFound from 'components/notFound/NoItemsFound';
+import { useHistory } from 'react-router-dom';
 
 const Wishlist = ({
   keyword,
@@ -18,10 +19,15 @@ const Wishlist = ({
     getWishList();
   }, [getWishList]);
 
+  const history = useHistory();
+  useEffect(() => {
+    if (keyword && keyword.length > 0) history.push('/products');
+  }, [keyword]);
+
   return (
     <div
       style={{
-        height: 'calc(100vh - 115px)',
+        minHeight: 'calc(100vh - 115px)',
         overflow: 'auto',
       }}
     >

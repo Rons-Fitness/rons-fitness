@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
@@ -5,7 +6,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 
-const Categories = ({ category = [], isMobile }) => {
+const Categories = ({ category = [], isMobile, isTablet }) => {
   return (
     <div className="cat-round">
       <div className="container">
@@ -13,12 +14,12 @@ const Categories = ({ category = [], isMobile }) => {
           <div className="swiper carte-slider">
             <Swiper
               className="swiper-wrapper"
-              slidesPerView={isMobile ? 1 : 5}
+              slidesPerView={isTablet ? 3 : isMobile ? 1 : 5}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
               }}
-              spaceBetween={125}
+              spaceBetween={80}
               navigation
               modules={[Autoplay, Pagination, Navigation]}
             >

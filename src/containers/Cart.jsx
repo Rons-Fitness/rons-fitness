@@ -11,6 +11,7 @@ import {
   getUserDetails,
   reomveProductFromCart,
 } from 'redux/auth/actions';
+import { useHistory } from 'react-router-dom';
 
 function Cart({
   keyword,
@@ -24,13 +25,18 @@ function Cart({
   getLoggedInUserDetails,
 }) {
   const selectedAdd = JSON.parse(localStorage.getItem('selected_address'));
+  const history = useHistory();
   useEffect(() => {
     getLoggedInUserDetails();
     if (selectedAdd) setDeliveryAddress(selectedAdd);
   }, []);
 
+  useEffect(() => {
+    if (keyword && keyword.length > 0) history.push('/products');
+  }, [keyword]);
+
   return (
-    <div style={{ height: 'calc(100vh - 115px)', overflow: 'auto' }}>
+    <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
       {loading ? (
         <Loader />
       ) : (

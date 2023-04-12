@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -14,6 +15,7 @@ const ProductListing = ({
   addtoCart,
   addToWishlist,
   isMobile = false,
+  isTablet,
 }) => {
   const history = useHistory();
   return (
@@ -32,7 +34,7 @@ const ProductListing = ({
               }}
               navigation
               modules={[Autoplay, Pagination, Navigation]}
-              slidesPerView={isMobile ? 1 : 5}
+              slidesPerView={isTablet ? 3 : isMobile ? 1 : 5}
               spaceBetween={25}
             >
               {products.map((elem) => (
