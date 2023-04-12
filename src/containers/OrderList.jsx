@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 import Loader from 'components/common/loader/Loader';
 import moment from 'moment';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getUserOrders } from 'redux/auth/actions';
 
 const OrderList = ({ getOrders, loading, orders, keyword }) => {
@@ -29,39 +30,41 @@ const OrderList = ({ getOrders, loading, orders, keyword }) => {
                     <h1>My Order</h1>
                   </div>
                   {orders.map((order) => (
-                    <div className="my-order-contain" key={order._id}>
-                      <div className="row">
-                        <div className="col-lg-2 col-md-3    m-0 p-0">
-                          <div className="d-flex justify-content-center align-items-center">
-                            <div className="my-order-img-box">
-                              <a href="Order-Details-traking-page.html">
-                                {' '}
-                                <img
-                                  src="/asstes/img/order-logo/package.png"
-                                  alt=""
-                                />
-                              </a>
+                    <Link to={`/user/orders/${order._id}`} key={order._id}>
+                      <div className="my-order-contain">
+                        <div className="row">
+                          <div className="col-lg-2 col-md-3    m-0 p-0">
+                            <div className="d-flex justify-content-center align-items-center">
+                              <div className="my-order-img-box">
+                                <a>
+                                  {' '}
+                                  <img
+                                    src="/asstes/img/order-logo/package.png"
+                                    alt=""
+                                  />
+                                </a>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-lg-9 col-md-9  ">
-                          <div className="my-order-list">
-                            <a href="Order-Details-traking-page.html">
-                              <h5>
-                                {moment(order.createdAt).format(
-                                  'MMMM Do YYYY ,  h:mm a'
-                                )}
-                              </h5>
-                            </a>
-                            <div>
-                              MuscleBlaze Test Pro & Ashwagandha 60 Tab Combo{' '}
-                              <span className="fw-semibold "> +3 more </span>
+                          <div className="col-lg-9 col-md-9  ">
+                            <div className="my-order-list">
+                              <a>
+                                <h5>
+                                  {moment(order.createdAt).format(
+                                    'MMMM Do YYYY ,  h:mm a'
+                                  )}
+                                </h5>
+                              </a>
+                              <div>
+                                MuscleBlaze Test Pro & Ashwagandha 60 Tab Combo{' '}
+                                <span className="fw-semibold "> +3 more </span>
+                              </div>
+                              <p className="fw-semibold">&#8377 4000</p>
                             </div>
-                            <p className="fw-semibold">&#8377 4000</p>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>

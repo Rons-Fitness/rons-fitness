@@ -52,6 +52,9 @@ import {
   GET_USER_ORDERS_SUCCESS,
   GET_USER_ORDERS_ERROR,
   LOG_OUT_USER,
+  GET_ORDER_BY_ID,
+  GET_ORDER_BY_ID_SUCCESS,
+  GET_ORDER_BY_ID_ERROR,
 } from '../contants';
 
 const INIT_STATE = {
@@ -63,6 +66,7 @@ const INIT_STATE = {
   error: '',
   success: '',
   keyword: '',
+  selectedOrder: {},
   wishlist: [],
   addresses: [],
   orders: [],
@@ -310,6 +314,22 @@ export default (state = INIT_STATE, action) => {
         error: action.payload.message,
       };
 
+    case GET_ORDER_BY_ID:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_ORDER_BY_ID_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        selectedOrder: action.payload,
+      };
+    case GET_ORDER_BY_ID_ERROR:
+      return {
+        loading: false,
+        error: action.payload.message,
+      };
     case LOG_OUT_USER: {
       window.localStorage.removeItem('auth_token');
       window.location.href = '/';

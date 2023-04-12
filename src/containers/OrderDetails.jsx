@@ -1,7 +1,54 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import classnames from 'classnames';
+import OrderItem from 'components/order/OrderItem';
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getOrderById } from 'redux/auth/actions';
 
-const OrderDetails = () => {
+const OrderDetails = ({ getOrderDetails, selectedOrder }) => {
+  const { id } = useParams();
+  const {
+    orderDetails,
+    _id,
+    orderItems,
+    currentOrderStatus,
+    shippingAddress,
+    total,
+    tax,
+    subTotal,
+    discount,
+  } = selectedOrder;
+
+  const [initOrderState, setInitOrderState] = useState([
+    'Order Placed',
+    'Order Confirmed',
+    'Out For Delivery',
+    'Order Delivered',
+  ]);
+
+  useEffect(() => {
+    if (orderDetails)
+      setInitOrderState((oldval) =>
+        oldval.splice(orderDetails.orderTrack.length)
+      );
+  }, [orderDetails]);
+
+  useEffect(() => {
+    getOrderDetails(id);
+  }, [id]);
+
+  useEffect(() => {
+    setInitOrderState([
+      'Order Placed',
+      'Order Confirmed',
+      'Out For Delivery',
+      'Order Delivered',
+    ]);
+  }, []);
+
   return (
     <div className="Order-Details-traking-section">
       <div className="container">
@@ -12,51 +59,45 @@ const OrderDetails = () => {
                 <img src="/asstes/img/order-logo/package.png" alt="" />
               </div>
               <div className="order-id-list">
-                <h5>Order ID: 3354654654526</h5>
-                <p>2 Items . On Delivery</p>
+                <h5>Order ID: #{_id}</h5>
+                <p>
+                  {orderItems && orderItems.length} Items .{' '}
+                  {currentOrderStatus && currentOrderStatus.status}
+                </p>
               </div>
             </div>
             <div className="traking-progress-section">
               <div className="stepper-wrapper">
-                <div className="stepper-item completed">
-                  <div className="step-head-name">Order Placed</div>
-                  <div className="step-counter">
-                    <iconify-icon icon="ph:check" />
-                  </div>
-                  <div className="step-name">
-                    {' '}
-                    1 <sup>th</sup>Jan, 9:50pm{' '}
-                  </div>
-                </div>
-                <div className="stepper-item completed">
-                  <div className="step-head-name">Order Confirmed</div>
-                  <div className="step-counter">
-                    <iconify-icon icon="ph:check" />
-                  </div>
-                  <div className="step-name">
-                    1 <sup>th</sup>Jan, 9:50pm{' '}
-                  </div>
-                </div>
-                <div className="stepper-item completed">
-                  <div className="step-head-name">Order On Delivery</div>
-                  <div className="step-counter">
-                    <iconify-icon icon="ph:check" />
-                  </div>
-                  <div className="step-name">
-                    1 <sup>th</sup>Jan, 9:50pm{' '}
-                  </div>
-                </div>
-                <div className="stepper-item active">
-                  <div className="step-head-name disactive">
-                    Order Delivered
-                  </div>
-                  <div className="step-counter">
-                    <iconify-icon icon="ph:check" />
-                  </div>
-                  <div className="step-name disactive">
-                    Expected by,1 <sup>th</sup>Jan, 9:50pm{' '}
-                  </div>
-                </div>
+                {orderDetails &&
+                  orderDetails.orderTrack.map((track) => (
+                    <div
+                      key={track._id}
+                      className={classnames('stepper-item', 'completed')}
+                    >
+                      <div className="step-head-name">{track.status}</div>
+                      <div className="step-counter">
+                        <iconify-icon icon="ph:check" />
+                      </div>
+                      <div className="step-name">
+                        {moment(track.createdAt).format(
+                          'Do MMMM YYYY ,  h:mm a'
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                {initOrderState.map((track) => (
+                  <>
+                    <div className="stepper-item active">
+                      <div className="step-head-name disactive">{track}</div>
+                      <div className="step-counter">
+                        <iconify-icon icon="ph:check" />
+                      </div>
+                      {/* <div className="step-name disactive">
+                        Expected by,1 <sup>th</sup>Jan, 9:50pm{' '}
+                      </div> */}
+                    </div>
+                  </>
+                ))}
               </div>
             </div>
 
@@ -105,87 +146,10 @@ const OrderDetails = () => {
             </div>
 
             <div className=" order-details-traking-section  ">
-              <div className="order-details-traking-contain col-lg-11 col-md-12">
-                <div className="row">
-                  <div className="col-lg-2 col-md-3  d-flex align-items-center justify-content-center m-0 p-0">
-                    <div className="order-details-traking-img-box">
-                      <a href="productsviewdetailes.html">
-                        {' '}
-                        <img src="/asstes/img/Wishlist page img/2.png" alt="" />
-                      </a>
-                    </div>
-                  </div>
-                  <div className="col-lg-7 col-md-6 ">
-                    <div className="order-details-traking-list">
-                      <a href="productsviewdetailes.html">
-                        <h5>
-                          MuscleBlaze Test Pro & Ashwagandha 60 Tab Combo{' '}
-                        </h5>
-                      </a>
-                      <div className="Price-tag">
-                        <p>Qty: 2</p>
-                        <p>Price : &#8377 8256</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-md-3">
-                    <div className="star-rating">
-                      <a href="#">
-                        {' '}
-                        <i className="fas fa-star active " />
-                        <i className="fas fa-star  active" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                      </a>
-                    </div>
-                    <div className="rating-a">
-                      <a href="user-Rate-&-review.html">Write a Review here </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="order-details-traking-contain col-lg-11 col-md-12 ">
-                <div className="row ">
-                  <div className="col-lg-2 col-md-3  d-flex align-items-center justify-content-center m-0 p-0">
-                    <div className="order-details-traking-img-box">
-                      <a href="productsviewdetailes.html">
-                        {' '}
-                        <img src="/asstes/img/Wishlist page img/4.png" alt="" />
-                      </a>
-                    </div>
-                  </div>
-                  <div className="col-lg-7 col-md-6 ">
-                    <div className="order-details-traking-list">
-                      <a href="productsviewdetailes.html">
-                        <h5>
-                          MuscleBlaze Test Pro & Ashwagandha 60 Tab Combo{' '}
-                        </h5>
-                      </a>
-                      <div className="Price-tag">
-                        <p>Qty: 1</p>
-                        <p>Price : &#8377 4433</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-md-3">
-                    <div className="star-rating">
-                      <a href="#">
-                        {' '}
-                        <i className="fas fa-star active " />
-                        <i className="fas fa-star  active" />
-                        <i className="fas fa-star active" />
-                        <i className="fas fa-star" />
-                        <i className="fas fa-star" />
-                      </a>
-                    </div>
-                    <div className="rating-a">
-                      <a href="user-Rate-&-review.html">Write a Review here </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {orderItems &&
+                orderItems.map((item) => (
+                  <OrderItem key={item.key} item={item} />
+                ))}
             </div>
           </div>
 
@@ -196,14 +160,20 @@ const OrderDetails = () => {
                   <div className="delivery-address-details ">
                     <p className="Shipping-details">Shipping Details</p>
                     <div className=" name-addres-details">
-                      <h6>Florence Lockman</h6>
+                      <h6>
+                        {shippingAddress && shippingAddress.firstName}{' '}
+                        {shippingAddress && shippingAddress.lastName}
+                      </h6>
                       <p>
-                        {' '}
-                        Ramkrishna Apartment, <br />
-                        Near Sardar Bhavan Society,
+                        {shippingAddress && shippingAddress.addressLine1},
                         <br />
-                        mg Road 78,Udaipur-313001, India <br />
-                        +91 8756957656, +91 9453698424
+                        {shippingAddress && shippingAddress.addressLine2},
+                        <br />
+                        {shippingAddress && shippingAddress.city}-
+                        {shippingAddress && shippingAddress.pinCode},
+                        {shippingAddress && shippingAddress.country}
+                        <br />
+                        +91 {shippingAddress && shippingAddress.phoneNo}
                       </p>
                     </div>
                   </div>
@@ -223,14 +193,14 @@ const OrderDetails = () => {
                           <th scope="row" />
                           <td className="subtotal">Subtotal :</td>
                           <td />
-                          <td className="text-end ">₹12689</td>
+                          <td className="text-end ">₹{subTotal}</td>
                         </tr>
                         <tr>
                           <th scope="row" />
                           <td className="discount">Discount :</td>
                           <td className="text-end" />
                           <td className="text-end">
-                            <span className="me-2">-</span> ₹500
+                            <span className="me-2">-</span> ₹{discount}
                           </td>
                         </tr>
                         <tr>
@@ -242,14 +212,14 @@ const OrderDetails = () => {
                           </td>
                           <td className="text-end" />
                           <td className="text-end">
-                            <span className="me-2">+</span> ₹689
+                            <span className="me-2">+</span> ₹{tax}
                           </td>
                         </tr>
                         <tr className="total-border">
                           <th scope="row" />
                           <th className="fw-semibold">Total :</th>
                           <td className="" />
-                          <th className="text-end fw-semibold">₹ 12878</th>
+                          <th className="text-end fw-semibold">₹ {total}</th>
                         </tr>
                       </tbody>
                     </table>
@@ -264,4 +234,14 @@ const OrderDetails = () => {
   );
 };
 
-export default OrderDetails;
+const mapStateToProps = ({ product, user }) => {
+  const { selectedProduct } = product;
+  const { keyword, selectedOrder, loading } = user;
+
+  return { selectedProduct, keyword, loading, selectedOrder };
+};
+const mapDispatchToProps = (dispatch) => ({
+  getOrderDetails: (_id) => dispatch(getOrderById(_id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderDetails);

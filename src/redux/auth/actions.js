@@ -58,6 +58,9 @@ import {
   GET_USER_ORDERS_SUCCESS,
   GET_USER_ORDERS_ERROR,
   LOG_OUT_USER,
+  GET_ORDER_BY_ID,
+  GET_ORDER_BY_ID_SUCCESS,
+  GET_ORDER_BY_ID_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -322,6 +325,21 @@ export const getUserOrdersSuccess = (list) => ({
 export const getUserOrderError = (mesage) => ({
   type: GET_USER_ORDERS_ERROR,
   payload: { mesage },
+});
+
+export const getOrderById = (_id) => ({
+  type: GET_ORDER_BY_ID,
+  payload: { _id },
+});
+
+export const getOrderByIdSuccess = (data) => ({
+  type: GET_ORDER_BY_ID_SUCCESS,
+  payload: data,
+});
+
+export const getOrderByIdError = (message) => ({
+  type: GET_ORDER_BY_ID_ERROR,
+  payload: { message },
 });
 
 export const logOutUser = () => ({

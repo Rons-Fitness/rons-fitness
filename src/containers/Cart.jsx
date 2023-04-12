@@ -19,16 +19,16 @@ function Cart({
   cart,
   removeItemFromCart,
   addtoCart,
-  setDeliveryAddress,
+  // setDeliveryAddress,
   addressToDeliver,
   currentUser,
   getLoggedInUserDetails,
 }) {
-  const selectedAdd = JSON.parse(localStorage.getItem('selected_address'));
+  // const selectedAdd = JSON.parse(localStorage.getItem('selected_address'));
   const history = useHistory();
   useEffect(() => {
     getLoggedInUserDetails();
-    if (selectedAdd) setDeliveryAddress(selectedAdd);
+    // if (selectedAdd) setDeliveryAddress(selectedAdd);
   }, []);
 
   useEffect(() => {

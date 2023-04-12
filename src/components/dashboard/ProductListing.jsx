@@ -106,33 +106,35 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
 
       <div className="card-body">
         <div className="card-con" style={{ position: 'relative' }}>
-          <a>
-            <h1
-              className="align-items-center"
-              style={{
-                whiteSpace: 'nowrap',
-                /* width: 50px; */
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              {product.name} {/* {product.flavour !== '' && ( */}
-              {/* )} */}
-            </h1>
-            {product.flavour !== '' && (
-              <span className="text-end">
-                <iconify-icon
-                  icon="mdi:lacto-vegetarian"
-                  className="veg-icon"
-                  style={
-                    product.nonVeg
-                      ? { color: 'red', position: 'absolute', right: 17 }
-                      : { color: 'green', position: 'absolute', right: 17 }
-                  }
-                />
-              </span>
-            )}
-          </a>
+          <Link to={`/product/${product._id}`}>
+            <a>
+              <h1
+                className="align-items-center"
+                style={{
+                  whiteSpace: 'nowrap',
+                  /* width: 50px; */
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {product.name} {/* {product.flavour !== '' && ( */}
+                {/* )} */}
+              </h1>
+              {product.flavour !== '' && (
+                <span className="text-end">
+                  <iconify-icon
+                    icon="mdi:lacto-vegetarian"
+                    className="veg-icon"
+                    style={
+                      product.nonVeg
+                        ? { color: 'red', position: 'absolute', right: 17 }
+                        : { color: 'green', position: 'absolute', right: 17 }
+                    }
+                  />
+                </span>
+              )}
+            </a>
+          </Link>
           <h6>The specific products included</h6>
           <p>
             <a className="card-price">

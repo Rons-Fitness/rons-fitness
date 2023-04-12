@@ -237,7 +237,7 @@ const CartMain = ({
               ) : (
                 <div className="Delivery-fix-body">
                   <Link to="/user/address" className="place-btn">
-                    <p>Add or select Address</p>
+                    <p style={{ width: '55%' }}>Select Delivery Address </p>
                   </Link>
                 </div>
               )}
