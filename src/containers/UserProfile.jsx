@@ -29,14 +29,14 @@ const UserProfile = ({ currentUser }) => {
             <div className="col-lg-2 col-md-4 p-0 order-lg-1 order-2 order-md-1">
               <div className="profile-left-body">
                 <div className="d-flex py-2">
-                  <a href="#" className="d-flex ">
+                  <Link to="/user/orders" className="d-flex">
                     <label for="Orders" className="p-1">
                       <iconify-icon icon="mdi:calendar-text-outline"></iconify-icon>
                     </label>
                     <p className="ps-3 profile-ptage" id="Orders">
                       Orders
                     </p>
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="d-flex py-2">

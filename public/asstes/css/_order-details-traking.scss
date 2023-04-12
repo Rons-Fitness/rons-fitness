@@ -1,6 +1,8 @@
 .Order-Details-traking-section {
   margin: 50px 0px;
-
+  .traking-progress-section-mobile {
+    display: none;
+  }
   .traking-progress-section {
     /* Progress Tracker v2 */
     position: relative;
@@ -23,10 +25,10 @@
       text-align: center;
 
       .step-head-name {
-        color: #303733;
+        color: var(--black);
       }
       .step-name {
-        color: #667085;
+        color: var(--black);
       }
       .disactive {
         color: #acabab;
@@ -67,10 +69,6 @@
       iconify-icon {
         color: white;
       }
-    }
-
-    .stepper-item.active {
-      // font-weight: 600;
     }
 
     .stepper-item.completed .step-counter {
@@ -217,7 +215,7 @@
   .total-box {
     // border: 1px solid red;
     // background: #8B8282;
-    padding-top: 70px;
+    margin-top: 90px;
 
     .table {
       thead {
@@ -237,9 +235,8 @@
       }
 
       .Price-detal {
-        padding-left: 10px;
+        padding: 10px 12px;
         font-weight: 700;
-
         color: rgba(0, 0, 0, 0.49);
       }
     }

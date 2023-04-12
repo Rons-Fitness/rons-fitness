@@ -641,21 +641,6 @@
   .Order-Details-traking-section .traking-progress-section .stepper-wrapper {
     left: 0px !important;
   }
-  .Order-Details-traking-section
-    .traking-progress-section
-    .stepper-item.completed::after {
-    top: 56px;
-  }
-  .Order-Details-traking-section
-    .traking-progress-section
-    .stepper-item.completed::before {
-    top: 56px;
-  }
-  .Order-Details-traking-section
-    .traking-progress-section
-    .stepper-item::before {
-    top: 56px;
-  }
 }
 /* ======== custom css ======= */
 @media (max-width: 1024px) {
@@ -784,8 +769,70 @@
     padding: 10px 5px;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .Order-Details-traking-section
+    .traking-progress-section
+    .stepper-item.completed::after {
+    top: 35px;
+  }
+  .Order-Details-traking-section
+    .traking-progress-section
+    .stepper-item.completed::before {
+    top: 35px;
+  }
+  .Order-Details-traking-section
+    .traking-progress-section
+    .stepper-item::before {
+    top: 35px;
+  }
+}
 @media (max-width: 767px) {
-  .my-order-section .my-order-body .my-order-contain .my-order-list {
+  .User-rating-review-section .rating-from h5 {
+    font-size: 17px !important;
+  }
+  .my-order-section .my-order-contain .my-order-list {
     text-align: center;
+  }
+  .traking-progress-section {
+    display: none;
+  }
+  .traking-progress-section-mobile {
+    display: block !important;
+  }
+  .traking-progress-section-mobile .traking-body {
+    padding: 20px 20px;
+    border: 1px solid white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  .traking-progress-section-mobile .traking-body .stepper-item {
+    display: flex;
+    gap: 30px;
+  }
+  .traking-progress-section-mobile .traking-body .stepper-item iconify-icon {
+    color: #acabab;
+    font-size: 30px;
+  }
+  .traking-progress-section-mobile
+    .traking-body
+    .stepper-item
+    iconify-icon::after {
+    content: '';
+    border-left: 1px solid black;
+    text-align: center;
+    position: relative;
+    right: -15px;
+    height: 30px;
+  }
+  .traking-progress-section-mobile
+    .traking-body
+    .stepper-item
+    .line-none::after {
+    display: none;
+  }
+  .traking-progress-section-mobile .traking-body .stepper-item .completed {
+    color: var(--them-colour);
+  }
+  .traking-progress-section-mobile .traking-body .discompleted {
+    color: #acabab;
   }
 } /*# sourceMappingURL=responsive.css.map */
