@@ -9,7 +9,10 @@ const AddressMain = ({ addresses, setDeliveryAddress, deleteAddress }) => {
   const history = useHistory();
   return (
     <>
-      <div className="delivery-section" style={{ background: '#FFFFFF' }}>
+      <div
+        className="delivery-section"
+        style={{ background: '#FFFFFF', minHeight: 'calc(100vh - 115px)' }}
+      >
         <div className="container">
           <div className="row">
             <div className="col-lg-7">

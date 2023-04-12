@@ -51,6 +51,7 @@ import {
   GET_USER_ORDERS,
   GET_USER_ORDERS_SUCCESS,
   GET_USER_ORDERS_ERROR,
+  LOG_OUT_USER,
 } from '../contants';
 
 const INIT_STATE = {
@@ -308,6 +309,15 @@ export default (state = INIT_STATE, action) => {
         loading: false,
         error: action.payload.message,
       };
+
+    case LOG_OUT_USER: {
+      window.localStorage.removeItem('auth_token');
+      window.location.href = '/';
+      return {
+        ...state,
+        currentUser: null,
+      };
+    }
     default:
       return { ...state };
   }

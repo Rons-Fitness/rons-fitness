@@ -57,6 +57,7 @@ import {
   GET_USER_ORDERS,
   GET_USER_ORDERS_SUCCESS,
   GET_USER_ORDERS_ERROR,
+  LOG_OUT_USER,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -321,4 +322,8 @@ export const getUserOrdersSuccess = (list) => ({
 export const getUserOrderError = (mesage) => ({
   type: GET_USER_ORDERS_ERROR,
   payload: { mesage },
+});
+
+export const logOutUser = () => ({
+  type: LOG_OUT_USER,
 });

@@ -1,5 +1,7 @@
 export const SET_SEARCH_TEXT = 'SET_SEARCH_TEXT';
 export const SET_AUTH_POPUP = 'SET_AUTH_POPUP';
+
+export const LOG_OUT_USER = 'LOG_OUT_USER';
 /* SETTINGS */
 
 /* AUTH */

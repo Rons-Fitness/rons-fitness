@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/self-closing-comp */
@@ -5,8 +7,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logOutUser } from 'redux/auth/actions';
 
-const UserProfile = ({ currentUser }) => {
+const UserProfile = ({ currentUser, logOut }) => {
   const [userDetails, setUserDetails] = useState({
     firstName: '',
     lastName: '',
@@ -105,8 +108,8 @@ const UserProfile = ({ currentUser }) => {
                   </a>
                 </div> */}
 
-                <div className="d-flex py-2">
-                  <a href="#" className="d-flex active-a ">
+                <div className="d-flex py-2" style={{ cursor: 'pointer' }}>
+                  <a onClick={() => logOut()} className="d-flex active-a ">
                     <label for="Log-out" className="p-1">
                       <iconify-icon icon="material-symbols:logout-rounded"></iconify-icon>
                     </label>
@@ -204,7 +207,7 @@ const mapStateToProps = ({ user }) => {
   return { currentUser, authPopupState };
 };
 const mapDispatchToProps = (dispatch) => ({
-  dispatch,
+  logOut: () => dispatch(logOutUser()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

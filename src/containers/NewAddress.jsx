@@ -5,7 +5,7 @@ import { createUserAddress } from 'redux/auth/actions';
 
 const NewAddress = ({ addNewAddress }) => {
   const [address, setAddress] = useState({
-    addressType: '',
+    addressType: 'home',
     shippingAddress: {
       firstName: '',
       lastName: '',
