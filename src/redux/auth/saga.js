@@ -71,6 +71,7 @@ import {
   setAuthPopup,
   getUserOrdersSuccess,
   getUserOrderError,
+  removeProductToWishList,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -406,6 +407,7 @@ function* addProductToCart({ payload }) {
     } = yield call(AddtoCartAsync, data);
     if (status === 200) {
       yield put(addToCartSuccess(cart));
+      yield put(removeProductToWishList(data._id));
       if (history) history.push('/user/cart');
     } else {
       yield put(setAuthPopup(true));

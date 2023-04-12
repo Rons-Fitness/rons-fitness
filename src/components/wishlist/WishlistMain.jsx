@@ -4,9 +4,10 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
-const WishlistMain = ({ wishlist, removeFromWishList }) => {
+const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
+  const history = useHistory();
   return (
     <div
       className="my-whish-section"
@@ -34,7 +35,7 @@ const WishlistMain = ({ wishlist, removeFromWishList }) => {
                 </div>
                 <div className="col-lg-9 com-md- col-sm-12">
                   <div className="my-wish-list">
-                    <a href="productsviewdetailes.html">
+                    <a>
                       <h5 className="align-items-center">{wish.name}</h5>
                     </a>
                     <p>{wish.brand}</p>
@@ -52,8 +53,21 @@ const WishlistMain = ({ wishlist, removeFromWishList }) => {
                       <p className="bin-body">
                         <i className="far fa-trash-alt" />
                       </p>
-                      <a href="cart-page.html">
-                        <p className="btn-mywhish">
+                      <a
+                        onClick={() =>
+                          addtoCart(
+                            {
+                              _id: wish._id,
+                              qty: 1,
+                            },
+                            history
+                          )
+                        }
+                      >
+                        <p
+                          className="btn-mywhish"
+                          style={{ cursor: 'pointer' }}
+                        >
                           <i className="bi bi-cart2" />
                           <span className=""> Move To Cart </span>
                         </p>

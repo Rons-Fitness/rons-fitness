@@ -4,7 +4,11 @@ import Footer from 'components/footer/Footer';
 import { connect } from 'react-redux';
 import Loader from 'components/common/loader/Loader';
 import WishlistMain from 'components/wishlist/WishlistMain';
-import { getUserWishList, removeProductToWishList } from 'redux/auth/actions';
+import {
+  addProductToCart,
+  getUserWishList,
+  removeProductToWishList,
+} from 'redux/auth/actions';
 import NoItemsFound from 'components/notFound/NoItemsFound';
 import { useHistory } from 'react-router-dom';
 
@@ -14,6 +18,7 @@ const Wishlist = ({
   wishlist,
   getWishList,
   removeFromWishList,
+  addtoCart,
 }) => {
   useEffect(() => {
     getWishList();
@@ -38,6 +43,7 @@ const Wishlist = ({
           wishlist={wishlist}
           keyword={keyword}
           removeFromWishList={removeFromWishList}
+          addtoCart={addtoCart}
         />
       ) : (
         <NoItemsFound />
@@ -55,6 +61,7 @@ const mapStateToProps = ({ user }) => {
 const mapDispatchToProps = (dispatch) => ({
   getWishList: () => dispatch(getUserWishList()),
   removeFromWishList: (_id) => dispatch(removeProductToWishList(_id)),
+  addtoCart: (data, history) => dispatch(addProductToCart(data, history)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Wishlist);
