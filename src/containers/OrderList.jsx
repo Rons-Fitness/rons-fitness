@@ -52,7 +52,7 @@ const OrderList = ({ getOrders, loading, orders, keyword }) => {
                               <a>
                                 <h5>
                                   {moment(order.createdAt).format(
-                                    'MMMM Do YYYY ,  h:mm a'
+                                    'Do MMMM YYYY ,  h:mm a'
                                   )}
                                 </h5>
                               </a>

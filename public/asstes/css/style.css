@@ -1672,7 +1672,7 @@
 }
 .Checkout-section .billing-body form .address-types-body {
   padding-top: 10px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
 }
 .Checkout-section .billing-body form .address-types-body p {
   color: #827e7e;
@@ -1721,6 +1721,9 @@
 .Checkout-section .billing-body .shipping-btn:hover {
   color: white;
   box-shadow: inset 400px 0 0 0 var(--btn-hover);
+}
+.activeAddressType {
+  background-color: var(--them-colour) !important;
 }
 
 /* =================== Checkout section End =============== */
