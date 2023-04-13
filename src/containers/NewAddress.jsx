@@ -2,9 +2,9 @@ import AddressForm from 'components/address/AddressForm';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createUserAddress } from 'redux/auth/actions';
+import { changeSearchText, createUserAddress } from 'redux/auth/actions';
 
-const NewAddress = ({ addNewAddress, keyword }) => {
+const NewAddress = ({ addNewAddress, keyword, setSearchText }) => {
   const history = useHistory();
   const [address, setAddress] = useState({
     addressType: 'home',
@@ -32,6 +32,10 @@ const NewAddress = ({ addNewAddress, keyword }) => {
     },
   });
   useEffect(() => {
+    setSearchText('');
+  }, []);
+
+  useEffect(() => {
     if (keyword && keyword.length > 0) history.push('/products');
   }, [keyword]);
 
@@ -55,6 +59,7 @@ const mapStateToProps = ({ product, user }) => {
 const mapDispatchToProps = (dispatch) => ({
   addNewAddress: (address, history) =>
     dispatch(createUserAddress(address, history)),
+  setSearchText: (text) => dispatch(changeSearchText(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewAddress);

@@ -2,13 +2,18 @@ import AddressForm from 'components/address/AddressForm';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { getAddressById, updateUserAddress } from 'redux/auth/actions';
+import {
+  changeSearchText,
+  getAddressById,
+  updateUserAddress,
+} from 'redux/auth/actions';
 
 const EditAddress = ({
   getAddressFromId,
   selectedAddress,
   updateAddress,
   keyword,
+  setSearchText,
 }) => {
   const { id } = useParams();
   const history = useHistory();
@@ -47,6 +52,10 @@ const EditAddress = ({
   }, [id, getAddressFromId]);
 
   useEffect(() => {
+    setSearchText('');
+  }, []);
+
+  useEffect(() => {
     if (keyword && keyword.length > 0) history.push('/products');
   }, [keyword]);
 
@@ -69,6 +78,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateAddress: (address, history) =>
     dispatch(updateUserAddress(address, history)),
   getAddressFromId: (_id) => dispatch(getAddressById(_id)),
+  setSearchText: (text) => dispatch(changeSearchText(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditAddress);

@@ -4,7 +4,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { getSingleProduct } from 'redux/actions';
-import { addProductToCart, addProductToWishList } from 'redux/auth/actions';
+import {
+  addProductToCart,
+  addProductToWishList,
+  changeSearchText,
+} from 'redux/auth/actions';
 // import Error404 from 'components/notFound/Error404';
 
 const ProductDetails = ({
@@ -14,6 +18,7 @@ const ProductDetails = ({
   addtoCart,
   addToWishlist,
   keyword,
+  setSearchText,
 }) => {
   const { id } = useParams();
   const history = useHistory();
@@ -21,6 +26,10 @@ const ProductDetails = ({
   useEffect(() => {
     if (id) getProductById(id);
   }, [id, getProductById]);
+
+  useEffect(() => {
+    setSearchText('');
+  }, []);
 
   useEffect(() => {
     if (keyword && keyword.length > 0) history.push('/products');
@@ -51,6 +60,7 @@ const mapDispatchToProps = (dispatch) => ({
   addtoCart: (_id, history) => dispatch(addProductToCart(_id, history)),
   addToWishlist: (_id, inWishlist) =>
     dispatch(addProductToWishList(_id, inWishlist)),
+  setSearchText: (text) => dispatch(changeSearchText(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetails);

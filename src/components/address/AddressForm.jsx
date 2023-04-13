@@ -37,14 +37,14 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
         data: { data, success },
       } = await API.get(`/address/pincode/${pin}`);
       if (success) {
-        const { stateName, taluk, country } = data;
+        const { stateName, districtName, country } = data;
         setAddress((oldVal) => {
           return {
             ...oldVal,
             [type]: {
               ...oldVal[type],
               state: stateName,
-              city: taluk,
+              city: districtName,
               country,
             },
           };

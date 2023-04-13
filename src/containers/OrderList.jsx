@@ -6,17 +6,22 @@ import moment from 'moment';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { getUserOrders } from 'redux/auth/actions';
+import { changeSearchText, getUserOrders } from 'redux/auth/actions';
 
-const OrderList = ({ getOrders, loading, orders, keyword }) => {
+const OrderList = ({ getOrders, loading, orders, keyword, setSearchText }) => {
   useEffect(() => {
     getOrders();
   }, [getOrders]);
 
   const history = useHistory();
   useEffect(() => {
+    setSearchText('');
+  }, []);
+
+  useEffect(() => {
     if (keyword && keyword.length > 0) history.push('/products');
   }, [keyword]);
+
   return (
     <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
       {loading ? (
@@ -90,6 +95,7 @@ const mapStateToProps = ({ user }) => {
 };
 const mapDispatchToProps = (dispatch) => ({
   getOrders: () => dispatch(getUserOrders()),
+  setSearchText: (text) => dispatch(changeSearchText(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderList);

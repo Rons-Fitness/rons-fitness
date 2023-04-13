@@ -6,11 +6,17 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { getSingleProduct } from 'redux/actions';
-import { addEditUserReview } from 'redux/auth/actions';
+import { addEditUserReview, changeSearchText } from 'redux/auth/actions';
 
-const EditReview = ({ getProductById, selectedProduct, updateReview }) => {
+const EditReview = ({
+  getProductById,
+  selectedProduct,
+  updateReview,
+  setSearchText,
+}) => {
   const { id } = useParams();
   const history = useHistory();
+
   const image =
     (selectedProduct &&
       selectedProduct.image.find((el) => el.url !== '').url) ||
@@ -21,6 +27,9 @@ const EditReview = ({ getProductById, selectedProduct, updateReview }) => {
     comment: '',
   });
 
+  useEffect(() => {
+    setSearchText('');
+  }, []);
   useEffect(() => {
     if (id) getProductById(id);
   }, [id, getProductById]);
@@ -158,6 +167,7 @@ const mapDispatchToProps = (dispatch) => ({
   getProductById: (id) => dispatch(getSingleProduct(id)),
   updateReview: (review, history) =>
     dispatch(addEditUserReview(review, history)),
+  setSearchText: (text) => dispatch(changeSearchText(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditReview);

@@ -6,6 +6,7 @@ import CartMain from 'components/cart/CartMain';
 import Loader from 'components/common/loader/Loader';
 import {
   addProductToCart,
+  changeSearchText,
   deliverToThisAddress,
   getUserAddresses,
   getUserDetails,
@@ -23,12 +24,17 @@ function Cart({
   addressToDeliver,
   currentUser,
   getLoggedInUserDetails,
+  setSearchText,
 }) {
   // const selectedAdd = JSON.parse(localStorage.getItem('selected_address'));
   const history = useHistory();
   useEffect(() => {
     getLoggedInUserDetails();
     // if (selectedAdd) setDeliveryAddress(selectedAdd);
+  }, []);
+
+  useEffect(() => {
+    setSearchText('');
   }, []);
 
   useEffect(() => {
@@ -72,6 +78,7 @@ const mapDispatchToProps = (dispatch) => ({
   getAddresses: () => dispatch(getUserAddresses()),
   setDeliveryAddress: (address) => dispatch(deliverToThisAddress(address)),
   getLoggedInUserDetails: () => dispatch(getUserDetails()),
+  setSearchText: (text) => dispatch(changeSearchText(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

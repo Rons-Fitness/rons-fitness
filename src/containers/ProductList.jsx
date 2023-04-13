@@ -3,7 +3,11 @@ import ProductListMain from 'components/products/ProductListMain';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getProducts } from 'redux/actions';
-import { addProductToCart, addProductToWishList } from 'redux/auth/actions';
+import {
+  addProductToCart,
+  addProductToWishList,
+  changeSearchText,
+} from 'redux/auth/actions';
 import { getHomeScreenData } from 'redux/product/actions';
 
 function ProductList({
@@ -47,6 +51,7 @@ const mapDispatchToProps = (dispatch) => ({
   addtoCart: (_id, history) => dispatch(addProductToCart(_id, history)),
   addToWishlist: (_id, inWishlist) =>
     dispatch(addProductToWishList(_id, inWishlist)),
+  setSearchText: (text) => dispatch(changeSearchText(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

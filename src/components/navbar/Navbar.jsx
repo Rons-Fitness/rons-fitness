@@ -216,12 +216,24 @@ const Navbar = ({
                   </ul>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/blog">
+                  <Link
+                    className="nav-link"
+                    to="/blog"
+                    onClick={() => {
+                      setSearchText('');
+                    }}
+                  >
                     Blog
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link " to="/contact-us">
+                  <Link
+                    className="nav-link "
+                    to="/contact-us"
+                    onClick={() => {
+                      setSearchText('');
+                    }}
+                  >
                     Contact
                   </Link>
                 </li>
@@ -262,7 +274,12 @@ const Navbar = ({
                     </a>
                   </>
                 ) : (
-                  <Link to="/user/profile">
+                  <Link
+                    to="/user/profile"
+                    onClick={() => {
+                      setSearchText('');
+                    }}
+                  >
                     <p className="shoping-cart">
                       <a href="cart-page.html">
                         <i class="bi bi-person" />
@@ -270,7 +287,12 @@ const Navbar = ({
                     </p>
                   </Link>
                 )}
-                <Link to="/user/cart">
+                <Link
+                  to="/user/cart"
+                  onClick={() => {
+                    setSearchText('');
+                  }}
+                >
                   <p className="shoping-cart">
                     <a href="cart-page.html">
                       <i className="bi bi-cart2" />

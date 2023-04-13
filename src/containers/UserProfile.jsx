@@ -7,9 +7,9 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { logOutUser } from 'redux/auth/actions';
+import { changeSearchText, logOutUser } from 'redux/auth/actions';
 
-const UserProfile = ({ currentUser, logOut, keyword }) => {
+const UserProfile = ({ currentUser, logOut, keyword, setSearchText }) => {
   const history = useHistory();
   const [userDetails, setUserDetails] = useState({
     firstName: '',
@@ -25,6 +25,10 @@ const UserProfile = ({ currentUser, logOut, keyword }) => {
         mobileNo: currentUser.mobileNo,
       });
   }, [currentUser]);
+
+  useEffect(() => {
+    setSearchText('');
+  }, []);
 
   useEffect(() => {
     if (keyword && keyword.length > 0) history.push('/products');
@@ -214,6 +218,7 @@ const mapStateToProps = ({ user }) => {
 };
 const mapDispatchToProps = (dispatch) => ({
   logOut: () => dispatch(logOutUser()),
+  setSearchText: (text) => dispatch(changeSearchText(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);

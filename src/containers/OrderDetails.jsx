@@ -6,7 +6,7 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getOrderById } from 'redux/auth/actions';
+import { changeSearchText, getOrderById } from 'redux/auth/actions';
 
 const OrderDetails = ({ getOrderDetails, selectedOrder }) => {
   const { id } = useParams();
@@ -242,6 +242,7 @@ const mapStateToProps = ({ product, user }) => {
 };
 const mapDispatchToProps = (dispatch) => ({
   getOrderDetails: (_id) => dispatch(getOrderById(_id)),
+  setSearchText: (text) => dispatch(changeSearchText(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderDetails);

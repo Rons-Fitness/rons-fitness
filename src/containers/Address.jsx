@@ -3,6 +3,7 @@ import AddressMain from 'components/address/AddressMain';
 import Footer from 'components/footer/Footer';
 import { connect } from 'react-redux';
 import {
+  changeSearchText,
   deleteUserAddress,
   deliverToThisAddress,
   getUserAddresses,
@@ -15,8 +16,13 @@ const Address = ({
   setDeliveryAddress,
   deleteAddress,
   keyword,
+  setSearchText,
 }) => {
   const history = useHistory();
+  useEffect(() => {
+    setSearchText('');
+  }, []);
+
   useEffect(() => {
     if (keyword && keyword.length > 0) history.push('/products');
   }, [keyword]);
@@ -45,6 +51,7 @@ const mapDispatchToProps = (dispatch) => ({
   getAddresses: () => dispatch(getUserAddresses()),
   setDeliveryAddress: (address) => dispatch(deliverToThisAddress(address)),
   deleteAddress: (_id) => dispatch(deleteUserAddress(_id)),
+  setSearchText: (text) => dispatch(changeSearchText(text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Address);
