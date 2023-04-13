@@ -2,7 +2,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { updateUserAddress } from 'redux/auth/actions';
 
 const AddressBox = ({
   _id,
@@ -11,6 +13,7 @@ const AddressBox = ({
   billingAddress,
   deleteAddress,
   setDeliveryAddress,
+  updateAddress,
 }) => {
   const history = useHistory();
   const [activeStatus, setactiveStatus] = useState(false);
@@ -59,6 +62,12 @@ const AddressBox = ({
               shippingAddress,
               billingAddress,
             });
+            updateAddress({
+              _id,
+              addressType,
+              shippingAddress,
+              billingAddress,
+            });
             history.push('/user/cart');
           }}
         >
@@ -71,4 +80,14 @@ const AddressBox = ({
   );
 };
 
-export default AddressBox;
+const mapStateToProps = ({ user }) => {
+  const { keyword, selectedAddress, loading } = user;
+
+  return { selectedAddress, keyword, loading };
+};
+const mapDispatchToProps = (dispatch) => ({
+  updateAddress: (address, history) =>
+    dispatch(updateUserAddress(address, history)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddressBox);

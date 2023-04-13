@@ -32,7 +32,13 @@ const Address = ({
   }, [getAddresses]);
 
   return (
-    <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
+    <div
+      style={{
+        minHeight: 'calc(100vh - 115px)',
+        overflow: 'auto',
+        background: 'rgb(254, 249, 241)',
+      }}
+    >
       <AddressMain
         addresses={addresses}
         setDeliveryAddress={setDeliveryAddress}

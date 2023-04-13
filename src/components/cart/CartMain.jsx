@@ -26,6 +26,7 @@ const CartMain = ({
 
   const handlePayment = async (addressId) => {
     try {
+      if (!addressId) return;
       const order = await API.post('/order', {
         addressId,
       });
@@ -86,6 +87,7 @@ const CartMain = ({
                 {cart &&
                   cart?.products.map(({ value, qty }) => (
                     <div className="my-cart-contain" key={value._id}>
+                      {console.log({ value })}
                       <div className="row">
                         <div className="col-lg-2 col-md- col-sm-12 d-flex align-items-center justify-content-center m-0 p-0">
                           <div className="my-cart-img-box">
@@ -204,7 +206,7 @@ const CartMain = ({
                     <div className="icon-box">
                       <iconify-icon icon="mdi:map-marker-outline" />{' '}
                     </div>
-                    <div>
+                    <div style={{ width: '100%' }}>
                       <div className="Delivery-at">
                         <p>
                           {' '}
@@ -236,9 +238,27 @@ const CartMain = ({
                 </div>
               ) : (
                 <div className="Delivery-fix-body">
-                  <Link to="/user/address" className="place-btn">
-                    <p style={{ width: '55%' }}>Select Delivery Address </p>
-                  </Link>
+                  <div className="Delivery-at-contain">
+                    <div className="icon-box">
+                      <iconify-icon icon="mdi:map-marker-outline" />{' '}
+                    </div>
+                    <div>
+                      <div className="Delivery-at">
+                        <Link to="/user/address" className="Change">
+                          <p style={{ margin: 'auto', color: '#f7a742' }}>
+                            Select Delivery Address
+                          </p>{' '}
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                  <a
+                    onClick={() => handlePayment(addressToDeliver._id)}
+                    className="place-btn"
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <p>Place Order</p>
+                  </a>
                 </div>
               )}
             </div>

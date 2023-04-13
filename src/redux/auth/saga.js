@@ -509,7 +509,7 @@ function* updateAddress({ payload }) {
   try {
     const { status } = yield call(updateAddressAsync, address);
     if (status === 200) {
-      history.push('/user/address');
+      if (history) history.push('/user/address');
     } else {
       yield put(updateUserAddressError('Something went wrong'));
     }

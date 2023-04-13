@@ -42,7 +42,13 @@ function Cart({
   }, [keyword]);
 
   return (
-    <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
+    <div
+      style={{
+        minHeight: 'calc(100vh - 115px)',
+        overflow: 'auto',
+        background: '#FFFFFF',
+      }}
+    >
       {loading ? (
         <Loader />
       ) : (

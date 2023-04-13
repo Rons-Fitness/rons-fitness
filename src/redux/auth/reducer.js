@@ -55,6 +55,7 @@ import {
   GET_ORDER_BY_ID,
   GET_ORDER_BY_ID_SUCCESS,
   GET_ORDER_BY_ID_ERROR,
+  DELETE_PRODUCT_FROM_CART,
 } from '../contants';
 
 const INIT_STATE = {
@@ -91,6 +92,7 @@ export default (state = INIT_STATE, action) => {
         ...state,
         loading: false,
         currentUser: action.payload,
+        addressToDeliver: action.payload.address,
         error: '',
       };
     case GET_USER_DETAILS_ERROR:
@@ -233,9 +235,15 @@ export default (state = INIT_STATE, action) => {
       };
     case ADD_PRODUCT_TO_CART_ERROR:
       return { ...state, error: action.payload.message };
+    case DELETE_PRODUCT_FROM_CART:
+      return {
+        ...state,
+        loading: true,
+      };
     case DELETE_PRODUCT_FROM_CART_SUCCESS:
       return {
         ...state,
+        loading: false,
         currentUser: { ...state.currentUser, cart: action.payload },
       };
     case DELETE_PRODUCT_FROM_CART_ERROR:

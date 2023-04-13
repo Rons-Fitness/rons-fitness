@@ -23,7 +23,7 @@ const ProductListing = ({
       <div className="container-fluid">
         <div className="slider-card">
           <div className=" trending-head">
-            <h1>{type}</h1>
+            <h1 style={{ zIndex: 1 }}>{type}</h1>
           </div>
           <div className="swiper slider-cat">
             <Swiper

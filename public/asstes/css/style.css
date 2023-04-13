@@ -3037,6 +3037,25 @@ select:focus {
   transform: rotate(176deg);
   z-index: -1;
 }
+
+.dead-link {
+  position: absolute !important;
+}
+
+.dead-link::after {
+  content: '';
+  background-color: var(--them-colour);
+  height: 19px;
+  width: 107px;
+  border-radius: 128px 0px 144px 0px;
+  position: absolute;
+  right: -15px;
+  top: 26px;
+  /* left: 0px; */
+  transform: rotate(173deg);
+  z-index: -999;
+}
+
 .brnad-home-section .swiper-wrapper .brand-img-box {
   width: 50%;
   margin-inline: auto;

@@ -10,8 +10,8 @@ const BrandListing = ({ brands = [], isMobile, isTablet }) => {
     <div className="brnad-home-section">
       <div className="container-fluid">
         <div className="brand-section">
-          <div className=" trending-head">
-            <h1 className="">BRAND RANGE</h1>
+          <div className=" trending-head" style={{ height: 70 }}>
+            <h1 className="dead-link">BRAND RANGE</h1>
           </div>
           <div className="swiper brandslider">
             <Swiper

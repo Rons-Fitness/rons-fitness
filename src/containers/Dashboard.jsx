@@ -42,7 +42,13 @@ const Dashboard = ({
   }, [keyword]);
 
   return (
-    <div style={{ minHeight: 'calc(100vh - 115px)', overflow: 'auto' }}>
+    <div
+      style={{
+        minHeight: 'calc(100vh - 115px)',
+        overflow: 'auto',
+        background: 'rgb(254, 249, 241)',
+      }}
+    >
       <DashboardMain
         homeScreenData={homeScreenData}
         addtoCart={addtoCart}
