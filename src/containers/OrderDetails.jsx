@@ -148,7 +148,11 @@ const OrderDetails = ({ getOrderDetails, selectedOrder }) => {
             <div className=" order-details-traking-section  ">
               {orderItems &&
                 orderItems.map((item) => (
-                  <OrderItem key={item.key} item={item} />
+                  <OrderItem
+                    key={item.key}
+                    item={item}
+                    currentOrderStatus={currentOrderStatus}
+                  />
                 ))}
             </div>
           </div>

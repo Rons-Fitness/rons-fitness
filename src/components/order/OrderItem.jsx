@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const OrderItem = ({ item }) => {
+const OrderItem = ({ item, currentOrderStatus }) => {
   const { name, image, alreadyReviewed, price, qty, userReview, _id } = item;
 
   return (
@@ -31,25 +31,34 @@ const OrderItem = ({ item }) => {
             </div>
           </div>
         </div>
-        <div className="col-lg-3 col-md-3">
-          <Link to={`/user/order/${_id}/review`}>
-            <div className="star-rating">
-              <a>
-                {userReview &&
-                  [...Array(Number(userReview.rating) || 0)].map((active) => (
-                    <i className="fas fa-star active " key={active} />
-                  ))}
-                {userReview &&
-                  [...Array(5 - Number(userReview.rating) || 0)].map(
-                    (inActive) => <i className="fas fa-star" key={inActive} />
-                  )}
-              </a>
+        {currentOrderStatus &&
+          currentOrderStatus.status === 'Order Delivered' && (
+            <div className="col-lg-3 col-md-3">
+              <Link to={`/user/order/${_id}/review`}>
+                <div className="star-rating">
+                  <a>
+                    {userReview &&
+                      [...Array(Number(userReview.rating) || 0)].map(
+                        (active) => (
+                          <i className="fas fa-star active " key={active} />
+                        )
+                      )}
+                    {userReview &&
+                      [...Array(5 - Number(userReview.rating) || 0)].map(
+                        (inActive) => (
+                          <i className="fas fa-star" key={inActive} />
+                        )
+                      )}
+                  </a>
+                </div>
+                <div className="rating-a" style={{ cursor: 'pointer' }}>
+                  <a>
+                    {alreadyReviewed ? 'Edit Review' : 'Write a Review here'}
+                  </a>
+                </div>
+              </Link>
             </div>
-            <div className="rating-a" style={{ cursor: 'pointer' }}>
-              <a>{alreadyReviewed ? 'Edit Review' : 'Write a Review here'}</a>
-            </div>
-          </Link>
-        </div>
+          )}
       </div>
     </div>
   );
