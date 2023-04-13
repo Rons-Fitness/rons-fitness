@@ -33,6 +33,7 @@ import {
   LIKE_DISLIKE_PRODUCT_REVIEW,
   GET_USER_ORDERS,
   GET_ORDER_BY_ID,
+  ADD_EDIT_USER_REVIEW,
 } from '../contants';
 
 import {
@@ -585,6 +586,29 @@ export function* watchLikeDislikeProductReview() {
   yield takeEvery(LIKE_DISLIKE_PRODUCT_REVIEW, likeDislikeProductReview);
 }
 
+const addEditUserReviewAsync = async (review) => {
+  const { _id } = review;
+  const res = await API.post(`/product/${_id}/review`, review);
+  console.log({ res });
+  return res;
+};
+
+function* addEditUserReview({ payload }) {
+  const { review, history } = payload;
+  try {
+    const { status } = yield call(addEditUserReviewAsync, review);
+    console.log({ status, history });
+    if (status === 201) history.push('/user/orders');
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* watchAddEditUserReview() {
+  yield takeEvery(ADD_EDIT_USER_REVIEW, addEditUserReview);
+}
+
+// user orders
 const getUserOrdersAsync = async () => {
   const res = await API.get('/order/myorders');
   return res;
@@ -632,6 +656,7 @@ export function* watchGetOrderByID() {
   console.log('take');
   yield takeEvery(GET_ORDER_BY_ID, getOrderByID);
 }
+
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -655,5 +680,6 @@ export default function* rootSaga() {
     fork(watchLikeDislikeProductReview),
     fork(watchGetUserOrders),
     fork(watchGetOrderByID),
+    fork(watchAddEditUserReview),
   ]);
 }

@@ -61,6 +61,7 @@ import {
   GET_ORDER_BY_ID,
   GET_ORDER_BY_ID_SUCCESS,
   GET_ORDER_BY_ID_ERROR,
+  ADD_EDIT_USER_REVIEW,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -311,6 +312,11 @@ export const deliverToThisAddress = (address) => ({
 export const likeDislikeProductReview = (_id, liked) => ({
   type: LIKE_DISLIKE_PRODUCT_REVIEW,
   payload: { _id, liked },
+});
+
+export const addEditUserReview = (review, history) => ({
+  type: ADD_EDIT_USER_REVIEW,
+  payload: { review, history },
 });
 
 export const getUserOrders = () => ({

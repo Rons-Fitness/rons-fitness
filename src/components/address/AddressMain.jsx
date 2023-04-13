@@ -1,12 +1,14 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import AddressBox from './AddressBox';
 
 const AddressMain = ({ addresses, setDeliveryAddress, deleteAddress }) => {
-  const history = useHistory();
   return (
     <>
       <div
@@ -25,62 +27,15 @@ const AddressMain = ({ addresses, setDeliveryAddress, deleteAddress }) => {
                 </div>
                 {addresses.map(
                   ({ _id, addressType, shippingAddress, billingAddress }) => (
-                    <div className="delivery-contain" key={_id}>
-                      <div className="delivery-name">
-                        <div>
-                          <h5>
-                            {shippingAddress.firstName}{' '}
-                            {shippingAddress.lastName}
-                            <span className="home-tag">{addressType}</span>
-                          </h5>
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-8">
-                        <p className="address-write">
-                          {shippingAddress.addressLine1}
-                          <br />
-                          {shippingAddress.addressLine2}, <br />
-                          {shippingAddress.city}-{shippingAddress.pinCode}{' '}
-                          <br />
-                          {shippingAddress.phoneNo}
-                        </p>
-                      </div>
-                      <div className="fw-semibold edit">
-                        <Link to={`/user/address/edit/${_id}`}> Edit </Link>
-                        <span
-                          className="Delete-colour"
-                          onClick={() => deleteAddress(_id)}
-                        >
-                          Delete
-                        </span>
-                      </div>
-                      <div
-                        className="delivery-btn"
-                        onClick={() => {
-                          setDeliveryAddress({
-                            _id,
-                            addressType,
-                            shippingAddress,
-                            billingAddress,
-                          });
-
-                          localStorage.setItem(
-                            'selected_address',
-                            JSON.stringify({
-                              _id,
-                              addressType,
-                              shippingAddress,
-                              billingAddress,
-                            })
-                          );
-                          history.push('/user/cart');
-                        }}
-                      >
-                        <p>
-                          <a>Deliver to this Address</a>
-                        </p>
-                      </div>
-                    </div>
+                    <AddressBox
+                      key={_id}
+                      _id={_id}
+                      addressType={addressType}
+                      shippingAddress={shippingAddress}
+                      billingAddress={billingAddress}
+                      setDeliveryAddress={setDeliveryAddress}
+                      deleteAddress={deleteAddress}
+                    />
                   )
                 )}
               </div>

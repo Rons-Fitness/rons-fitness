@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 import Loader from 'components/common/loader/Loader';
@@ -56,10 +57,17 @@ const OrderList = ({ getOrders, loading, orders, keyword }) => {
                                 </h5>
                               </a>
                               <div>
-                                MuscleBlaze Test Pro & Ashwagandha 60 Tab Combo{' '}
-                                <span className="fw-semibold "> +3 more </span>
+                                {order.orderItems[0].name}{' '}
+                                <span className="fw-semibold ">
+                                  {Boolean(
+                                    Number(order.orderItems.length - 1)
+                                  ) &&
+                                    '+' +
+                                      Number(order.orderItems.length - 1) +
+                                      ' more'}
+                                </span>
                               </div>
-                              <p className="fw-semibold">&#8377 4000</p>
+                              <p className="fw-semibold">₹{order.total}</p>
                             </div>
                           </div>
                         </div>

@@ -36,6 +36,7 @@ const Blog = lazy(() => import('./containers/Blog'));
 const BlogDetails = lazy(() => import('./containers/BlogDetails'));
 const OrderList = lazy(() => import('./containers/OrderList'));
 const OrderDetails = lazy(() => import('./containers/OrderDetails'));
+const EditReview = lazy(() => import('./containers/EditReview'));
 const NotFound = lazy(() => import('containers/NotFound'));
 
 const App = () => {
@@ -114,6 +115,11 @@ const App = () => {
               exact
               path="/user/orders/:id"
               render={(props) => <OrderDetails {...props} />}
+            />
+            <ProtectedRoute
+              exact
+              path="/user/order/:id/review"
+              render={(props) => <EditReview {...props} />}
             />
             {/* <Route
                   path="/user"
