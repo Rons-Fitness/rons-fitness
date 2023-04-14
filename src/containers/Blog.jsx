@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 
 const Blog = () => {
@@ -7,7 +8,7 @@ const Blog = () => {
         <div className="blog-section-header">
           <h1>BLOG</h1>
           <p>
-            <a href="index.html">Continue Shopping</a>
+            <a>Continue Shopping</a>
           </p>
         </div>
         <div className="row">
@@ -24,7 +25,7 @@ const Blog = () => {
                   malesuada vitae ultrices in in neque, porta dignissim.
                   Adipiscing purus, cursus vulputate id id dictum at.
                 </p>
-                <a href="Single-Blog-page.html">Read More </a>
+                <a>Read More </a>
               </div>
 
               <div className="blog-contain">
@@ -38,7 +39,7 @@ const Blog = () => {
                   malesuada vitae ultrices in in neque, porta dignissim.
                   Adipiscing purus, cursus vulputate id id dictum at.
                 </p>
-                <a href="Single-Blog-page.html">Read More </a>
+                <a>Read More </a>
               </div>
 
               <div className="blog-contain">
@@ -52,7 +53,7 @@ const Blog = () => {
                   malesuada vitae ultrices in in neque, porta dignissim.
                   Adipiscing purus, cursus vulputate id id dictum at.
                 </p>
-                <a href="Single-Blog-page.html">Read More </a>
+                <a>Read More </a>
               </div>
             </div>
           </div>
