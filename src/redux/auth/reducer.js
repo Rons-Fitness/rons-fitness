@@ -56,6 +56,9 @@ import {
   GET_ORDER_BY_ID_SUCCESS,
   GET_ORDER_BY_ID_ERROR,
   DELETE_PRODUCT_FROM_CART,
+  UPDATE_USER_DETAILS,
+  UPDATE_USER_DETAILS_SUCCESS,
+  UPDATE_USER_DETAILS_ERROR,
 } from '../contants';
 
 const INIT_STATE = {
@@ -346,6 +349,12 @@ export default (state = INIT_STATE, action) => {
         currentUser: null,
       };
     }
+    case UPDATE_USER_DETAILS:
+      return { ...state };
+    case UPDATE_USER_DETAILS_SUCCESS:
+      return { ...state, currentUser: action.payload };
+    case UPDATE_USER_DETAILS_ERROR:
+      return { ...state, error: action.payload.message };
     default:
       return { ...state };
   }

@@ -62,6 +62,9 @@ import {
   GET_ORDER_BY_ID_SUCCESS,
   GET_ORDER_BY_ID_ERROR,
   ADD_EDIT_USER_REVIEW,
+  UPDATE_USER_DETAILS,
+  UPDATE_USER_DETAILS_SUCCESS,
+  UPDATE_USER_DETAILS_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -350,4 +353,19 @@ export const getOrderByIdError = (message) => ({
 
 export const logOutUser = () => ({
   type: LOG_OUT_USER,
+});
+
+export const updateUserDetails = (data) => ({
+  type: UPDATE_USER_DETAILS,
+  payload: data,
+});
+
+export const updateUserDetailsSuccess = (data) => ({
+  type: UPDATE_USER_DETAILS_SUCCESS,
+  payload: data,
+});
+
+export const updateUserDetailsError = (message) => ({
+  type: UPDATE_USER_DETAILS_ERROR,
+  payload: { message },
 });

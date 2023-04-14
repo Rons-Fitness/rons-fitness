@@ -43,7 +43,7 @@ const CartMain = ({
         name: 'Gym Cart',
         description: 'Test Transaction',
         image:
-          '	https://rons-fitness-dev.s3.ap-northeast-1.amazonaws.com/1680499818975.webp',
+          'https://rons-fitness-dev.s3.ap-northeast-1.amazonaws.com/1680499818975.webp',
         order_id: id,
         prefill: {
           name: firstName + lastName,

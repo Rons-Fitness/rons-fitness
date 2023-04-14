@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 import {
@@ -34,6 +35,7 @@ import {
   GET_USER_ORDERS,
   GET_ORDER_BY_ID,
   ADD_EDIT_USER_REVIEW,
+  UPDATE_USER_DETAILS,
 } from '../contants';
 
 import {
@@ -76,6 +78,8 @@ import {
   removeProductToWishList,
   getOrderByIdSuccess,
   getOrderByIdError,
+  updateUserDetailsSuccess,
+  updateUserDetailsError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -657,6 +661,28 @@ export function* watchGetOrderByID() {
   yield takeEvery(GET_ORDER_BY_ID, getOrderByID);
 }
 
+const updateUserDetailsAsync = async (data) => {
+  const res = await API.post('/user/profile', data);
+  return res;
+};
+
+function* updateUserDetails({ payload }) {
+  console.log({ payload });
+  try {
+    const { data, status } = yield call(updateUserDetailsAsync, payload);
+
+    if (status === 200) {
+      yield put(updateUserDetailsSuccess(data));
+    } else {
+      yield put(updateUserDetailsError('someting went wrong'));
+    }
+  } catch (error) {
+    yield put(updateUserDetailsError(error));
+  }
+}
+export function* watchUpdateUserDetails() {
+  yield takeEvery(UPDATE_USER_DETAILS, updateUserDetails);
+}
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -681,5 +707,6 @@ export default function* rootSaga() {
     fork(watchGetUserOrders),
     fork(watchGetOrderByID),
     fork(watchAddEditUserReview),
+    fork(watchUpdateUserDetails),
   ]);
 }

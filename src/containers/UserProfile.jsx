@@ -7,14 +7,25 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { changeSearchText, logOutUser } from 'redux/auth/actions';
+import {
+  changeSearchText,
+  logOutUser,
+  updateUserDetails,
+} from 'redux/auth/actions';
 
-const UserProfile = ({ currentUser, logOut, keyword, setSearchText }) => {
+const UserProfile = ({
+  currentUser,
+  logOut,
+  keyword,
+  setSearchText,
+  updateDetails,
+}) => {
   const history = useHistory();
   const [userDetails, setUserDetails] = useState({
     firstName: '',
     lastName: '',
     mobileNo: '',
+    email: '',
   });
 
   useEffect(() => {
@@ -23,6 +34,7 @@ const UserProfile = ({ currentUser, logOut, keyword, setSearchText }) => {
         firstName: currentUser.firstName,
         lastName: currentUser.lastName,
         mobileNo: currentUser.mobileNo,
+        email: currentUser.email,
       });
   }, [currentUser]);
 
@@ -136,7 +148,12 @@ const UserProfile = ({ currentUser, logOut, keyword, setSearchText }) => {
                   <h4>Edit Profile</h4>
                 </div>
                 <div>
-                  <form>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      updateDetails(userDetails);
+                    }}
+                  >
                     <div className="py-2">
                       <label for="fname" className="pb-2">
                         First Name
@@ -148,6 +165,11 @@ const UserProfile = ({ currentUser, logOut, keyword, setSearchText }) => {
                         id="fname"
                         name="fname"
                         value={userDetails.firstName}
+                        onChange={(e) =>
+                          setUserDetails((oldVal) => {
+                            return { ...oldVal, firstName: e.target.value };
+                          })
+                        }
                       />
                       <br />
                     </div>
@@ -162,6 +184,11 @@ const UserProfile = ({ currentUser, logOut, keyword, setSearchText }) => {
                         id="lname"
                         name="lname"
                         value={userDetails.lastName}
+                        onChange={(e) =>
+                          setUserDetails((oldVal) => {
+                            return { ...oldVal, lastName: e.target.value };
+                          })
+                        }
                       />
                       <br />
                     </div>
@@ -180,20 +207,25 @@ const UserProfile = ({ currentUser, logOut, keyword, setSearchText }) => {
                       />
                       <br />
                     </div>
-                    {/* <div className="py-2">
-                      <label for="Description" className="pb-2">
-                        Description
+                    <div className="py-2">
+                      <label for="lname" className="pb-2">
+                        Email
                       </label>
                       <br />
-                      <textarea
+                      <input
                         className="col-12"
-                        type="text"
-                        rows="5"
-                        id="Description"
-                        name="Description"
+                        id="Email"
+                        name="Email"
+                        type="email"
+                        value={userDetails.email}
+                        onChange={(e) =>
+                          setUserDetails((oldVal) => {
+                            return { ...oldVal, email: e.target.value };
+                          })
+                        }
                       />
                       <br />
-                    </div> */}
+                    </div>
                     <div className="text-center py-2">
                       <input
                         type="submit"
@@ -219,6 +251,7 @@ const mapStateToProps = ({ user }) => {
 const mapDispatchToProps = (dispatch) => ({
   logOut: () => dispatch(logOutUser()),
   setSearchText: (text) => dispatch(changeSearchText(text)),
+  updateDetails: (data) => dispatch(updateUserDetails(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
