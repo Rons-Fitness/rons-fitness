@@ -1554,6 +1554,8 @@
 .profile-section .profile-right-body input {
   border: 1px solid #1b1b1b;
   padding: 2px 4px;
+  height: 36px;
+  border-radius: 5px;
 }
 .profile-section .profile-right-body textarea {
   border: 1px solid #1b1b1b;
@@ -2170,6 +2172,12 @@
   align-items: center;
   justify-content: center;
   padding: 10px;
+}
+.my-order-img-box-green {
+  background-color: #1caf5e !important;
+}
+.my-order-img-box-red {
+  background-color: #ff2525 !important;
 }
 .Order-Details-traking-section .Order-ID-body .Order-ID-box img {
   width: 100%;

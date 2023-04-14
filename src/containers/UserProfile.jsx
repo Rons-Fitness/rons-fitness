@@ -49,7 +49,7 @@ const UserProfile = ({
   return (
     <div>
       <div className="profile-section">
-        <div className="container">
+        <div className="container" style={{ maxWidth: 1200 }}>
           <div className="row">
             <div className="col-lg-2 col-md-4 p-0 order-lg-1 order-2 order-md-1">
               <div className="profile-left-body">

@@ -27,7 +27,7 @@ const OrderItem = ({ item, currentOrderStatus }) => {
             </Link>
             <div className="Price-tag">
               <p>Qty: {qty}</p>
-              <p>Price : {price}</p>
+              <p>Price : ₹{qty * price}</p>
             </div>
           </div>
         </div>

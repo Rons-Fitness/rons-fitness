@@ -1,6 +1,7 @@
 /* eslint-disable prefer-template */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
+import classNames from 'classnames';
 import Loader from 'components/common/loader/Loader';
 import moment from 'moment';
 import React, { useEffect } from 'react';
@@ -39,21 +40,44 @@ const OrderList = ({ getOrders, loading, orders, keyword, setSearchText }) => {
               <div className="col-lg-8 com-md-9 col-sm-12">
                 <div className="my-order-body">
                   <div className="my-order-head">
-                    <h1>My Order</h1>
+                    <h1 style={{ zIndex: 1 }}>My Order</h1>
                   </div>
                   {orders.map((order) => (
                     <Link to={`/user/orders/${order._id}`} key={order._id}>
+                      {console.log({ order: order.currentOrderStatus })}
                       <div className="my-order-contain">
                         <div className="row">
                           <div className="col-lg-2 col-md-3    m-0 p-0">
                             <div className="d-flex justify-content-center align-items-center">
-                              <div className="my-order-img-box">
+                              <div
+                                className={classNames(
+                                  'my-order-img-box',
+                                  order.currentOrderStatus.status ===
+                                    'Order Delivered' &&
+                                    'my-order-img-box-green',
+                                  order.currentOrderStatus.status ===
+                                    'Cancelled' && 'my-order-img-box-red'
+                                )}
+                              >
                                 <a>
-                                  {' '}
-                                  <img
-                                    src="/asstes/img/order-logo/package.png"
-                                    alt=""
-                                  />
+                                  {order.currentOrderStatus &&
+                                  [
+                                    'Order Placed',
+                                    'Order Confirmed',
+                                    'Out For Delivery',
+                                  ].includes(
+                                    order.currentOrderStatus.status
+                                  ) ? (
+                                    <img
+                                      src="/asstes/img/order-logo/package.png"
+                                      alt=""
+                                    />
+                                  ) : (
+                                    <img
+                                      src="/asstes/img/order-logo/package 1.png"
+                                      alt=""
+                                    />
+                                  )}
                                 </a>
                               </div>
                             </div>
