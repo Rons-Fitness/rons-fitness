@@ -37,6 +37,9 @@ const BlogDetails = lazy(() => import('./containers/BlogDetails'));
 const OrderList = lazy(() => import('./containers/OrderList'));
 const OrderDetails = lazy(() => import('./containers/OrderDetails'));
 const EditReview = lazy(() => import('./containers/EditReview'));
+const AboutUs = lazy(() => import('./containers/AboutUs'));
+const PrivacyNPolicy = lazy(() => import('./containers/PrivacyNPolicy'));
+const TermsOfUse = lazy(() => import('./containers/TermsOfUse'));
 const NotFound = lazy(() => import('containers/NotFound'));
 
 const App = () => {
@@ -75,6 +78,21 @@ const App = () => {
               exact
               path="/blog/:id"
               render={(props) => <BlogDetails {...props} />}
+            />
+            <Route
+              exact
+              path="/about-us"
+              render={(props) => <AboutUs {...props} />}
+            />
+            <Route
+              exact
+              path="/privacy-n-policy"
+              render={(props) => <PrivacyNPolicy {...props} />}
+            />
+            <Route
+              exact
+              path="/terms-of-use"
+              render={(props) => <TermsOfUse {...props} />}
             />
             <ProtectedRoute
               exact

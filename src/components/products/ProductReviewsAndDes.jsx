@@ -42,7 +42,11 @@ const ProductReviewsAndDes = ({
               </button>
             </div>
           </nav>
-          <div className="tab-content" id="nav-tabContent">
+          <div
+            className="tab-content"
+            id="nav-tabContent"
+            style={{ background: '#fef9f1 ' }}
+          >
             <div
               className="tab-pane fade show active"
               id="nav-home"

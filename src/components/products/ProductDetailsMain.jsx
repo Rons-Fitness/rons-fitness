@@ -28,7 +28,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
   return (
     <>
       <section className="xzoom_part">
-        <div className="container" style={{ backgroundColor: 'white' }}>
+        <div className="container" style={{ backgroundColor: '#fef9f1 ' }}>
           <div className="row">
             <div className="col-lg-5 col-md-6   x-zoom-body ">
               <div className="x-zoomin-responsive">

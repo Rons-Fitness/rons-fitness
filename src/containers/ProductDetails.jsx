@@ -40,7 +40,7 @@ const ProductDetails = ({
       style={{
         minHeight: 'calc(100vh - 115px)',
         overflow: 'auto',
-        background: 'rgb(244, 246, 245)',
+        background: '#FFF',
       }}
     >
       {loading ? (

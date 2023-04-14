@@ -85,6 +85,46 @@ const UserProfile = ({
                     </p>
                   </Link>
                 </div>
+                <div className="d-flex py-2">
+                  <Link to="/about-us" className="d-flex ">
+                    <label for="Wishlist" className="p-1">
+                      <iconify-icon icon="material-symbols:info-outline-rounded"></iconify-icon>
+                    </label>
+                    <p className="ps-3 profile-ptage" id="Wishlist">
+                      About Us
+                    </p>
+                  </Link>
+                </div>
+                <div className="d-flex py-2">
+                  <Link to="/contact-us" className="d-flex ">
+                    <label for="Wishlist" className="p-1">
+                      <iconify-icon icon="material-symbols:contact-support-outline"></iconify-icon>
+                    </label>
+                    <p className="ps-3 profile-ptage" id="Wishlist">
+                      Contact Us
+                    </p>
+                  </Link>
+                </div>
+                <div className="d-flex py-2">
+                  <Link to="/privacy-n-policy" className="d-flex ">
+                    <label for="Wishlist" className="p-1">
+                      <iconify-icon icon="material-symbols:privacy-tip-outline-rounded"></iconify-icon>
+                    </label>
+                    <p className="ps-3 profile-ptage" id="Wishlist">
+                      Privacy Policy
+                    </p>
+                  </Link>
+                </div>
+                <div className="d-flex py-2">
+                  <Link to="/terms-of-use" className="d-flex ">
+                    <label for="Wishlist" className="p-1">
+                      <iconify-icon icon="fluent:calendar-info-20-regular"></iconify-icon>
+                    </label>
+                    <p className="ps-3 profile-ptage" id="Wishlist">
+                      Terms of Use
+                    </p>
+                  </Link>
+                </div>
 
                 {/* <div className="d-flex py-2">
                   <Link to="/user/address" className="d-flex">
