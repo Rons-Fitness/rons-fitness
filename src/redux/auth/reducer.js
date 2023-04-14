@@ -230,14 +230,15 @@ export default (state = INIT_STATE, action) => {
     case DELETE_PRODUCT_FROM_WISHLIST_ERROR:
       return { ...state, loading: false, error: action.payload.message };
     case ADD_PRODUCT_TO_CART:
-      return { ...state };
+      return { ...state, loading: true };
     case ADD_PRODUCT_TO_CART_SUCCESS:
       return {
         ...state,
+        loading: false,
         currentUser: { ...state.currentUser, cart: action.payload },
       };
     case ADD_PRODUCT_TO_CART_ERROR:
-      return { ...state, error: action.payload.message };
+      return { ...state, error: action.payload.message, loading: false };
     case DELETE_PRODUCT_FROM_CART:
       return {
         ...state,

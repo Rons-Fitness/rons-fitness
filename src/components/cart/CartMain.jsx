@@ -109,7 +109,10 @@ const CartMain = ({
                               <h5>{value.name}</h5>
                             </a>
                             <p>{value.brand}</p>
-                            <div className="fw-semibold"> ₹ {value.price} </div>
+                            <div className="fw-semibold">
+                              {' '}
+                              ₹ {qty * value.price}{' '}
+                            </div>
                             <div className=" form-box ">
                               <div className="d-flex">
                                 <label for="number"> Qty :</label>
