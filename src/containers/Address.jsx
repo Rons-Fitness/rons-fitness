@@ -9,6 +9,7 @@ import {
   getUserAddresses,
 } from 'redux/auth/actions';
 import { useHistory } from 'react-router-dom';
+import Loader from 'components/common/loader/Loader';
 
 const Address = ({
   getAddresses,
@@ -17,6 +18,7 @@ const Address = ({
   deleteAddress,
   keyword,
   setSearchText,
+  loading,
 }) => {
   const history = useHistory();
   useEffect(() => {
@@ -39,18 +41,22 @@ const Address = ({
         background: 'rgb(254, 249, 241)',
       }}
     >
-      <AddressMain
-        addresses={addresses}
-        setDeliveryAddress={setDeliveryAddress}
-        deleteAddress={deleteAddress}
-      />
+      {loading ? (
+        <Loader />
+      ) : (
+        <AddressMain
+          addresses={addresses}
+          setDeliveryAddress={setDeliveryAddress}
+          deleteAddress={deleteAddress}
+        />
+      )}
       <Footer />
     </div>
   );
 };
 const mapStateToProps = ({ user }) => {
-  const { keyword, addresses } = user;
-  return { addresses, keyword };
+  const { keyword, addresses, loading } = user;
+  return { addresses, keyword, loading };
 };
 
 const mapDispatchToProps = (dispatch) => ({

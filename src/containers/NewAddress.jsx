@@ -1,10 +1,11 @@
 import AddressForm from 'components/address/AddressForm';
+import Loader from 'components/common/loader/Loader';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { changeSearchText, createUserAddress } from 'redux/auth/actions';
 
-const NewAddress = ({ addNewAddress, keyword, setSearchText }) => {
+const NewAddress = ({ addNewAddress, keyword, setSearchText, loading }) => {
   const history = useHistory();
   const [address, setAddress] = useState({
     addressType: 'home',
@@ -47,11 +48,16 @@ const NewAddress = ({ addNewAddress, keyword, setSearchText }) => {
         background: 'rgb(254, 249, 241)',
       }}
     >
-      <AddressForm
-        address={address}
-        setAddress={setAddress}
-        saveAddress={addNewAddress}
-      />
+      {' '}
+      {loading ? (
+        <Loader />
+      ) : (
+        <AddressForm
+          address={address}
+          setAddress={setAddress}
+          saveAddress={addNewAddress}
+        />
+      )}
     </div>
   );
 };

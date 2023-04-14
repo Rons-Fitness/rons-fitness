@@ -1,4 +1,5 @@
 import AddressForm from 'components/address/AddressForm';
+import Loader from 'components/common/loader/Loader';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
@@ -14,6 +15,7 @@ const EditAddress = ({
   updateAddress,
   keyword,
   setSearchText,
+  loading,
 }) => {
   const { id } = useParams();
   const history = useHistory();
@@ -67,11 +69,15 @@ const EditAddress = ({
         background: 'rgb(254, 249, 241)',
       }}
     >
-      <AddressForm
-        address={address}
-        setAddress={setAddress}
-        saveAddress={updateAddress}
-      />
+      {loading ? (
+        <Loader />
+      ) : (
+        <AddressForm
+          address={address}
+          setAddress={setAddress}
+          saveAddress={updateAddress}
+        />
+      )}
     </div>
   );
 };

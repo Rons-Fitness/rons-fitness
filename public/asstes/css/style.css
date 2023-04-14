@@ -1631,7 +1631,6 @@
 .Checkout-section .Checkout-left-body input {
   padding: 5px 5px;
   margin: 5px 0px;
-  color: #828282;
   border: 1px solid #828282;
   border-radius: 3px;
 }
@@ -1646,7 +1645,6 @@
 .Checkout-section .Checkout-left-body select {
   padding: 5px 5px;
   margin: 5px 0px;
-  color: #828282;
   border: 1px solid #828282;
   border-radius: 3px;
   background-color: white;
@@ -1688,7 +1686,6 @@
 .Checkout-section .billing-body form input {
   padding: 5px 5px;
   margin: 5px 0px;
-  color: #828282;
   border: 1px solid #828282;
   border-radius: 3px;
 }
@@ -1703,7 +1700,6 @@
 .Checkout-section .billing-body form select {
   padding: 5px 5px;
   margin: 5px 0px;
-  color: #828282;
   border: 1px solid #828282;
   border-radius: 3px;
   background-color: white;

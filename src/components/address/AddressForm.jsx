@@ -12,15 +12,32 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
   const [setAsAbove, setsetAsAbove] = useState(false);
 
   const changeDetails = (type, key, value) => {
-    setAddress((oldVal) => {
-      return {
-        ...oldVal,
-        [type]: {
-          ...oldVal[type],
-          [key]: value,
-        },
-      };
-    });
+    if (setAsAbove) {
+      if (type === 'shippingAddress')
+        setAddress((oldVal) => {
+          return {
+            ...oldVal,
+            shippingAddress: {
+              ...oldVal.shippingAddress,
+              [key]: value,
+            },
+            billingAddress: {
+              ...oldVal.billingAddress,
+              [key]: value,
+            },
+          };
+        });
+    } else {
+      setAddress((oldVal) => {
+        return {
+          ...oldVal,
+          [type]: {
+            ...oldVal[type],
+            [key]: value,
+          },
+        };
+      });
+    }
   };
   const changeAddressType = (value) => {
     setAddress((oldVal) => {
@@ -38,17 +55,38 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
       } = await API.get(`/address/pincode/${pin}`);
       if (success) {
         const { stateName, districtName, country } = data;
-        setAddress((oldVal) => {
-          return {
-            ...oldVal,
-            [type]: {
-              ...oldVal[type],
-              state: stateName,
-              city: districtName,
-              country,
-            },
-          };
-        });
+        if (setAsAbove) {
+          if (type === 'shippingAddress')
+            setAddress((oldVal) => {
+              return {
+                ...oldVal,
+                shippingAddress: {
+                  ...oldVal.shippingAddress,
+                  state: stateName,
+                  city: districtName,
+                  country,
+                },
+                billingAddress: {
+                  ...oldVal.billingAddress,
+                  state: stateName,
+                  city: districtName,
+                  country,
+                },
+              };
+            });
+        } else {
+          setAddress((oldVal) => {
+            return {
+              ...oldVal,
+              [type]: {
+                ...oldVal[type],
+                state: stateName,
+                city: districtName,
+                country,
+              },
+            };
+          });
+        }
       }
     }
   };
@@ -129,7 +167,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     required
                     className="col-12"
                     type="text"
-                    placeholder="Address line - 1"
+                    placeholder="Flat, house no, Building, company, Apartment"
                     value={shippingAddress.addressLine1}
                     onChange={(e) =>
                       changeDetails(
@@ -144,7 +182,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     required
                     className="col-12"
                     type="text"
-                    placeholder="Address line - 2"
+                    placeholder="Area , street, sector ,village "
                     value={shippingAddress.addressLine2}
                     onChange={(e) =>
                       changeDetails(
@@ -309,7 +347,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   required
                   className="col-12"
                   type="text"
-                  placeholder="Address line - 1"
+                  placeholder="Flat, house no, Building, company, Apartment"
                   value={billingAddress.addressLine1}
                   onChange={(e) =>
                     changeDetails(
@@ -324,7 +362,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   required
                   className="col-12"
                   type="text"
-                  placeholder="Address line - 2"
+                  placeholder="Area , street, sector ,village "
                   value={billingAddress.addressLine2}
                   onChange={(e) =>
                     changeDetails(

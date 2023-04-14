@@ -284,11 +284,13 @@ export default (state = INIT_STATE, action) => {
     case GET_ADDRESS_BY_ID_SUCCESS:
       return {
         ...state,
+        loading: false,
         selectedAddress: action.payload,
       };
     case GET_ADDRESS_BY_ID_ERROR:
       return {
         ...state,
+        loading: false,
         error: action.payload.message,
       };
     case DELIVER_TO_THIS_ADDRESS:
