@@ -12,6 +12,7 @@ import {
 import { adminRoot, currentUser } from 'constants/defaultValues';
 import { setCurrentUser } from 'helpers/Utils';
 import API from 'helpers/API';
+import Notification from 'components/Notification/Notification';
 import {
   LOGIN_USER,
   REGISTER_USER,
@@ -138,11 +139,14 @@ function* loginWithPhoneNumber({ payload }) {
     if (status === 200) {
       localStorage.setItem('mobileNo', JSON.stringify({ mobileNo }));
       yield put(authSuccess());
+      Notification('success', message);
     } else {
+      Notification('error', message);
       yield put(loginUserError(message));
     }
   } catch (error) {
     yield put(loginUserError(error));
+    Notification('error');
   }
 }
 
@@ -172,6 +176,7 @@ function* verifyOtp({ payload }) {
       status,
     } = yield call(verifyOtpAsync, mobileNo, otp);
     if (status === 200 && success) {
+      Notification('success', message);
       yield put(verifyOtpSuccess());
       localStorage.removeItem('mobileNo');
       localStorage.setItem('auth_token', token);
@@ -179,9 +184,11 @@ function* verifyOtp({ payload }) {
       yield put(setAuthPopup(false));
       window.location.reload();
     } else {
+      Notification('error', message);
       yield put(verifyOtpError(message));
     }
   } catch (error) {
+    Notification('error');
     yield put(verifyOtpError('something went wrong please try again'));
   }
 }
@@ -333,9 +340,11 @@ function* getUserWishList() {
       yield put(getUserWishListSuccess(data));
     } else {
       yield put(getUserWIshLIstError('someting went wrong'));
+      Notification('error');
     }
   } catch (error) {
     put(getUserWIshLIstError(error));
+    Notification('error');
   }
 }
 
@@ -350,22 +359,22 @@ const addToWishListAsync = async (_id, inWishlist) => {
   return res;
 };
 function* addToWishList({ payload }) {
-  console.log({ payload });
   const { _id, inWishlist } = payload;
   try {
     console.log({ inWishlist });
     const {
-      data: { data },
+      data: { data, message },
       status,
     } = yield call(addToWishListAsync, _id, inWishlist);
     if (status === 200) {
       yield put(addProductToWishListSuccess(data));
+      Notification('success', message);
     } else {
-      // yield put(setAuthPopup(true));
+      Notification('error', message);
       yield put(addProductToWishListError('add product to wishlist error'));
     }
   } catch (error) {
-    // yield put(setAuthPopup(true));
+    Notification('error');
     yield put(addProductToWishListError(error));
   }
 }
@@ -402,28 +411,31 @@ export function* watchRemoveFromWishList() {
 // cart
 const AddtoCartAsync = async ({ _id, qty = 1 }) => {
   const res = await API.post(`/user/cart/${_id}`, { qty });
+  console.log({ res });
   return res;
 };
 function* addProductToCart({ payload }) {
   const { data, history } = payload;
   try {
     const {
-      data: {
-        data: { cart },
-      },
+      data: { data: cartData, message },
       status,
     } = yield call(AddtoCartAsync, data);
     if (status === 200) {
-      yield put(addToCartSuccess(cart));
+      yield put(addToCartSuccess(cartData.cart));
       yield put(removeProductToWishList(data._id));
+      Notification('success', message);
       if (history) history.push('/user/cart');
     } else {
+      console.log('error');
       yield put(setAuthPopup(true));
-      yield put(addToCartError('something went wrong'));
+      yield put(addToCartError(message));
+      Notification('error', message);
     }
   } catch (err) {
     yield put(setAuthPopup(true));
     yield put(addToCartError(err));
+    Notification('error');
   }
 }
 export function* addProductToCartWatch() {
@@ -439,16 +451,20 @@ function* removeProductFromCart({ payload }) {
     const {
       data: {
         data: { cart },
+        message,
       },
       status,
     } = yield call(removeFromCartAsync, data);
     if (status === 200) {
       yield put(reomveFromCartSuccess(cart));
+      Notification('success', message);
     } else {
+      Notification('error', message);
       yield put(reomveFromCartError('something went wrong'));
     }
   } catch (err) {
     yield put(reomveFromCartError(err));
+    Notification('error');
   }
 }
 export function* removeProductFromCartWatch() {
@@ -479,23 +495,24 @@ export function* watchUserAddress() {
 }
 
 const createAddressAsync = async (address) => {
-  console.log({ address });
   const res = await API.post('/address', address);
   return res;
 };
 function* createAddress({ payload }) {
   const { address, history } = payload;
-  console.log({ history });
   try {
     const { data, status } = yield call(createAddressAsync, address);
     if (status === 201) {
       history.push('/user/address');
       yield put(createUserAddressSuccess(data));
+      Notification('success', 'Address Added');
     } else {
       yield put(createUserAddressError('Something went wrong'));
+      Notification('error');
     }
   } catch (err) {
     yield put(createUserAddressError(err));
+    Notification('error');
   }
 }
 export function* watchCreateAddress() {
@@ -514,11 +531,14 @@ function* updateAddress({ payload }) {
     const { status } = yield call(updateAddressAsync, address);
     if (status === 200) {
       if (history) history.push('/user/address');
+      Notification('success', 'Address Updated');
     } else {
       yield put(updateUserAddressError('Something went wrong'));
+      Notification('error');
     }
   } catch (err) {
     yield put(updateUserAddressError(err));
+    Notification('error');
   }
 }
 export function* watchUpdateAddress() {
@@ -554,16 +574,19 @@ function* deleteAddressById({ payload }) {
   const { _id } = payload;
   try {
     const {
-      data: { data },
+      data: { data, message },
       status,
     } = yield call(deleteAddressByID, _id);
     if (status === 200) {
       yield put(deleteUserAddressSuccess(data));
+      Notification('success', message);
     } else {
       yield put(deleteUserAddressError('Something went wrong'));
+      Notification('error', message);
     }
   } catch (err) {
     yield put(deleteUserAddressError(err));
+    Notification('error');
   }
 }
 export function* watchDeleteAddress() {
@@ -580,7 +603,12 @@ const likeDislikeProductReviewAsync = async (_id, liked) => {
 function* likeDislikeProductReview({ payload }) {
   const { _id, liked } = payload;
   try {
-    yield call(likeDislikeProductReviewAsync, _id, liked);
+    const {
+      data: { message },
+      status,
+    } = yield call(likeDislikeProductReviewAsync, _id, liked);
+    if (status === 200) Notification('success', message);
+    else Notification('error', message);
   } catch (err) {
     console.log(err);
   }
@@ -600,11 +628,19 @@ const addEditUserReviewAsync = async (review) => {
 function* addEditUserReview({ payload }) {
   const { review, history } = payload;
   try {
-    const { status } = yield call(addEditUserReviewAsync, review);
-    console.log({ status, history });
-    if (status === 201) history.push('/user/orders');
+    const {
+      status,
+      data: { message },
+    } = yield call(addEditUserReviewAsync, review);
+    if (status === 201) {
+      Notification('success', message);
+      history.push('/user/orders');
+    } else {
+      Notification('error', message);
+    }
   } catch (error) {
     console.log(error);
+    Notification('error');
   }
 }
 

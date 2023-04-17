@@ -1,19 +1,26 @@
+/* eslint-disable import/order */
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import Loader from 'components/common/loader/Loader';
 import configureStore from './redux/store';
 import reportWebVitals from './reportWebVitals';
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer } from 'react-notifications';
 
 const App = React.lazy(() => import(/* webpackChunkName: "App" */ './App'));
 
 const Main = () => {
   return (
-    <Provider store={configureStore}>
-      <Suspense fallback={<Loader />}>
-        <App />
-      </Suspense>
-    </Provider>
+    <>
+      <Provider store={configureStore}>
+        <Suspense fallback={<Loader />}>
+          <App />
+        </Suspense>
+      </Provider>
+      <NotificationContainer />
+    </>
   );
 };
 
