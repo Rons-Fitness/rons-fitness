@@ -81,7 +81,6 @@ const Navbar = ({
                 <li className="nav-item dropdown position-static">
                   <a
                     className="nav-link dropdown-toggle"
-                    href="#"
                     id=""
                     role="button"
                     data-mdb-toggle="dropdown"
@@ -101,30 +100,10 @@ const Navbar = ({
                             <h4 className="mb-0 list-group-item ">
                               Lorem ipsum
                             </h4>
-                            <a
-                              href="productsviewdetailes.html"
-                              className="list-group-item"
-                            >
-                              Products details
-                            </a>
-                            <a
-                              href="product grid page.html"
-                              className="list-group-item "
-                            >
-                              Product list{' '}
-                            </a>
-                            <a
-                              href="Rating-&-reveiws.html"
-                              className="list-group-item "
-                            >
-                              Rating & Reveiws
-                            </a>
-                            <a
-                              href="Delivery-address-page.html"
-                              className="list-group-item "
-                            >
-                              Delivery address
-                            </a>
+                            <a className="list-group-item">Products details</a>
+                            <a className="list-group-item ">Product list </a>
+                            <a className="list-group-item ">Rating & Reveiws</a>
+                            <a className="list-group-item ">Delivery address</a>
                           </div>
                         </div>
                         <div className="col-md-6 col-lg-4 mb-3 mb-lg-0">
@@ -132,30 +111,10 @@ const Navbar = ({
                             <h4 className="mb-0 list-group-item ">
                               Explicabo voluptas
                             </h4>
-                            <a
-                              href="wishlist page.html"
-                              className="list-group-item "
-                            >
-                              Wishlist{' '}
-                            </a>
-                            <a
-                              href="Checkout-page.html"
-                              className="list-group-item "
-                            >
-                              Checkout{' '}
-                            </a>
-                            <a
-                              href="Profile-page.html"
-                              className="list-group-item "
-                            >
-                              Profile
-                            </a>
-                            <a
-                              href="About-us-page.html"
-                              className="list-group-item "
-                            >
-                              About us
-                            </a>
+                            <a className="list-group-item ">Wishlist </a>
+                            <a className="list-group-item ">Checkout </a>
+                            <a className="list-group-item ">Profile</a>
+                            <a className="list-group-item ">About us</a>
                           </div>
                         </div>
                         <div className="col-md-6 col-lg-4 mb-3 mb-md-0">
@@ -163,18 +122,10 @@ const Navbar = ({
                             <h4 className="mb-0 list-group-item">
                               Iste quaerato
                             </h4>
-                            <a href="#" className="list-group-item ">
-                              Cras justo odio
-                            </a>
-                            <a href="#" className="list-group-item ">
-                              Est iure
-                            </a>
-                            <a href="#" className="list-group-item ">
-                              Praesentium
-                            </a>
-                            <a href="#" className="list-group-item ">
-                              Laboriosam
-                            </a>
+                            <a className="list-group-item ">Cras justo odio</a>
+                            <a className="list-group-item ">Est iure</a>
+                            <a className="list-group-item ">Praesentium</a>
+                            <a className="list-group-item ">Laboriosam</a>
                           </div>
                         </div>
                       </div>
@@ -183,35 +134,19 @@ const Navbar = ({
                 </li>
 
                 <li className="nav-item dropdown">
-                  <a className="nav-link " href="#">
-                    Brand
-                  </a>
+                  <a className="nav-link ">Brand</a>
                   <ul className="dropdown-menu">
                     <li>
-                      <a className="dropdown-item" href="Privacy-Policy.html">
-                        Privacy Policy
-                      </a>
+                      <a className="dropdown-item">Privacy Policy</a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="Refund-Policy.html">
-                        Refund Policy
-                      </a>
+                      <a className="dropdown-item">Refund Policy</a>
                     </li>
                     <li>
-                      <a
-                        className="dropdown-item"
-                        href="shipping-cancellation-return-dispute-resolution-policy.html"
-                      >
-                        Shipping policy
-                      </a>
+                      <a className="dropdown-item">Shipping policy</a>
                     </li>
                     <li>
-                      <a
-                        className="dropdown-item"
-                        href="terms-of-use-policy.html"
-                      >
-                        Terms of use policy
-                      </a>
+                      <a className="dropdown-item">Terms of use policy</a>
                     </li>
                   </ul>
                 </li>
@@ -244,7 +179,7 @@ const Navbar = ({
       </div>
       <div className="min-hed">
         <div className="container">
-          <div className="head-section">
+          <div className="head-section" style={{ margin: 'auto' }}>
             <div className=" col-md-3  col-sm-0 " />
             <div className="col-md-6 col-sm-6">
               <div action="" className="inputcontainer">
@@ -262,7 +197,7 @@ const Navbar = ({
               <div className=" login-section">
                 {!currentUser ? (
                   <>
-                    <a href="#">
+                    <a>
                       <p
                         className="login-btn "
                         data-bs-toggle="modal"
@@ -280,8 +215,8 @@ const Navbar = ({
                       setSearchText('');
                     }}
                   >
-                    <p className="shoping-cart">
-                      <a href="cart-page.html">
+                    <p className="shoping-cart" style={{ margin: '0 15px' }}>
+                      <a>
                         <i class="bi bi-person" />
                       </a>
                     </p>
@@ -294,7 +229,7 @@ const Navbar = ({
                   }}
                 >
                   <p className="shoping-cart">
-                    <a href="cart-page.html">
+                    <a>
                       <i className="bi bi-cart2" />
                     </a>
                   </p>
