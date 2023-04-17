@@ -233,13 +233,14 @@ export function* watchLogoutUser() {
 }
 
 const logoutAsync = async (history) => {
-  history.push('/');
+  await history.push('/');
 };
 
 function* logout({ payload }) {
   const { history } = payload;
   setCurrentUser();
   localStorage.clear();
+  Notification('success', 'Use Logged Out');
   yield call(logoutAsync, history);
 }
 
