@@ -24,9 +24,9 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
       setIsTablet(false);
     }
   };
-  console.log({ innder: window.innerWidth, isTablet, isMobile });
   useEffect(() => {
     window.addEventListener('resize', handleResize);
+    handleResize();
   }, []);
 
   return (

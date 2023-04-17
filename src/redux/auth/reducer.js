@@ -260,15 +260,15 @@ export default (state = INIT_STATE, action) => {
     case GET_USER_ADDRESS_SUCCESS:
       return {
         ...state,
+        loading: false,
         addresses: action.payload,
         addressToDeliver: action.payload[0],
-        loading: false,
       };
     case GET_USER_ADDRESS_ERROR:
       return {
         ...state,
-        addresses: action.payload,
         loading: false,
+        error: action.payload.message,
       };
     case CREATE_USER_ADDRESS_SUCCESS:
       return {

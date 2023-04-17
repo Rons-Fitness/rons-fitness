@@ -112,7 +112,6 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
                 className="align-items-center"
                 style={{
                   whiteSpace: 'nowrap',
-                  /* width: 50px; */
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
                 }}
@@ -135,7 +134,7 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
               )}
             </a>
           </Link>
-          <h6>The specific products included</h6>
+          <h6 style={{ width: '88%' }}>The specific products included</h6>
           <p>
             <a className="card-price">
               <span className="px-1">₹{product.price}</span>

@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
@@ -6,6 +8,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ReactImageMagnify from 'react-image-magnify';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 import { Link, useHistory } from 'react-router-dom';
 import ProductReviewsAndDes from './ProductReviewsAndDes';
@@ -18,8 +21,28 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
     selectedProduct ? selectedProduct.inWishlist : false
   );
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  const [isTablet, setIsTablet] = useState(false);
+
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+    if (window.innerWidth > 720 && window.innerWidth < 1200) {
+      setIsTablet(true);
+    } else {
+      setIsTablet(false);
+    }
+  };
   useEffect(() => {
-    // console.log({ selectedProduct });
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  }, []);
+
+  useEffect(() => {
     if (selectedProduct && selectedProduct.image) {
       setActiveImage(selectedProduct.image.find((img) => img.url !== '').url);
     }
@@ -60,13 +83,31 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                 </div>
               </div>
               <div className="col-lg-10   ">
-                <div className="xzoom_container">
+                <div className="">
                   <div
                     className="xzoom-body-responsive"
                     id="img-container"
-                    style={{ width: '400px', margin: 'auto' }}
+                    style={{
+                      // width: '400px',
+                      margin: 'auto',
+                      position: 'relative',
+                    }}
                   >
-                    <img src={activeImage} alt="" className="xzoom" />
+                    {/* <img src={activeImage} alt="" className="xzoom" /> */}
+                    <ReactImageMagnify
+                      {...{
+                        smallImage: {
+                          alt: 'Wristwatch by Ted Baker London',
+                          isFluidWidth: true,
+                          src: activeImage,
+                        },
+                        largeImage: {
+                          src: activeImage,
+                          width: 1200,
+                          height: 1800,
+                        },
+                      }}
+                    />
                   </div>
                   <div className="container">
                     <div className="xzoom-thumbs">
@@ -75,12 +116,8 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                           className="swiper-wrapper"
                           navigation
                           modules={[Autoplay, Pagination, Navigation]}
-                          slidesPerView={Math.min(
-                            (selectedProduct && selectedProduct.image.length) ||
-                              0,
-                            5
-                          )}
                           spaceBetween={25}
+                          slidesPerView={isTablet ? 4 : isMobile ? 3 : 5}
                         >
                           {selectedProduct &&
                             selectedProduct.image.map(

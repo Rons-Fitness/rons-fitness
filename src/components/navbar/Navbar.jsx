@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -17,6 +18,7 @@ import {
   setAuthPopup,
   verifyOtp,
 } from 'redux/auth/actions';
+import { getHomeScreenData } from 'redux/product/actions';
 
 const Navbar = ({
   currentUser,
@@ -26,14 +28,23 @@ const Navbar = ({
   setSearchText,
   authPopupState,
   changePopupState,
+  getHomeScreenDetails,
+  homeScreenData,
 }) => {
   const history = useHistory();
   const [text, settext] = useState('');
+
+  const { brands, category } = homeScreenData;
 
   useEffect(() => {
     if (!currentUser) getLoggedInUserDetails(history);
   }, [currentUser, getLoggedInUserDetails, history]);
 
+  useEffect(() => {
+    getHomeScreenDetails();
+  }, [getHomeScreenDetails]);
+
+  // search after delay
   React.useEffect(() => {
     const setData = setTimeout(() => {
       setSearchText(text);
@@ -89,66 +100,32 @@ const Navbar = ({
                     Category
                   </a>
 
-                  <div
-                    className="dropdown-menu  mt-0  mydropudowan"
-                    aria-labelledby="navbarDropdown"
-                  >
-                    <div className="container">
-                      <div className="row my-4">
-                        <div className="col-md-6 col-lg-4 mb-3 mb-lg-0">
-                          <div className="list-group ">
-                            <h4 className="mb-0 list-group-item ">
-                              Lorem ipsum
-                            </h4>
-                            <a className="list-group-item">Products details</a>
-                            <a className="list-group-item ">Product list </a>
-                            <a className="list-group-item ">Rating & Reveiws</a>
-                            <a className="list-group-item ">Delivery address</a>
-                          </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 mb-3 mb-lg-0">
-                          <div className="list-group ">
-                            <h4 className="mb-0 list-group-item ">
-                              Explicabo voluptas
-                            </h4>
-                            <a className="list-group-item ">Wishlist </a>
-                            <a className="list-group-item ">Checkout </a>
-                            <a className="list-group-item ">Profile</a>
-                            <a className="list-group-item ">About us</a>
-                          </div>
-                        </div>
-                        <div className="col-md-6 col-lg-4 mb-3 mb-md-0">
-                          <div className="list-group">
-                            <h4 className="mb-0 list-group-item">
-                              Iste quaerato
-                            </h4>
-                            <a className="list-group-item ">Cras justo odio</a>
-                            <a className="list-group-item ">Est iure</a>
-                            <a className="list-group-item ">Praesentium</a>
-                            <a className="list-group-item ">Laboriosam</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {Boolean(category.length) && (
+                    <ul className="dropdown-menu">
+                      {category.map((elem) => (
+                        <li key={elem._id}>
+                          <Link to={`/products/category=${elem.name}`}>
+                            <a className="dropdown-item">{elem.name}</a>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
 
                 <li className="nav-item dropdown">
                   <a className="nav-link ">Brand</a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item">Privacy Policy</a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item">Refund Policy</a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item">Shipping policy</a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item">Terms of use policy</a>
-                    </li>
-                  </ul>
+                  {Boolean(brands.length) && (
+                    <ul className="dropdown-menu">
+                      {brands.map((brand) => (
+                        <li key={brand._id}>
+                          <Link to={`/products/brand=${brand.name}`}>
+                            <a className="dropdown-item">{brand.name}</a>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
                 <li className="nav-item">
                   <Link
@@ -248,11 +225,13 @@ const Navbar = ({
     </>
   );
 };
-const mapStateToProps = ({ user }) => {
+const mapStateToProps = ({ user, product }) => {
   const { currentUser, authPopupState } = user;
-  return { currentUser, authPopupState };
+  const { homeScreenData } = product;
+  return { currentUser, authPopupState, homeScreenData };
 };
 const mapDispatchToProps = (dispatch) => ({
+  getHomeScreenDetails: () => dispatch(getHomeScreenData()),
   setSearchText: (text) => dispatch(changeSearchText(text)),
   getLoggedInUserDetails: (hsitory) => dispatch(getUserDetails(hsitory)),
   sendOtp: (mobileNo) => dispatch(loginUser(mobileNo)),

@@ -9,7 +9,6 @@ import {
   addProductToWishList,
   changeSearchText,
 } from 'redux/auth/actions';
-import { getHomeScreenData } from 'redux/product/actions';
 
 function queryStringToObject(queryString) {
   const pairs = queryString.split('&');
@@ -27,16 +26,16 @@ function ProductList({
   loading,
   addtoCart,
   addToWishlist,
-  getHomeScreenDetails,
+  // getHomeScreenDetails,
   homeScreenData,
 }) {
   const { params } = useParams();
 
   useEffect(() => {
+    // getHomeScreenDetails();
     window.scrollTo(0, 0);
     let filter = {};
     if (params) filter = queryStringToObject(params);
-    getHomeScreenDetails();
     getProductList({ ...filter, keyword });
   }, [keyword, params]);
 
@@ -66,7 +65,7 @@ const mapStateToProps = ({ product, user }) => {
   return { products, keyword, loading, homeScreenData };
 };
 const mapDispatchToProps = (dispatch) => ({
-  getHomeScreenDetails: () => dispatch(getHomeScreenData()),
+  // getHomeScreenDetails: () => dispatch(getHomeScreenData()),
   getProductList: (data) => dispatch(getProducts(data)),
   addtoCart: (_id, history) => dispatch(addProductToCart(_id, history)),
   addToWishlist: (_id, inWishlist) =>

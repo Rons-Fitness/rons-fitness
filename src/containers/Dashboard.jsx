@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import DashboardMain from 'components/dashboard/DashboardMain';
-import { getHomeScreenData } from 'redux/product/actions';
+// import { getHomeScreenData } from 'redux/product/actions';
 import { useHistory } from 'react-router-dom';
 import Footer from 'components/footer/Footer';
 import {
@@ -13,7 +13,7 @@ import {
 
 const Dashboard = ({
   homeScreenData,
-  getHomeScreenDetails,
+  // getHomeScreenDetails,
   keyword,
   addtoCart,
   addToWishlist,
@@ -29,9 +29,9 @@ const Dashboard = ({
     if (keyword && keyword.length > 0) history.push('/products');
   }, [keyword]);
 
-  useEffect(() => {
-    getHomeScreenDetails();
-  }, [getHomeScreenDetails]);
+  // useEffect(() => {
+  //   getHomeScreenDetails();
+  // }, [getHomeScreenDetails]);
 
   useEffect(() => {
     setSearchText('');
@@ -65,7 +65,7 @@ const mapStateToProps = ({ product, user }) => {
   return { homeScreenData, keyword };
 };
 const mapDispatchToProps = (dispatch) => ({
-  getHomeScreenDetails: () => dispatch(getHomeScreenData()),
+  // getHomeScreenDetails: () => dispatch(getHomeScreenData()),
   addtoCart: (data, history) => dispatch(addProductToCart(data, history)),
   addToWishlist: (_id, inWishlist) =>
     dispatch(addProductToWishList(_id, inWishlist)),

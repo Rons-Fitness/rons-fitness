@@ -467,10 +467,10 @@ function* getUserAddress() {
     if (status === 200) {
       yield put(getUserAddressesSuccess(data || []));
     } else {
-      getUserAddressesError('something went wrong');
+      yield put(getUserAddressesError('something went wrong'));
     }
   } catch (err) {
-    getUserAddressesError(err);
+    yield put(getUserAddressesError(err));
   }
 }
 
