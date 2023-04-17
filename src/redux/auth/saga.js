@@ -705,15 +705,21 @@ const updateUserDetailsAsync = async (data) => {
 function* updateUserDetails({ payload }) {
   console.log({ payload });
   try {
-    const { data, status } = yield call(updateUserDetailsAsync, payload);
+    const {
+      data: { data, message },
+      status,
+    } = yield call(updateUserDetailsAsync, payload);
 
     if (status === 200) {
       yield put(updateUserDetailsSuccess(data));
+      Notification('success', message);
     } else {
       yield put(updateUserDetailsError('someting went wrong'));
+      Notification('error', message);
     }
   } catch (error) {
     yield put(updateUserDetailsError(error));
+    Notification('error');
   }
 }
 export function* watchUpdateUserDetails() {
