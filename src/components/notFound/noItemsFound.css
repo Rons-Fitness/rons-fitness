@@ -37,8 +37,8 @@ body {
   align-items: center;
   border-radius: 200px;
   justify-content: center;
-  background-color: #f7fafc;
-  box-shadow: 0px 2px 1px #e1e3ec;
+  /* background-color: #f7fafc;
+  box-shadow: 0px 2px 1px #e1e3ec; */
 }
 img {
   width: 170px;
