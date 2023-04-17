@@ -59,7 +59,7 @@ const App = () => {
             />
             <Route
               exact
-              path="/products"
+              path="/products/:params?"
               render={(props) => <ProductList {...props} />}
               // render={(props) => <ProductDetails {...props} />}
             />

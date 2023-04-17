@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Blogs = () => {
   return (
@@ -16,9 +17,9 @@ const Blogs = () => {
             <p className="">
               Learning curve network effects return on investment.
             </p>
-            <a href="blog.html">
+            <Link to="blog">
               Explore page <i className="fas fa-arrow-right" />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -31,9 +32,9 @@ const Blogs = () => {
             <p className="">
               Learning curve network effects return on investment.
             </p>
-            <a href="blog.html">
+            <Link to="blog">
               Explore page <i className="fas fa-arrow-right" />
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -46,9 +47,9 @@ const Blogs = () => {
             <p className="">
               Learning curve network effects return on investment.
             </p>
-            <a href="blog.html">
+            <Link to="blog">
               Explore page <i className="fas fa-arrow-right" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

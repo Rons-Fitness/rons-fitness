@@ -2,6 +2,7 @@ import Footer from 'components/footer/Footer';
 import ProductListMain from 'components/products/ProductListMain';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { getProducts } from 'redux/actions';
 import {
   addProductToCart,
@@ -9,6 +10,15 @@ import {
   changeSearchText,
 } from 'redux/auth/actions';
 import { getHomeScreenData } from 'redux/product/actions';
+
+function queryStringToObject(queryString) {
+  const pairs = queryString.split('&');
+  const array = pairs.map((el) => {
+    const parts = el.split('=');
+    return parts;
+  });
+  return Object.fromEntries(array);
+}
 
 function ProductList({
   products,
@@ -20,10 +30,15 @@ function ProductList({
   getHomeScreenDetails,
   homeScreenData,
 }) {
+  const { params } = useParams();
+
   useEffect(() => {
+    window.scrollTo(0, 0);
+    let filter = {};
+    if (params) filter = queryStringToObject(params);
     getHomeScreenDetails();
-    getProductList({ keyword });
-  }, [keyword]);
+    getProductList({ ...filter, keyword });
+  }, [keyword, params]);
 
   return (
     <div

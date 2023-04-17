@@ -4,6 +4,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
+import { Link } from 'react-router-dom';
 
 const BrandListing = ({ brands = [], isMobile, isTablet }) => {
   return (
@@ -25,9 +26,11 @@ const BrandListing = ({ brands = [], isMobile, isTablet }) => {
             >
               {brands.map((elem) => (
                 <SwiperSlide className="swiper-slide" key={elem._id}>
-                  <div className="text-center mt-2 brand-img-box">
-                    <img src={elem.image} alt="" />
-                  </div>
+                  <Link to={`/products/brand=${elem.name}`}>
+                    <div className="text-center mt-2 brand-img-box">
+                      <img src={elem.image} alt="" />
+                    </div>
+                  </Link>
                 </SwiperSlide>
               ))}
             </Swiper>

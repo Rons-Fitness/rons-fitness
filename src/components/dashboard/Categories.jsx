@@ -5,6 +5,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
+import { Link } from 'react-router-dom';
 
 const Categories = ({ category = [], isMobile, isTablet }) => {
   return (
@@ -25,17 +26,19 @@ const Categories = ({ category = [], isMobile, isTablet }) => {
             >
               {category.map((elem) => (
                 <SwiperSlide className="swiper-slide" key={elem._id}>
-                  <div className="carte-contain">
-                    <div className="carte carte-img-box ">
-                      <a>
-                        {' '}
-                        <img src={elem.image} alt={elem.name} />
-                      </a>
+                  <Link to={`/products/category=${elem.name}`}>
+                    <div className="carte-contain">
+                      <div className="carte carte-img-box ">
+                        <a>
+                          {' '}
+                          <img src={elem.image} alt={elem.name} />
+                        </a>
+                      </div>
+                      <p className="text-center">
+                        <a> {elem.name}</a>
+                      </p>
                     </div>
-                    <p className="text-center">
-                      <a> {elem.name}</a>
-                    </p>
-                  </div>
+                  </Link>
                 </SwiperSlide>
               ))}
             </Swiper>
