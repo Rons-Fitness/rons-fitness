@@ -1,7 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { updateUserAddress } from 'redux/auth/actions';
@@ -14,10 +15,12 @@ const AddressBox = ({
   deleteAddress,
   setDeliveryAddress,
   updateAddress,
+  addressToDeliver,
+  setDeliverToThisAddress,
 }) => {
   const history = useHistory();
-  const [activeStatus, setactiveStatus] = useState(false);
 
+  console.log({ addressToDeliver });
   return (
     <div className="delivery-contain" key={_id}>
       <div className="delivery-name">
@@ -33,8 +36,15 @@ const AddressBox = ({
           name="address"
           id="Home"
           style={{ cursor: 'pointer' }}
-          checked={activeStatus}
-          onClick={() => setactiveStatus(!activeStatus)}
+          checked={addressToDeliver._id === _id}
+          onClick={() =>
+            setDeliverToThisAddress({
+              _id,
+              addressType,
+              shippingAddress,
+              billingAddress,
+            })
+          }
         />{' '}
       </div>
       <div className="col-lg-6 col-md-8">
@@ -52,7 +62,7 @@ const AddressBox = ({
           Delete
         </span>
       </div>
-      {activeStatus && (
+      {addressToDeliver._id === _id && (
         <div
           className="delivery-btn"
           onClick={() => {

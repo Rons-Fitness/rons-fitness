@@ -209,7 +209,7 @@ const CartMain = ({
                     <div className="icon-box">
                       <iconify-icon icon="mdi:map-marker-outline" />{' '}
                     </div>
-                    <div style={{ width: '100%' }}>
+                    <div style={{ width: '88%' }}>
                       <div className="Delivery-at">
                         <p>
                           {' '}
@@ -225,10 +225,17 @@ const CartMain = ({
                           </Link>
                         </span>
                       </div>
-                      <p className="addres">
+                      <p
+                        className="addres"
+                        style={{
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        }}
+                      >
                         {addressToDeliver?.shippingAddress.addressLine1}
                         <br />
-                        {addressToDeliver?.shippingAddress.addressLine2}
+                        {/* {addressToDeliver?.shippingAddress.addressLine2} */}
                       </p>
                     </div>
                   </div>

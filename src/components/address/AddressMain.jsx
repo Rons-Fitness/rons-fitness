@@ -8,7 +8,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AddressBox from './AddressBox';
 
-const AddressMain = ({ addresses, setDeliveryAddress, deleteAddress }) => {
+const AddressMain = ({
+  addresses,
+  setDeliveryAddress,
+  deleteAddress,
+  addressToDeliver,
+  setDeliverToThisAddress,
+}) => {
   return (
     <>
       <div
@@ -35,6 +41,8 @@ const AddressMain = ({ addresses, setDeliveryAddress, deleteAddress }) => {
                       billingAddress={billingAddress}
                       setDeliveryAddress={setDeliveryAddress}
                       deleteAddress={deleteAddress}
+                      addressToDeliver={addressToDeliver}
+                      setDeliverToThisAddress={setDeliverToThisAddress}
                     />
                   )
                 )}

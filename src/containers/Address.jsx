@@ -19,6 +19,8 @@ const Address = ({
   keyword,
   setSearchText,
   loading,
+  addressToDeliver,
+  setDeliverToThisAddress,
 }) => {
   const history = useHistory();
   useEffect(() => {
@@ -48,6 +50,8 @@ const Address = ({
           addresses={addresses}
           setDeliveryAddress={setDeliveryAddress}
           deleteAddress={deleteAddress}
+          addressToDeliver={addressToDeliver}
+          setDeliverToThisAddress={setDeliverToThisAddress}
         />
       )}
       <Footer />
@@ -55,8 +59,8 @@ const Address = ({
   );
 };
 const mapStateToProps = ({ user }) => {
-  const { keyword, addresses, loading } = user;
-  return { addresses, keyword, loading };
+  const { keyword, addresses, loading, addressToDeliver } = user;
+  return { addresses, keyword, loading, addressToDeliver };
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -64,6 +68,7 @@ const mapDispatchToProps = (dispatch) => ({
   setDeliveryAddress: (address) => dispatch(deliverToThisAddress(address)),
   deleteAddress: (_id) => dispatch(deleteUserAddress(_id)),
   setSearchText: (text) => dispatch(changeSearchText(text)),
+  setDeliverToThisAddress: (address) => dispatch(deliverToThisAddress(address)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Address);
