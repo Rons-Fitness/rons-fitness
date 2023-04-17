@@ -40,8 +40,11 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
                 delay: 2500,
                 disableOnInteraction: false,
               }}
-              spaceBetween={60}
+              spaceBetween={30}
               modules={[Autoplay, Pagination, Navigation]}
+              slidesPerView={1.1}
+              centeredSlides
+              loop
             >
               <SwiperSlide className=" swiper-slide">
                 <img
