@@ -3,19 +3,23 @@ import './noItemsFound.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-const NoAddressFound = () => {
+const EmptyCart = () => {
   return (
     <div className="empty-state">
       <div className="content">
         <div className="empty-state__icon">
-          <img src="/asstes/img/notFound/addressNotFound.jpg" alt="" />
+          <img src="/asstes/img/notFound/emptyCart.jpg" alt="" />
         </div>
-        <div className="empty-state__message">No Address found.</div>
-        <Link to="/user/address/new">
+        <div className="empty-state__message">Hey, it feels so light!</div>
+        <h5 style={{ margin: '25px 0' }}>
+          Looks like you have not added anything to your cart. Go ahead &
+          explore top categories.
+        </h5>
+        <Link to="/products">
           <input
             required
             type="button"
-            value="Add New Address"
+            value="Start Shopping"
             className={classNames(
               'shipping-btn  btn-views-active',
               'activeAddressType'
@@ -25,7 +29,6 @@ const NoAddressFound = () => {
               padding: '0 30px',
               border: 'none',
               borderRadius: 5,
-              marginTop: 25,
             }}
           />
         </Link>
@@ -34,4 +37,4 @@ const NoAddressFound = () => {
   );
 };
 
-export default NoAddressFound;
+export default EmptyCart;

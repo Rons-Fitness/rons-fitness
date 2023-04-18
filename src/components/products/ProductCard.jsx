@@ -68,11 +68,24 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
               >
                 {product.name}{' '}
               </h1>
+              {product.flavour !== '' && (
+                <span className="text-end">
+                  <iconify-icon
+                    icon="mdi:lacto-vegetarian"
+                    className="veg-icon"
+                    style={
+                      product.nonVeg
+                        ? { color: 'red', position: 'absolute', right: 17 }
+                        : { color: 'green', position: 'absolute', right: 17 }
+                    }
+                  />
+                </span>
+              )}
             </a>
-            <h6>The specific products included</h6>
+            <h6 style={{ width: '90%' }}>The specific products included</h6>
             <p>
               <a className="card-price">
-                <span className="px-1">{product.price}</span>
+                <span className="px-1">₹{product.price}</span>
                 <span className="px-1">
                   MRP<del>{product.mrp}</del>
                 </span>

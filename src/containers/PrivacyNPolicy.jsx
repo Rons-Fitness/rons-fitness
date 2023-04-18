@@ -1,4 +1,3 @@
-import Footer from 'components/footer/Footer';
 import React from 'react';
 
 const PrivacyNPolicy = () => {
@@ -153,7 +152,6 @@ const PrivacyNPolicy = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

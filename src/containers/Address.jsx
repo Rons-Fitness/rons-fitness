@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import AddressMain from 'components/address/AddressMain';
-import Footer from 'components/footer/Footer';
+
 import { connect } from 'react-redux';
 import {
   changeSearchText,
@@ -54,7 +54,6 @@ const Address = ({
           setDeliverToThisAddress={setDeliverToThisAddress}
         />
       )}
-      <Footer />
     </div>
   );
 };

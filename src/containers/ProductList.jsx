@@ -1,4 +1,3 @@
-import Footer from 'components/footer/Footer';
 import ProductListMain from 'components/products/ProductListMain';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
@@ -26,13 +25,11 @@ function ProductList({
   loading,
   addtoCart,
   addToWishlist,
-  // getHomeScreenDetails,
   homeScreenData,
 }) {
   const { params } = useParams();
 
   useEffect(() => {
-    // getHomeScreenDetails();
     window.scrollTo(0, 0);
     let filter = {};
     if (params) filter = queryStringToObject(params);
@@ -54,7 +51,6 @@ function ProductList({
         getProductList={getProductList}
         loading={loading}
       />
-      <Footer />
     </div>
   );
 }

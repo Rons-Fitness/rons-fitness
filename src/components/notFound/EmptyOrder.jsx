@@ -3,19 +3,22 @@ import './noItemsFound.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-const NoAddressFound = () => {
+const EmptyOrder = () => {
   return (
     <div className="empty-state">
       <div className="content">
         <div className="empty-state__icon">
-          <img src="/asstes/img/notFound/addressNotFound.jpg" alt="" />
+          <img src="/asstes/img/notFound/empty_order.jpg" alt="" />
         </div>
-        <div className="empty-state__message">No Address found.</div>
-        <Link to="/user/address/new">
+        <div className="empty-state__message">No Orders Yet</div>
+        <h5 style={{ margin: '25px 0' }}>
+          Looks like you haven’t made your choice yet....
+        </h5>
+        <Link to="/">
           <input
             required
             type="button"
-            value="Add New Address"
+            value="Back to home"
             className={classNames(
               'shipping-btn  btn-views-active',
               'activeAddressType'
@@ -25,7 +28,6 @@ const NoAddressFound = () => {
               padding: '0 30px',
               border: 'none',
               borderRadius: 5,
-              marginTop: 25,
             }}
           />
         </Link>
@@ -34,4 +36,4 @@ const NoAddressFound = () => {
   );
 };
 
-export default NoAddressFound;
+export default EmptyOrder;

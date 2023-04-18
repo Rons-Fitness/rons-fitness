@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import classNames from 'classnames';
+import Notification from 'components/Notification/Notification';
 import API from 'helpers/API';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -53,6 +54,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
       const {
         data: { data, success },
       } = await API.get(`/address/pincode/${pin}`);
+      console.log({ data, success });
       if (success) {
         const { stateName, districtName, country } = data;
         if (setAsAbove) {
@@ -87,7 +89,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
             };
           });
         }
-      }
+      } else Notification('info', 'Invalid Pincode');
     }
   };
 

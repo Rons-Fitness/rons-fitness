@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import Footer from 'components/footer/Footer';
+
 import React from 'react';
 
 const AboutUs = () => {
@@ -92,7 +92,6 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

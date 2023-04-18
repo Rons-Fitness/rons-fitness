@@ -3,8 +3,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const OrderItem = ({ item, currentOrderStatus }) => {
-  const { name, image, alreadyReviewed, price, qty, userReview, _id } = item;
-
+  const {
+    name,
+    image,
+    alreadyReviewed,
+    price,
+    qty,
+    userReview,
+    _id,
+    flavour,
+    nonVeg,
+  } = item;
+  console.log({ flavour, nonVeg });
   return (
     <div className="order-details-traking-contain col-lg-11 col-md-12 ">
       <div className="row ">
@@ -23,6 +33,21 @@ const OrderItem = ({ item, currentOrderStatus }) => {
             <Link to={`/product/${_id}`}>
               <a>
                 <h5>{name}</h5>
+                {flavour !== '' && (
+                  <iconify-icon
+                    icon="mdi:lacto-vegetarian"
+                    className="veg-icon"
+                    style={
+                      nonVeg
+                        ? {
+                            color: 'red',
+                          }
+                        : {
+                            color: 'green',
+                          }
+                    }
+                  />
+                )}
               </a>
             </Link>
             <div className="Price-tag">
@@ -33,7 +58,7 @@ const OrderItem = ({ item, currentOrderStatus }) => {
         </div>
         {currentOrderStatus &&
           currentOrderStatus.status === 'Order Delivered' && (
-            <div className="col-lg-3 col-md-3">
+            <div className="col-lg-3 col-md-3" style={{ textAlign: 'center' }}>
               <Link to={`/user/order/${_id}/review`}>
                 <div className="star-rating">
                   <a>

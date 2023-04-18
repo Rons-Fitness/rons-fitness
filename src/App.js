@@ -11,6 +11,7 @@ import './app.css';
 import Navbar from 'components/navbar/Navbar';
 import ProtectedRoute from 'helpers/authHelper.js';
 import ProductList from 'containers/ProductList';
+import Footer from 'components/footer/Footer';
 
 // import Loader from 'components/common/loader/Loader';
 
@@ -160,6 +161,7 @@ const App = () => {
             />
             <Redirect to="/notfound" />
           </Switch>
+          <Footer />
         </Router>
         {/* </Suspense> */}
       </>

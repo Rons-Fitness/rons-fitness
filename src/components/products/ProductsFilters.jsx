@@ -4,10 +4,21 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+function queryStringToObject(queryString = '') {
+  const pairs = queryString.split('&');
+  const array = pairs.map((el) => {
+    const parts = el.split('=');
+    return parts;
+  });
+  return Object.fromEntries(array);
+}
 
 const ProductsFilters = ({ homeScreenData, getProductList }) => {
   const { brands } = homeScreenData;
+  const { params } = useParams();
 
   const [sortBy, setSortBy] = useState('');
   const [filterState, setFilterState] = useState({
@@ -15,12 +26,24 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
     rating: [],
   });
 
-  const handleChangeFilter = (key, val) => {
+  useEffect(() => {
+    setFilterState((oldState) => {
+      return {
+        ...oldState,
+        [Object.keys(queryStringToObject(params))[0]]: [
+          Object.values(queryStringToObject(params))[0],
+        ],
+      };
+    });
+  }, []);
+
+  const handleChangeFilter = (key, val, reset) => {
+    console.log({ val, key });
     const include = filterState[key].includes(val);
     let updatedFilter = [];
     if (!include) updatedFilter = [...filterState[key], val];
     else updatedFilter = filterState[key].filter((item) => item !== val);
-
+    if (reset) updatedFilter = [];
     setFilterState((oldVal) => {
       return { ...oldVal, [key]: updatedFilter };
     });
@@ -52,7 +75,22 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
       <div className="product-grid-left-section">
         <div className="product-grid-left-box">
           <div className="left-box-main">
-            <p className="main-white">Sort By</p>
+            <p
+              className="main-white"
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                height: 45,
+              }}
+            >
+              <p>Sort By</p>{' '}
+              <p
+                style={{ color: '#f7a742', cursor: 'pointer' }}
+                onClick={() => changeSortBy('')}
+              >
+                Reset
+              </p>
+            </p>
             <div className="Left-contain">
               <p
                 className={
@@ -64,7 +102,7 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
                 style={{ cursor: 'pointer' }}
               >
                 <iconify-icon icon="lucide:check-circle" />
-                <span className="circle-m">Popularity</span>
+                <span className="circle-m">Rating: High To Low</span>
               </p>
               <p
                 className={
@@ -108,7 +146,22 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
 
         <div className="product-grid-left-box">
           <div className="left-box-main">
-            <p className="main-white">Brands</p>
+            <p
+              className="main-white"
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                height: 45,
+              }}
+            >
+              <p>Brands</p>{' '}
+              <p
+                style={{ color: '#f7a742', cursor: 'pointer' }}
+                onClick={() => handleChangeFilter('brand', '', true)}
+              >
+                Reset
+              </p>
+            </p>
             <div className="Left-contain">
               <form action="" method="post">
                 {brands &&
@@ -135,7 +188,22 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
 
         <div className="product-grid-left-box">
           <div className="left-box-main">
-            <p className="main-white">Rating</p>
+            <p
+              className="main-white"
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                height: 45,
+              }}
+            >
+              <p>Rating</p>{' '}
+              <p
+                style={{ color: '#f7a742', cursor: 'pointer' }}
+                onClick={() => handleChangeFilter('rating', '', true)}
+              >
+                Reset
+              </p>
+            </p>
             <div className="Left-contain">
               <p>
                 <input

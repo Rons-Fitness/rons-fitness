@@ -11,7 +11,7 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import useRazorpay from 'react-razorpay';
 import API from 'helpers/API';
-import NoItemsFound from 'components/notFound/NoItemsFound';
+import EmptyCart from 'components/notFound/EmptyCart';
 
 const CartMain = ({
   cart,
@@ -71,7 +71,7 @@ const CartMain = ({
     <div className="cart-section">
       <div className="container">
         {cart && cart?.products.length === 0 ? (
-          <NoItemsFound />
+          <EmptyCart />
         ) : (
           <div className="row">
             <div className="col-lg-8 com-md-9 col-sm-12">
@@ -106,7 +106,22 @@ const CartMain = ({
                         <div className="col-lg-8 com-md- col-sm-12">
                           <div className="my-cart-list">
                             <a href="productsviewdetailes.html">
-                              <h5>{value.name}</h5>
+                              <h5>{value.name} </h5>
+                              {value.flavour !== '' && (
+                                <iconify-icon
+                                  icon="mdi:lacto-vegetarian"
+                                  className="veg-icon"
+                                  style={
+                                    value.nonVeg
+                                      ? {
+                                          color: 'red',
+                                        }
+                                      : {
+                                          color: 'green',
+                                        }
+                                  }
+                                />
+                              )}
                             </a>
                             <p>{value.brand}</p>
                             <div className="fw-semibold">

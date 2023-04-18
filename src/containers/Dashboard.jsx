@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import DashboardMain from 'components/dashboard/DashboardMain';
 // import { getHomeScreenData } from 'redux/product/actions';
 import { useHistory } from 'react-router-dom';
-import Footer from 'components/footer/Footer';
+
 import {
   addProductToCart,
   addProductToWishList,
@@ -54,7 +54,6 @@ const Dashboard = ({
         addtoCart={addtoCart}
         addToWishlist={addToWishlist}
       />
-      <Footer />
     </div>
   );
 };

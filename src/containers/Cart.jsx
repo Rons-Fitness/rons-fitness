@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Footer from 'components/footer/Footer';
+
 import { connect } from 'react-redux';
 import { getProducts } from 'redux/actions';
 import CartMain from 'components/cart/CartMain';
@@ -61,7 +61,6 @@ function Cart({
           currentUser={currentUser}
         />
       )}
-      <Footer />
     </div>
   );
 }

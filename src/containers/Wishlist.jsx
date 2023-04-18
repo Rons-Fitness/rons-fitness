@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect } from 'react';
-import Footer from 'components/footer/Footer';
+
 import { connect } from 'react-redux';
 import Loader from 'components/common/loader/Loader';
 import WishlistMain from 'components/wishlist/WishlistMain';
@@ -10,7 +10,6 @@ import {
   getUserWishList,
   removeProductToWishList,
 } from 'redux/auth/actions';
-import NoItemsFound from 'components/notFound/NoItemsFound';
 import { useHistory } from 'react-router-dom';
 
 const Wishlist = ({
@@ -44,17 +43,14 @@ const Wishlist = ({
     >
       {loading ? (
         <Loader />
-      ) : wishlist.length ? (
+      ) : (
         <WishlistMain
           wishlist={wishlist}
           keyword={keyword}
           removeFromWishList={removeFromWishList}
           addtoCart={addtoCart}
         />
-      ) : (
-        <NoItemsFound />
       )}
-      <Footer />
     </div>
   );
 };

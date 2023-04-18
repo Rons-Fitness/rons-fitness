@@ -1,8 +1,10 @@
+/* eslint-disable no-extra-boolean-cast */
 /* eslint-disable prefer-template */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 import classNames from 'classnames';
 import Loader from 'components/common/loader/Loader';
+import EmptyOrder from 'components/notFound/EmptyOrder';
 import moment from 'moment';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
@@ -42,73 +44,77 @@ const OrderList = ({ getOrders, loading, orders, keyword, setSearchText }) => {
                   <div className="my-order-head">
                     <h1 style={{ zIndex: 1 }}>My Order</h1>
                   </div>
-                  {orders.map((order) => (
-                    <Link to={`/user/orders/${order._id}`} key={order._id}>
-                      {console.log({ order: order.currentOrderStatus })}
-                      <div className="my-order-contain">
-                        <div className="row">
-                          <div className="col-lg-2 col-md-3    m-0 p-0">
-                            <div className="d-flex justify-content-center align-items-center">
-                              <div
-                                className={classNames(
-                                  'my-order-img-box',
-                                  order.currentOrderStatus.status ===
-                                    'Order Delivered' &&
-                                    'my-order-img-box-green',
-                                  order.currentOrderStatus.status ===
-                                    'Cancelled' && 'my-order-img-box-red'
-                                )}
-                              >
-                                <a>
-                                  {order.currentOrderStatus &&
-                                  [
-                                    'Order Placed',
-                                    'Order Confirmed',
-                                    'Out For Delivery',
-                                  ].includes(
-                                    order.currentOrderStatus.status
-                                  ) ? (
-                                    <img
-                                      src="/asstes/img/order-logo/package.png"
-                                      alt=""
-                                    />
-                                  ) : (
-                                    <img
-                                      src="/asstes/img/order-logo/package 1.png"
-                                      alt=""
-                                    />
+
+                  {Boolean(orders.length) ? (
+                    orders.map((order) => (
+                      <Link to={`/user/orders/${order._id}`} key={order._id}>
+                        <div className="my-order-contain">
+                          <div className="row">
+                            <div className="col-lg-2 col-md-3    m-0 p-0">
+                              <div className="d-flex justify-content-center align-items-center">
+                                <div
+                                  className={classNames(
+                                    'my-order-img-box',
+                                    order.currentOrderStatus.status ===
+                                      'Order Delivered' &&
+                                      'my-order-img-box-green',
+                                    order.currentOrderStatus.status ===
+                                      'Cancelled' && 'my-order-img-box-red'
                                   )}
-                                </a>
+                                >
+                                  <a>
+                                    {order.currentOrderStatus &&
+                                    [
+                                      'Order Placed',
+                                      'Order Confirmed',
+                                      'Out For Delivery',
+                                    ].includes(
+                                      order.currentOrderStatus.status
+                                    ) ? (
+                                      <img
+                                        src="/asstes/img/order-logo/package.png"
+                                        alt=""
+                                      />
+                                    ) : (
+                                      <img
+                                        src="/asstes/img/order-logo/package 1.png"
+                                        alt=""
+                                      />
+                                    )}
+                                  </a>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="col-lg-9 col-md-9  ">
-                            <div className="my-order-list">
-                              <a>
-                                <h5>
-                                  {moment(order.createdAt).format(
-                                    'Do MMMM YYYY ,  h:mm a'
-                                  )}
-                                </h5>
-                              </a>
-                              <div>
-                                {order.orderItems[0].name}{' '}
-                                <span className="fw-semibold ">
-                                  {Boolean(
-                                    Number(order.orderItems.length - 1)
-                                  ) &&
-                                    '+' +
-                                      Number(order.orderItems.length - 1) +
-                                      ' more'}
-                                </span>
+                            <div className="col-lg-9 col-md-9  ">
+                              <div className="my-order-list">
+                                <a>
+                                  <h5>
+                                    {moment(order.createdAt).format(
+                                      'Do MMMM YYYY ,  h:mm a'
+                                    )}
+                                  </h5>
+                                </a>
+                                <div>
+                                  {order.orderItems[0].name}{' '}
+                                  <span className="fw-semibold ">
+                                    {Boolean(
+                                      Number(order.orderItems.length - 1)
+                                    ) &&
+                                      '+' +
+                                        Number(order.orderItems.length - 1) +
+                                        ' more'}
+                                  </span>
+                                </div>
+                                <p className="fw-semibold">₹{order.total}</p>
                               </div>
-                              <p className="fw-semibold">₹{order.total}</p>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </Link>
-                  ))}
+                      </Link>
+                    ))
+                  ) : (
+                    <EmptyOrder />
+                  )}
                 </div>
               </div>
             </div>

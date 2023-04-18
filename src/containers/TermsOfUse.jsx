@@ -1,4 +1,3 @@
-import Footer from 'components/footer/Footer';
 import React from 'react';
 
 const TermsOfUse = () => {
@@ -120,7 +119,6 @@ const TermsOfUse = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
