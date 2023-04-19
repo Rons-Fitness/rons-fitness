@@ -7,7 +7,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import useRazorpay from 'react-razorpay';
 import API from 'helpers/API';
@@ -24,18 +24,31 @@ const CartMain = ({
   const Razorpay = useRazorpay();
   const { lastName, firstName, mobileNo } = currentUser;
 
+  const [oldOrderState, setOldOrderState] = useState(
+    JSON.parse(localStorage.getItem('order_Details'))
+  );
+
   const handlePayment = async (addressId) => {
     try {
       if (!addressId) return;
-      const order = await API.post('/order', {
-        addressId,
-      });
-      const {
-        data: {
-          data: { id, amount },
-        },
-      } = order;
-      localStorage.setItem('order_id', id);
+      let orderState = {};
+      if (oldOrderState) {
+        orderState = { ...oldOrderState };
+      } else {
+        const order = await API.post('/order', {
+          addressId,
+        });
+        const {
+          data: {
+            data: { id, amount },
+          },
+        } = order;
+        orderState = { id, amount };
+        setOldOrderState({ id, amount });
+      }
+
+      const { id, amount } = orderState;
+      localStorage.setItem('order_Details', JSON.stringify({ id, amount }));
       const options = {
         key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
         amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -56,7 +69,7 @@ const CartMain = ({
           color: '#3399cc',
         },
         handler: (response) => {
-          localStorage.removeItem('order_id');
+          localStorage.removeItem('order_Details');
           if (response.razorpay_payment_id) history.push('/user/orders');
         },
       };
