@@ -62,7 +62,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                         className="heart"
                         onClick={() => {
                           addToWishlist(
-                            selectedProduct && selectedProduct,
+                            selectedProduct && selectedProduct._id,
                             wishList
                           );
                           setWishlist(!wishList);
@@ -82,29 +82,33 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                   </p>
                 </div>
               </div>
-              <div className="col-lg-10   ">
+              <div className="col-lg-10  col-sm-12   ">
                 <div className="">
                   <div
                     className="xzoom-body-responsive"
                     id="img-container"
+                    // style={{
+                    //   // width: '400px',
+                    //   margin: 'auto',
+                    //   position: 'relative',
+                    // }}
                     style={{
-                      // width: '400px',
-                      margin: 'auto',
-                      position: 'relative',
+                      width: 'calc(100% - 40px)',
+                      margin: '60px auto',
                     }}
                   >
                     {/* <img src={activeImage} alt="" className="xzoom" /> */}
                     <ReactImageMagnify
                       {...{
                         smallImage: {
-                          alt: 'Wristwatch by Ted Baker London',
+                          alt: 'none',
                           isFluidWidth: true,
                           src: activeImage,
                         },
                         largeImage: {
                           src: activeImage,
-                          width: 1200,
-                          height: 1800,
+                          // width: 1200,
+                          // height: 1800,
                         },
                       }}
                     />
@@ -117,7 +121,16 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                           navigation
                           modules={[Autoplay, Pagination, Navigation]}
                           spaceBetween={25}
-                          slidesPerView={isTablet ? 4 : isMobile ? 3 : 5}
+                          slidesPerView={
+                            isTablet
+                              ? 4
+                              : isMobile
+                              ? 3
+                              : selectedProduct &&
+                                selectedProduct.image.length > 5
+                              ? selectedProduct.image.length / 2
+                              : 5
+                          }
                         >
                           {selectedProduct &&
                             selectedProduct.image.map(

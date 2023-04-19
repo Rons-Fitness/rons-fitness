@@ -107,14 +107,12 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
   return (
     <div className="Checkout-section">
       <div className="container">
-        <div className="Checkout-header">
+        <div className="Checkout-header" style={{ zIndex: 1 }}>
           <h4>Address </h4>
         </div>
         <div className="row">
           <div className="col-lg-6 col-md-12 col-sm-12">
             <div className="Checkout-left-body">
-              <p className="checkout-p">Checkout</p>
-
               <div className="Shipping-body">
                 <div className=" d-flex justify-content-between">
                   <p className="billing-p">Shipping address</p>

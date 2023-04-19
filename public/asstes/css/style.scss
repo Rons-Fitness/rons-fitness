@@ -523,10 +523,17 @@ select:focus {
 
     .swiper-button-next {
       right: 0;
+      font-size: 26;
+      &::after {
+        font-size: 26px;
+      }
     }
 
     .swiper-button-prev {
       left: 0;
+      &::after {
+        font-size: 26px;
+      }
     }
 
     .aero {

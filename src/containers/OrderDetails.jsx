@@ -55,10 +55,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
       {loading ? (
         <Loader />
       ) : (
-        <div
-          className="Order-Details-traking-section"
-          style={{ background: '#FFFFFF' }}
-        >
+        <div className="Order-Details-traking-section">
           <div className="container">
             <div className="row">
               <div className="col-lg-8  ">
@@ -102,7 +99,15 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                           className={classnames('stepper-item', 'completed')}
                         >
                           <div className="step-head-name">{track.status}</div>
-                          <div className="step-counter">
+                          <div
+                            className={classnames(
+                              'step-counter',
+                              currentOrderStatus &&
+                                currentOrderStatus.status ===
+                                  'Order Delivered' &&
+                                'my-order-img-box-green'
+                            )}
+                          >
                             <iconify-icon icon="ph:check" />
                           </div>
                           <div className="step-name">
@@ -135,7 +140,15 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                   <div className="traking-body">
                     {orderDetails &&
                       orderDetails.orderTrack.map((track) => (
-                        <div className="stepper-item" key={track._id}>
+                        <div
+                          className={classnames(
+                            'stepper-item',
+                            currentOrderStatus &&
+                              currentOrderStatus.status === 'Order Delivered' &&
+                              'my-order-img-box-green'
+                          )}
+                          key={track._id}
+                        >
                           <iconify-icon
                             icon="mdi:check-circle"
                             className="completed"
@@ -155,7 +168,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                         <div className="stepper-item discompleted">
                           <iconify-icon
                             icon="mdi:check-circle"
-                            className=" line-none"
+                            className="line-none"
                           />
                           <div>
                             <div>{track}</div>
@@ -183,7 +196,12 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                   <div className="row">
                     <div className="col-lg-12 col-md-6 col-sm-12">
                       <div className="delivery-address-details ">
-                        <p className="Shipping-details">Shipping Details</p>
+                        <p
+                          className="Shipping-details"
+                          style={{ background: '#fdead3' }}
+                        >
+                          Shipping Details
+                        </p>
                         <div className=" name-addres-details">
                           <h6>
                             {shippingAddress && shippingAddress.firstName}{' '}
@@ -212,6 +230,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                                 scope="col"
                                 colSpan="4"
                                 className="Price-detal "
+                                style={{ background: '#fdead3' }}
                               >
                                 Price Details
                               </th>

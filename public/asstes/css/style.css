@@ -424,6 +424,7 @@
 }
 .xzoom_part .xzoom_details .btn-body .btn-views-1 {
   margin-left: 0 !important;
+  margin: 5px 0;
 }
 .xzoom_part .xzoom_details .btn-body .btn-views {
   padding: 5px 10px;
@@ -531,6 +532,7 @@
 }
 .reviews-body nav .nav-tabs {
   border-bottom: none;
+  background: #f9eee0 !important;
 }
 .reviews-body nav .nav-tabs .nav-link {
   background: transparent;
@@ -544,7 +546,7 @@
   color: #505050;
 }
 .reviews-body .Description-contain p {
-  font-size: 15px;
+  font-size: 13px;
   line-height: 22px;
   margin-bottom: 10px;
 }
@@ -1008,7 +1010,8 @@
 .cart-section .total-box thead .Price-detal {
   padding-left: 10px;
   font-weight: 700;
-  color: rgba(0, 0, 0, 0.49);
+  color: rgba(0, 0, 0);
+  font-weight: 500;
 }
 .cart-section .total-box tbody tr td,
 .cart-section .total-box tbody tr th {
@@ -2289,7 +2292,6 @@
 }
 .Order-Details-traking-section .delivery-address-details .name-addres-details {
   padding: 5px 20px;
-  background-color: #ffffff;
 }
 .Order-Details-traking-section
   .delivery-address-details
@@ -2315,7 +2317,8 @@
 .Order-Details-traking-section .total-box thead .Price-detal {
   padding: 10px 12px;
   font-weight: 700;
-  color: rgba(0, 0, 0, 0.49);
+  color: rgba(0, 0, 0);
+  font-weight: 500;
 }
 .Order-Details-traking-section .total-box tbody tr td,
 .Order-Details-traking-section .total-box tbody tr th {
@@ -2796,12 +2799,20 @@ select:focus {
   color: var(--them-colour);
   top: 70px;
 }
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-family: swiper-icons;
+  font-size: 26px !important;
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+}
 .cat-round .carte-body .aero {
   color: var(--them-colour);
   top: 40%;
 }
 .cat-round .carte-body .aero::after {
-  font-size: 30px;
 }
 
 /* ==================  Categories round shape section End ==============  */
@@ -3007,8 +3018,8 @@ select:focus {
   animation: pulse 0.2s ease;
 }
 .slider-card .slider-cat .box-card .head-stars .false-seal .heart:hover path {
-  fill: var(--them-colour);
-  stroke: var(--them-colour);
+  fill: #ff3814;
+  stroke: #ff3814;
 }
 
 /* ==================  Tranding section End ==============  */
@@ -3241,5 +3252,7 @@ footer .footer-list li a {
 footer .footer-list li a:hover {
   color: var(--light);
 }
-
+.line-none ::after {
+  display: none;
+}
 /* =================  footer section end ================  */ /*# sourceMappingURL=style.css.map */

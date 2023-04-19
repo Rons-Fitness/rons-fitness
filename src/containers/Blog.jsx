@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
   return (
@@ -8,7 +9,7 @@ const Blog = () => {
         <div className="blog-section-header">
           <h1>BLOG</h1>
           <p>
-            <a>Continue Shopping</a>
+            <Link to="/products">Continue Shopping</Link>
           </p>
         </div>
         <div className="row">

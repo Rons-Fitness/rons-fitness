@@ -24,17 +24,17 @@ const AddressMain = ({
         style={{ background: '#FFFFFF', minHeight: 'calc(100vh - 115px)' }}
       >
         <div className="container">
-          <div className="row  justify-content-center">
-            <div className="col-lg-10">
-              <div className="address-body">
-                <div className="Address-head">
-                  <p>Select Delivery Address</p>
-                  <p>
-                    <Link to="/user/address/new">+ Add New Address</Link>
-                  </p>
-                </div>
-                {Boolean(addresses.length) ? (
-                  addresses.map(
+          <div className="row  ">
+            {Boolean(addresses.length) ? (
+              <div className="col-lg-6">
+                <div className="address-body">
+                  <div className="Address-head">
+                    <p>Select Delivery Address</p>
+                    <p>
+                      <Link to="/user/address/new">+ Add New Address</Link>
+                    </p>
+                  </div>
+                  {addresses.map(
                     ({ _id, addressType, shippingAddress, billingAddress }) => (
                       <AddressBox
                         key={_id}
@@ -48,12 +48,12 @@ const AddressMain = ({
                         setDeliverToThisAddress={setDeliverToThisAddress}
                       />
                     )
-                  )
-                ) : (
-                  <NoAddressFound />
-                )}
+                  )}
+                </div>
               </div>
-            </div>
+            ) : (
+              <NoAddressFound />
+            )}
           </div>
         </div>
       </div>

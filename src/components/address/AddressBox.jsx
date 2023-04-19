@@ -36,7 +36,7 @@ const AddressBox = ({
           name="address"
           id="Home"
           style={{ cursor: 'pointer' }}
-          checked={addressToDeliver._id === _id}
+          checked={addressToDeliver && addressToDeliver._id === _id}
           onClick={() =>
             setDeliverToThisAddress({
               _id,
@@ -62,7 +62,7 @@ const AddressBox = ({
           Delete
         </span>
       </div>
-      {addressToDeliver._id === _id && (
+      {addressToDeliver && addressToDeliver._id === _id && (
         <div
           className="delivery-btn"
           onClick={() => {

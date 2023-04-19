@@ -59,15 +59,17 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
         <div className="card-body">
           <div className="card-con">
             <a>
-              <h1
-                style={{
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                }}
-              >
-                {product.name}{' '}
-              </h1>
+              <Link to={`/product/${product._id}`}>
+                <h1
+                  style={{
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                  }}
+                >
+                  {product.name}{' '}
+                </h1>
+              </Link>
               {product.flavour !== '' && (
                 <span className="text-end">
                   <iconify-icon

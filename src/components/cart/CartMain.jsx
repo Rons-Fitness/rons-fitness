@@ -90,7 +90,7 @@ const CartMain = ({
             <div className="col-lg-8 com-md-9 col-sm-12">
               <div className="my-cart-body">
                 <div className=" my-cart-head">
-                  <h1>
+                  <h1 style={{ zIndex: 1 }}>
                     My Cart<span>({cart && cart?.products.length})</span>
                   </h1>
                   <p>
@@ -161,7 +161,12 @@ const CartMain = ({
                               <div className="bin-remove-add">
                                 <p className="bin-body ">
                                   <a href="#">
-                                    <i className="far fa-trash-alt" />
+                                    <i
+                                      className="far fa-trash-alt"
+                                      onClick={() =>
+                                        removeItemFromCart({ _id: value._id })
+                                      }
+                                    />
                                   </a>
                                 </p>
                               </div>

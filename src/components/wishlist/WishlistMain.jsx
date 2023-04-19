@@ -69,7 +69,10 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                       </p>
                       <div className="btn-mywish-body">
                         <p className="bin-body">
-                          <i className="far fa-trash-alt" />
+                          <i
+                            className="far fa-trash-alt"
+                            onClick={() => removeFromWishList(wish._id)}
+                          />
                         </p>
                         <a
                           onClick={() =>
