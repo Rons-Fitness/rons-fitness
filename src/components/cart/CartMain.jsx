@@ -12,6 +12,7 @@ import { Link, useHistory } from 'react-router-dom';
 import useRazorpay from 'react-razorpay';
 import API from 'helpers/API';
 import EmptyCart from 'components/notFound/EmptyCart';
+import CartItem from './CartItem';
 
 const CartMain = ({
   cart,
@@ -99,94 +100,13 @@ const CartMain = ({
                 </div>
                 {cart &&
                   cart?.products.map(({ value, qty }) => (
-                    <div className="my-cart-contain" key={value._id}>
-                      {console.log({ value })}
-                      <div className="row">
-                        <div className="col-lg-2 col-md- col-sm-12 d-flex align-items-center justify-content-center m-0 p-0">
-                          <div className="my-cart-img-box">
-                            <Link to={`/product/${value._id}`}>
-                              {' '}
-                              <img
-                                src={
-                                  value.image.find((elem) => elem.url !== '')
-                                    .url
-                                }
-                                alt=""
-                              />
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="col-lg-8 com-md- col-sm-12">
-                          <div className="my-cart-list">
-                            <a href="productsviewdetailes.html">
-                              <h5>{value.name} </h5>
-                              {value.flavour !== '' && (
-                                <iconify-icon
-                                  icon="mdi:lacto-vegetarian"
-                                  className="veg-icon"
-                                  style={
-                                    value.nonVeg
-                                      ? {
-                                          color: 'red',
-                                        }
-                                      : {
-                                          color: 'green',
-                                        }
-                                  }
-                                />
-                              )}
-                            </a>
-                            <p>{value.brand}</p>
-                            <div className="fw-semibold">
-                              {' '}
-                              ₹ {qty * value.price}{' '}
-                            </div>
-                            <div className=" form-box ">
-                              <div className="d-flex">
-                                <label for="number"> Qty :</label>
-                                <input
-                                  min="1"
-                                  type="number"
-                                  value={qty}
-                                  onChange={(e) =>
-                                    addtoCart({
-                                      _id: value._id,
-                                      qty: e.target.value,
-                                    })
-                                  }
-                                  className="form-control"
-                                  id="number"
-                                />
-                              </div>
-                              <div className="bin-remove-add">
-                                <p className="bin-body ">
-                                  <a href="#">
-                                    <i
-                                      className="far fa-trash-alt"
-                                      onClick={() =>
-                                        removeItemFromCart({ _id: value._id })
-                                      }
-                                    />
-                                  </a>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-lg-2 col-md- col-sm-12 d-flex justify-content-end bin-box">
-                          <p className="bin-body ">
-                            <a href="#">
-                              <i
-                                className="far fa-trash-alt"
-                                onClick={() =>
-                                  removeItemFromCart({ _id: value._id })
-                                }
-                              />
-                            </a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    <CartItem
+                      value={value}
+                      removeItemFromCart={removeItemFromCart}
+                      addtoCart={addtoCart}
+                      qty={qty}
+                      key={value._id}
+                    />
                   ))}
               </div>
             </div>

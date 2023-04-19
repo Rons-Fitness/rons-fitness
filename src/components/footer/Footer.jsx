@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer>
       <div className="container">
-        <div className="row">
+        <div className="row" style={{ justifyContent: 'space-between' }}>
           <div className="col-lg-3 col-md-6 col-sm-12 footer-left-body ">
             <div className="footer-icon-box">
               <img src="asstes/img/logo/Vector.png" alt="" />
@@ -31,7 +32,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-3 col-md-6 col-sm-12">
+          {/* <div className="col-lg-3 col-md-6 col-sm-12">
             <ul className="list-group footer-list">
               <li className="list-group-item">
                 <a href="#" className="active">
@@ -59,7 +60,7 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
           <div className="col-lg-3 col-md-6 col-sm-12 ">
             <ul className="list-group footer-list">
               <li className="list-group-item">
@@ -68,14 +69,14 @@ const Footer = () => {
                 </a>
               </li>
               <li className="list-group-item">
-                <a href="Contact-us-page.html" className="">
+                <Link className="nav-link " to="/contact-us">
                   Contact us
-                </a>
+                </Link>
               </li>
               <li className="list-group-item">
-                <a href="About-us-page.html" className="">
+                <Link to="/about-us" className="d-flex ">
                   About us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -87,28 +88,28 @@ const Footer = () => {
                 </a>
               </li>
               <li className="list-group-item">
-                <a href="terms-of-use-policy.html" className="">
+                <Link to="/terms-of-use" className="d-flex ">
                   Terms of use{' '}
-                </a>
+                </Link>
               </li>
               <li className="list-group-item">
-                <a href="Privacy-Policy.html" className="">
+                <Link to="/privacy-n-policy" className="d-flex ">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
-              <li className="list-group-item">
+              {/* <li className="list-group-item">
                 <a href="Refund-Policy.html" className="">
                   Refund Policy
                 </a>
-              </li>
-              <li className="list-group-item">
+              </li> */}
+              {/* <li className="list-group-item">
                 <a
                   href="shipping-cancellation-return-dispute-resolution-policy.html"
                   className=""
                 >
                   Shipping policy
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
