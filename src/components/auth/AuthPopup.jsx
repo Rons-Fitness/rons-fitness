@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import './auth.css';
 import { Modal } from 'react-bootstrap';
+import Notification from 'components/Notification/Notification';
 
 const AuthPopup = ({
   sendOtp,
@@ -11,19 +12,20 @@ const AuthPopup = ({
   authPopupState,
   changePopupState,
 }) => {
+  const reg = new RegExp('^[0-9]*$');
   const [mobileNo, setMobileNo] = useState('');
   const [otp, setOtp] = useState('');
   const [otpSent, setOtpSent] = useState(false);
 
   const handleSubmit = () => {
-    if (mobileNo !== '') {
+    if (reg.test(Number(mobileNo)) && mobileNo.length === 10) {
       if (otpSent) {
         verifyUserOtp({ otp, mobileNo });
       } else {
         setOtpSent(true);
         sendOtp(mobileNo);
       }
-    }
+    } else Notification('error', 'Enter Valid Contact Number');
   };
   return (
     <>
@@ -58,14 +60,16 @@ const AuthPopup = ({
               <div className="modal-body">
                 <input
                   className="number-to-text"
-                  type="number"
+                  type="tel"
+                  minLength="10"
+                  maxLength="10"
                   placeholder="Contact Number"
                   name="mobileNo"
                   value={mobileNo}
                   onChange={(e) =>
-                    e.target.value.length < 13 && setMobileNo(e.target.value)
+                    reg.test(Number(e.target.value)) &&
+                    setMobileNo(e.target.value.trim())
                   }
-                  maxLength={12}
                 />
                 {otpSent ? (
                   <>

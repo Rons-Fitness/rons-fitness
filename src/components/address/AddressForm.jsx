@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 
 const AddressForm = ({ address, setAddress, saveAddress }) => {
   const history = useHistory();
+  const reg = new RegExp('^[0-9]*$');
   const { shippingAddress, billingAddress, addressType, _id } = address;
   const [setAsAbove, setsetAsAbove] = useState(false);
 
@@ -261,20 +262,21 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
 
                     <input
                       required
-                      type="number"
+                      type="tel"
+                      minlength="10"
+                      maxlength="10"
                       placeholder="Number"
                       className="checkout-input-wid"
                       value={shippingAddress.phoneNo}
                       onChange={(e) => {
-                        if (e.target.value.length < 11) {
+                        if (reg.test(Number(e.target.value))) {
                           changeDetails(
                             'shippingAddress',
                             'phoneNo',
-                            e.target.value
+                            e.target.value.trim()
                           );
                         }
                       }}
-                      maxLength={12}
                     />
                   </div>
                   <button
@@ -433,15 +435,20 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
 
                   <input
                     required
-                    type="number"
+                    type="tel"
                     placeholder="Number"
+                    minlength="10"
+                    maxlength="10"
                     className="checkout-input-wid"
                     value={billingAddress.phoneNo}
                     onChange={(e) =>
-                      e.target.value.length < 11 &&
-                      changeDetails('billingAddress', 'phoneNo', e.target.value)
+                      reg.test(Number(e.target.value)) &&
+                      changeDetails(
+                        'billingAddress',
+                        'phoneNo',
+                        e.target.value.trim()
+                      )
                     }
-                    maxLength={12}
                   />
                 </div>
                 <div className="address-types-body">

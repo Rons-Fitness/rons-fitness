@@ -107,8 +107,8 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                         },
                         largeImage: {
                           src: activeImage,
-                          // width: 1200,
-                          // height: 1800,
+                          width: 1200,
+                          height: 1800,
                         },
                       }}
                     />

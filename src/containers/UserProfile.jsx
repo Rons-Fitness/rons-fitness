@@ -239,7 +239,7 @@ const UserProfile = ({
                       <br />
                       <input
                         className="col-12"
-                        type="mobileNo"
+                        type="tel"
                         id="mobileNo"
                         name="mobileNo"
                         value={userDetails.mobileNo}
