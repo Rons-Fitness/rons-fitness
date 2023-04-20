@@ -10,10 +10,11 @@ import {
   addProductToWishList,
   changeSearchText,
 } from 'redux/auth/actions';
+import { getHomeScreenData } from 'redux/product/actions';
 
 const Dashboard = ({
   homeScreenData,
-  // getHomeScreenDetails,
+  getHomeScreenDetails,
   keyword,
   addtoCart,
   addToWishlist,
@@ -22,20 +23,16 @@ const Dashboard = ({
   const history = useHistory();
 
   useEffect(() => {
+    getHomeScreenDetails();
+  }, [getHomeScreenDetails]);
+
+  useEffect(() => {
     setSearchText('');
   }, []);
 
   useEffect(() => {
     if (keyword && keyword.length > 0) history.push('/products');
   }, [keyword]);
-
-  // useEffect(() => {
-  //   getHomeScreenDetails();
-  // }, [getHomeScreenDetails]);
-
-  useEffect(() => {
-    setSearchText('');
-  }, []);
 
   useEffect(() => {
     if (keyword && keyword.length > 0) history.push('/products');
@@ -64,7 +61,7 @@ const mapStateToProps = ({ product, user }) => {
   return { homeScreenData, keyword };
 };
 const mapDispatchToProps = (dispatch) => ({
-  // getHomeScreenDetails: () => dispatch(getHomeScreenData()),
+  getHomeScreenDetails: () => dispatch(getHomeScreenData()),
   addtoCart: (data, history) => dispatch(addProductToCart(data, history)),
   addToWishlist: (_id, inWishlist) =>
     dispatch(addProductToWishList(_id, inWishlist)),

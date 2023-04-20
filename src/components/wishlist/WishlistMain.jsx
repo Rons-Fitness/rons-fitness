@@ -39,7 +39,10 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                   <div className="col-lg-9 com-md- col-sm-12">
                     <div className="my-wish-list">
                       <a>
-                        <h5 className="align-items-center">{wish.name}</h5>
+                        {' '}
+                        <Link to={`/product/${wish._id}`}>
+                          <h5 className="align-items-center">{wish.name}</h5>
+                        </Link>
                         {wish.flavour !== '' && (
                           <iconify-icon
                             icon="mdi:lacto-vegetarian"
@@ -60,7 +63,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                       <h3>
                         ₹{wish.price}{' '}
                         <span>
-                          MRP:<del className="ms-1">{wish.mrp}</del>
+                          MRP:<del className="ms-1">₹{wish.mrp}</del>
                         </span>
                       </h3>
                       <p className="star">

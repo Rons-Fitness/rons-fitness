@@ -246,6 +246,10 @@
   fill: #ff3814;
   stroke: #ff3814;
 }
+.heart:hover path {
+  fill: #ff3814 !important;
+  stroke: #ff3814 !important;
+}
 /* ============== Product grid detils End ============= */
 /* =========================== policy setion start ======================== */
 .policy-hed {
@@ -266,7 +270,6 @@
   margin-bottom: 80px;
   width: min(100% - 30px, 90%);
   margin-inline: auto;
-  z-index: 9999;
   position: relative;
 }
 
@@ -1656,7 +1659,7 @@
   background-color: white;
 }
 .Checkout-section .billing-body {
-  padding-top: 52px;
+  padding-top: 10px;
 }
 .Checkout-section .billing-body .edit-p a {
   color: #9b5701;

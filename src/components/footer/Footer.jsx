@@ -97,19 +97,16 @@ const Footer = () => {
                   Privacy Policy
                 </Link>
               </li>
-              {/* <li className="list-group-item">
-                <a href="Refund-Policy.html" className="">
+              <li className="list-group-item">
+                <Link to="/refund-policy" className="">
                   Refund Policy
-                </a>
-              </li> */}
-              {/* <li className="list-group-item">
-                <a
-                  href="shipping-cancellation-return-dispute-resolution-policy.html"
-                  className=""
-                >
+                </Link>
+              </li>
+              <li className="list-group-item">
+                <Link to="/shipping-policy" className="">
                   Shipping policy
-                </a>
-              </li> */}
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

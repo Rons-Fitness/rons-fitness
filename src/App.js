@@ -41,6 +41,8 @@ const EditReview = lazy(() => import('./containers/EditReview'));
 const AboutUs = lazy(() => import('./containers/AboutUs'));
 const PrivacyNPolicy = lazy(() => import('./containers/PrivacyNPolicy'));
 const TermsOfUse = lazy(() => import('./containers/TermsOfUse'));
+const RefundPolicy = lazy(() => import('./containers/RefundPolicy'));
+const ShippingPolicy = lazy(() => import('./containers/ShippingPolicy'));
 const NotFound = lazy(() => import('containers/NotFound'));
 
 const App = () => {
@@ -95,6 +97,17 @@ const App = () => {
               path="/terms-of-use"
               render={(props) => <TermsOfUse {...props} />}
             />
+            <Route
+              exact
+              path="/refund-policy"
+              render={(props) => <RefundPolicy {...props} />}
+            />
+            <Route
+              exact
+              path="/shipping-policy"
+              render={(props) => <ShippingPolicy {...props} />}
+            />
+
             <ProtectedRoute
               exact
               path="/user/cart"

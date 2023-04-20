@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 import { Link, useHistory } from 'react-router-dom';
@@ -61,6 +61,10 @@ export default ProductListing;
 
 const Product = ({ product, addToWishlist, addtoCart, history }) => {
   const [wishList, setWishlist] = useState(product.inWishlist);
+
+  useEffect(() => {
+    setWishlist(product.inWishlist);
+  }, [product]);
   return (
     <>
       <div className=" head-stars">
@@ -139,7 +143,7 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
             <a className="card-price">
               <span className="px-1">₹{product.price}</span>
               <span className="px-1">
-                MRP<del>:₹{product.mrp}</del>
+                MRP<del>₹:₹{product.mrp}</del>
               </span>
             </a>
           </p>

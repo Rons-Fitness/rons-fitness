@@ -12,6 +12,7 @@ import { Link, useHistory } from 'react-router-dom';
 import useRazorpay from 'react-razorpay';
 import API from 'helpers/API';
 import EmptyCart from 'components/notFound/EmptyCart';
+import Notification from 'components/Notification/Notification';
 import CartItem from './CartItem';
 
 const CartMain = ({
@@ -31,7 +32,10 @@ const CartMain = ({
 
   const handlePayment = async (addressId) => {
     try {
-      if (!addressId) return;
+      if (!addressId) {
+        Notification('info', 'Please Select An Address');
+        return;
+      }
       let orderState = {};
       if (oldOrderState) {
         orderState = { ...oldOrderState };
@@ -193,7 +197,9 @@ const CartMain = ({
                     </div>
                   </div>
                   <a
-                    onClick={() => handlePayment(addressToDeliver._id)}
+                    onClick={() =>
+                      handlePayment(addressToDeliver && addressToDeliver._id)
+                    }
                     className="place-btn"
                   >
                     <p>Place Order</p>
@@ -207,7 +213,7 @@ const CartMain = ({
                     </div>
                     <div>
                       <div className="Delivery-at">
-                        <Link to="/user/address" className="Change">
+                        <Link to="/user/address/new" className="Change">
                           <p style={{ margin: 'auto', color: '#f7a742' }}>
                             Select Delivery Address
                           </p>{' '}
@@ -216,7 +222,9 @@ const CartMain = ({
                     </div>
                   </div>
                   <a
-                    onClick={() => handlePayment(addressToDeliver._id)}
+                    onClick={() =>
+                      handlePayment(addressToDeliver && addressToDeliver._id)
+                    }
                     className="place-btn"
                     style={{ cursor: 'pointer' }}
                   >

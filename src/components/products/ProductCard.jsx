@@ -89,7 +89,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
               <a className="card-price">
                 <span className="px-1">₹{product.price}</span>
                 <span className="px-1">
-                  MRP<del>{product.mrp}</del>
+                  MRP<del>₹{product.mrp}</del>
                 </span>
               </a>
             </p>

@@ -59,7 +59,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                   <p className="false-seal  ">
                     <a>
                       <svg
-                        className="heart"
+                        className={wishList ? 'activeHeart' : 'heart'}
                         onClick={() => {
                           addToWishlist(
                             selectedProduct && selectedProduct._id,
@@ -127,7 +127,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                               : isMobile
                               ? 3
                               : selectedProduct &&
-                                selectedProduct.image.length > 5
+                                selectedProduct.image.length < 5
                               ? selectedProduct.image.length / 2
                               : 5
                           }
@@ -217,7 +217,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                   <span>
                     MRP:
                     <del className="ms-1">
-                      {selectedProduct && selectedProduct.mrp}
+                      ₹{selectedProduct && selectedProduct.mrp}
                     </del>
                   </span>{' '}
                 </h3>
