@@ -19,6 +19,13 @@ body {
   justify-content: center;
   height: 100%;
 }
+.content h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 15px 0;
+  line-height: 20px;
+}
 .empty-state__help {
   color: #a2a5b9;
   font-size: 0.875rem;
@@ -50,4 +57,18 @@ img {
 }
 a {
   color: #444;
+}
+
+@media only screen and (max-width: 600px) {
+  .content h5 {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-align: center;
+  }
+  .empty-state__message {
+    color: #f7a742;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 0.85rem;
+  }
 }

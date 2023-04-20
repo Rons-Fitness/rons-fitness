@@ -11,9 +11,7 @@ const EmptyOrder = () => {
           <img src="/asstes/img/notFound/empty_order.jpg" alt="" />
         </div>
         <div className="empty-state__message">No Orders Yet</div>
-        <h5 style={{ margin: '25px 0' }}>
-          Looks like you haven’t made your choice yet....
-        </h5>
+        <h5>Looks like you haven’t made your choice yet....</h5>
         <Link to="/">
           <input
             required

@@ -82,7 +82,12 @@ const AuthPopup = ({
                     />
                     <p className="resend-p ">
                       Didn’t Receive?{' '}
-                      <span onClick={() => sendOtp(mobileNo)}>Resend</span>
+                      <span
+                        onClick={() => sendOtp(mobileNo)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        Resend
+                      </span>
                     </p>
                   </>
                 ) : (

@@ -11,9 +11,7 @@ const EmptyWishList = () => {
           <img src="/asstes/img/notFound/empty_wishList.jpg" alt="" />
         </div>
         <div className="empty-state__message">No Items in Wishlist.!!</div>
-        <h5 style={{ margin: '25px 0' }}>
-          Explore more, and shortlist some items
-        </h5>
+        <h5>Explore more, and shortlist some items</h5>
         <Link to="/products">
           <input
             required

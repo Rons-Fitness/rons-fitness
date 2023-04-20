@@ -38,7 +38,7 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
         </div>
         <div className="col-lg-8 com-md- col-sm-12">
           <div className="my-cart-list">
-            <a href="productsviewdetailes.html">
+            <Link to={`/product/${value._id}`}>
               <h5>{value.name} </h5>
               {value.flavour !== '' && (
                 <iconify-icon
@@ -55,7 +55,7 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
                   }
                 />
               )}
-            </a>
+            </Link>
             <p>{value.brand}</p>
             <div className="fw-semibold"> ₹ {qty * value.price} </div>
             <div className=" form-box ">

@@ -11,7 +11,7 @@ const EmptyCart = () => {
           <img src="/asstes/img/notFound/emptyCart.jpg" alt="" />
         </div>
         <div className="empty-state__message">Hey, it feels so light!</div>
-        <h5 style={{ margin: '25px 0' }}>
+        <h5>
           Looks like you have not added anything to your cart. Go ahead &
           explore top categories.
         </h5>

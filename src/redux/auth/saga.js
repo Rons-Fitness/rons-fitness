@@ -372,6 +372,7 @@ function* addToWishList({ payload }) {
       Notification('success', message);
     } else {
       Notification('error', message);
+      yield put(setAuthPopup(true));
       yield put(addProductToWishListError('add product to wishlist error'));
     }
   } catch (error) {
