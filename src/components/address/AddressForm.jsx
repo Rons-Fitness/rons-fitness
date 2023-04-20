@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -12,6 +13,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
   const reg = new RegExp('^[0-9]*$');
   const { shippingAddress, billingAddress, addressType, _id } = address;
   const [setAsAbove, setsetAsAbove] = useState(false);
+  const [isValidPincode, setisValidPincode] = useState(false);
 
   const changeDetails = (type, key, value) => {
     if (setAsAbove) {
@@ -57,6 +59,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
       } = await API.get(`/address/pincode/${pin}`);
       console.log({ data, success });
       if (success) {
+        setisValidPincode(true);
         const { stateName, districtName, country } = data;
         if (setAsAbove) {
           if (type === 'shippingAddress')
@@ -90,7 +93,10 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
             };
           });
         }
-      } else Notification('info', 'Invalid Pincode');
+      } else {
+        setisValidPincode(false);
+        Notification('info', 'Invalid Pincode');
+      }
     }
   };
 
@@ -121,6 +127,8 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
+                    if (!isValidPincode)
+                      return Notification('info', 'Please Enter Valid Pincode');
                     if (!Object.values(address).includes('" "')) {
                       saveAddress(
                         {
