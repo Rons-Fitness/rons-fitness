@@ -37,6 +37,8 @@ import {
   GET_ORDER_BY_ID,
   ADD_EDIT_USER_REVIEW,
   UPDATE_USER_DETAILS,
+  GET_BLOGS,
+  GET_BLOG_BY_ID,
 } from '../contants';
 
 import {
@@ -81,6 +83,10 @@ import {
   getOrderByIdError,
   updateUserDetailsSuccess,
   updateUserDetailsError,
+  getBlogSuccess,
+  getBlogError,
+  getBlogByIdSuccess,
+  getBlogByIdError,
 } from './actions';
 
 const getUSerDetailsAsync = async () => {
@@ -727,6 +733,52 @@ function* updateUserDetails({ payload }) {
 export function* watchUpdateUserDetails() {
   yield takeEvery(UPDATE_USER_DETAILS, updateUserDetails);
 }
+
+const getBlogsAsync = async () => {
+  const res = await API.get('/blog');
+  return res;
+};
+
+function* getBlogs() {
+  try {
+    const { data, status } = yield call(getBlogsAsync);
+    if (status === 200) {
+      yield put(getBlogSuccess(data));
+    } else {
+      yield put(getBlogError('something went wrong'));
+    }
+  } catch (err) {
+    yield put(getBlogError(err));
+  }
+}
+
+export function* watchGetBlogs() {
+  yield takeEvery(GET_BLOGS, getBlogs);
+}
+
+const getBlogByIdAsync = async (_id) => {
+  const res = await API.get(`blog/${_id}`);
+  return res;
+};
+
+function* getBlogById({ payload }) {
+  try {
+    const { _id } = payload;
+    const { data, status } = yield call(getBlogByIdAsync, _id);
+    if (status === 200) {
+      yield put(getBlogByIdSuccess(data));
+    } else {
+      yield put(getBlogByIdError(status));
+    }
+  } catch (err) {
+    yield put(getBlogByIdError(err));
+  }
+}
+
+export function* watchGetBlogById() {
+  yield takeEvery(GET_BLOG_BY_ID, getBlogById);
+}
+
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
@@ -752,5 +804,7 @@ export default function* rootSaga() {
     fork(watchGetOrderByID),
     fork(watchAddEditUserReview),
     fork(watchUpdateUserDetails),
+    fork(watchGetBlogs),
+    fork(watchGetBlogById),
   ]);
 }

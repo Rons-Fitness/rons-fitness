@@ -59,6 +59,12 @@ import {
   UPDATE_USER_DETAILS,
   UPDATE_USER_DETAILS_SUCCESS,
   UPDATE_USER_DETAILS_ERROR,
+  GET_BLOGS_SUCCESS,
+  GET_BLOGS_ERROR,
+  GET_BLOG_BY_ID_SUCCESS,
+  GET_BLOG_BY_ID_ERROR,
+  GET_BLOGS,
+  GET_BLOG_BY_ID,
 } from '../contants';
 
 const INIT_STATE = {
@@ -74,6 +80,8 @@ const INIT_STATE = {
   wishlist: [],
   addresses: [],
   orders: [],
+  blogs: [],
+  selectedBlog: { image: { url: '' } },
   selectedAddress: null,
   addressToDeliver: null,
   authPopupState: false,
@@ -358,6 +366,18 @@ export default (state = INIT_STATE, action) => {
       return { ...state, currentUser: action.payload };
     case UPDATE_USER_DETAILS_ERROR:
       return { ...state, error: action.payload.message };
+    case GET_BLOGS:
+      return { ...state, loading: true };
+    case GET_BLOGS_SUCCESS:
+      return { ...state, loading: false, blogs: action.payload };
+    case GET_BLOGS_ERROR:
+      return { ...state, loading: false, error: action.payload.message };
+    case GET_BLOG_BY_ID:
+      return { ...state, loading: true };
+    case GET_BLOG_BY_ID_SUCCESS:
+      return { ...state, loading: false, selectedBlog: action.payload };
+    case GET_BLOG_BY_ID_ERROR:
+      return { ...state, loading: false, error: action.payload.message };
     default:
       return { ...state };
   }

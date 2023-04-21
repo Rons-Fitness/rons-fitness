@@ -65,6 +65,12 @@ import {
   UPDATE_USER_DETAILS,
   UPDATE_USER_DETAILS_SUCCESS,
   UPDATE_USER_DETAILS_ERROR,
+  GET_BLOGS,
+  GET_BLOGS_SUCCESS,
+  GET_BLOGS_ERROR,
+  GET_BLOG_BY_ID,
+  GET_BLOG_BY_ID_SUCCESS,
+  GET_BLOG_BY_ID_ERROR,
   // GET_CART_DETAILS,
 } from '../contants';
 
@@ -367,5 +373,30 @@ export const updateUserDetailsSuccess = (data) => ({
 
 export const updateUserDetailsError = (message) => ({
   type: UPDATE_USER_DETAILS_ERROR,
+  payload: { message },
+});
+// blogs
+export const getBlog = (data, history) => ({
+  type: GET_BLOGS,
+  payload: { data, history },
+});
+export const getBlogSuccess = (data) => ({
+  type: GET_BLOGS_SUCCESS,
+  payload: data,
+});
+export const getBlogError = (message) => ({
+  type: GET_BLOGS_ERROR,
+  payload: { message },
+});
+export const getBlogById = (_id) => ({
+  type: GET_BLOG_BY_ID,
+  payload: { _id },
+});
+export const getBlogByIdSuccess = (data) => ({
+  type: GET_BLOG_BY_ID_SUCCESS,
+  payload: data,
+});
+export const getBlogByIdError = (message) => ({
+  type: GET_BLOG_BY_ID_ERROR,
   payload: { message },
 });
