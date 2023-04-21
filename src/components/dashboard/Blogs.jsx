@@ -18,7 +18,7 @@ const Blogs = ({ blogs, getBlogList }) => {
             <h1>BLOG</h1>
           </div>
           <div className="blog-body">
-            {blogs.map((blog) => (
+            {blogs.slice(0, 3).map((blog) => (
               <div className="blog-contaion" key={blog._id}>
                 <div className="blog-img-box">
                   <img src={blog.image.url} alt="" />
