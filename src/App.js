@@ -33,24 +33,6 @@ const App = () => {
                   roles={[UserRole.Admin, UserRole.Editor]}
                 /> */}
               <Route path="/" render={(props) => <Dashboard {...props} />} />
-              {/* <Route
-                  path="/user"
-                  render={(props) => <ViewUser {...props} />}
-                />
-                <Route
-                  path="/error"
-                  exact
-                  render={(props) => <ViewError {...props} />}
-                />
-                <Route
-                  path="/unauthorized"
-                  exact
-                  render={(props) => <ViewUnauthorized {...props} />}
-                /> */}
-
-              {/*
-                <Redirect exact from="/" to={adminRoot} />
-                */}
               <Redirect to="/error" />
             </Switch>
           </Router>
