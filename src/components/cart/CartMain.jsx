@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable prefer-template */
 /* eslint-disable no-alert */
 /* eslint-disable import/no-extraneous-dependencies */

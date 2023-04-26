@@ -430,6 +430,7 @@ function* addProductToCart({ payload }) {
       status,
     } = yield call(AddtoCartAsync, data);
     if (status === 200) {
+      localStorage.removeItem('order_Details');
       yield put(addToCartSuccess(cartData.cart));
       yield put(removeProductToWishList(data._id));
       Notification('success', message);
@@ -464,6 +465,7 @@ function* removeProductFromCart({ payload }) {
       status,
     } = yield call(removeFromCartAsync, data);
     if (status === 200) {
+      localStorage.removeItem('order_Details');
       yield put(reomveFromCartSuccess(cart));
       Notification('success', message);
     } else {
