@@ -26,7 +26,7 @@ function UserProfile({
     if (currentUser)
       setUserDetails({
         firstName: currentUser.firstName,
-        lastName: currentUser.lastName,
+        lastName: currentUser?.lastName,
         mobileNo: currentUser.mobileNo,
         email: currentUser.email,
       });
@@ -217,7 +217,7 @@ function UserProfile({
                         type="text"
                         id="lname"
                         name="lname"
-                        value={userDetails.lastName}
+                        value={userDetails?.lastName}
                         onChange={(e) =>
                           setUserDetails((oldVal) => {
                             return { ...oldVal, lastName: e.target.value };

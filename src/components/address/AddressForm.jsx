@@ -137,7 +137,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                           addressType,
                           _id,
                         },
-                        history
+                        history,
                       );
                     }
                   }}
@@ -153,7 +153,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         changeDetails(
                           'shippingAddress',
                           'firstName',
-                          e.target.value
+                          e.target.value,
                         )
                       }
                     />
@@ -162,12 +162,12 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                       required
                       placeholder="Last name"
                       className="checkout-input-wid"
-                      value={shippingAddress.lastName}
+                      value={shippingAddress?.lastName}
                       onChange={(e) =>
                         changeDetails(
                           'shippingAddress',
                           'lastName',
-                          e.target.value
+                          e.target.value,
                         )
                       }
                     />
@@ -182,7 +182,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                       changeDetails(
                         'shippingAddress',
                         'addressLine1',
-                        e.target.value
+                        e.target.value,
                       )
                     }
                   />{' '}
@@ -197,7 +197,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                       changeDetails(
                         'shippingAddress',
                         'addressLine2',
-                        e.target.value
+                        e.target.value,
                       )
                     }
                   />{' '}
@@ -225,11 +225,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                           changeDetails(
                             'shippingAddress',
                             'pinCode',
-                            e.target.value
+                            e.target.value,
                           );
                           updateDetailsBasedOnPin(
                             e.target.value,
-                            'shippingAddress'
+                            'shippingAddress',
                           );
                         }
                       }}
@@ -246,7 +246,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         changeDetails(
                           'shippingAddress',
                           'state',
-                          e.target.value
+                          e.target.value,
                         )
                       }
                     />
@@ -263,7 +263,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         changeDetails(
                           'shippingAddress',
                           'country',
-                          e.target.value
+                          e.target.value,
                         )
                       }
                     />
@@ -281,7 +281,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                           changeDetails(
                             'shippingAddress',
                             'phoneNo',
-                            e.target.value.trim()
+                            e.target.value.trim(),
                           );
                         }
                       }}
@@ -334,7 +334,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                       changeDetails(
                         'billingAddress',
                         'firstName',
-                        e.target.value
+                        e.target.value,
                       )
                     }
                   />
@@ -343,12 +343,12 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     required
                     placeholder="Last name"
                     className="checkout-input-wid"
-                    value={billingAddress.lastName}
+                    value={billingAddress?.lastName}
                     onChange={(e) =>
                       changeDetails(
                         'billingAddress',
                         'lastName',
-                        e.target.value
+                        e.target.value,
                       )
                     }
                   />
@@ -363,7 +363,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     changeDetails(
                       'billingAddress',
                       'addressLine1',
-                      e.target.value
+                      e.target.value,
                     )
                   }
                 />
@@ -378,7 +378,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     changeDetails(
                       'billingAddress',
                       'addressLine2',
-                      e.target.value
+                      e.target.value,
                     )
                   }
                 />
@@ -406,11 +406,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         changeDetails(
                           'billingAddress',
                           'pinCode',
-                          e.target.value
+                          e.target.value,
                         );
                         updateDetailsBasedOnPin(
                           e.target.value,
-                          'billingAddress'
+                          'billingAddress',
                         );
                       }
                     }}
@@ -454,7 +454,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                       changeDetails(
                         'billingAddress',
                         'phoneNo',
-                        e.target.value.trim()
+                        e.target.value.trim(),
                       )
                     }
                   />
@@ -509,7 +509,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   value="Home"
                   className={classNames(
                     'shipping-btn  btn-views-active',
-                    addressType === 'home' && 'activeAddressType'
+                    addressType === 'home' && 'activeAddressType',
                   )}
                   style={{ height: 35.5, padding: '0 30px', borderRadius: 0 }}
                   onClick={() => changeAddressType('home')}
@@ -519,7 +519,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   value="Office"
                   className={classNames(
                     'shipping-btn  btn-views-active',
-                    addressType === 'office' && 'activeAddressType'
+                    addressType === 'office' && 'activeAddressType',
                   )}
                   style={{
                     margin: '0 10px',
@@ -534,7 +534,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   value="Other"
                   className={classNames(
                     'shipping-btn  btn-views-active',
-                    addressType === 'other' && 'activeAddressType'
+                    addressType === 'other' && 'activeAddressType',
                   )}
                   style={{ height: 35.5, padding: '0 30px', borderRadius: 0 }}
                   onClick={() => changeAddressType('other')}

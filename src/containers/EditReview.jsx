@@ -19,7 +19,7 @@ const EditReview = ({
 
   const image =
     (selectedProduct &&
-      selectedProduct.image.find((el) => el.url !== '').url) ||
+      selectedProduct.image.find((el) => el?.url !== '')?.url) ||
     '';
 
   const [review, setReview] = useState({

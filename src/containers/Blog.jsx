@@ -30,7 +30,7 @@ const Blog = ({ blogs, getBlogList, homeScreenData, loading }) => {
                 {blogs.map((blog) => (
                   <div className="blog-contain" key={blog._id}>
                     <div className="blog-img-box col-lg-12">
-                      <img src={blog.image.url} alt="" />
+                      <img src={blog.image?.url} alt="" />
                     </div>
                     <h4>{blog.title}</h4>
                     <p
@@ -54,7 +54,7 @@ const Blog = ({ blogs, getBlogList, homeScreenData, loading }) => {
                     <div className="blog-right-contain" key={blog._id}>
                       <div className="col-lg-3 col-md-2 col-sm-3 blog-right-img-box">
                         <Link to={`/blog/${blog._id}`}>
-                          <img src={blog.image.url} alt="" />
+                          <img src={blog.image?.url} alt="" />
                         </Link>
                       </div>
                       <div className="col-lg-9 col-md-9 col-sm-9 px-3">
@@ -84,7 +84,7 @@ const Blog = ({ blogs, getBlogList, homeScreenData, loading }) => {
                           <Link to={`/product/${product._id}`}>
                             <img
                               src={
-                                product.image.find((el) => el.url !== '').url
+                                product.image.find((el) => el?.url !== '')?.url
                               }
                               alt=""
                               className=""

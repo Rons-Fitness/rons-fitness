@@ -101,8 +101,8 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
           <a>
             <img
               src={
-                product.image.find((el) => el.url !== '') &&
-                product.image.find((el) => el.url !== '').url
+                product.image.find((el) => el?.url !== '') &&
+                product.image.find((el) => el?.url !== '')?.url
               }
               alt=""
               className=""
@@ -159,7 +159,7 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
                   _id: product._id,
                   qty: 1,
                 },
-                history
+                history,
               )
             }
           >

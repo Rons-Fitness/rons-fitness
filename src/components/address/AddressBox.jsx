@@ -22,7 +22,7 @@ function AddressBox({
       <div className="delivery-name">
         <div>
           <h5>
-            {shippingAddress.firstName} {shippingAddress.lastName}
+            {shippingAddress.firstName} {shippingAddress?.lastName}
             <span className="home-tag">{addressType}</span>
           </h5>
         </div>

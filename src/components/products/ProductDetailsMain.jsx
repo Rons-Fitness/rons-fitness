@@ -18,7 +18,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
   const [activeImage, setActiveImage] = useState('');
   const [qty, setQty] = useState(1);
   const [wishList, setWishlist] = useState(
-    selectedProduct ? selectedProduct.inWishlist : false
+    selectedProduct ? selectedProduct.inWishlist : false,
   );
 
   const [isMobile, setIsMobile] = useState(false);
@@ -44,7 +44,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
 
   useEffect(() => {
     if (selectedProduct && selectedProduct.image) {
-      setActiveImage(selectedProduct.image.find((img) => img.url !== '').url);
+      setActiveImage(selectedProduct.image.find((img) => img?.url !== '')?.url);
     }
   }, [selectedProduct]);
 
@@ -63,7 +63,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                         onClick={() => {
                           addToWishlist(
                             selectedProduct && selectedProduct._id,
-                            wishList
+                            wishList,
                           );
                           setWishlist(!wishList);
                         }}
@@ -149,7 +149,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                                       xpreview={url}
                                     />
                                   </SwiperSlide>
-                                )
+                                ),
                             )}
                         </Swiper>
                         {/* <div className="swiper-button-next"></div>
@@ -173,7 +173,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                       onClick={() => {
                         addToWishlist(
                           selectedProduct && selectedProduct._id,
-                          wishList
+                          wishList,
                         );
                         setWishlist(!wishList);
                       }}
@@ -238,7 +238,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                           >
                             <a href="#"> {value.value + value.unit}</a>
                           </Link>
-                        )
+                        ),
                       )}
                   </div>
                 </div>
@@ -260,7 +260,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                             >
                               <a href="#">{value.flavour}</a>
                             </Link>
-                          )
+                          ),
                         )}
                     </div>
                   </div>
@@ -283,7 +283,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                             >
                               <a href="#">{value.color}</a>
                             </Link>
-                          )
+                          ),
                         )}
                     </div>
                   </div>
@@ -306,7 +306,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                             _id: selectedProduct && selectedProduct._id,
                             qty,
                           },
-                          history
+                          history,
                         )
                       }
                     >

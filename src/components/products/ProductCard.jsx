@@ -47,7 +47,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
         <div className="card-img">
           <a>
             <img
-              src={product.image.find((elem) => elem.url !== '').url}
+              src={product.image.find((elem) => elem?.url !== '')?.url}
               alt=""
               className=""
             />

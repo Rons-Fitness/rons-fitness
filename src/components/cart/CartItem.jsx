@@ -30,7 +30,7 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
             <Link to={`/product/${value._id}`}>
               {' '}
               <img
-                src={value.image.find((elem) => elem.url !== '').url}
+                src={value.image.find((elem) => elem?.url !== '')?.url}
                 alt=""
               />
             </Link>

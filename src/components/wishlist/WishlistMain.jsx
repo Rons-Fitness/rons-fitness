@@ -30,7 +30,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                     <div className="my-whish-img-box">
                       <Link to={`/product/${wish._id}`}>
                         <img
-                          src={wish.image.find((img) => img.url !== '').url}
+                          src={wish.image.find((img) => img?.url !== '')?.url}
                           alt=""
                         />
                       </Link>
@@ -84,7 +84,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                                 _id: wish._id,
                                 qty: 1,
                               },
-                              history
+                              history,
                             )
                           }
                         >

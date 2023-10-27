@@ -14,11 +14,11 @@ function CartMain({
   currentUser,
 }) {
   const history = useNavigate();
-  const Razorpay = useRazorpay();
+  const [Razorpay] = useRazorpay();
   const { lastName, firstName, mobileNo } = currentUser;
 
   const [oldOrderState, setOldOrderState] = useState(
-    JSON.parse(localStorage.getItem('order_Details'))
+    JSON.parse(localStorage.getItem('order_Details')),
   );
 
   const handlePayment = async (addressId) => {

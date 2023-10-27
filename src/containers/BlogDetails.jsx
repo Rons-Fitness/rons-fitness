@@ -24,7 +24,7 @@ const BlogDetails = ({ getBlogDetails, selectedBlog, loading }) => {
           <div className="blog-body">
             <div className="blog-contain">
               <div className="blog-img-box col-lg-12 col-md-12 col-sm-12">
-                <img src={selectedBlog.image.url} alt="" />
+                <img src={selectedBlog.image?.url} alt="" />
               </div>
               <h4>{selectedBlog.title}</h4>
               <p

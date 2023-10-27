@@ -196,7 +196,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                     <div className=" name-addres-details">
                       <h6>
                         {shippingAddress && shippingAddress.firstName}{' '}
-                        {shippingAddress && shippingAddress.lastName}
+                        {shippingAddress && shippingAddress?.lastName}
                       </h6>
                       <p>
                         {shippingAddress && shippingAddress.addressLine1},
