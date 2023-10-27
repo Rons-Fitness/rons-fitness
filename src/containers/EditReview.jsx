@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getSingleProduct } from 'redux/actions';
 import { addEditUserReview, changeSearchText } from 'redux/auth/actions';
 
@@ -15,7 +15,7 @@ const EditReview = ({
   setSearchText,
 }) => {
   const { id } = useParams();
-  const history = useHistory();
+  const history = useNavigate();
 
   const image =
     (selectedProduct &&

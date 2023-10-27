@@ -1,30 +1,14 @@
-/* eslint-disable import/extensions */
-import React, { lazy } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { connect } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import './app.css';
 import Navbar from 'components/navbar/Navbar';
-import ProtectedRoute from 'helpers/authHelper.js';
+import ProtectedRoute from 'helpers/authHelper';
 import ProductList from 'containers/ProductList';
 import Footer from 'components/footer/Footer';
+import Loader from 'components/common/loader/Loader';
 
-// import Loader from 'components/common/loader/Loader';
-
-// import { NotificationContainer } from './components/common/react-notifications';
-
-// import { ProtectedRoute } from './helpers/authHelper';
-
-// const ViewHome = React.lazy(() =>
-//   import(/* webpackChunkName: "views" */ './views/user/login')
-// );
-// const Navbar = lazy(() => import('components/navbar/Navbar'));
 const Dashboard = lazy(() => import('./containers/Dashboard'));
-// const ProductList = lazy(() => import('./containers/ProductList'));
 const ProductDetails = lazy(() => import('./containers/ProductDetails'));
 const Cart = lazy(() => import('./containers/Cart'));
 const Wishlist = lazy(() => import('containers/Wishlist'));
@@ -45,142 +29,128 @@ const RefundPolicy = lazy(() => import('./containers/RefundPolicy'));
 const ShippingPolicy = lazy(() => import('./containers/ShippingPolicy'));
 const NotFound = lazy(() => import('containers/NotFound'));
 
-const App = () => {
+function App() {
   return (
     <div className="h-100">
-      <>
-        {/* <NotificationContainer /> */}
-
-        {/* <Suspense fallback={<Loader />}> */}
-        <Router>
+      <BrowserRouter>
+        <Suspense fallback={<Loader />}>
           <Navbar />
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={(props) => <Dashboard {...props} />}
-            />
-            <Route
-              exact
-              path="/products/:params?"
-              render={(props) => <ProductList {...props} />}
-              // render={(props) => <ProductDetails {...props} />}
-            />
-            <Route
-              exact
-              path="/product/:id"
-              render={(props) => <ProductDetails {...props} />}
-            />
-            <Route
-              exact
-              path="/contact-us"
-              render={(props) => <ContactUs {...props} />}
-            />
-            <Route exact path="/blog" render={(props) => <Blog {...props} />} />
-            <Route
-              exact
-              path="/blog/:id"
-              render={(props) => <BlogDetails {...props} />}
-            />
-            <Route
-              exact
-              path="/about-us"
-              render={(props) => <AboutUs {...props} />}
-            />
+          <Routes>
+            <Route exact path="/" element={<Dashboard />} />
+            <Route exact path="/products/:params?" element={<ProductList />} />
+            <Route exact path="/product/:id" element={<ProductDetails />} />
+            <Route exact path="/contact-us" element={<ContactUs />} />
+            <Route exact path="/blog" element={<Blog />} />
+            <Route exact path="/blog/:id" element={<BlogDetails />} />
+            <Route exact path="/about-us" element={<AboutUs />} />
             <Route
               exact
               path="/privacy-n-policy"
-              render={(props) => <PrivacyNPolicy {...props} />}
+              element={<PrivacyNPolicy />}
             />
-            <Route
-              exact
-              path="/terms-of-use"
-              render={(props) => <TermsOfUse {...props} />}
-            />
-            <Route
-              exact
-              path="/refund-policy"
-              render={(props) => <RefundPolicy {...props} />}
-            />
-            <Route
-              exact
-              path="/shipping-policy"
-              render={(props) => <ShippingPolicy {...props} />}
-            />
+            <Route exact path="/terms-of-use" element={<TermsOfUse />} />
+            <Route exact path="/refund-policy" element={<RefundPolicy />} />
+            <Route exact path="/shipping-policy" element={<ShippingPolicy />} />
 
-            <ProtectedRoute
-              exact
-              path="/user/cart"
-              render={(props) => <Cart {...props} />}
-            />
-            <ProtectedRoute
-              exact
-              path="/user/wishlist"
-              render={(props) => <Wishlist {...props} />}
-            />
-            <ProtectedRoute
-              exact
-              path="/user/address"
-              render={(props) => <Address {...props} />}
-            />
-            <ProtectedRoute
-              exact
-              path="/user/address/new"
-              render={(props) => <NewAddress {...props} />}
-            />
-            <ProtectedRoute
-              exact
-              path="/user/address/edit/:id"
-              render={(props) => <EditAddress {...props} />}
-            />
-            <ProtectedRoute
+            <Route
               exact
               path="/user/profile"
-              render={(props) => <UserProfile {...props} />}
+              element={
+                <ProtectedRoute>
+                  <UserProfile />
+                </ProtectedRoute>
+              }
             />
-            <ProtectedRoute
+
+            <Route
+              exact
+              path="/user/cart"
+              element={
+                <ProtectedRoute>
+                  <Cart />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/user/wishlist"
+              element={
+                <ProtectedRoute>
+                  <Wishlist />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/user/address"
+              element={
+                <ProtectedRoute>
+                  <Address />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/user/address/new"
+              element={
+                <ProtectedRoute>
+                  <NewAddress />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/user/address/edit/:id"
+              element={
+                <ProtectedRoute>
+                  <EditAddress />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/user/profile"
+              element={
+                <ProtectedRoute>
+                  <UserProfile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               exact
               path="/user/orders"
-              render={(props) => <OrderList {...props} />}
+              element={
+                <ProtectedRoute>
+                  <OrderList />
+                </ProtectedRoute>
+              }
             />
-            <ProtectedRoute
+            <Route
               exact
               path="/user/orders/:id"
-              render={(props) => <OrderDetails {...props} />}
+              element={
+                <ProtectedRoute>
+                  <OrderDetails />
+                </ProtectedRoute>
+              }
             />
-            <ProtectedRoute
+            <Route
               exact
               path="/user/order/:id/review"
-              render={(props) => <EditReview {...props} />}
+              element={
+                <ProtectedRoute>
+                  <EditReview />
+                </ProtectedRoute>
+              }
             />
-            {/* <Route
-                  path="/user"
-                  render={(props) => <ViewUser {...props} />}
-                />
-                <Route
-                  path="/error"
-                  exact
-                  render={(props) => <ViewError {...props} />}
-                />
-                <Route
-                  path="/unauthorized"
-                  exact
-                  render={(props) => <ViewUnauthorized {...props} />}
-                /> */}
-            <Route
-              path="/notfound"
-              exact
-              render={(props) => <NotFound {...props} />}
-            />
-            <Redirect to="/notfound" />
-          </Switch>
+            <Route exact path="*" element={<NotFound />} />
+          </Routes>
           <Footer />
-        </Router>
-        {/* </Suspense> */}
-      </>
+        </Suspense>
+      </BrowserRouter>
     </div>
   );
-};
+}
 
 const mapStateToProps = () => {
   return {};

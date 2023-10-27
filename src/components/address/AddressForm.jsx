@@ -6,10 +6,10 @@ import classNames from 'classnames';
 import Notification from 'components/Notification/Notification';
 import API from 'helpers/API';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AddressForm = ({ address, setAddress, saveAddress }) => {
-  const history = useHistory();
+  const history = useNavigate();
   const reg = new RegExp('^[0-9]*$');
   const { shippingAddress, billingAddress, addressType, _id } = address;
   const [setAsAbove, setsetAsAbove] = useState(false);

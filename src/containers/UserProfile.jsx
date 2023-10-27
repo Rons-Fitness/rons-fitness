@@ -6,7 +6,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   changeSearchText,
   logOutUser,
@@ -20,7 +20,7 @@ const UserProfile = ({
   setSearchText,
   updateDetails,
 }) => {
-  const history = useHistory();
+  const history = useNavigate();
   const [userDetails, setUserDetails] = useState({
     firstName: '',
     lastName: '',

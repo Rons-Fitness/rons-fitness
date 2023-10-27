@@ -7,7 +7,7 @@
 import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ProductListing = ({
   type,
@@ -17,7 +17,7 @@ const ProductListing = ({
   isMobile = false,
   isTablet,
 }) => {
-  const history = useHistory();
+  const history = useNavigate();
   return (
     <section id="trendinslider-cardg-sec">
       <div className="container-fluid">

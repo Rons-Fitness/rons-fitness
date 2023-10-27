@@ -2,7 +2,7 @@ import Loader from 'components/common/loader/Loader';
 import ProductDetailsMain from 'components/products/ProductDetailsMain';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getSingleProduct } from 'redux/actions';
 import {
   addProductToCart,
@@ -21,7 +21,7 @@ const ProductDetails = ({
   setSearchText,
 }) => {
   const { id } = useParams();
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect(() => {
     if (id) getProductById(id);

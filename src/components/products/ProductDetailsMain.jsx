@@ -10,11 +10,11 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ReactImageMagnify from 'react-image-magnify';
 import { Autoplay, Pagination, Navigation } from 'swiper';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ProductReviewsAndDes from './ProductReviewsAndDes';
 
 const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
-  const history = useHistory();
+  const history = useNavigate();
   const [activeImage, setActiveImage] = useState('');
   const [qty, setQty] = useState(1);
   const [wishList, setWishlist] = useState(

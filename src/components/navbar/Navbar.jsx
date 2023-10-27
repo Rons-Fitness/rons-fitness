@@ -9,7 +9,7 @@
 import AuthPopup from 'components/auth/AuthPopup';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 import { getUserDetails } from 'redux/actions';
 import {
@@ -31,7 +31,7 @@ const Navbar = ({
   getHomeScreenDetails,
   homeScreenData,
 }) => {
-  const history = useHistory();
+  const history = useNavigate();
   const [text, settext] = useState('');
 
   const { brands, category } = homeScreenData;

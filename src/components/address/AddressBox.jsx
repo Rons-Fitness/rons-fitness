@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { updateUserAddress } from 'redux/auth/actions';
 
 const AddressBox = ({
@@ -18,7 +18,7 @@ const AddressBox = ({
   addressToDeliver,
   setDeliverToThisAddress,
 }) => {
-  const history = useHistory();
+  const history = useNavigate();
 
   console.log({ addressToDeliver });
   return (

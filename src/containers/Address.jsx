@@ -8,7 +8,7 @@ import {
   deliverToThisAddress,
   getUserAddresses,
 } from 'redux/auth/actions';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Loader from 'components/common/loader/Loader';
 
 const Address = ({
@@ -22,7 +22,7 @@ const Address = ({
   addressToDeliver,
   setDeliverToThisAddress,
 }) => {
-  const history = useHistory();
+  const history = useNavigate();
   useEffect(() => {
     setSearchText('');
   }, []);

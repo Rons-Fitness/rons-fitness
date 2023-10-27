@@ -9,7 +9,7 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useRazorpay from 'react-razorpay';
 import API from 'helpers/API';
 import EmptyCart from 'components/notFound/EmptyCart';
@@ -23,7 +23,7 @@ const CartMain = ({
   addressToDeliver,
   currentUser,
 }) => {
-  const history = useHistory();
+  const history = useNavigate();
   const Razorpay = useRazorpay();
   const { lastName, firstName, mobileNo } = currentUser;
 

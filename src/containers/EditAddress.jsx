@@ -2,7 +2,7 @@ import AddressForm from 'components/address/AddressForm';
 import Loader from 'components/common/loader/Loader';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   changeSearchText,
   getAddressById,
@@ -18,7 +18,7 @@ const EditAddress = ({
   loading,
 }) => {
   const { id } = useParams();
-  const history = useHistory();
+  const history = useNavigate();
   const [address, setAddress] = useState({
     addressType: '',
     shippingAddress: {

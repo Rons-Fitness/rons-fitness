@@ -2,11 +2,11 @@ import AddressForm from 'components/address/AddressForm';
 import Loader from 'components/common/loader/Loader';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { changeSearchText, createUserAddress } from 'redux/auth/actions';
 
 const NewAddress = ({ addNewAddress, keyword, setSearchText, loading }) => {
-  const history = useHistory();
+  const history = useNavigate();
   const [address, setAddress] = useState({
     addressType: 'home',
     shippingAddress: {

@@ -10,7 +10,7 @@ import {
   getUserWishList,
   removeProductToWishList,
 } from 'redux/auth/actions';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Wishlist = ({
   keyword,
@@ -25,7 +25,7 @@ const Wishlist = ({
     getWishList();
   }, [getWishList]);
 
-  const history = useHistory();
+  const history = useNavigate();
   useEffect(() => {
     setSearchText('');
   }, []);

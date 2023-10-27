@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import DashboardMain from 'components/dashboard/DashboardMain';
 // import { getHomeScreenData } from 'redux/product/actions';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import {
   addProductToCart,
@@ -20,7 +20,7 @@ const Dashboard = ({
   addToWishlist,
   setSearchText,
 }) => {
-  const history = useHistory();
+  const history = useNavigate();
 
   useEffect(() => {
     getHomeScreenDetails();

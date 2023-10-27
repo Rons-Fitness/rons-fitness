@@ -6,10 +6,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import EmptyWishList from 'components/notFound/EmptyWishList';
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
-  const history = useHistory();
+  const history = useNavigate();
   return (
     <div
       className="my-whish-section"

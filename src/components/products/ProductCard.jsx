@@ -3,10 +3,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-underscore-dangle */
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product, addtoCart, addToWishlist }) => {
-  const history = useHistory();
+  const history = useNavigate();
   const [wishList, setWishlist] = useState(product.inWishlist);
   return (
     <>

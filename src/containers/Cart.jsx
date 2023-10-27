@@ -12,7 +12,7 @@ import {
   getUserDetails,
   reomveProductFromCart,
 } from 'redux/auth/actions';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Cart({
   keyword,
@@ -27,7 +27,7 @@ function Cart({
   setSearchText,
 }) {
   // const selectedAdd = JSON.parse(localStorage.getItem('selected_address'));
-  const history = useHistory();
+  const history = useNavigate();
   useEffect(() => {
     getLoggedInUserDetails();
     // if (selectedAdd) setDeliveryAddress(selectedAdd);
