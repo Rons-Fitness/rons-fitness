@@ -1,13 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable prefer-template */
-/* eslint-disable no-alert */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useRazorpay from 'react-razorpay';
@@ -16,13 +6,13 @@ import EmptyCart from 'components/notFound/EmptyCart';
 import Notification from 'components/Notification/Notification';
 import CartItem from './CartItem';
 
-const CartMain = ({
+function CartMain({
   cart,
   removeItemFromCart,
   addtoCart,
   addressToDeliver,
   currentUser,
-}) => {
+}) {
   const history = useNavigate();
   const Razorpay = useRazorpay();
   const { lastName, firstName, mobileNo } = currentUser;
@@ -76,7 +66,7 @@ const CartMain = ({
         },
         handler: (response) => {
           localStorage.removeItem('order_Details');
-          if (response.razorpay_payment_id) history.push('/user/orders');
+          if (response.razorpay_payment_id) history('/user/orders');
         },
       };
       const rzp1 = new Razorpay(options);
@@ -120,7 +110,7 @@ const CartMain = ({
                 <table className="table">
                   <thead>
                     <tr>
-                      <th scope="col" colspan="4" className="Price-detal ">
+                      <th scope="col" colSpan="4" className="Price-detal ">
                         Price Details
                       </th>
                     </tr>
@@ -239,6 +229,6 @@ const CartMain = ({
       </div>
     </div>
   );
-};
+}
 
 export default CartMain;

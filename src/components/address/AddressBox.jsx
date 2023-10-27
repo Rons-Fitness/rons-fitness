@@ -1,13 +1,9 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { updateUserAddress } from 'redux/auth/actions';
 
-const AddressBox = ({
+function AddressBox({
   _id,
   addressType,
   shippingAddress,
@@ -17,7 +13,7 @@ const AddressBox = ({
   updateAddress,
   addressToDeliver,
   setDeliverToThisAddress,
-}) => {
+}) {
   const history = useNavigate();
 
   console.log({ addressToDeliver });
@@ -78,7 +74,7 @@ const AddressBox = ({
               shippingAddress,
               billingAddress,
             });
-            history.push('/user/cart');
+            history('/user/cart');
           }}
         >
           <p>
@@ -88,7 +84,7 @@ const AddressBox = ({
       )}
     </div>
   );
-};
+}
 
 const mapStateToProps = ({ user }) => {
   const { keyword, selectedAddress, loading } = user;

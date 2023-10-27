@@ -35,7 +35,7 @@ function* addProductWorker({ payload }) {
     const { data, status } = yield call(addProductAsync, product);
     const { messgae } = data;
     if (status === 201) {
-      history.push('/app/applications/product');
+      history('/app/applications/product');
       yield put(addProductSuccess(data));
     } else {
       yield put(addProductSuccess(messgae));
@@ -105,7 +105,7 @@ function* updateProductWorker({ payload }) {
     const { data, status } = yield call(updateProductAsync, product, _id);
     const { message } = data;
     if (status === 200) {
-      history.push('/app/applications/product');
+      history('/app/applications/product');
       yield put(updateProductSuccess(data));
     } else {
       yield put(updateProductError(message));

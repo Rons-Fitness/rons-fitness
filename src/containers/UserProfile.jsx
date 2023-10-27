@@ -1,9 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -13,13 +7,13 @@ import {
   updateUserDetails,
 } from 'redux/auth/actions';
 
-const UserProfile = ({
+function UserProfile({
   currentUser,
   logOut,
   keyword,
   setSearchText,
   updateDetails,
-}) => {
+}) {
   const history = useNavigate();
   const [userDetails, setUserDetails] = useState({
     firstName: '',
@@ -43,7 +37,7 @@ const UserProfile = ({
   }, []);
 
   useEffect(() => {
-    if (keyword && keyword.length > 0) history.push('/products');
+    if (keyword && keyword.length > 0) history('/products');
   }, [keyword]);
 
   return (
@@ -55,8 +49,8 @@ const UserProfile = ({
               <div className="profile-left-body">
                 <div className="d-flex py-2">
                   <Link to="/user/orders" className="d-flex">
-                    <label for="Orders" className="p-1">
-                      <iconify-icon icon="mdi:calendar-text-outline"></iconify-icon>
+                    <label htmlFor="Orders" className="p-1">
+                      <iconify-icon icon="mdi:calendar-text-outline" />
                     </label>
                     <p className="ps-3 profile-ptage" id="Orders">
                       Orders
@@ -66,8 +60,8 @@ const UserProfile = ({
 
                 <div className="d-flex py-2">
                   <Link to="/user/address" className="d-flex">
-                    <label for="Address" className="p-1">
-                      <iconify-icon icon="ph:map-pin-light"></iconify-icon>
+                    <label htmlFor="Address" className="p-1">
+                      <iconify-icon icon="ph:map-pin-light" />
                     </label>
                     <p className="ps-3 profile-ptage" id="Address">
                       Address
@@ -77,8 +71,8 @@ const UserProfile = ({
 
                 <div className="d-flex py-2">
                   <Link to="/user/wishlist" className="d-flex ">
-                    <label for="Wishlist" className="p-1">
-                      <iconify-icon icon="mdi:cards-heart-outline"></iconify-icon>
+                    <label htmlFor="Wishlist" className="p-1">
+                      <iconify-icon icon="mdi:cards-heart-outline" />
                     </label>
                     <p className="ps-3 profile-ptage" id="Wishlist">
                       Wishlist
@@ -87,8 +81,8 @@ const UserProfile = ({
                 </div>
                 <div className="d-flex py-2">
                   <Link to="/about-us" className="d-flex ">
-                    <label for="Wishlist" className="p-1">
-                      <iconify-icon icon="material-symbols:info-outline-rounded"></iconify-icon>
+                    <label htmlFor="Wishlist" className="p-1">
+                      <iconify-icon icon="material-symbols:info-outline-rounded" />
                     </label>
                     <p className="ps-3 profile-ptage" id="Wishlist">
                       About Us
@@ -97,8 +91,8 @@ const UserProfile = ({
                 </div>
                 <div className="d-flex py-2">
                   <Link to="/contact-us" className="d-flex ">
-                    <label for="Wishlist" className="p-1">
-                      <iconify-icon icon="material-symbols:contact-support-outline"></iconify-icon>
+                    <label htmlFor="Wishlist" className="p-1">
+                      <iconify-icon icon="material-symbols:contact-support-outline" />
                     </label>
                     <p className="ps-3 profile-ptage" id="Wishlist">
                       Contact Us
@@ -107,8 +101,8 @@ const UserProfile = ({
                 </div>
                 <div className="d-flex py-2">
                   <Link to="/privacy-n-policy" className="d-flex ">
-                    <label for="Wishlist" className="p-1">
-                      <iconify-icon icon="material-symbols:privacy-tip-outline-rounded"></iconify-icon>
+                    <label htmlFor="Wishlist" className="p-1">
+                      <iconify-icon icon="material-symbols:privacy-tip-outline-rounded" />
                     </label>
                     <p className="ps-3 profile-ptage" id="Wishlist">
                       Privacy Policy
@@ -117,8 +111,8 @@ const UserProfile = ({
                 </div>
                 <div className="d-flex py-2">
                   <Link to="/terms-of-use" className="d-flex ">
-                    <label for="Wishlist" className="p-1">
-                      <iconify-icon icon="fluent:calendar-info-20-regular"></iconify-icon>
+                    <label htmlFor="Wishlist" className="p-1">
+                      <iconify-icon icon="fluent:calendar-info-20-regular" />
                     </label>
                     <p className="ps-3 profile-ptage" id="Wishlist">
                       Terms of Use
@@ -172,8 +166,8 @@ const UserProfile = ({
 
                 <div className="d-flex py-2" style={{ cursor: 'pointer' }}>
                   <a onClick={() => logOut()} className="d-flex active-a ">
-                    <label for="Log-out" className="p-1">
-                      <iconify-icon icon="material-symbols:logout-rounded"></iconify-icon>
+                    <label htmlFor="Log-out" className="p-1">
+                      <iconify-icon icon="material-symbols:logout-rounded" />
                     </label>
                     <p id="Log-out" className="ps-3  profile-ptage">
                       Log out
@@ -195,7 +189,7 @@ const UserProfile = ({
                     }}
                   >
                     <div className="py-2">
-                      <label for="fname" className="pb-2">
+                      <label htmlFor="fname" className="pb-2">
                         First Name
                       </label>
                       <br />
@@ -214,7 +208,7 @@ const UserProfile = ({
                       <br />
                     </div>
                     <div className="py-2">
-                      <label for="lname" className="pb-2">
+                      <label htmlFor="lname" className="pb-2">
                         Last Name
                       </label>
                       <br />
@@ -233,7 +227,7 @@ const UserProfile = ({
                       <br />
                     </div>
                     <div className="py-2">
-                      <label for="email" className="pb-2">
+                      <label htmlFor="email" className="pb-2">
                         Mobile No.
                       </label>
                       <br />
@@ -248,7 +242,7 @@ const UserProfile = ({
                       <br />
                     </div>
                     <div className="py-2">
-                      <label for="lname" className="pb-2">
+                      <label htmlFor="lname" className="pb-2">
                         Email
                       </label>
                       <br />
@@ -282,7 +276,7 @@ const UserProfile = ({
       </div>
     </div>
   );
-};
+}
 
 const mapStateToProps = ({ user }) => {
   const { currentUser, authPopupState, keyword } = user;

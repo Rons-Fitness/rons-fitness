@@ -106,12 +106,12 @@ export function* getUserWorker({ payload }) {
       yield put(getUserDetailSuccess(data));
       yield put(setAuthPopup(false));
     } else {
-      history.push('/');
+      history('/');
       yield put(setAuthPopup(true));
       yield put(getUserDetailsError('token expired'));
     }
   } catch (error) {
-    history.push('/');
+    history('/');
     yield put(getUserDetailsError('something went wrong'));
     yield put(setAuthPopup(true));
   }
@@ -224,7 +224,7 @@ function* registerWithEmailPassword({ payload }) {
       const item = { uid: registerUser.user.uid, ...currentUser };
       setCurrentUser(item);
       yield put(registerUserSuccess(item));
-      history.push(adminRoot);
+      history(adminRoot);
     } else {
       yield put(registerUserError(registerUser.message));
     }
@@ -239,7 +239,7 @@ export function* watchLogoutUser() {
 }
 
 const logoutAsync = async (history) => {
-  await history.push('/');
+  await history('/');
 };
 
 function* logout({ payload }) {
@@ -264,7 +264,7 @@ function* forgotPassword({ payload }) {
     } = yield call(GenerateOtpAsync, mobileNo);
     if (status === 200) {
       yield put(forgotPasswordSuccess('OTP sent successfully to your number'));
-      history.push('/user/otp');
+      history('/user/otp');
     } else {
       yield put(forgotPasswordError(message));
     }
@@ -434,7 +434,7 @@ function* addProductToCart({ payload }) {
       yield put(addToCartSuccess(cartData.cart));
       yield put(removeProductToWishList(data._id));
       Notification('success', message);
-      if (history) history.push('/user/cart');
+      if (history) history('/user/cart');
     } else {
       console.log('error');
       yield put(setAuthPopup(true));
@@ -513,7 +513,7 @@ function* createAddress({ payload }) {
   try {
     const { data, status } = yield call(createAddressAsync, address);
     if (status === 201) {
-      history.push('/user/address');
+      history('/user/address');
       yield put(createUserAddressSuccess(data));
       Notification('success', 'Address Added');
     } else {
@@ -540,7 +540,7 @@ function* updateAddress({ payload }) {
   try {
     const { status } = yield call(updateAddressAsync, address);
     if (status === 200) {
-      if (history) history.push('/user/address');
+      if (history) history('/user/address');
       Notification('success', 'Address Updated');
     } else {
       yield put(updateUserAddressError('Something went wrong'));
@@ -644,7 +644,7 @@ function* addEditUserReview({ payload }) {
     } = yield call(addEditUserReviewAsync, review);
     if (status === 201) {
       Notification('success', message);
-      history.push('/user/orders');
+      history('/user/orders');
     } else {
       Notification('error', message);
     }

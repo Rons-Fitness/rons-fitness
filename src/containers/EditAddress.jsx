@@ -58,7 +58,7 @@ const EditAddress = ({
   }, []);
 
   useEffect(() => {
-    if (keyword && keyword.length > 0) history.push('/products');
+    if (keyword && keyword.length > 0) history('/products');
   }, [keyword]);
 
   return (

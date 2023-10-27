@@ -1,7 +1,3 @@
-/* eslint-disable no-extra-boolean-cast */
-/* eslint-disable prefer-template */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable no-underscore-dangle */
 import classNames from 'classnames';
 import Loader from 'components/common/loader/Loader';
 import EmptyOrder from 'components/notFound/EmptyOrder';
@@ -11,7 +7,7 @@ import { connect } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { changeSearchText, getUserOrders } from 'redux/auth/actions';
 
-const OrderList = ({ getOrders, loading, orders, keyword, setSearchText }) => {
+function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
   useEffect(() => {
     getOrders();
   }, [getOrders]);
@@ -22,7 +18,7 @@ const OrderList = ({ getOrders, loading, orders, keyword, setSearchText }) => {
   }, []);
 
   useEffect(() => {
-    if (keyword && keyword.length > 0) history.push('/products');
+    if (keyword && keyword.length > 0) history('/products');
   }, [keyword]);
 
   return (
@@ -45,7 +41,7 @@ const OrderList = ({ getOrders, loading, orders, keyword, setSearchText }) => {
                     <h1 style={{ zIndex: 1 }}>My Order</h1>
                   </div>
 
-                  {Boolean(orders.length) ? (
+                  {orders.length ? (
                     orders.map((order) => (
                       <Link to={`/user/orders/${order._id}`} key={order._id}>
                         <div className="my-order-contain">
@@ -100,9 +96,9 @@ const OrderList = ({ getOrders, loading, orders, keyword, setSearchText }) => {
                                     {Boolean(
                                       Number(order.orderItems.length - 1)
                                     ) &&
-                                      '+' +
-                                        Number(order.orderItems.length - 1) +
-                                        ' more'}
+                                      `+${Number(
+                                        order.orderItems.length - 1
+                                      )} more`}
                                   </span>
                                 </div>
                                 <p className="fw-semibold">₹{order.total}</p>
@@ -123,7 +119,7 @@ const OrderList = ({ getOrders, loading, orders, keyword, setSearchText }) => {
       )}
     </div>
   );
-};
+}
 
 const mapStateToProps = ({ user }) => {
   const { keyword, loading, orders } = user;
