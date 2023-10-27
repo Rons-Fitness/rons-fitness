@@ -25,8 +25,11 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
-    }
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    },
+    "requireConfigFile": false
   },
   "plugins": ["react", "react-hooks", "jsx-a11y", "prettier"],
   "rules": {
@@ -41,7 +44,10 @@
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "jsx-a11y/label-has-associated-control": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "react/function-component-definition": "off",
+    "prefer-regex-literals": "off",
+    "default-param-last": "off"
   },
   "globals": {
     "window": true,

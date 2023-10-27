@@ -11,7 +11,7 @@ const middlewares = [sagaMiddleware];
 // eslint-disable-next-line import/prefer-default-export
 const configureStore = createStore(
   reducers,
-  composeWithDevTools(applyMiddleware(...middlewares))
+  composeWithDevTools(applyMiddleware(...middlewares)),
 );
 sagaMiddleware.run(sagas);
 

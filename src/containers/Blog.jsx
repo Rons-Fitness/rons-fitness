@@ -1,5 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import Loader from 'components/common/loader/Loader';
 import moment from 'moment';
 import React, { useEffect } from 'react';

@@ -30,94 +30,92 @@ const Review = ({ elem, likeDislikeReview }) => {
   const [likeCount, setLikeCount] = useState(elem.likeCount || 0);
   const [disLikeCount, setDisLikeCount] = useState(elem.disLikeCount || 0);
   return (
-    <>
-      <div className="customer-body">
-        <div className="row">
-          <div className="col-md-1">
-            <div className="profile-face">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
-                alt=""
-              />
-            </div>
+    <div className="customer-body">
+      <div className="row">
+        <div className="col-md-1">
+          <div className="profile-face">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png"
+              alt=""
+            />
           </div>
-          <div className="col-md-11 comant-body">
-            <h5>{elem.name}</h5>
-            <p>{elem.comment}</p>
-            <div className="like-star">
-              <div className="star-color">
-                <p>
-                  <i className="fas fa-star  me-1" />
-                  {elem.rating} | {moment(elem.createdAt).format('YYYY-MM-DD')}
-                </p>
-              </div>
-              <div className="thumbs-up-like-unlike-body">
-                {liked ? (
-                  <i
-                    className="bi bi-hand-thumbs-up-fill"
-                    onClick={() => {
-                      setLiked(!liked);
-                      setLikeCount((old) => old - 1);
-                      if (disLiked) {
-                        setDisLiked(!disLiked);
-                        setDisLikeCount((old) => old - 1);
-                      }
-                      likeDislikeReview(elem._id, true);
-                    }}
-                    style={{ cursor: 'pointer', color: '#f7a742' }}
-                  />
-                ) : (
-                  <i
-                    className="bi bi-hand-thumbs-up"
-                    onClick={() => {
-                      setLiked(!liked);
-                      setLikeCount((old) => old + 1);
-                      if (disLiked) {
-                        setDisLiked(!disLiked);
-                        setDisLikeCount((old) => old - 1);
-                      }
-                      likeDislikeReview(elem._id, true);
-                    }}
-                    style={{ cursor: 'pointer', color: '#f7a742' }}
-                  />
-                )}
-                <span className="mx-2">{likeCount}</span>{' '}
-                {disLiked ? (
-                  <i
-                    className="bi bi-hand-thumbs-down-fill"
-                    onClick={() => {
-                      if (liked) {
-                        setLiked(!liked);
-                        setLikeCount((old) => old - 1);
-                      }
+        </div>
+        <div className="col-md-11 comant-body">
+          <h5>{elem.name}</h5>
+          <p>{elem.comment}</p>
+          <div className="like-star">
+            <div className="star-color">
+              <p>
+                <i className="fas fa-star  me-1" />
+                {elem.rating} | {moment(elem.createdAt).format('YYYY-MM-DD')}
+              </p>
+            </div>
+            <div className="thumbs-up-like-unlike-body">
+              {liked ? (
+                <i
+                  className="bi bi-hand-thumbs-up-fill"
+                  onClick={() => {
+                    setLiked(!liked);
+                    setLikeCount((old) => old - 1);
+                    if (disLiked) {
                       setDisLiked(!disLiked);
                       setDisLikeCount((old) => old - 1);
-                      likeDislikeReview(elem._id, false);
-                    }}
-                    style={{ cursor: 'pointer', color: '#f7a742' }}
-                  />
-                ) : (
-                  <i
-                    className="bi bi-hand-thumbs-down"
-                    onClick={() => {
-                      if (liked) {
-                        setLiked(!liked);
-                        setLikeCount((old) => old - 1);
-                      }
+                    }
+                    likeDislikeReview(elem._id, true);
+                  }}
+                  style={{ cursor: 'pointer', color: '#f7a742' }}
+                />
+              ) : (
+                <i
+                  className="bi bi-hand-thumbs-up"
+                  onClick={() => {
+                    setLiked(!liked);
+                    setLikeCount((old) => old + 1);
+                    if (disLiked) {
                       setDisLiked(!disLiked);
-                      setDisLikeCount((old) => old + 1);
-                      likeDislikeReview(elem._id, false);
-                    }}
-                    style={{ cursor: 'pointer', color: '#f7a742' }}
-                  />
-                )}
-                <span className="mx-2">{disLikeCount}</span>
-              </div>
+                      setDisLikeCount((old) => old - 1);
+                    }
+                    likeDislikeReview(elem._id, true);
+                  }}
+                  style={{ cursor: 'pointer', color: '#f7a742' }}
+                />
+              )}
+              <span className="mx-2">{likeCount}</span>{' '}
+              {disLiked ? (
+                <i
+                  className="bi bi-hand-thumbs-down-fill"
+                  onClick={() => {
+                    if (liked) {
+                      setLiked(!liked);
+                      setLikeCount((old) => old - 1);
+                    }
+                    setDisLiked(!disLiked);
+                    setDisLikeCount((old) => old - 1);
+                    likeDislikeReview(elem._id, false);
+                  }}
+                  style={{ cursor: 'pointer', color: '#f7a742' }}
+                />
+              ) : (
+                <i
+                  className="bi bi-hand-thumbs-down"
+                  onClick={() => {
+                    if (liked) {
+                      setLiked(!liked);
+                      setLikeCount((old) => old - 1);
+                    }
+                    setDisLiked(!disLiked);
+                    setDisLikeCount((old) => old + 1);
+                    likeDislikeReview(elem._id, false);
+                  }}
+                  style={{ cursor: 'pointer', color: '#f7a742' }}
+                />
+              )}
+              <span className="mx-2">{disLikeCount}</span>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

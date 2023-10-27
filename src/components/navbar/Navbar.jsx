@@ -1,11 +1,4 @@
-/* eslint-disable no-underscore-dangle */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable jsx-a11y/anchor-has-content */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import AuthPopup from 'components/auth/AuthPopup';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
@@ -173,18 +166,16 @@ const Navbar = ({
             <div className="col-md-3 col-sm-6 ">
               <div className=" login-section">
                 {!currentUser ? (
-                  <>
-                    <a>
-                      <p
-                        className="login-btn "
-                        data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"
-                        onClick={() => changePopupState(true)}
-                      >
-                        Login
-                      </p>
-                    </a>
-                  </>
+                  <a>
+                    <p
+                      className="login-btn "
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                      onClick={() => changePopupState(true)}
+                    >
+                      Login
+                    </p>
+                  </a>
                 ) : (
                   <Link
                     to="/user/profile"
@@ -194,7 +185,7 @@ const Navbar = ({
                   >
                     <p className="shoping-cart" style={{ margin: '0 15px' }}>
                       <a>
-                        <i class="bi bi-person" />
+                        <i className="bi bi-person" />
                       </a>
                     </p>
                   </Link>

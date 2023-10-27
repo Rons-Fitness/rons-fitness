@@ -6,14 +6,14 @@ import NoItemsFound from 'components/notFound/NoItemsFound';
 import ProductCard from './ProductCard';
 import ProductsFilters from './ProductsFilters';
 
-const ProductListMain = ({
+function ProductListMain({
   products,
   addtoCart,
   addToWishlist,
   homeScreenData,
   getProductList,
   loading,
-}) => {
+}) {
   return (
     <div className=" container-fluid">
       <div className="row">
@@ -50,6 +50,6 @@ const ProductListMain = ({
       </div>
     </div>
   );
-};
+}
 
 export default ProductListMain;

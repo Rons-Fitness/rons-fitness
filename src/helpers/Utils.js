@@ -102,7 +102,7 @@ export const getCurrentRadius = () => {
   } catch (error) {
     console.log(
       '>>>>: src/helpers/Utils.js : getCurrentRadius -> error',
-      error
+      error,
     );
     currentRadius = 'rounded';
   }
@@ -114,7 +114,7 @@ export const setCurrentRadius = (radius) => {
   } catch (error) {
     console.log(
       '>>>>: src/helpers/Utils.js : setCurrentRadius -> error',
-      error
+      error,
     );
   }
 };
@@ -125,14 +125,14 @@ export const getCurrentLanguage = () => {
     language =
       localStorage.getItem('currentLanguage') &&
       localeOptions.filter(
-        (x) => x.id === localStorage.getItem('currentLanguage')
+        (x) => x.id === localStorage.getItem('currentLanguage'),
       ).length > 0
         ? localStorage.getItem('currentLanguage')
         : defaultLocale;
   } catch (error) {
     console.log(
       '>>>>: src/helpers/Utils.js : getCurrentLanguage -> error',
-      error
+      error,
     );
     language = defaultLocale;
   }
@@ -144,7 +144,7 @@ export const setCurrentLanguage = (locale) => {
   } catch (error) {
     console.log(
       '>>>>: src/helpers/Utils.js : setCurrentLanguage -> error',
-      error
+      error,
     );
   }
 };

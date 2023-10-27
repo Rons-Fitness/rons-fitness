@@ -1,5 +1,4 @@
-var swiper = new Swiper(".mySwiper", {
-
+const swiper = new Swiper('.mySwiper', {
   spaceBetween: 10,
   breakpoints: {
     420: {
@@ -28,12 +27,12 @@ var swiper = new Swiper(".mySwiper", {
     },
   },
   pagination: {
-    el: ".swiper-pagination",
+    el: '.swiper-pagination',
     clickable: true,
   },
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
   },
 });
 
@@ -49,4 +48,3 @@ var swiper = new Swiper(".mySwiper", {
 //   mousewheel: true,
 //   keyboard: true,
 // });
-

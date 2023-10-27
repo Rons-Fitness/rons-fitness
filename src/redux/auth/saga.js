@@ -218,7 +218,7 @@ function* registerWithEmailPassword({ payload }) {
     const registerUser = yield call(
       registerWithEmailPasswordAsync,
       email,
-      password
+      password,
     );
     if (!registerUser.message) {
       const item = { uid: registerUser.user.uid, ...currentUser };

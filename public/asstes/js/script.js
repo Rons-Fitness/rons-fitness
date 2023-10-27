@@ -1,20 +1,17 @@
-
-var swiper = new Swiper(".mySwiper-1", {
+var swiper = new Swiper('.mySwiper-1', {
   slidesPerView: 1.1,
   spaceBetween: 30,
   centeredSlides: true,
   loop: true,
   autoplay: {
     delay: 3500,
-
   },
   pagination: {
-    el: ".swiper-pagination",
+    el: '.swiper-pagination',
     clickable: true,
   },
 });
-var swiper = new Swiper(".hero-slider-js", {
-
+var swiper = new Swiper('.hero-slider-js', {
   spaceBetween: 20,
   loop: true,
   speed: 1000,
@@ -37,15 +34,15 @@ var swiper = new Swiper(".hero-slider-js", {
     },
   },
   pagination: {
-    el: ".swiper-pagination",
+    el: '.swiper-pagination',
     clickable: true,
   },
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
   },
 });
-var swiper = new Swiper(".slider-cat", {
+var swiper = new Swiper('.slider-cat', {
   spaceBetween: 20,
   // loop:true,
   speed: 2000,
@@ -81,20 +78,19 @@ var swiper = new Swiper(".slider-cat", {
     1700: {
       slidesPerView: 5,
     },
-
   },
   pagination: {
-    el: ".swiper-pagination",
+    el: '.swiper-pagination',
     clickable: true,
   },
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
     clickable: true,
   },
 });
 
-var swiper = new Swiper(".carte-slider", {
+var swiper = new Swiper('.carte-slider', {
   spaceBetween: 20,
   // loop:true,
   speed: 2000,
@@ -117,16 +113,16 @@ var swiper = new Swiper(".carte-slider", {
     },
   },
   pagination: {
-    el: ".swiper-pagination",
+    el: '.swiper-pagination',
     clickable: true,
   },
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
   },
 });
 
-var swiper = new Swiper(".brandslider", {
+var swiper = new Swiper('.brandslider', {
   spaceBetween: 20,
   // slidesPerView: 1.1,
   // centeredSlides: true,
@@ -161,8 +157,6 @@ var swiper = new Swiper(".brandslider", {
     },
     1600: {
       slidesPerView: 4,
-    }
-
+    },
   },
-
 });
