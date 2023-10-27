@@ -100,7 +100,10 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
         <div className="card-img">
           <a>
             <img
-              src={product.image.find((el) => el.url !== '').url}
+              src={
+                product.image.find((el) => el.url !== '') &&
+                product.image.find((el) => el.url !== '').url
+              }
               alt=""
               className=""
             />
