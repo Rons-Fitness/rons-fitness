@@ -30,7 +30,7 @@ const Navbar = ({
   const { brands, category } = homeScreenData;
 
   useEffect(() => {
-    if (!currentUser) getLoggedInUserDetails(history);
+    if (!currentUser && !currentUser._id) getLoggedInUserDetails(history);
   }, [currentUser, getLoggedInUserDetails, history]);
 
   useEffect(() => {
