@@ -66,13 +66,13 @@ const OrderItem = ({ item, currentOrderStatus }) => {
                       [...Array(Number(userReview.rating) || 0)].map(
                         (active) => (
                           <i className="fas fa-star active " key={active} />
-                        )
+                        ),
                       )}
                     {userReview &&
                       [...Array(5 - Number(userReview.rating) || 0)].map(
                         (inActive) => (
                           <i className="fas fa-star" key={inActive} />
-                        )
+                        ),
                       )}
                   </a>
                 </div>

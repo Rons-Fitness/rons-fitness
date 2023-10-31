@@ -19,7 +19,7 @@ const EmptyOrder = () => {
             value="Back to home"
             className={classNames(
               'shipping-btn  btn-views-active',
-              'activeAddressType'
+              'activeAddressType',
             )}
             style={{
               height: 35.5,

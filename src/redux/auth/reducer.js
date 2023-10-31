@@ -68,7 +68,7 @@ import {
 } from '../contants';
 
 const INIT_STATE = {
-  currentUser: { astName: "", firstName: "", mobileNo: "" },
+  currentUser: { astName: '', firstName: '', mobileNo: '' },
   forgotUserMail: '',
   newPassword: '',
   resetPasswordCode: '',

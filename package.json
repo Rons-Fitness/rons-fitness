@@ -55,7 +55,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "format": "prettier --write ."
   },
   "husky": {
     "hooks": {

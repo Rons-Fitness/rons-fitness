@@ -55,7 +55,7 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                       'Order Delivered' &&
                                       'my-order-img-box-green',
                                     order.currentOrderStatus.status ===
-                                      'Cancelled' && 'my-order-img-box-red'
+                                      'Cancelled' && 'my-order-img-box-red',
                                   )}
                                 >
                                   <a>
@@ -65,7 +65,7 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                       'Order Confirmed',
                                       'Out For Delivery',
                                     ].includes(
-                                      order.currentOrderStatus.status
+                                      order.currentOrderStatus.status,
                                     ) ? (
                                       <img
                                         src="/asstes/img/order-logo/package.png"
@@ -86,7 +86,7 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                 <a>
                                   <h5>
                                     {moment(order.createdAt).format(
-                                      'Do MMMM YYYY ,  h:mm a'
+                                      'Do MMMM YYYY ,  h:mm a',
                                     )}
                                   </h5>
                                 </a>
@@ -94,10 +94,10 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                   {order.orderItems[0].name}{' '}
                                   <span className="fw-semibold ">
                                     {Boolean(
-                                      Number(order.orderItems.length - 1)
+                                      Number(order.orderItems.length - 1),
                                     ) &&
                                       `+${Number(
-                                        order.orderItems.length - 1
+                                        order.orderItems.length - 1,
                                       )} more`}
                                   </span>
                                 </div>

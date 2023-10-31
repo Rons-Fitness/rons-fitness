@@ -18,7 +18,7 @@ const NoAddressFound = () => {
             value="Add New Address"
             className={classNames(
               'shipping-btn  btn-views-active',
-              'activeAddressType'
+              'activeAddressType',
             )}
             style={{
               height: 35.5,
