@@ -27,7 +27,9 @@ const Navbar = ({
   const history = useNavigate();
   const [text, settext] = useState('');
 
-  const { brands, category } = homeScreenData;
+  const {
+    // brands,
+    category } = homeScreenData;
 
   useEffect(() => {
     if (currentUser && !currentUser._id) getLoggedInUserDetails(history);
@@ -59,11 +61,11 @@ const Navbar = ({
               }}
             >
               <img
-                src="asstes/img/logo/vector black.png"
+                src="../asstes/img/logo/logo.png"
                 alt=""
                 className="pe-3"
               />
-              GymCart
+              ESPACE CARRE
             </Link>
             <button
               className="navbar-toggler btn-nav"
@@ -106,7 +108,7 @@ const Navbar = ({
                   )}
                 </li>
 
-                <li className="nav-item dropdown">
+                {/* <li className="nav-item dropdown">
                   <a className="nav-link ">Brand</a>
                   {Boolean(brands.length) && (
                     <ul className="dropdown-menu">
@@ -119,8 +121,8 @@ const Navbar = ({
                       ))}
                     </ul>
                   )}
-                </li>
-                <li className="nav-item">
+                </li> */}
+                {/* <li className="nav-item">
                   <Link
                     className="nav-link"
                     to="/blog"
@@ -129,6 +131,17 @@ const Navbar = ({
                     }}
                   >
                     Blog
+                  </Link>
+                </li> */}
+                <li className="nav-item">
+                  <Link
+                    className="nav-link "
+                    to="/user/wishlist"
+                    onClick={() => {
+                      setSearchText('');
+                    }}
+                  >
+                    Wishlist
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -183,9 +196,10 @@ const Navbar = ({
                       setSearchText('');
                     }}
                   >
-                    <p className="shoping-cart" style={{ margin: '0 15px' }}>
+                    <p className=" login-cart" style={{ margin: '0 15px' }}>
                       <a>
-                        <i className="bi bi-person" />
+                        {/* <i className="bi bi-person" /> */}
+                        Login
                       </a>
                     </p>
                   </Link>
@@ -196,7 +210,7 @@ const Navbar = ({
                     setSearchText('');
                   }}
                 >
-                  <p className="shoping-cart">
+                  <p className="shoping-cart ">
                     <a>
                       <i className="bi bi-cart2" />
                     </a>

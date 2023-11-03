@@ -21,6 +21,7 @@ const Categories = ({ category = [], isMobile, isTablet }) => {
                 disableOnInteraction: false,
               }}
               spaceBetween={80}
+              loop
               navigation
               modules={[Autoplay, Pagination, Navigation]}
             >

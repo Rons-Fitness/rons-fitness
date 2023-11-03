@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -9,15 +9,15 @@ const Footer = () => {
         <div className="row" style={{ justifyContent: 'space-between' }}>
           <div className="col-lg-3 col-md-6 col-sm-12 footer-left-body ">
             <div className="footer-icon-box">
-              <img src="asstes/img/logo/Vector.png" alt="" />
-              <span>GymCart</span>
+              <img src="asstes/img/logo/logo.png" alt="" />
+              <span>ESPACE CARRE</span>
             </div>
-            <p className="gym-icon-size">
+            {/* <p className="gym-icon-size">
               2023 <i className="far fa-copyright" />
               GymCart <br />
               All Right Reserved
-            </p>
-            <div className="icon-footer-box">
+            </p> */}
+            {/* <div className="icon-footer-box">
               <div>
                 <i className="fab fa-facebook-f" />
               </div>
@@ -30,7 +30,7 @@ const Footer = () => {
               <div>
                 <i className="fab fa-linkedin-in" />
               </div>
-            </div>
+            </div> */}
           </div>
           {/* <div className="col-lg-3 col-md-6 col-sm-12">
             <ul className="list-group footer-list">
@@ -61,7 +61,7 @@ const Footer = () => {
               </li>
             </ul>
           </div> */}
-          <div className="col-lg-3 col-md-6 col-sm-12 ">
+          {/* <div className="col-lg-3 col-md-6 col-sm-12 ">
             <ul className="list-group footer-list">
               <li className="list-group-item">
                 <a href="#" className="active">
@@ -79,8 +79,8 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
-          </div>
-          <div className="col-lg-3 col-md-6 col-sm-12 ">
+          </div> */}
+          {/* <div className="col-lg-3 col-md-6 col-sm-12 ">
             <ul className="list-group footer-list ">
               <li className="list-group-item">
                 <a href="#" className="active">
@@ -108,8 +108,14 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
+          </div> */}
+          <div className="col-lg-6 col-md-6 col-sm-12 ">
+            <div className="icon-footer-box ">
+              <i className="fab fa-instagram" />
+            </div>
           </div>
         </div>
+        <div className='d-flex justify-content-end mt-3' ><p className='copy-right-text'>2023<sup>©</sup> ESPACE CARRE All Right Reserved</p></div>
       </div>
     </footer>
   );

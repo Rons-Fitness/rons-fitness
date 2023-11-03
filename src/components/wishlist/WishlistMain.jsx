@@ -20,6 +20,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
           <h1>
             My Wishlist <span>({wishlist.length})</span>
           </h1>
+          <Link to="/" className=" continue-sho-text">Continue Shopping</Link>
         </div>
         <div className="my-whish-body">
           {Boolean(wishlist.length) ? (
@@ -43,27 +44,27 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                         <Link to={`/product/${wish._id}`}>
                           <h5 className="align-items-center">{wish.name}</h5>
                         </Link>
-                        {wish.flavour !== '' && (
+                        {/* {wish.flavour !== '' && (
                           <iconify-icon
                             icon="mdi:lacto-vegetarian"
                             className="veg-icon"
                             style={
                               wish.nonVeg
                                 ? {
-                                    color: 'red',
-                                  }
+                                  color: 'red',
+                                }
                                 : {
-                                    color: 'green',
-                                  }
+                                  color: 'green',
+                                }
                             }
                           />
-                        )}
+                        )} */}
                       </a>
                       <p>{wish.brand}</p>
                       <h3>
-                        ₹{wish.price}{' '}
+                        {wish.price} ${' '}
                         <span>
-                          MRP:<del className="ms-1">₹{wish.mrp}</del>
+                          DISCOUNT :<del className="ms-1">{wish.mrp}$</del>
                         </span>
                       </h3>
                       <p className="star">

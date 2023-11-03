@@ -145,7 +145,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                       <iconify-icon
                         icon="mdi:check-circle"
                         className="completed"
-                        style={{ color: '#f7a742' }}
+                        style={{ color: '#F9DF23' }}
                       />
                       <div>
                         <div>{track.status}</div>

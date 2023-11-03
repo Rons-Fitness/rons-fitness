@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
 import ProductListing from './ProductListing';
-import BrandListing from './BrandListing';
-import Blogs from './Blogs';
+// import BrandListing from './BrandListing';
+// import Blogs from './Blogs';
 import Categories from './Categories';
 
 const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
@@ -42,13 +42,13 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
               }}
               spaceBetween={30}
               modules={[Autoplay, Pagination, Navigation]}
-              slidesPerView={1.1}
+              // slidesPerView={1.1}
               centeredSlides
               loop
             >
               <SwiperSlide className=" swiper-slide">
                 <img
-                  src="asstes/img/hero/5.png"
+                  src="asstes/img/hero/1.png"
                   className="img-fluied banner-img"
                   alt=""
                 />
@@ -56,7 +56,7 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
 
               <SwiperSlide className=" swiper-slide">
                 <img
-                  src="asstes/img/hero/5.png"
+                  src="asstes/img/hero/1.png"
                   className="img-fluied banner-img"
                   alt=""
                 />
@@ -64,7 +64,7 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
 
               <SwiperSlide className=" swiper-slide">
                 <img
-                  src="asstes/img/hero/5.png"
+                  src="asstes/img/hero/1.png"
                   className="img-fluied banner-img"
                   alt=""
                 />
@@ -72,7 +72,7 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
 
               <SwiperSlide className=" swiper-slide">
                 <img
-                  src="asstes/img/hero/5.png"
+                  src="asstes/img/hero/1.png"
                   className="img-fluied banner-img"
                   alt=""
                 />
@@ -94,10 +94,29 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
         isMobile={isMobile}
         isTablet={isTablet}
       />
-      <div className="container ">
+      {/* <div className="container ">
         <div className=" col-lg-12  col-md-12 col-sm-12 ">
           <div className="img-bg-box">
             <img src="asstes/img/saveupto brand/Group 35703.png" alt="" />
+          </div>
+        </div>
+      </div> */}
+      <div className="container ">
+        <div className="offer-boday">
+          <div className="row">
+
+            <div className=" col-lg-6 col-md-6 col-sm-12 ">
+              <div className="offer-contain">
+                <p className="main-text">Save Up to 40% Off</p>
+                <p className="sub-text">Your spot to find the most sophisticated home accessories!</p>
+                <a href="#"><button type="button" className="btn-read-more">Read more</button></a>
+              </div>
+            </div>
+            <div className=" col-lg-6 col-md-6 col-sm-12  ">
+              <div className="img-box justify-content-center d-flex">
+                <img src="asstes/img/brand/home.png" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -109,12 +128,12 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
         isMobile={isMobile}
         isTablet={isTablet}
       />
-      <BrandListing
+      {/* <BrandListing
         brands={homeScreenData.brands}
         isMobile={isMobile}
         isTablet={isTablet}
-      />
-      <Blogs />
+      /> */}
+      {/* <Blogs /> */}
     </>
   );
 };

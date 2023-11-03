@@ -16,7 +16,9 @@ import ProductReviewsAndDes from './ProductReviewsAndDes';
 const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
   const history = useNavigate();
   const [activeImage, setActiveImage] = useState('');
-  const [qty, setQty] = useState(1);
+  // const [qty, setQty] = useState(1);
+  const [qty] = useState(1);
+
   const [wishList, setWishlist] = useState(
     selectedProduct ? selectedProduct.inWishlist : false,
   );
@@ -50,8 +52,8 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
 
   return (
     <>
-      <section className="xzoom_part">
-        <div className="container" style={{ backgroundColor: '#fef9f1 ' }}>
+      <section className="xzoom_part" >
+        <div className="container" style={{ backgroundColor: '#FFF', borderRadius: "6px" }}>
           <div className="row">
             <div className="col-lg-5 col-md-6   x-zoom-body ">
               <div className="x-zoomin-responsive">
@@ -125,11 +127,11 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                             isTablet
                               ? 4
                               : isMobile
-                              ? 3
-                              : selectedProduct &&
-                                selectedProduct.image.length < 5
-                              ? selectedProduct.image.length / 2
-                              : 5
+                                ? 3
+                                : selectedProduct &&
+                                  selectedProduct.image.length < 5
+                                  ? selectedProduct.image.length / 2
+                                  : 5
                           }
                         >
                           {selectedProduct &&
@@ -213,15 +215,15 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                   {selectedProduct && selectedProduct.rating}
                 </p>
                 <h3>
-                  ₹{selectedProduct && selectedProduct.price}{' '}
+                  {selectedProduct && selectedProduct.price} ${' '}
                   <span>
-                    MRP:
+                    DISCOUNT:
                     <del className="ms-1">
-                      ₹{selectedProduct && selectedProduct.mrp}
+                      {selectedProduct && selectedProduct.mrp}$
                     </del>
                   </span>{' '}
                 </h3>
-                <div className=" btn-contain mb-2">
+                {/* <div className=" btn-contain mb-2">
                   <p>Unit</p>
                   <div className="btn-body">
                     {selectedProduct &&
@@ -241,7 +243,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                         ),
                       )}
                   </div>
-                </div>
+                </div> */}
                 {selectedProduct && selectedProduct.flavour && (
                   <div className=" btn-contain mb-2">
                     <p>Flavour</p>
@@ -289,14 +291,14 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                   </div>
                 )}
                 <div className="d-flex align-items-center mt-3">
-                  <label for=""> Qty: </label>
+                  {/* <label for=""> Qty: </label>
                   <input
                     type="number"
                     value={qty}
                     onChange={(e) => setQty(e.target.value)}
                     className="form-control"
                     min="1"
-                  />
+                  /> */}
                   <div className="btn-xzone-body ">
                     <a
                       style={{ cursor: 'pointer' }}

@@ -26,7 +26,7 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
       style={{
         minHeight: 'calc(100vh - 115px)',
         overflow: 'auto',
-        background: 'rgb(254, 249, 241)',
+        background: '#fff',
       }}
     >
       {loading ? (
@@ -34,7 +34,9 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
       ) : (
         <div className="my-order-section">
           <div className="container">
-            <div className="row" style={{ justifyContent: 'center' }}>
+            <div className="row"
+            // style={{ justifyContent: 'center' }}
+            >
               <div className="col-lg-8 com-md-9 col-sm-12">
                 <div className="my-order-body">
                   <div className="my-order-head">
@@ -52,21 +54,21 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                   className={classNames(
                                     'my-order-img-box',
                                     order.currentOrderStatus.status ===
-                                      'Order Delivered' &&
-                                      'my-order-img-box-green',
+                                    'Order Delivered' &&
+                                    'my-order-img-box-green',
                                     order.currentOrderStatus.status ===
-                                      'Cancelled' && 'my-order-img-box-red',
+                                    'Cancelled' && 'my-order-img-box-red',
                                   )}
                                 >
                                   <a>
                                     {order.currentOrderStatus &&
-                                    [
-                                      'Order Placed',
-                                      'Order Confirmed',
-                                      'Out For Delivery',
-                                    ].includes(
-                                      order.currentOrderStatus.status,
-                                    ) ? (
+                                      [
+                                        'Order Placed',
+                                        'Order Confirmed',
+                                        'Out For Delivery',
+                                      ].includes(
+                                        order.currentOrderStatus.status,
+                                      ) ? (
                                       <img
                                         src="/asstes/img/order-logo/package.png"
                                         alt=""

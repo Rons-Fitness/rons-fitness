@@ -120,14 +120,14 @@ function CartMain({
                       <th scope="row" />
                       <td className="subtotal">Subtotal :</td>
                       <td />
-                      <td className="text-end ">₹{cart?.subTotal}</td>
+                      <td className="text-end ">{cart?.subTotal} $</td>
                     </tr>
                     <tr>
                       <th scope="row" />
                       <td className="discount">Discount :</td>
                       <td className="text-end" />
                       <td className="text-end">
-                        <span className="me-2">-</span> ₹{cart?.discount}
+                        <span className="me-2">-</span> {cart?.discount} $
                       </td>
                     </tr>
                     <tr>
@@ -139,14 +139,14 @@ function CartMain({
                       </td>
                       <td className="text-end" />
                       <td className="text-end">
-                        <span className="me-2">+</span> ₹{cart?.tax}
+                        <span className="me-2">+</span> {cart?.tax} $
                       </td>
                     </tr>
                     <tr className="total-border">
                       <th scope="row" />
                       <th className="fw-semibold">Total :</th>
                       <td className="" />
-                      <th className="text-end fw-semibold">₹{cart?.total}</th>
+                      <th className="text-end fw-semibold">{cart?.total} $</th>
                     </tr>
                   </tbody>
                 </table>
@@ -205,7 +205,7 @@ function CartMain({
                     <div>
                       <div className="Delivery-at">
                         <Link to="/user/address/new" className="Change">
-                          <p style={{ margin: 'auto', color: '#f7a742' }}>
+                          <p style={{ margin: 'auto', color: '#F9DF23' }}>
                             Select Delivery Address
                           </p>{' '}
                         </Link>

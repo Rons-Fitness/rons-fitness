@@ -12,7 +12,7 @@ function AddressBox({
   setDeliveryAddress,
   updateAddress,
   addressToDeliver,
-  setDeliverToThisAddress,
+  // setDeliverToThisAddress,
 }) {
   const history = useNavigate();
 
@@ -26,7 +26,7 @@ function AddressBox({
             <span className="home-tag">{addressType}</span>
           </h5>
         </div>
-        <input
+        {/* <input
           type="radio"
           value="Home"
           name="address"
@@ -41,7 +41,7 @@ function AddressBox({
               billingAddress,
             })
           }
-        />{' '}
+        />{' '} */}
       </div>
       <div className="col-lg-6 col-md-8">
         <p className="address-write">
@@ -55,7 +55,7 @@ function AddressBox({
       <div className="fw-semibold edit">
         <Link to={`/user/address/edit/${_id}`}> Edit </Link>
         <span className="Delete-colour" onClick={() => deleteAddress(_id)}>
-          Delete
+          {/* Delete */}
         </span>
       </div>
       {addressToDeliver && addressToDeliver._id === _id && (

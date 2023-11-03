@@ -12,7 +12,7 @@ main {
 .loader {
   --loader-size: 50px;
   --loader-border-size: 4px;
-  --loader-border-color: #f7a742;
+  --loader-border-color: #F9DF23;
   width: var(--loader-size);
   height: var(--loader-size);
   border: var(--loader-border-size) solid var(--loader-border-color);
@@ -45,6 +45,7 @@ main {
   from {
     transform: rotateZ(0deg);
   }
+
   to {
     transform: rotateZ(360deg);
   }

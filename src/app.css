@@ -1,6 +1,7 @@
 .App {
   scrollbar-color: #d0d0d0 #f5f5f5;
 }
+
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
@@ -14,11 +15,11 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #f7a742;
+  background: #F9DF23;
   border-radius: 50px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #f7a742;
+  background: #F9DF23;
 }

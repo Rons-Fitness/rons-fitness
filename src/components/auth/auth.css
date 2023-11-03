@@ -3,9 +3,11 @@
   padding: 0%;
   box-sizing: border-box;
 }
+
 html {
   height: 100%;
 }
+
 body {
   overflow-x: hidden;
   font-family: 'Poppins';
@@ -23,6 +25,7 @@ input.number-to-text::-webkit-inner-spin-button {
 input[type='number'].number-to-text {
   -moz-appearance: textfield;
 }
+
 a {
   text-decoration: none;
 }
@@ -96,7 +99,7 @@ p {
 }
 
 :root {
-  --them-colour: #f7a742;
+  --them-colour: #F9DF23;
   --black: #000000;
   --white: #ffffff;
   --light: #fdead3;
@@ -108,22 +111,31 @@ input:focus {
   box-shadow: none;
   outline: none;
 }
+
 textarea:focus {
   box-shadow: none;
   outline: none;
 }
+
 select:focus {
   box-shadow: none;
   outline: none;
 }
+
 .veg-icon {
   color: green;
 }
+
 .noveg-icon {
   color: red;
 }
+
 .modal {
   display: block !important;
+}
+
+.modal-body {
+  padding: 0px 20px;
 }
 
 .modal-dialog {
@@ -132,11 +144,14 @@ select:focus {
 
 .modal-content {
   border: none;
+  padding-bottom: 10px;
 }
+
 .modal-content p {
   color: rgba(91, 53, 3, 0.87);
   font-size: 17px;
 }
+
 .modal-content .btn-close {
   border: none;
 }
@@ -157,6 +172,7 @@ select:focus {
 
 .modal-content .modal-header p {
   font-size: 15px;
+  margin-bottom: 0;
 }
 
 .modal-content .modal-body input {
@@ -171,11 +187,7 @@ select:focus {
 }
 
 .modal-content .modal-body input::-webkit-outer-spin-button,
-.min-hed
-  .login-section
-  .modal-content
-  .modal-body
-  input::-webkit-inner-spin-button {
+.min-hed .login-section .modal-content .modal-body input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -194,14 +206,18 @@ select:focus {
   font-size: 15px;
 }
 
+.modal-content .dont-act {
+  color: rgba(91, 53, 3, 0.87);
+
+}
+
 .modal-content .modal-body .resend-p span {
   color: var(--them-colour);
 }
 
 .modal-content .modal-body .submit-profile {
-  background-color: var(--white);
+  background-color: var(--them-colour);
   border: 1px solid var(--them-colour);
-  border-radius: 5px;
   color: var(--black);
   padding: 8px 20px;
   font-size: 16px;
@@ -211,7 +227,7 @@ select:focus {
 }
 
 .modal-content .modal-body .submit-profile:hover {
-  color: var(--white);
+  color: var(--black-gry);
   box-shadow: inset 400px 0 0 0 var(--them-colour);
 }
 

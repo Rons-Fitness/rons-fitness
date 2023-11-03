@@ -99,6 +99,7 @@ function AuthPopup({
                 />
               </div>
             </div>
+            <div className='text-center mt-3'><a href='#' className='dont-act' >Don’t have an Account? Create account</a></div>
           </div>
         </div>
       </Modal>

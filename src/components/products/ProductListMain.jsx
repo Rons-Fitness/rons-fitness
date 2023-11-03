@@ -29,7 +29,7 @@ function ProductListMain({
         ) : (
           <div className=" col-lg-9 col-md-12 col-sm-12 order-lg-2 order-1 order-md-1">
             <div className="product-grid-section-header">
-              <h1>Gym Equipments</h1>
+                <h1>Home Equipment&rsquo;s</h1>
             </div>
             <div className="products-grid-body">
               {products.data.length ? (

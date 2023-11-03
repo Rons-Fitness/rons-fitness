@@ -63,7 +63,7 @@ const Review = ({ elem, likeDislikeReview }) => {
                     }
                     likeDislikeReview(elem._id, true);
                   }}
-                  style={{ cursor: 'pointer', color: '#f7a742' }}
+                  style={{ cursor: 'pointer', color: '#F9DF23' }}
                 />
               ) : (
                 <i
@@ -77,7 +77,7 @@ const Review = ({ elem, likeDislikeReview }) => {
                     }
                     likeDislikeReview(elem._id, true);
                   }}
-                  style={{ cursor: 'pointer', color: '#f7a742' }}
+                  style={{ cursor: 'pointer', color: '#F9DF23' }}
                 />
               )}
               <span className="mx-2">{likeCount}</span>{' '}
@@ -93,7 +93,7 @@ const Review = ({ elem, likeDislikeReview }) => {
                     setDisLikeCount((old) => old - 1);
                     likeDislikeReview(elem._id, false);
                   }}
-                  style={{ cursor: 'pointer', color: '#f7a742' }}
+                  style={{ cursor: 'pointer', color: '#F9DF23' }}
                 />
               ) : (
                 <i
@@ -107,7 +107,7 @@ const Review = ({ elem, likeDislikeReview }) => {
                     setDisLikeCount((old) => old + 1);
                     likeDislikeReview(elem._id, false);
                   }}
-                  style={{ cursor: 'pointer', color: '#f7a742' }}
+                  style={{ cursor: 'pointer', color: '#F9DF23' }}
                 />
               )}
               <span className="mx-2">{disLikeCount}</span>

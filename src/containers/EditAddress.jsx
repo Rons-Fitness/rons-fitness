@@ -66,7 +66,7 @@ const EditAddress = ({
       style={{
         minHeight: 'calc(100vh - 115px)',
         overflow: 'auto',
-        background: 'rgb(254, 249, 241)',
+        // background: 'rgb(254, 249, 241)',
       }}
     >
       {loading ? (

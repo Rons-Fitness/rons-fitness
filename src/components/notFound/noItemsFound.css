@@ -11,6 +11,7 @@ body {
   box-shadow: 1px 2px 10px #e1e3ec;
   border-radius: 4px;
 }
+
 .content {
   padding: 48px;
   display: flex;
@@ -19,6 +20,7 @@ body {
   justify-content: center;
   height: 100%;
 }
+
 .content h5 {
   font-size: 1rem;
   font-weight: 500;
@@ -26,12 +28,14 @@ body {
   margin: 15px 0;
   line-height: 20px;
 }
+
 .empty-state__help {
   color: #a2a5b9;
   font-size: 0.875rem;
 }
+
 .empty-state__message {
-  color: #f7a742;
+  color: #F9DF23;
   font-size: 1.5rem;
   font-weight: 500;
   margin-top: 0.85rem;
@@ -47,14 +51,17 @@ body {
   /* background-color: #f7fafc;
   box-shadow: 0px 2px 1px #e1e3ec; */
 }
+
 img {
   width: 170px;
 }
+
 .credit {
   color: #a2a5b9;
   font-size: 0.75rem;
   text-align: center;
 }
+
 a {
   color: #444;
 }
@@ -65,8 +72,9 @@ a {
     font-weight: 500;
     text-align: center;
   }
+
   .empty-state__message {
-    color: #f7a742;
+    color: #F9DF23;
     font-size: 1rem;
     font-weight: 500;
     margin-top: 0.85rem;

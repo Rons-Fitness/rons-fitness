@@ -85,7 +85,7 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
             >
               <p>Sort By</p>{' '}
               <p
-                style={{ color: '#f7a742', cursor: 'pointer' }}
+                style={{ color: '#F9DF23', cursor: 'pointer' }}
                 onClick={() => changeSortBy('')}
               >
                 Reset
@@ -144,7 +144,7 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
           </div>
         </div>
 
-        <div className="product-grid-left-box">
+        {/* <div className="product-grid-left-box">
           <div className="left-box-main">
             <p
               className="main-white"
@@ -156,7 +156,7 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
             >
               <p>Brands</p>{' '}
               <p
-                style={{ color: '#f7a742', cursor: 'pointer' }}
+                style={{ color: '#F9DF23', cursor: 'pointer' }}
                 onClick={() => handleChangeFilter('brand', '', true)}
               >
                 Reset
@@ -184,7 +184,7 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
               </form>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="product-grid-left-box">
           <div className="left-box-main">
@@ -198,7 +198,7 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
             >
               <p>Rating</p>{' '}
               <p
-                style={{ color: '#f7a742', cursor: 'pointer' }}
+                style={{ color: '#F9DF23', cursor: 'pointer' }}
                 onClick={() => handleChangeFilter('rating', '', true)}
               >
                 Reset

@@ -31,7 +31,7 @@ const ContactUs = () => {
                         Tel:
                         <span className="num-email-colour">
                           {' '}
-                          +91 896-456-7725
+                          877-67-88-99
                         </span>
                       </p>
                       <p>
