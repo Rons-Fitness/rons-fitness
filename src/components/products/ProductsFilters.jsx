@@ -17,15 +17,22 @@ function queryStringToObject(queryString = '') {
 }
 
 const ProductsFilters = ({ homeScreenData, getProductList }) => {
+  const [isOptionsOpen, setIsOptionsOpen] = useState(false);
+  const [isRatingOpen, setIsRatingOpen] = useState(false);
+
   const { brands } = homeScreenData;
   const { params } = useParams();
-
   const [sortBy, setSortBy] = useState('');
   const [filterState, setFilterState] = useState({
     brand: [],
     rating: [],
   });
-
+  const toggleSortBy = () => {
+    setIsOptionsOpen(!isOptionsOpen); // Toggle the visibility of the options
+  };
+  const toggleSortRating = () => {
+    setIsRatingOpen(!isRatingOpen); // Toggle the visibility of the options
+  };
   useEffect(() => {
     setFilterState((oldState) => {
       return {
@@ -82,16 +89,27 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
                 justifyContent: 'space-between',
                 height: 45,
               }}
+              onClick={() => toggleSortBy('')}
             >
               <p>Sort By</p>{' '}
-              <p
+              {/* <p
                 style={{ color: '#F9DF23', cursor: 'pointer' }}
                 onClick={() => changeSortBy('')}
               >
                 Reset
+              </p> */}
+              <p
+                style={{ color: '#8B96A5', cursor: 'pointer' }}
+              >
+                {isOptionsOpen ? (
+                  <i className="fas fa-chevron-right" /> // Show right arrow
+                ) : (
+                  <i className="fas fa-chevron-down" /> // Show down arrow
+                )}
               </p>
             </p>
-            <div className="Left-contain">
+            <div className={`${isOptionsOpen ? "" : "Left-contain"}`}
+              style={{ display: isOptionsOpen ? "none" : "block" }}>
               <p
                 className={
                   sortBy === 'ratingHighToLow'
@@ -195,16 +213,27 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
                 justifyContent: 'space-between',
                 height: 45,
               }}
+              onClick={() => toggleSortRating('')}
             >
               <p>Rating</p>{' '}
-              <p
+              {/* <p
                 style={{ color: '#F9DF23', cursor: 'pointer' }}
                 onClick={() => handleChangeFilter('rating', '', true)}
               >
                 Reset
+              </p> */}
+              <p
+                style={{ color: '#8B96A5', cursor: 'pointer' }}
+
+              >
+                {isRatingOpen ? (
+                  <i className="fas fa-chevron-right" /> // Show right arrow
+                ) : (
+                  <i className="fas fa-chevron-down" /> // Show down arrow
+                )}
               </p>
             </p>
-            <div className="Left-contain">
+            <div className={`${isRatingOpen ? "" : "Left-contain"}`} style={{ display: isRatingOpen ? "none" : "block" }}>
               <p>
                 <input
                   type="checkbox"

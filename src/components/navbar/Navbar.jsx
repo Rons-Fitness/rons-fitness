@@ -24,13 +24,16 @@ const Navbar = ({
   getHomeScreenDetails,
   homeScreenData,
 }) => {
+  const [show, setshow] = useState(false);
   const history = useNavigate();
   const [text, settext] = useState('');
-
   const {
     // brands,
     category } = homeScreenData;
 
+  const closeMenu = () => {
+    setshow(false);
+  };
   useEffect(() => {
     if (currentUser && !currentUser._id) getLoggedInUserDetails(history);
   }, [currentUser, getLoggedInUserDetails, history]);
@@ -75,32 +78,40 @@ const Navbar = ({
               aria-controls="navbar_1"
               aria-expanded="false"
               aria-label="Toggle navigation"
+              onClick={() => setshow(!show)}
             >
-              <span className="navbar-toggler-icon" />
+              {/* <span className="navbar-toggler-icon" /> */}
+              <i className="fas fa-bars" />
             </button>
             <div
-              className="collapse navbar-collapse "
+              className={`collapse navbar-collapse ${show ? "show" : ""}`}
               id="navbar_1"
               tabIndex="-1"
             >
               <ul className="navbar-nav ms-auto  nav-ul">
                 <li className="nav-item dropdown position-static">
-                  <a
-                    className="nav-link dropdown-toggle"
+                  <Link
+                    className="nav-link dropdown-toggle category-box"
                     id=""
                     role="button"
                     data-mdb-toggle="dropdown"
                     aria-expanded="false"
+
                   >
                     Category
-                  </a>
+                    <span> <i className="fas fa-chevron-right chevron-right-arrow" /></span>
+                  </Link>
 
                   {Boolean(category.length) && (
-                    <ul className="dropdown-menu">
+                    <ul className="dropdown-menu ">
                       {category.map((elem) => (
                         <li key={elem._id}>
                           <Link to={`/products/category=${elem.name}`}>
-                            <a className="dropdown-item">{elem.name}</a>
+                            <Link
+                              onClick={() => {
+                                closeMenu();
+                              }}
+                              className="dropdown-item">{elem.name}</Link>
                           </Link>
                         </li>
                       ))}
@@ -139,6 +150,7 @@ const Navbar = ({
                     to="/user/wishlist"
                     onClick={() => {
                       setSearchText('');
+                      closeMenu();
                     }}
                   >
                     Wishlist
@@ -150,6 +162,7 @@ const Navbar = ({
                     to="/contact-us"
                     onClick={() => {
                       setSearchText('');
+                      closeMenu();
                     }}
                   >
                     Contact

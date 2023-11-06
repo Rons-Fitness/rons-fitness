@@ -7,7 +7,7 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div className="row" style={{ justifyContent: 'space-between' }}>
-          <div className="col-lg-3 col-md-6 col-sm-12 footer-left-body ">
+          <div className="col-lg-3 col-md-6 col-sm-6 footer-left-body ">
             <div className="footer-icon-box">
               <img src="asstes/img/logo/logo.png" alt="" />
               <span>ESPACE CARRE</span>
@@ -109,7 +109,7 @@ const Footer = () => {
               </li>
             </ul>
           </div> */}
-          <div className="col-lg-6 col-md-6 col-sm-12 ">
+          <div className="col-lg-6 col-md-6 col-sm-6 ">
             <div className="icon-footer-box ">
               <i className="fab fa-instagram" />
             </div>

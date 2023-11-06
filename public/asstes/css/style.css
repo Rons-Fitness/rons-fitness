@@ -19,6 +19,8 @@
   padding: 10px;
   color: var(--black);
   font-weight: 500;
+  margin: 0;
+  cursor: pointer;
 }
 
 .product-grid-left-section .product-grid-left-box .left-box-main .Left-contain {
@@ -2804,7 +2806,10 @@ select:focus {
 
 .nav-section .btn-nav {
   border: none;
-  background-color: var(--white);
+}
+
+.nav-section .btn-nav i {
+  color: var(--them-colour);
 }
 
 .nav-section .navbar-toggler:focus {
@@ -2825,6 +2830,19 @@ select:focus {
 
 .nav-section .nav-ul .dropdown-menu li a {
   color: var(--black);
+}
+
+.nav-section .nav-link .chevron-right-arrow {
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.nav-section .nav-link:hover .chevron-right-arrow {
+  rotate: 90deg;
+}
+
+.nav-section .dropdown-item:hover .chevron-right-arrow {
+  transform: rotate(90deg) !important;
 }
 
 .nav-section .nav-ul .dropdown:hover .dropdown-menu {

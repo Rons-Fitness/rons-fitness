@@ -39,9 +39,6 @@
     font-size: 25px !important;
   }
 
-  .btn-nav {
-    margin-right: 25px;
-  }
 
   .trending-head h1 {
     font-size: 20px;
@@ -245,9 +242,7 @@
   }
 
   /* ======================  footer section start ======================== */
-  footer {
-    padding-top: 0px;
-  }
+
 
   .footer-icon-box span {
     font-size: 25px !important;
@@ -262,7 +257,7 @@
   }
 
   footer .footer-left-body {
-    padding-top: 50px;
+    /* padding-top: 50px; */
   }
 
   footer .footer-left-body .footer-icon-box img {
