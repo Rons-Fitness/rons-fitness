@@ -64,8 +64,14 @@ const Navbar = ({
                 setSearchText('');
               }}
             >
-              <img src="../asstes/img/logo/logo.png" alt="" className="pe-3" />
-              ESPACE CARRE
+
+
+              <img
+                src="../asstes/img/logo/logo.png"
+                alt="logo"
+                className="pe-3"
+              />
+
             </Link>
             <button
               className="navbar-toggler btn-nav"
@@ -220,7 +226,8 @@ const Navbar = ({
                       }}
                     >
                       <a>
-                        <i className="bi bi-person" />
+                        {/* <i className="bi bi-person" /> */}
+                        Login
                       </a>
                     </p>
                   </Link>

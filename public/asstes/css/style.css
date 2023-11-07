@@ -65,8 +65,7 @@
 
 .product-grid-section-header h1 {
   font-size: 30px;
-  font-weight: 600;
-  font-family: poppins;
+  font-weight: 400;
   position: relative;
 }
 
@@ -467,6 +466,59 @@
   margin-bottom: 8px;
 }
 
+.xzoom_part .xzoom_details .color-select-section {
+  margin-top: 50px;
+}
+
+.xzoom_part .xzoom_details .color-text {
+  border: 1px solid #000000;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.xzoom_part .xzoom_details .color-text:hover {
+  background-color: var(--them-colour);
+  border: 1px solid #DEDEDE;
+}
+
+.xzoom_part .xzoom_details .img-box {
+  width: 100%;
+  text-align: center;
+  margin-inline: auto;
+  cursor: pointer;
+}
+
+.xzoom_part .xzoom_details .img-box img {
+  width: 100%;
+}
+
+.xzoom_part .color-swiper-select {
+  padding: 0px 30px;
+}
+
+.xzoom_part .color-swiper-select .swiper-button-next {
+  color: #3C3939;
+  /* background-color: var(--light); */
+  right: 0;
+}
+
+.xzoom_part .color-swiper-select .swiper-button-next::after {
+  font-size: 22px;
+}
+
+.xzoom_part .color-swiper-select .swiper-button-prev {
+  color: #3C3939;
+  left: 0;
+  /* background-color: var(--light); */
+}
+
+.xzoom_part .color-swiper-select .swiper-button-prev::after {
+  font-size: 22px;
+}
+
 .xzoom_part .xzoom_details .btn-body {
   display: flex;
   flex-wrap: wrap;
@@ -504,16 +556,18 @@
 
 .xzoom_part .xzoom_details h4 {
   font-size: 22px;
+  font-weight: 400;
 }
 
 .xzoom_part .xzoom_details h3 {
   font-size: 22px;
   margin-bottom: 0;
+  font-weight: 400;
 }
 
 .xzoom_part .xzoom_details h3 span {
   color: rgba(34, 34, 34, 0.75);
-  font-weight: 300;
+  font-weight: 400;
   font-size: 15px;
 }
 
@@ -1403,7 +1457,6 @@
 .blog-section .blog-section-header h1 {
   font-size: 30px;
   font-weight: 600;
-  font-family: poppins;
   position: relative;
 }
 
@@ -1561,7 +1614,6 @@
 .single-blog-section .singal-blog-head h1 {
   font-size: 30px;
   font-weight: 600;
-  font-family: poppins;
   position: relative;
   padding-left: 20px;
   z-index: 0;
@@ -1663,10 +1715,15 @@
   padding: 10px 20px;
 }
 
+.contact-section .contact-body .contact-box h4 {
+  font-weight: 400;
+}
+
 .contact-section .contact-body .contact-box p {
   color: #5a5b5a;
   margin: 0;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 600;
   line-height: 22px;
 }
 
@@ -1682,8 +1739,13 @@
   color: #FF2C2C;
 }
 
+.contact-section .get-touch-body h4 {
+  font-weight: 400;
+}
+
 .contact-section .get-touch-body p {
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 600;
   margin-bottom: 0%;
 }
 
@@ -1743,7 +1805,7 @@
 .contact-section .get-touch-body form input {
   width: 100%;
   padding: 5px 10px;
-  border: 1px solid #2f271d;
+  border: 1px solid #2F271D;
 }
 
 .contact-section .get-touch-body form textarea {
@@ -2112,8 +2174,7 @@
 
 .my-order-section .my-order-head h1 {
   font-size: 25px;
-  font-weight: 600;
-  font-family: poppins;
+  font-weight: 400;
   position: relative;
 }
 
@@ -2276,7 +2337,6 @@
 .User-rating-review-section .Rating-Review-head h1 {
   font-size: 25px;
   font-weight: 600;
-  font-family: poppins;
   position: relative;
 }
 
@@ -2674,7 +2734,7 @@ html {
 
 body {
   overflow-x: hidden;
-  font-family: 'Poppins';
+  font-family: 'Helvetica Neue';
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -2693,7 +2753,7 @@ section {
 }
 
 p {
-  font-family: 'Poppins';
+
   font-size: 17px;
   font-weight: 400;
 }
@@ -2705,9 +2765,7 @@ h4,
 h5,
 h6,
 a,
-p {
-  font-family: 'Poppins';
-}
+p {}
 
 h1 {
   font-weight: 600;
@@ -2798,10 +2856,11 @@ select:focus {
   color: var(--gray);
   display: flex;
   align-items: flex-start;
+  max-width: 100px;
 }
 
 .nav-section .img-nav img {
-  width: 25%;
+  width: 100%;
 }
 
 .nav-section .btn-nav {
@@ -2973,20 +3032,17 @@ select:focus {
 }
 
 .min-hed .login-section a .login-btn {
-  cursor: pointer;
-  border: 1px solid var(--them-colour);
-  border-radius: 5px;
-  padding: 4px 20px;
+  height: 40px;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  background-color: var(--them-colour);
+  justify-content: center;
   margin-right: 20px;
-  font-weight: 500;
-  transition: ease-out 0.4s;
-  color: var(--black);
+  cursor: pointer;
 }
 
-.min-hed .login-section a .login-btn:hover {
-  color: white;
-  box-shadow: inset 400px 0 0 0 var(--them-colour);
-}
+
 
 .min-hed .login-section .modal-dialog {
   top: 90px;
@@ -3190,7 +3246,7 @@ select:focus {
 }
 
 .cat-round .carte-body .carte-contain p a {
-  font-family: 'Poppins';
+
   font-weight: 400;
   font-size: 15px;
   text-align: center;
@@ -3592,7 +3648,6 @@ select:focus {
 .blog-setion .trending-head h1 {
   font-size: 30px;
   font-weight: 600;
-  font-family: poppins;
   position: relative;
   padding-left: 20px;
   z-index: 0;
@@ -3692,10 +3747,11 @@ footer .gym-icon-size i {
 footer .footer-left-body .footer-icon-box {
   display: flex;
   align-items: center;
+  max-width: 100px;
 }
 
 footer .footer-left-body .footer-icon-box img {
-  width: 10%;
+  width: 100%;
 }
 
 footer .footer-left-body .footer-icon-box span {
@@ -3716,7 +3772,8 @@ footer .icon-footer-box {
   display: flex;
   flex-wrap: wrap;
   justify-content: end;
-  gap: 20px;
+  gap: 10px;
+  color: #E9E9E9;
 }
 
 footer .icon-footer-box div {

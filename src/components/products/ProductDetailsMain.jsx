@@ -13,6 +13,8 @@ import { Autoplay, Pagination, Navigation } from 'swiper';
 import { Link, useNavigate } from 'react-router-dom';
 import ProductReviewsAndDes from './ProductReviewsAndDes';
 
+
+
 const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
   const history = useNavigate();
   const [activeImage, setActiveImage] = useState('');
@@ -63,29 +65,27 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
             <div className="col-lg-5 col-md-6   x-zoom-body ">
               <div className="x-zoomin-responsive">
                 <div className="xzoom-heart xzoom-heart-hide">
-                  <p className="false-seal  ">
-                    <a>
-                      <svg
-                        className={wishList ? 'activeHeart' : 'heart'}
-                        onClick={() => {
-                          addToWishlist(
-                            selectedProduct && selectedProduct._id,
-                            wishList,
-                          );
-                          setWishlist(!wishList);
-                        }}
-                        viewBox="0 0 24 22"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M11.0162 2.62457L11.733 3.36138L12.4498 2.62457C15.1694 -0.171114 20.0664 0.825498 21.8274 4.2646C22.6749 5.91956 22.8251 8.24441 21.368 11.1192C19.9471 13.9225 17.0001 17.228 11.7329 20.7968C6.46578 17.2284 3.51885 13.923 2.09797 11.1198C0.640872 8.24511 0.791039 5.92021 1.63851 4.26513C3.39962 0.825768 8.29658 -0.171037 11.0162 2.62457Z"
-                          fill="#000000"
-                          stroke="black"
-                          strokeWidth="2"
-                        />
-                      </svg>
-                    </a>
+                  <p className="false-seal">
+                    <svg
+                      className={wishList ? 'activeHeart' : 'heart'}
+                      onClick={() => {
+                        addToWishlist(
+                          selectedProduct && selectedProduct._id,
+                          wishList,
+                        );
+                        setWishlist(!wishList);
+                      }}
+                      viewBox="0 0 24 22"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.0162 2.62457L11.733 3.36138L12.4498 2.62457C15.1694 -0.171114 20.0664 0.825498 21.8274 4.2646C22.6749 5.91956 22.8251 8.24441 21.368 11.1192C19.9471 13.9225 17.0001 17.228 11.7329 20.7968C6.46578 17.2284 3.51885 13.923 2.09797 11.1198C0.640872 8.24511 0.791039 5.92021 1.63851 4.26513C3.39962 0.825768 8.29658 -0.171037 11.0162 2.62457Z"
+                        fill="#000000"
+                        stroke="black"
+                        strokeWidth="2"
+                      />
+                    </svg>
                   </p>
                 </div>
               </div>
@@ -132,11 +132,11 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                             isTablet
                               ? 4
                               : isMobile
-                              ? 3
-                              : selectedProduct &&
-                                selectedProduct.images.length < 5
-                              ? selectedProduct.images.length / 2
-                              : 5
+                                ? 3
+                                : selectedProduct &&
+                                  selectedProduct.images.length < 5
+                                  ? selectedProduct.images.length / 2
+                                  : 5
                           }
                         >
                           {selectedProduct &&
@@ -170,29 +170,27 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
             <div className="col-md-6 col-lg-7 col-sm-12 xzoom-body-contain">
               <div className="xzoom-heart heart-hide-responsive">
                 <p className="false-seal ">
-                  <a>
-                    <svg
-                      className={wishList ? 'activeHeart' : 'heart'}
-                      viewBox="0 0 24 22"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style={{ cursor: 'pointer' }}
-                      onClick={() => {
-                        addToWishlist(
-                          selectedProduct && selectedProduct._id,
-                          wishList,
-                        );
-                        setWishlist(!wishList);
-                      }}
-                    >
-                      <path
-                        d="M11.0162 2.62457L11.733 3.36138L12.4498 2.62457C15.1694 -0.171114 20.0664 0.825498 21.8274 4.2646C22.6749 5.91956 22.8251 8.24441 21.368 11.1192C19.9471 13.9225 17.0001 17.228 11.7329 20.7968C6.46578 17.2284 3.51885 13.923 2.09797 11.1198C0.640872 8.24511 0.791039 5.92021 1.63851 4.26513C3.39962 0.825768 8.29658 -0.171037 11.0162 2.62457Z"
-                        fill="#000000"
-                        stroke="black"
-                        strokeWidth="2"
-                      />
-                    </svg>
-                  </a>
+                  <svg
+                    className={wishList ? 'activeHeart' : 'heart'}
+                    viewBox="0 0 24 22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      addToWishlist(
+                        selectedProduct && selectedProduct._id,
+                        wishList,
+                      );
+                      setWishlist(!wishList);
+                    }}
+                  >
+                    <path
+                      d="M11.0162 2.62457L11.733 3.36138L12.4498 2.62457C15.1694 -0.171114 20.0664 0.825498 21.8274 4.2646C22.6749 5.91956 22.8251 8.24441 21.368 11.1192C19.9471 13.9225 17.0001 17.228 11.7329 20.7968C6.46578 17.2284 3.51885 13.923 2.09797 11.1198C0.640872 8.24511 0.791039 5.92021 1.63851 4.26513C3.39962 0.825768 8.29658 -0.171037 11.0162 2.62457Z"
+                      fill="#000000"
+                      stroke="black"
+                      strokeWidth="2"
+                    />
+                  </svg>
                 </p>
               </div>
               <div className="xzoom_details">
@@ -295,6 +293,56 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                     </div>
                   </div>
                 )}
+                <div className="col-lg-10 col-md-12 col-sm-12 color-select-section">
+                  <p className="mb-2">Color</p>
+                  <Swiper
+                    slidesPerView={
+                      isTablet
+                        ? 3
+                        : isMobile
+                          ? 3
+                          : selectedProduct &&
+                            selectedProduct.images.length < 5
+                            ? selectedProduct.images.length / 2
+                            : 4
+                    }
+                    spaceBetween={30}
+                    navigation
+                    modules={[Navigation]}
+                    className="mySwiper color-swiper-select"
+                  >
+                    <SwiperSlide>
+                      <div>
+                        <p className="color-text">red</p>
+                        <div className="img-box"><img src="https://i.imgur.com/e2ztBrp.jpg" alt="redcup" /></div>
+                      </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <div>
+                        <p className="color-text">orange</p>
+                        <div className="img-box"><img src="https://i.imgur.com/e2ztBrp.jpg" alt="redcup" /></div>
+                      </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <div>
+                        <p className="color-text">purple</p>
+                        <div className="img-box"><img src="https://i.imgur.com/e2ztBrp.jpg" alt="redcup" /></div>
+                      </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <div>
+                        <p className="color-text">blue</p>
+                        <div className="img-box"><img src="https://i.imgur.com/e2ztBrp.jpg" alt="redcup" /></div>
+                      </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <div>
+                        <p className="color-text">blue</p>
+                        <div className="img-box"><img src="https://i.imgur.com/e2ztBrp.jpg" alt="redcup" /></div>
+                      </div>
+                    </SwiperSlide>
+                  </Swiper>
+                </div>
                 <div className="d-flex align-items-center mt-3">
                   {/* <label for=""> Qty: </label>
                   <input
@@ -329,7 +377,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
             </div>
           </div>
         </div>
-      </section>
+      </section >
       <ProductReviewsAndDes
         description={selectedProduct?.description}
         sellerInformation={selectedProduct?.sellerInformation}

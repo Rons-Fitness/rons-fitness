@@ -101,7 +101,7 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
           </div>
         </div>
       </div> */}
-      <div className="container ">
+      <div className="container-xl">
         <div className="offer-boday">
           <div className="row">
 

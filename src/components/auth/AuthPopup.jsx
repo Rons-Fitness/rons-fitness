@@ -91,6 +91,7 @@ function AuthPopup({
               )}
               <div className="col-12 d-flex justify-content-center">
                 <input
+                  type="submit"
                   className="number-to-text submit-profile"
                   onClick={handleSubmit}
                   value={otpSent ? 'Verify' : 'send OTP'}

@@ -127,7 +127,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                 <div>
                   <p>Checkout</p>
                 </div>
-                <div className="col-6">
+                <div className="col-lg-6 col-md-8 col-sm-12">
                   <p className="checkout-login">
                     Already have an account?<a href="#">Log in</a> for faster
                     checkout
@@ -154,7 +154,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   }}
                 >
                   <div className="row">
-                    <div className="col-lg-3 col-sm-12 d-flex justify-content-between">
+                    <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-between">
                       <input
                         type="text"
                         required
@@ -170,7 +170,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         }
                       />
                     </div>
-                    <div className="col-lg-3  col-sm-12">
+                    <div className="col-lg-3 col-md-6  col-sm-12">
                       <input
                         type="text"
                         required
@@ -204,7 +204,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                       />{' '}
                       {/* <br /> */}
                     </div>
-                    <div className="col-lg-6">
+                    <div className="col-lg-6 col-md-12 col-sm-12">
                       <input
                         required
                         className="col-12"
@@ -223,7 +223,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                       <br />
                     </div>
 
-                    <div className="col-lg-6">
+                    <div className="col-lg-6 col-md-6 col-sm-12 ">
                       <input
                         required
                         className="col-12"
@@ -241,12 +241,12 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                       <br />
                     </div>
 
-                    <div className="col-lg-6">
+                    <div className="col-lg-3 col-md-6 col-sm-12">
                       <input
                         required
                         type="number"
                         placeholder="Pincode"
-                        className="checkout-input-wid"
+                        className="checkout-input-wid col-12"
                         value={shippingAddress.pinCode}
                         onChange={(e) => {
                           if (e.target.value.length < 7) {
@@ -298,14 +298,14 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         }
                       />
                     </div> */}
-                    <div className="col-lg-6">
+                    <div className="col-lg-3 col-md-6 col-sm-12">
                       <input
                         required
                         type="tel"
                         minlength="10"
                         maxlength="10"
                         placeholder="Number"
-                        className="checkout-input-wid"
+                        className="checkout-input-wid col-12"
                         value={shippingAddress.phoneNo}
                         onChange={(e) => {
                           if (reg.test(Number(e.target.value))) {
@@ -321,7 +321,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
 
                     <button
                       type="submit"
-                      style={{ opacity: 0 }}
+                      style={{ display: "none" }}
                       id="shipping_btn"
                     />
                     <div className="address-types-body">
@@ -416,7 +416,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         onClick={() => changeAddressType('other')}
                       />
                     </div>
-                    <div className="d-flex justify-content-end my-3">
+                    <div className="d-flex  my-3">
                       <input
                         value="Save & Continue"
                         className="shipping-btn"
