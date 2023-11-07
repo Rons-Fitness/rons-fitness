@@ -13,8 +13,6 @@ import { Autoplay, Pagination, Navigation } from 'swiper';
 import { Link, useNavigate } from 'react-router-dom';
 import ProductReviewsAndDes from './ProductReviewsAndDes';
 
-
-
 const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
   const history = useNavigate();
   const [activeImage, setActiveImage] = useState('');
@@ -132,11 +130,11 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                             isTablet
                               ? 4
                               : isMobile
-                                ? 3
-                                : selectedProduct &&
-                                  selectedProduct.images.length < 5
-                                  ? selectedProduct.images.length / 2
-                                  : 5
+                              ? 3
+                              : selectedProduct &&
+                                selectedProduct.images.length < 5
+                              ? selectedProduct.images.length / 2
+                              : 5
                           }
                         >
                           {selectedProduct &&
@@ -300,11 +298,10 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                       isTablet
                         ? 3
                         : isMobile
-                          ? 3
-                          : selectedProduct &&
-                            selectedProduct.images.length < 5
-                            ? selectedProduct.images.length / 2
-                            : 4
+                        ? 3
+                        : selectedProduct && selectedProduct.images.length < 5
+                        ? selectedProduct.images.length / 2
+                        : 4
                     }
                     spaceBetween={30}
                     navigation
@@ -314,31 +311,56 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                     <SwiperSlide>
                       <div>
                         <p className="color-text">red</p>
-                        <div className="img-box"><img src="https://i.imgur.com/e2ztBrp.jpg" alt="redcup" /></div>
+                        <div className="img-box">
+                          <img
+                            src="https://i.imgur.com/e2ztBrp.jpg"
+                            alt="redcup"
+                          />
+                        </div>
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div>
                         <p className="color-text">orange</p>
-                        <div className="img-box"><img src="https://i.imgur.com/e2ztBrp.jpg" alt="redcup" /></div>
+                        <div className="img-box">
+                          <img
+                            src="https://i.imgur.com/e2ztBrp.jpg"
+                            alt="redcup"
+                          />
+                        </div>
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div>
                         <p className="color-text">purple</p>
-                        <div className="img-box"><img src="https://i.imgur.com/e2ztBrp.jpg" alt="redcup" /></div>
+                        <div className="img-box">
+                          <img
+                            src="https://i.imgur.com/e2ztBrp.jpg"
+                            alt="redcup"
+                          />
+                        </div>
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div>
                         <p className="color-text">blue</p>
-                        <div className="img-box"><img src="https://i.imgur.com/e2ztBrp.jpg" alt="redcup" /></div>
+                        <div className="img-box">
+                          <img
+                            src="https://i.imgur.com/e2ztBrp.jpg"
+                            alt="redcup"
+                          />
+                        </div>
                       </div>
                     </SwiperSlide>
                     <SwiperSlide>
                       <div>
                         <p className="color-text">blue</p>
-                        <div className="img-box"><img src="https://i.imgur.com/e2ztBrp.jpg" alt="redcup" /></div>
+                        <div className="img-box">
+                          <img
+                            src="https://i.imgur.com/e2ztBrp.jpg"
+                            alt="redcup"
+                          />
+                        </div>
                       </div>
                     </SwiperSlide>
                   </Swiper>
@@ -377,7 +399,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
             </div>
           </div>
         </div>
-      </section >
+      </section>
       <ProductReviewsAndDes
         description={selectedProduct?.description}
         sellerInformation={selectedProduct?.sellerInformation}

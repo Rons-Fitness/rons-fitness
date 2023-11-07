@@ -15,7 +15,7 @@ const Categories = ({ category = [], isMobile, isTablet }) => {
           <div className="swiper carte-slider">
             <Swiper
               className="swiper-wrapper"
-              slidesPerView={isTablet ? 3 : isMobile ? 1 : 5}
+              slidesPerView={isTablet ? 5 : isMobile ? 1 : 5}
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,

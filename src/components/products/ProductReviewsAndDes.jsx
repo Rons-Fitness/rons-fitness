@@ -12,8 +12,8 @@ const ProductReviewsAndDes = ({
 }) => {
   return (
     <>
-      <div style={{ background: "#E9E9E9" }}>
-        <div className="container" >
+      <div style={{ background: '#E9E9E9' }}>
+        <div className="container">
           <div className="reviews-body">
             <nav>
               <div className="nav nav-tabs" id="nav-tab" role="tablist">
@@ -119,8 +119,9 @@ const ProductReviewsAndDes = ({
                             <div
                               className="progress-bar"
                               style={{
-                                width: `${(100 * ratingDetails['5']) / reviews.length
-                                  }%`,
+                                width: `${
+                                  (100 * ratingDetails['5']) / reviews.length
+                                }%`,
                               }}
                             />
                           </div>
@@ -143,8 +144,9 @@ const ProductReviewsAndDes = ({
                             <div
                               className="progress-bar"
                               style={{
-                                width: `${(100 * ratingDetails['4']) / reviews.length
-                                  }%`,
+                                width: `${
+                                  (100 * ratingDetails['4']) / reviews.length
+                                }%`,
                               }}
                             />
                           </div>
@@ -167,8 +169,9 @@ const ProductReviewsAndDes = ({
                             <div
                               className="progress-bar"
                               style={{
-                                width: `${(100 * ratingDetails['3']) / reviews.length
-                                  }%`,
+                                width: `${
+                                  (100 * ratingDetails['3']) / reviews.length
+                                }%`,
                               }}
                             />
                           </div>
@@ -191,8 +194,9 @@ const ProductReviewsAndDes = ({
                             <div
                               className="progress-bar"
                               style={{
-                                width: `${(100 * ratingDetails['2']) / reviews.length
-                                  }%`,
+                                width: `${
+                                  (100 * ratingDetails['2']) / reviews.length
+                                }%`,
                               }}
                             />
                           </div>
@@ -215,8 +219,9 @@ const ProductReviewsAndDes = ({
                             <div
                               className="progress-bar"
                               style={{
-                                width: `${(100 * ratingDetails['1']) / reviews.length
-                                  }%`,
+                                width: `${
+                                  (100 * ratingDetails['1']) / reviews.length
+                                }%`,
                               }}
                             />
                           </div>

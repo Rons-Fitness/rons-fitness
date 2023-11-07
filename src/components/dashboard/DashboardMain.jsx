@@ -104,12 +104,17 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
       <div className="container-xl">
         <div className="offer-boday">
           <div className="row">
-
             <div className=" col-lg-6 col-md-6 col-sm-12 ">
               <div className="offer-contain">
                 <p className="main-text">Save Up to 40% Off</p>
-                <p className="sub-text">Your spot to find the most sophisticated home accessories!</p>
-                <a href="#"><button type="button" className="btn-read-more">Read more</button></a>
+                <p className="sub-text">
+                  Your spot to find the most sophisticated home accessories!
+                </p>
+                <a href="#">
+                  <button type="button" className="btn-read-more">
+                    Read more
+                  </button>
+                </a>
               </div>
             </div>
             <div className=" col-lg-6 col-md-6 col-sm-12  ">

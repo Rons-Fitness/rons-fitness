@@ -321,7 +321,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
 
                     <button
                       type="submit"
-                      style={{ display: "none" }}
+                      style={{ display: 'none' }}
                       id="shipping_btn"
                     />
                     <div className="address-types-body">

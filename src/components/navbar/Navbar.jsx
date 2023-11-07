@@ -64,14 +64,11 @@ const Navbar = ({
                 setSearchText('');
               }}
             >
-
-
               <img
                 src="../asstes/img/logo/logo.png"
                 alt="logo"
                 className="pe-3"
               />
-
             </Link>
             <button
               className="navbar-toggler btn-nav"

@@ -29,10 +29,7 @@ const ContactUs = () => {
                     <div className="ps-3 py-2">
                       <p>
                         Tel:
-                        <span className="num-email-colour">
-                          {' '}
-                          877-67-88-99
-                        </span>
+                        <span className="num-email-colour"> 877-67-88-99</span>
                       </p>
                       <p>
                         E-Mail:{' '}

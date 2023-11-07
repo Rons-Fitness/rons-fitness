@@ -114,7 +114,11 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className='d-flex justify-content-end mt-3' ><p className='copy-right-text'>2023<sup>©</sup> ESPACE CARRE All Right Reserved</p></div>
+        <div className="d-flex justify-content-end mt-3">
+          <p className="copy-right-text">
+            2023<sup>©</sup> ESPACE CARRE All Right Reserved
+          </p>
+        </div>
       </div>
     </footer>
   );
