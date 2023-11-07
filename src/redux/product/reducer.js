@@ -46,7 +46,7 @@ export default (state = INIT_STATE, action) => {
         loaded: true,
         products: {
           ...state.products,
-          data: [...state.products.data, product],
+          data: [...state.products, product],
         },
       };
     }
@@ -91,8 +91,8 @@ export default (state = INIT_STATE, action) => {
     case UPDATE_PRODUCT_SUCCESS: {
       const { item } = action.payload;
       const { _id } = item;
-      const index = [...state.products.data].map((e) => e._id).indexOf(_id);
-      const dataToUpdate = [...state.products.data];
+      const index = [...state.products].map((e) => e._id).indexOf(_id);
+      const dataToUpdate = [...state.products];
       dataToUpdate.splice(index, 1, item);
 
       return {
@@ -109,8 +109,8 @@ export default (state = INIT_STATE, action) => {
 
     case DELETE_PRODUCT_SUCCESS: {
       const { _id } = action.payload;
-      const index = [...state.products.data].map((e) => e._id).indexOf(_id);
-      const dataToUpdate = [...state.products.data];
+      const index = [...state.products].map((e) => e._id).indexOf(_id);
+      const dataToUpdate = [...state.products];
       dataToUpdate.splice(index, 1);
 
       return {

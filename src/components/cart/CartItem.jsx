@@ -30,7 +30,7 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
             <Link to={`/product/${value._id}`}>
               {' '}
               <img
-                src={value.image.find((elem) => elem?.url !== '')?.url}
+                src={value.images.find((elem) => elem?.url !== '')?.url}
                 alt=""
               />
             </Link>
@@ -93,9 +93,7 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
         </div>
         <div className="col-lg-2 col-md- col-sm-12   bin-box ">
           <div className="cart-oty-body">
-
-
-            <div className="cart-price-text">  {qty * value.price} $</div>
+            <div className="cart-price-text"> {qty * value.price} $</div>
             <div className=" oty-box">
               <label for="number"> Qty: </label>
               <input

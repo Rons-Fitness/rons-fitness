@@ -101,7 +101,10 @@ const getUSerDetailsAsync = async () => {
 export function* getUserWorker({ payload }) {
   const { history } = payload;
   try {
-    const { data, status } = yield call(getUSerDetailsAsync);
+    const {
+      data: { data },
+      status,
+    } = yield call(getUSerDetailsAsync);
     if (status === 200) {
       yield put(getUserDetailSuccess(data));
       yield put(setAuthPopup(false));
@@ -123,7 +126,7 @@ export function* watchGetUser() {
 
 const GenerateOtpAsync = async (mobileNo) => {
   try {
-    const res = await API.post('/user/generate-otp', {
+    const res = await API.post('/user/login', {
       mobileNo,
     });
     return res;
@@ -162,11 +165,12 @@ export function* watchLoginUser() {
 
 const verifyOtpAsync = async (mobileNo, otp) => {
   try {
-    const { data, status } = await API.post('/user/verify-otp', {
+    const res = await API.post('/user/verify-otp', {
       mobileNo: Number(mobileNo),
       otp: Number(otp),
     });
-    return { data, status };
+
+    return res;
   } catch (error) {
     return error;
   }
@@ -178,15 +182,20 @@ function* verifyOtp({ payload }) {
 
   try {
     const {
-      data: { success, token, user, message },
+      data: {
+        data: { token, user },
+        message,
+        status: success,
+      },
       status,
     } = yield call(verifyOtpAsync, mobileNo, otp);
+
     if (status === 200 && success) {
       Notification('success', message);
       yield put(verifyOtpSuccess());
       localStorage.removeItem('mobileNo');
       localStorage.setItem('auth_token', token);
-      yield put(getUserDetailSuccess(user));
+      // yield put(getUserDetailSuccess(user));
       yield put(setAuthPopup(false));
       window.location.reload();
     } else {
@@ -200,37 +209,6 @@ function* verifyOtp({ payload }) {
 }
 export function* watchVerifyOtp() {
   yield takeEvery(OTP_VERIFY, verifyOtp);
-}
-
-export function* watchRegisterUser() {
-  // eslint-disable-next-line no-use-before-define
-  yield takeEvery(REGISTER_USER, registerWithEmailPassword);
-}
-
-const registerWithEmailPasswordAsync = async (email, password) => {
-  console.log({ email, password });
-};
-
-function* registerWithEmailPassword({ payload }) {
-  const { email, password } = payload.user;
-  const { history } = payload;
-  try {
-    const registerUser = yield call(
-      registerWithEmailPasswordAsync,
-      email,
-      password,
-    );
-    if (!registerUser.message) {
-      const item = { uid: registerUser.user.uid, ...currentUser };
-      setCurrentUser(item);
-      yield put(registerUserSuccess(item));
-      history(adminRoot);
-    } else {
-      yield put(registerUserError(registerUser.message));
-    }
-  } catch (error) {
-    yield put(registerUserError(error));
-  }
 }
 
 export function* watchLogoutUser() {
@@ -342,7 +320,10 @@ const getUserWishListAsync = async () => {
 };
 function* getUserWishList() {
   try {
-    const { data, status } = yield call(getUserWishListAsync);
+    const {
+      data: { data },
+      status,
+    } = yield call(getUserWishListAsync);
     if (status === 200) {
       yield put(getUserWishListSuccess(data));
     } else {
@@ -368,7 +349,6 @@ const addToWishListAsync = async (_id, inWishlist) => {
 function* addToWishList({ payload }) {
   const { _id, inWishlist } = payload;
   try {
-    console.log({ inWishlist });
     const {
       data: { data, message },
       status,
@@ -419,7 +399,7 @@ export function* watchRemoveFromWishList() {
 // cart
 const AddtoCartAsync = async ({ _id, qty = 1 }) => {
   const res = await API.post(`/user/cart/${_id}`, { qty });
-  console.log({ res });
+
   return res;
 };
 function* addProductToCart({ payload }) {
@@ -431,7 +411,7 @@ function* addProductToCart({ payload }) {
     } = yield call(AddtoCartAsync, data);
     if (status === 200) {
       localStorage.removeItem('order_Details');
-      yield put(addToCartSuccess(cartData.cart));
+      yield put(addToCartSuccess(cartData));
       yield put(removeProductToWishList(data._id));
       Notification('success', message);
       if (history) history('/user/cart');
@@ -444,24 +424,22 @@ function* addProductToCart({ payload }) {
   } catch (err) {
     yield put(setAuthPopup(true));
     yield put(addToCartError(err));
-    Notification('error');
+    Notification('error', err.message);
   }
 }
 export function* addProductToCartWatch() {
   yield takeEvery(ADD_PRODUCT_TO_CART, addProductToCart);
 }
 const removeFromCartAsync = async ({ _id }) => {
-  const res = await API.put(`/user/cart/${_id}`);
+  const res = await API.delete(`/user/cart/${_id}`);
+
   return res;
 };
 function* removeProductFromCart({ payload }) {
   const { data } = payload;
   try {
     const {
-      data: {
-        data: { cart },
-        message,
-      },
+      data: { data: cart, message },
       status,
     } = yield call(removeFromCartAsync, data);
     if (status === 200) {
@@ -489,7 +467,10 @@ const getUserAddressAsync = async () => {
 
 function* getUserAddress() {
   try {
-    const { data, status } = yield call(getUserAddressAsync);
+    const {
+      data: { data },
+      status,
+    } = yield call(getUserAddressAsync);
     if (status === 200) {
       yield put(getUserAddressesSuccess(data || []));
     } else {
@@ -511,7 +492,10 @@ const createAddressAsync = async (address) => {
 function* createAddress({ payload }) {
   const { address, history } = payload;
   try {
-    const { data, status } = yield call(createAddressAsync, address);
+    const {
+      data: { data },
+      status,
+    } = yield call(createAddressAsync, address);
     if (status === 201) {
       history('/user/address');
       yield put(createUserAddressSuccess(data));
@@ -562,7 +546,10 @@ const getAddressByID = async (_id) => {
 function* getAddressById({ payload }) {
   const { _id } = payload;
   try {
-    const { data, status } = yield call(getAddressByID, _id);
+    const {
+      data: { data },
+      status,
+    } = yield call(getAddressByID, _id);
     if (status === 200) {
       yield put(getAddressByIdSuccess(data));
     } else {
@@ -631,7 +618,7 @@ export function* watchLikeDislikeProductReview() {
 const addEditUserReviewAsync = async (review) => {
   const { _id } = review;
   const res = await API.post(`/product/${_id}/review`, review);
-  console.log({ res });
+
   return res;
 };
 
@@ -649,7 +636,6 @@ function* addEditUserReview({ payload }) {
       Notification('error', message);
     }
   } catch (error) {
-    console.log(error);
     Notification('error');
   }
 }
@@ -690,9 +676,12 @@ const getOrderByIdAsync = async (_id) => {
 };
 function* getOrderByID({ payload }) {
   const { _id } = payload;
-  console.log({ _id });
+
   try {
-    const { data, status } = yield call(getOrderByIdAsync, _id);
+    const {
+      data: { data },
+      status,
+    } = yield call(getOrderByIdAsync, _id);
     if (status === 200) {
       yield put(getOrderByIdSuccess(data));
     } else {
@@ -703,7 +692,6 @@ function* getOrderByID({ payload }) {
   }
 }
 export function* watchGetOrderByID() {
-  console.log('take');
   yield takeEvery(GET_ORDER_BY_ID, getOrderByID);
 }
 
@@ -713,7 +701,6 @@ const updateUserDetailsAsync = async (data) => {
 };
 
 function* updateUserDetails({ payload }) {
-  console.log({ payload });
   try {
     const {
       data: { data, message },
@@ -743,7 +730,10 @@ const getBlogsAsync = async () => {
 
 function* getBlogs() {
   try {
-    const { data, status } = yield call(getBlogsAsync);
+    const {
+      data: { data },
+      status,
+    } = yield call(getBlogsAsync);
     if (status === 200) {
       yield put(getBlogSuccess(data));
     } else {
@@ -766,7 +756,10 @@ const getBlogByIdAsync = async (_id) => {
 function* getBlogById({ payload }) {
   try {
     const { _id } = payload;
-    const { data, status } = yield call(getBlogByIdAsync, _id);
+    const {
+      data: { data },
+      status,
+    } = yield call(getBlogByIdAsync, _id);
     if (status === 200) {
       yield put(getBlogByIdSuccess(data));
     } else {
@@ -785,7 +778,6 @@ export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
     fork(watchLogoutUser),
-    fork(watchRegisterUser),
     fork(watchForgotPassword),
     fork(watchResetPassword),
     fork(watchGetUser),

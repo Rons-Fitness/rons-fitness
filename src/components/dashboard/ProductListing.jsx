@@ -28,29 +28,25 @@ const ProductListing = ({
           <div className="swiper slider-cat">
             <Swiper
               className="swiper-wrapper"
-
               autoplay={{
                 delay: 2500,
                 disableOnInteraction: false,
               }}
-
               modules={[Autoplay, Pagination]}
               slidesPerView={isTablet ? 3 : isMobile ? 1 : 5}
               spaceBetween={25}
               loop
             >
-              {
-                products.map((elem) => (
-                  <SwiperSlide className="swiper-slide  box-card " key={elem._id}>
-                    <Product
-                      product={elem}
-                      addToWishlist={addToWishlist}
-                      addtoCart={addtoCart}
-                      history={history}
-                    />
-                  </SwiperSlide>
-                ))
-              }
+              {products.map((elem) => (
+                <SwiperSlide className="swiper-slide  box-card " key={elem._id}>
+                  <Product
+                    product={elem}
+                    addToWishlist={addToWishlist}
+                    addtoCart={addtoCart}
+                    history={history}
+                  />
+                </SwiperSlide>
+              ))}
             </Swiper>
             {/* <div className="swiper-button-next"></div>
             <div className="swiper-button-prev"></div> */}
@@ -105,8 +101,8 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
           <a>
             <img
               src={
-                product.image.find((el) => el?.url !== '') &&
-                product.image.find((el) => el?.url !== '')?.url
+                product.images.find((el) => el?.url !== '') &&
+                product.images.find((el) => el?.url !== '')?.url
               }
               alt=""
               className=""

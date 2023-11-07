@@ -94,12 +94,15 @@ function AuthPopup({
                   className="number-to-text submit-profile"
                   onClick={handleSubmit}
                   value={otpSent ? 'Verify' : 'send OTP'}
-                  onChange={() => console.log()}
                   style={{ textAlign: 'center', cursor: 'pointer' }}
                 />
               </div>
             </div>
-            <div className='text-center mt-3'><a href='#' className='dont-act' >Don’t have an Account? Create account</a></div>
+            <div className="text-center mt-3">
+              <a href="#" className="dont-act">
+                Don’t have an Account? Create account
+              </a>
+            </div>
           </div>
         </div>
       </Modal>

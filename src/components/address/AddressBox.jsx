@@ -16,7 +16,6 @@ function AddressBox({
 }) {
   const history = useNavigate();
 
-  console.log({ addressToDeliver });
   return (
     <div className="delivery-contain" key={_id}>
       <div className="delivery-name">

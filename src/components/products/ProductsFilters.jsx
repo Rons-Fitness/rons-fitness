@@ -45,7 +45,6 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
   }, []);
 
   const handleChangeFilter = (key, val, reset) => {
-    console.log({ val, key });
     const include = filterState[key].includes(val);
     let updatedFilter = [];
     if (!include) updatedFilter = [...filterState[key], val];
@@ -98,9 +97,7 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
               >
                 Reset
               </p> */}
-              <p
-                style={{ color: '#8B96A5', cursor: 'pointer' }}
-              >
+              <p style={{ color: '#8B96A5', cursor: 'pointer' }}>
                 {isOptionsOpen ? (
                   <i className="fas fa-chevron-right" /> // Show right arrow
                 ) : (
@@ -108,8 +105,10 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
                 )}
               </p>
             </p>
-            <div className={`${isOptionsOpen ? "" : "Left-contain"}`}
-              style={{ display: isOptionsOpen ? "none" : "block" }}>
+            <div
+              className={`${isOptionsOpen ? '' : 'Left-contain'}`}
+              style={{ display: isOptionsOpen ? 'none' : 'block' }}
+            >
               <p
                 className={
                   sortBy === 'ratingHighToLow'
@@ -222,10 +221,7 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
               >
                 Reset
               </p> */}
-              <p
-                style={{ color: '#8B96A5', cursor: 'pointer' }}
-
-              >
+              <p style={{ color: '#8B96A5', cursor: 'pointer' }}>
                 {isRatingOpen ? (
                   <i className="fas fa-chevron-right" /> // Show right arrow
                 ) : (
@@ -233,7 +229,10 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
                 )}
               </p>
             </p>
-            <div className={`${isRatingOpen ? "" : "Left-contain"}`} style={{ display: isRatingOpen ? "none" : "block" }}>
+            <div
+              className={`${isRatingOpen ? '' : 'Left-contain'}`}
+              style={{ display: isRatingOpen ? 'none' : 'block' }}
+            >
               <p>
                 <input
                   type="checkbox"

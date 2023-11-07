@@ -79,7 +79,7 @@ function CartMain({
   return (
     <div className="cart-section">
       <div className="container">
-        {cart && cart?.products.length === 0 ? (
+        {cart && cart?.products && cart?.products.length === 0 ? (
           <EmptyCart />
         ) : (
           <div className="row">
@@ -94,12 +94,12 @@ function CartMain({
                   </p>
                 </div>
                 {cart &&
-                  cart?.products.map(({ value, qty }) => (
+                  cart?.products.map((value) => (
                     <CartItem
                       value={value}
                       removeItemFromCart={removeItemFromCart}
                       addtoCart={addtoCart}
-                      qty={qty}
+                      qty={value.qty}
                       key={value._id}
                     />
                   ))}
@@ -115,12 +115,13 @@ function CartMain({
                       </th>
                     </tr>
                   </thead>
+
                   <tbody>
                     <tr>
                       <th scope="row" />
                       <td className="subtotal">Subtotal :</td>
                       <td />
-                      <td className="text-end ">{cart?.subTotal} $</td>
+                      <td className="text-end ">{cart?.totalPrice} $</td>
                     </tr>
                     <tr>
                       <th scope="row" />
@@ -146,7 +147,9 @@ function CartMain({
                       <th scope="row" />
                       <th className="fw-semibold">Total :</th>
                       <td className="" />
-                      <th className="text-end fw-semibold">{cart?.total} $</th>
+                      <th className="text-end fw-semibold">
+                        {cart?.totalPrice} $
+                      </th>
                     </tr>
                   </tbody>
                 </table>

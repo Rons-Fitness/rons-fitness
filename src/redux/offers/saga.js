@@ -28,7 +28,10 @@ const addOfferAsync = async (offer) => {
 function* addOfferWorker({ payload }) {
   const { offer, history } = payload;
   try {
-    const { data, status } = yield call(addOfferAsync, offer);
+    const {
+      data: { data },
+      status,
+    } = yield call(addOfferAsync, offer);
     const { messgae } = data;
     if (status === 201) {
       history('/app/applications/Offers');
@@ -53,7 +56,10 @@ const getOfferAsync = async () => {
 };
 export function* getOfferWorker() {
   try {
-    const { data, messgae } = yield call(getOfferAsync);
+    const {
+      data: { data },
+      messgae,
+    } = yield call(getOfferAsync);
     if (data) {
       yield put(getOfferSuccess(data));
     } else {
@@ -72,7 +78,10 @@ const getSingleOfferAsync = async (id) => {
 };
 function* getSingleOfferWorker({ payload }) {
   try {
-    const { data, status } = yield call(getSingleOfferAsync, payload);
+    const {
+      data: { data },
+      status,
+    } = yield call(getSingleOfferAsync, payload);
     const { message } = data;
     if (status === 200 && data) {
       yield put(getSingleOfferSuccess(data));
@@ -95,7 +104,10 @@ const updateOfferAsync = async (offer, _id) => {
 function* updateOfferWorker({ payload }) {
   const { offer, history, _id } = payload;
   try {
-    const { data, status } = yield call(updateOfferAsync, offer, _id);
+    const {
+      data: { data },
+      status,
+    } = yield call(updateOfferAsync, offer, _id);
     const { message } = data;
     if (status === 200) {
       history('/app/applications/Offers');

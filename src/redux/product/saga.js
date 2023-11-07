@@ -32,7 +32,10 @@ const addProductAsync = async (product) => {
 function* addProductWorker({ payload }) {
   const { product, history } = payload;
   try {
-    const { data, status } = yield call(addProductAsync, product);
+    const {
+      data: { data },
+      status,
+    } = yield call(addProductAsync, product);
     const { messgae } = data;
     if (status === 201) {
       history('/app/applications/product');
@@ -55,16 +58,18 @@ const getProductAsync = async (payload) => {
 };
 function* getProductWorker({ payload }) {
   try {
-    const { data, status } = yield call(getProductAsync, payload);
+    const {
+      data: { data },
+      status,
+    } = yield call(getProductAsync, payload);
+
     const { message } = data;
     if (status === 200 && data) {
-      console.log({ data });
       yield put(getProductSuccess(data));
     } else {
       yield put(getProductsError(message));
     }
   } catch (error) {
-    console.log({ error });
     yield put(getProductsError('something went wrong'));
   }
 }
@@ -78,7 +83,10 @@ const getSingleProductAsync = async (id) => {
 };
 function* getSingleProductWorker({ payload }) {
   try {
-    const { data, status } = yield call(getSingleProductAsync, payload);
+    const {
+      data: { data },
+      status,
+    } = yield call(getSingleProductAsync, payload);
     const { message } = data;
     if (status === 200 && data) {
       yield put(getSingleProductSuccess(data));
@@ -102,7 +110,10 @@ const updateProductAsync = async (product, _id) => {
 function* updateProductWorker({ payload }) {
   const { product, history, _id } = payload;
   try {
-    const { data, status } = yield call(updateProductAsync, product, _id);
+    const {
+      data: { data },
+      status,
+    } = yield call(updateProductAsync, product, _id);
     const { message } = data;
     if (status === 200) {
       history('/app/applications/product');
@@ -147,7 +158,10 @@ const getHomeScreenDataAsync = async () => {
 };
 function* getHomeScreenDataWorker() {
   try {
-    const { data, status } = yield call(getHomeScreenDataAsync);
+    const {
+      data: { data },
+      status,
+    } = yield call(getHomeScreenDataAsync);
     if (status === 200) {
       yield put(getHomeScreenDataSuccess(data));
     } else {

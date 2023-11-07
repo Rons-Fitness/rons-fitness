@@ -14,7 +14,6 @@ const OrderItem = ({ item, currentOrderStatus }) => {
     flavour,
     nonVeg,
   } = item;
-  console.log({ flavour, nonVeg });
   return (
     <div className="order-details-traking-contain col-lg-11 col-md-12 ">
       <div className="row ">
