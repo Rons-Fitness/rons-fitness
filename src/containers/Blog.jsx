@@ -7,7 +7,7 @@ import { getBlog } from 'redux/auth/actions';
 
 const Blog = ({ blogs, getBlogList, homeScreenData, loading }) => {
   const { trendingProducts } = homeScreenData;
-  console.log({ trendingProducts });
+
   useEffect(() => {
     getBlogList();
   }, [getBlogList]);
@@ -84,7 +84,7 @@ const Blog = ({ blogs, getBlogList, homeScreenData, loading }) => {
                           <Link to={`/product/${product._id}`}>
                             <img
                               src={
-                                product.image.find((el) => el?.url !== '')?.url
+                                product.images.find((el) => el?.url !== '')?.url
                               }
                               alt=""
                               className=""

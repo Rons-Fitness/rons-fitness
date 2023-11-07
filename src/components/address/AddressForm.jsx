@@ -12,8 +12,8 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
   const history = useNavigate();
   const reg = new RegExp('^[0-9]*$');
   const { shippingAddress, billingAddress, addressType, _id } = address;
-  const [setAsAbove, setsetAsAbove] = useState(false);
-  const [isValidPincode, setisValidPincode] = useState(false);
+  const [setAsAbove, setsetAsAbove] = useState(true);
+  const [isValidPincode, setisValidPincode] = useState(true);
 
   const changeDetails = (type, key, value) => {
     if (setAsAbove) {
@@ -57,7 +57,6 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
       const {
         data: { data, success },
       } = await API.get(`/address/pincode/${pin}`);
-      console.log({ data, success });
       if (success) {
         setisValidPincode(true);
         const { stateName, districtName, country } = data;
@@ -111,6 +110,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
     }
     setsetAsAbove(!setAsAbove);
   };
+
   return (
     <div className="Checkout-section">
       <div className="container">
@@ -124,12 +124,20 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                 <div className=" d-flex justify-content-between">
                   <p className="billing-p">Shipping address</p>
                 </div>
-                <div><p>Checkout</p></div>
-                <div className="col-6"><p className="checkout-login">Already have an account?<a href="#">Log in</a> for faster checkout</p></div>
+                <div>
+                  <p>Checkout</p>
+                </div>
+                <div className="col-6">
+                  <p className="checkout-login">
+                    Already have an account?<a href="#">Log in</a> for faster
+                    checkout
+                  </p>
+                </div>
 
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
+                    console.log('Prevent Default?');
                     if (!isValidPincode)
                       return Notification('info', 'Please Enter Valid Pincode');
                     if (!Object.values(address).includes('" "')) {
@@ -146,8 +154,6 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   }}
                 >
                   <div className="row">
-
-
                     <div className="col-lg-3 col-sm-12 d-flex justify-content-between">
                       <input
                         type="text"
@@ -164,7 +170,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         }
                       />
                     </div>
-                    <div className='col-lg-3  col-sm-12'>
+                    <div className="col-lg-3  col-sm-12">
                       <input
                         type="text"
                         required
@@ -187,7 +193,6 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         type="text"
                         // placeholder="Flat, house no, Building, company, Apartment"
                         placeholder="address line - 2"
-
                         value={shippingAddress.addressLine1}
                         onChange={(e) =>
                           changeDetails(
@@ -199,7 +204,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                       />{' '}
                       {/* <br /> */}
                     </div>
-                    <div className='col-lg-6'>
+                    <div className="col-lg-6">
                       <input
                         required
                         className="col-12"
@@ -226,13 +231,17 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         placeholder="City"
                         value={shippingAddress.city}
                         onChange={(e) =>
-                          changeDetails('shippingAddress', 'city', e.target.value)
+                          changeDetails(
+                            'shippingAddress',
+                            'city',
+                            e.target.value,
+                          )
                         }
                       />
                       <br />
                     </div>
 
-                    {/* <div className='col-lg-6'>
+                    <div className="col-lg-6">
                       <input
                         required
                         type="number"
@@ -253,7 +262,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                           }
                         }}
                       />
-                    </div> */}
+                    </div>
 
                     {/* <div className="col-lg-6">
                       <input
@@ -360,8 +369,6 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   </div> */}
                     </div>
                     <div className="col-12">
-
-
                       <input
                         required
                         type="button"
@@ -370,7 +377,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                           'shipping-btn  btn-views-active',
                           addressType === 'home' && 'activeAddressType',
                         )}
-                        style={{ height: 35.5, padding: '0 30px', borderRadius: 0 }}
+                        style={{
+                          height: 35.5,
+                          padding: '0 30px',
+                          borderRadius: 0,
+                        }}
                         onClick={() => changeAddressType('home')}
                       />
 
@@ -390,7 +401,6 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         onClick={() => changeAddressType('office')}
                       />
 
-
                       <input
                         type="button"
                         value="Other"
@@ -398,18 +408,21 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                           'shipping-btn  btn-views-active',
                           addressType === 'other' && 'activeAddressType',
                         )}
-                        style={{ height: 35.5, padding: '0 30px', borderRadius: 0 }}
+                        style={{
+                          height: 35.5,
+                          padding: '0 30px',
+                          borderRadius: 0,
+                        }}
                         onClick={() => changeAddressType('other')}
                       />
-
                     </div>
                     <div className="d-flex justify-content-end my-3">
                       <input
-                        type="submit"
                         value="Save & Continue"
                         className="shipping-btn"
                         onClick={() => {
                           const btn = document.getElementById('shipping_btn');
+                          console.log({ btn });
                           btn.click();
                         }}
                       />
@@ -419,8 +432,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
               </div>
             </div>
           </div>
-          <div className="col-lg-6 col-md-12 col-sm-12" style={{ display: "none" }}>
-            <div className="billing-body" >
+          <div
+            className="col-lg-6 col-md-12 col-sm-12"
+            style={{ display: 'none' }}
+          >
+            <div className="billing-body">
               <div className=" d-flex justify-content-between">
                 <p className="billing-p">Billing addresss</p>
                 <div className="Left-contain">
@@ -663,22 +679,23 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   onClick={() => changeAddressType('other')}
                 />
                 <div className="d-flex justify-content-end my-3">
-                  <input
+                  {/* <input
                     type="submit"
                     value="Save & Continue"
                     className="shipping-btn"
                     onClick={() => {
+                      console.log('called');
                       const btn = document.getElementById('shipping_btn');
                       btn.click();
                     }}
-                  />
+                  /> */}
                 </div>
               </form>
             </div>
           </div>
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 

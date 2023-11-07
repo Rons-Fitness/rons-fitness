@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import API from 'helpers/API';
-import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
+import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 import {
   ADD_OFFER,
   DELETE_OFFER,
@@ -28,7 +28,10 @@ const addOfferAsync = async (offer) => {
 function* addOfferWorker({ payload }) {
   const { offer, history } = payload;
   try {
-    const { data, status } = yield call(addOfferAsync, offer);
+    const {
+      data: { data },
+      status,
+    } = yield call(addOfferAsync, offer);
     const { messgae } = data;
     if (status === 201) {
       history('/app/applications/Offers');
@@ -41,7 +44,7 @@ function* addOfferWorker({ payload }) {
   }
 }
 export function* watchAddOffer() {
-  yield takeEvery(ADD_OFFER, addOfferWorker);
+  yield takeLatest(ADD_OFFER, addOfferWorker);
 }
 const getOfferAsync = async () => {
   try {
@@ -53,7 +56,10 @@ const getOfferAsync = async () => {
 };
 export function* getOfferWorker() {
   try {
-    const { data, messgae } = yield call(getOfferAsync);
+    const {
+      data: { data },
+      messgae,
+    } = yield call(getOfferAsync);
     if (data) {
       yield put(getOfferSuccess(data));
     } else {
@@ -64,7 +70,7 @@ export function* getOfferWorker() {
   }
 }
 export function* watchGetOffer() {
-  yield takeEvery(GET_OFFERS, getOfferWorker);
+  yield takeLatest(GET_OFFERS, getOfferWorker);
 }
 const getSingleOfferAsync = async (id) => {
   const res = await API.get(`/offer/${id}`);
@@ -72,7 +78,10 @@ const getSingleOfferAsync = async (id) => {
 };
 function* getSingleOfferWorker({ payload }) {
   try {
-    const { data, status } = yield call(getSingleOfferAsync, payload);
+    const {
+      data: { data },
+      status,
+    } = yield call(getSingleOfferAsync, payload);
     const { message } = data;
     if (status === 200 && data) {
       yield put(getSingleOfferSuccess(data));
@@ -84,7 +93,7 @@ function* getSingleOfferWorker({ payload }) {
   }
 }
 export function* watchGetSingleOffer() {
-  yield takeEvery(GET_SINGLE_OFFER, getSingleOfferWorker);
+  yield takeLatest(GET_SINGLE_OFFER, getSingleOfferWorker);
 }
 
 const updateOfferAsync = async (offer, _id) => {
@@ -95,7 +104,10 @@ const updateOfferAsync = async (offer, _id) => {
 function* updateOfferWorker({ payload }) {
   const { offer, history, _id } = payload;
   try {
-    const { data, status } = yield call(updateOfferAsync, offer, _id);
+    const {
+      data: { data },
+      status,
+    } = yield call(updateOfferAsync, offer, _id);
     const { message } = data;
     if (status === 200) {
       history('/app/applications/Offers');
@@ -108,7 +120,7 @@ function* updateOfferWorker({ payload }) {
   }
 }
 export function* watchUpdateOffer() {
-  yield takeEvery(UPDATE_OFFER, updateOfferWorker);
+  yield takeLatest(UPDATE_OFFER, updateOfferWorker);
 }
 
 const deleteOfferAsync = async (_id) => {
@@ -130,7 +142,7 @@ function* deleteOfferWorker({ payload }) {
   }
 }
 export function* watchDeleteOffer() {
-  yield takeEvery(DELETE_OFFER, deleteOfferWorker);
+  yield takeLatest(DELETE_OFFER, deleteOfferWorker);
 }
 
 export default function* rootSaga() {

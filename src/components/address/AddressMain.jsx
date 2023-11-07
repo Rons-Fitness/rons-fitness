@@ -8,7 +8,6 @@ function AddressMain({
   setDeliveryAddress,
   deleteAddress,
   addressToDeliver,
-  setDeliverToThisAddress,
 }) {
   return (
     <div
@@ -37,7 +36,6 @@ function AddressMain({
                       setDeliveryAddress={setDeliveryAddress}
                       deleteAddress={deleteAddress}
                       addressToDeliver={addressToDeliver}
-                      setDeliverToThisAddress={setDeliverToThisAddress}
                     />
                   ),
                 )}

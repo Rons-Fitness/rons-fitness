@@ -1,14 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
-import {
-  all,
-  call,
-  fork,
-  put,
-  takeEvery,
-  takeLatest,
-} from 'redux-saga/effects';
+import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 import { adminRoot, currentUser } from 'constants/defaultValues';
 import { setCurrentUser } from 'helpers/Utils';
 import API from 'helpers/API';
@@ -101,7 +94,10 @@ const getUSerDetailsAsync = async () => {
 export function* getUserWorker({ payload }) {
   const { history } = payload;
   try {
-    const { data, status } = yield call(getUSerDetailsAsync);
+    const {
+      data: { data },
+      status,
+    } = yield call(getUSerDetailsAsync);
     if (status === 200) {
       yield put(getUserDetailSuccess(data));
       yield put(setAuthPopup(false));
@@ -118,12 +114,12 @@ export function* getUserWorker({ payload }) {
 }
 
 export function* watchGetUser() {
-  yield takeEvery(GET_USER_DETAILS, getUserWorker);
+  yield takeLatest(GET_USER_DETAILS, getUserWorker);
 }
 
 const GenerateOtpAsync = async (mobileNo) => {
   try {
-    const res = await API.post('/user/generate-otp', {
+    const res = await API.post('/user/login', {
       mobileNo,
     });
     return res;
@@ -162,11 +158,12 @@ export function* watchLoginUser() {
 
 const verifyOtpAsync = async (mobileNo, otp) => {
   try {
-    const { data, status } = await API.post('/user/verify-otp', {
+    const res = await API.post('/user/verify-otp', {
       mobileNo: Number(mobileNo),
       otp: Number(otp),
     });
-    return { data, status };
+
+    return res;
   } catch (error) {
     return error;
   }
@@ -178,15 +175,20 @@ function* verifyOtp({ payload }) {
 
   try {
     const {
-      data: { success, token, user, message },
+      data: {
+        data: { token, user },
+        message,
+        status: success,
+      },
       status,
     } = yield call(verifyOtpAsync, mobileNo, otp);
+
     if (status === 200 && success) {
       Notification('success', message);
       yield put(verifyOtpSuccess());
       localStorage.removeItem('mobileNo');
       localStorage.setItem('auth_token', token);
-      yield put(getUserDetailSuccess(user));
+      // yield put(getUserDetailSuccess(user));
       yield put(setAuthPopup(false));
       window.location.reload();
     } else {
@@ -199,43 +201,12 @@ function* verifyOtp({ payload }) {
   }
 }
 export function* watchVerifyOtp() {
-  yield takeEvery(OTP_VERIFY, verifyOtp);
-}
-
-export function* watchRegisterUser() {
-  // eslint-disable-next-line no-use-before-define
-  yield takeEvery(REGISTER_USER, registerWithEmailPassword);
-}
-
-const registerWithEmailPasswordAsync = async (email, password) => {
-  console.log({ email, password });
-};
-
-function* registerWithEmailPassword({ payload }) {
-  const { email, password } = payload.user;
-  const { history } = payload;
-  try {
-    const registerUser = yield call(
-      registerWithEmailPasswordAsync,
-      email,
-      password,
-    );
-    if (!registerUser.message) {
-      const item = { uid: registerUser.user.uid, ...currentUser };
-      setCurrentUser(item);
-      yield put(registerUserSuccess(item));
-      history(adminRoot);
-    } else {
-      yield put(registerUserError(registerUser.message));
-    }
-  } catch (error) {
-    yield put(registerUserError(error));
-  }
+  yield takeLatest(OTP_VERIFY, verifyOtp);
 }
 
 export function* watchLogoutUser() {
   // eslint-disable-next-line no-use-before-define
-  yield takeEvery(LOGOUT_USER, logout);
+  yield takeLatest(LOGOUT_USER, logout);
 }
 
 const logoutAsync = async (history) => {
@@ -252,7 +223,7 @@ function* logout({ payload }) {
 
 export function* watchForgotPassword() {
   // eslint-disable-next-line no-use-before-define
-  yield takeEvery(FORGOT_PASSWORD, forgotPassword);
+  yield takeLatest(FORGOT_PASSWORD, forgotPassword);
 }
 
 function* forgotPassword({ payload }) {
@@ -275,7 +246,7 @@ function* forgotPassword({ payload }) {
 
 export function* watchResetPassword() {
   // eslint-disable-next-line no-use-before-define
-  yield takeEvery(RESET_PASSWORD, resetPassword);
+  yield takeLatest(RESET_PASSWORD, resetPassword);
 }
 
 const resetPasswordAsync = async (token, newPassword) => {
@@ -332,7 +303,7 @@ function* changePassword({ payload }) {
   }
 }
 export function* watchChangePassword() {
-  yield takeEvery(CHANGE_PASSWORD, changePassword);
+  yield takeLatest(CHANGE_PASSWORD, changePassword);
 }
 
 // wish list
@@ -342,7 +313,10 @@ const getUserWishListAsync = async () => {
 };
 function* getUserWishList() {
   try {
-    const { data, status } = yield call(getUserWishListAsync);
+    const {
+      data: { data },
+      status,
+    } = yield call(getUserWishListAsync);
     if (status === 200) {
       yield put(getUserWishListSuccess(data));
     } else {
@@ -356,7 +330,7 @@ function* getUserWishList() {
 }
 
 export function* watchGetUserWishList() {
-  yield takeEvery(GET_WISHLIST_DETAILS, getUserWishList);
+  yield takeLatest(GET_WISHLIST_DETAILS, getUserWishList);
 }
 
 const addToWishListAsync = async (_id, inWishlist) => {
@@ -368,7 +342,6 @@ const addToWishListAsync = async (_id, inWishlist) => {
 function* addToWishList({ payload }) {
   const { _id, inWishlist } = payload;
   try {
-    console.log({ inWishlist });
     const {
       data: { data, message },
       status,
@@ -413,13 +386,13 @@ function* removeFromWishList({ payload }) {
 }
 
 export function* watchRemoveFromWishList() {
-  yield takeEvery(DELETE_PRODUCT_FROM_WISHLIST, removeFromWishList);
+  yield takeLatest(DELETE_PRODUCT_FROM_WISHLIST, removeFromWishList);
 }
 
 // cart
 const AddtoCartAsync = async ({ _id, qty = 1 }) => {
   const res = await API.post(`/user/cart/${_id}`, { qty });
-  console.log({ res });
+
   return res;
 };
 function* addProductToCart({ payload }) {
@@ -431,7 +404,7 @@ function* addProductToCart({ payload }) {
     } = yield call(AddtoCartAsync, data);
     if (status === 200) {
       localStorage.removeItem('order_Details');
-      yield put(addToCartSuccess(cartData.cart));
+      yield put(addToCartSuccess(cartData));
       yield put(removeProductToWishList(data._id));
       Notification('success', message);
       if (history) history('/user/cart');
@@ -444,24 +417,22 @@ function* addProductToCart({ payload }) {
   } catch (err) {
     yield put(setAuthPopup(true));
     yield put(addToCartError(err));
-    Notification('error');
+    Notification('error', err.message);
   }
 }
 export function* addProductToCartWatch() {
-  yield takeEvery(ADD_PRODUCT_TO_CART, addProductToCart);
+  yield takeLatest(ADD_PRODUCT_TO_CART, addProductToCart);
 }
 const removeFromCartAsync = async ({ _id }) => {
-  const res = await API.put(`/user/cart/${_id}`);
+  const res = await API.delete(`/user/cart/${_id}`);
+
   return res;
 };
 function* removeProductFromCart({ payload }) {
   const { data } = payload;
   try {
     const {
-      data: {
-        data: { cart },
-        message,
-      },
+      data: { data: cart, message },
       status,
     } = yield call(removeFromCartAsync, data);
     if (status === 200) {
@@ -478,7 +449,7 @@ function* removeProductFromCart({ payload }) {
   }
 }
 export function* removeProductFromCartWatch() {
-  yield takeEvery(DELETE_PRODUCT_FROM_CART, removeProductFromCart);
+  yield takeLatest(DELETE_PRODUCT_FROM_CART, removeProductFromCart);
 }
 
 // address
@@ -489,7 +460,10 @@ const getUserAddressAsync = async () => {
 
 function* getUserAddress() {
   try {
-    const { data, status } = yield call(getUserAddressAsync);
+    const {
+      data: { data },
+      status,
+    } = yield call(getUserAddressAsync);
     if (status === 200) {
       yield put(getUserAddressesSuccess(data || []));
     } else {
@@ -501,7 +475,7 @@ function* getUserAddress() {
 }
 
 export function* watchUserAddress() {
-  yield takeEvery(GET_USER_ADDRESS, getUserAddress);
+  yield takeLatest(GET_USER_ADDRESS, getUserAddress);
 }
 
 const createAddressAsync = async (address) => {
@@ -511,7 +485,10 @@ const createAddressAsync = async (address) => {
 function* createAddress({ payload }) {
   const { address, history } = payload;
   try {
-    const { data, status } = yield call(createAddressAsync, address);
+    const {
+      data: { data },
+      status,
+    } = yield call(createAddressAsync, address);
     if (status === 201) {
       history('/user/address');
       yield put(createUserAddressSuccess(data));
@@ -526,7 +503,7 @@ function* createAddress({ payload }) {
   }
 }
 export function* watchCreateAddress() {
-  yield takeEvery(CREATE_USER_ADDRESS, createAddress);
+  yield takeLatest(CREATE_USER_ADDRESS, createAddress);
 }
 
 const updateAddressAsync = async (address) => {
@@ -538,6 +515,7 @@ const updateAddressAsync = async (address) => {
 function* updateAddress({ payload }) {
   const { address, history } = payload;
   try {
+    console.log('i called?');
     const { status } = yield call(updateAddressAsync, address);
     if (status === 200) {
       if (history) history('/user/address');
@@ -552,7 +530,7 @@ function* updateAddress({ payload }) {
   }
 }
 export function* watchUpdateAddress() {
-  yield takeEvery(UPDATE_USER_ADDRESS, updateAddress);
+  yield takeLatest(UPDATE_USER_ADDRESS, updateAddress);
 }
 
 const getAddressByID = async (_id) => {
@@ -562,7 +540,10 @@ const getAddressByID = async (_id) => {
 function* getAddressById({ payload }) {
   const { _id } = payload;
   try {
-    const { data, status } = yield call(getAddressByID, _id);
+    const {
+      data: { data },
+      status,
+    } = yield call(getAddressByID, _id);
     if (status === 200) {
       yield put(getAddressByIdSuccess(data));
     } else {
@@ -573,7 +554,7 @@ function* getAddressById({ payload }) {
   }
 }
 export function* watchAddressById() {
-  yield takeEvery(GET_ADDRESS_BY_ID, getAddressById);
+  yield takeLatest(GET_ADDRESS_BY_ID, getAddressById);
 }
 
 const deleteAddressByID = async (_id) => {
@@ -600,7 +581,7 @@ function* deleteAddressById({ payload }) {
   }
 }
 export function* watchDeleteAddress() {
-  yield takeEvery(DELETE_USER_ADDRESS, deleteAddressById);
+  yield takeLatest(DELETE_USER_ADDRESS, deleteAddressById);
 }
 
 const likeDislikeProductReviewAsync = async (_id, liked) => {
@@ -625,13 +606,13 @@ function* likeDislikeProductReview({ payload }) {
 }
 
 export function* watchLikeDislikeProductReview() {
-  yield takeEvery(LIKE_DISLIKE_PRODUCT_REVIEW, likeDislikeProductReview);
+  yield takeLatest(LIKE_DISLIKE_PRODUCT_REVIEW, likeDislikeProductReview);
 }
 
 const addEditUserReviewAsync = async (review) => {
   const { _id } = review;
   const res = await API.post(`/product/${_id}/review`, review);
-  console.log({ res });
+
   return res;
 };
 
@@ -649,13 +630,12 @@ function* addEditUserReview({ payload }) {
       Notification('error', message);
     }
   } catch (error) {
-    console.log(error);
     Notification('error');
   }
 }
 
 export function* watchAddEditUserReview() {
-  yield takeEvery(ADD_EDIT_USER_REVIEW, addEditUserReview);
+  yield takeLatest(ADD_EDIT_USER_REVIEW, addEditUserReview);
 }
 
 // user orders
@@ -681,7 +661,7 @@ function* getUserOrders() {
 }
 
 export function* watchGetUserOrders() {
-  yield takeEvery(GET_USER_ORDERS, getUserOrders);
+  yield takeLatest(GET_USER_ORDERS, getUserOrders);
 }
 
 const getOrderByIdAsync = async (_id) => {
@@ -690,9 +670,12 @@ const getOrderByIdAsync = async (_id) => {
 };
 function* getOrderByID({ payload }) {
   const { _id } = payload;
-  console.log({ _id });
+
   try {
-    const { data, status } = yield call(getOrderByIdAsync, _id);
+    const {
+      data: { data },
+      status,
+    } = yield call(getOrderByIdAsync, _id);
     if (status === 200) {
       yield put(getOrderByIdSuccess(data));
     } else {
@@ -703,8 +686,7 @@ function* getOrderByID({ payload }) {
   }
 }
 export function* watchGetOrderByID() {
-  console.log('take');
-  yield takeEvery(GET_ORDER_BY_ID, getOrderByID);
+  yield takeLatest(GET_ORDER_BY_ID, getOrderByID);
 }
 
 const updateUserDetailsAsync = async (data) => {
@@ -713,7 +695,6 @@ const updateUserDetailsAsync = async (data) => {
 };
 
 function* updateUserDetails({ payload }) {
-  console.log({ payload });
   try {
     const {
       data: { data, message },
@@ -733,7 +714,7 @@ function* updateUserDetails({ payload }) {
   }
 }
 export function* watchUpdateUserDetails() {
-  yield takeEvery(UPDATE_USER_DETAILS, updateUserDetails);
+  yield takeLatest(UPDATE_USER_DETAILS, updateUserDetails);
 }
 
 const getBlogsAsync = async () => {
@@ -743,7 +724,10 @@ const getBlogsAsync = async () => {
 
 function* getBlogs() {
   try {
-    const { data, status } = yield call(getBlogsAsync);
+    const {
+      data: { data },
+      status,
+    } = yield call(getBlogsAsync);
     if (status === 200) {
       yield put(getBlogSuccess(data));
     } else {
@@ -755,7 +739,7 @@ function* getBlogs() {
 }
 
 export function* watchGetBlogs() {
-  yield takeEvery(GET_BLOGS, getBlogs);
+  yield takeLatest(GET_BLOGS, getBlogs);
 }
 
 const getBlogByIdAsync = async (_id) => {
@@ -766,7 +750,10 @@ const getBlogByIdAsync = async (_id) => {
 function* getBlogById({ payload }) {
   try {
     const { _id } = payload;
-    const { data, status } = yield call(getBlogByIdAsync, _id);
+    const {
+      data: { data },
+      status,
+    } = yield call(getBlogByIdAsync, _id);
     if (status === 200) {
       yield put(getBlogByIdSuccess(data));
     } else {
@@ -778,14 +765,13 @@ function* getBlogById({ payload }) {
 }
 
 export function* watchGetBlogById() {
-  yield takeEvery(GET_BLOG_BY_ID, getBlogById);
+  yield takeLatest(GET_BLOG_BY_ID, getBlogById);
 }
 
 export default function* rootSaga() {
   yield all([
     fork(watchLoginUser),
     fork(watchLogoutUser),
-    fork(watchRegisterUser),
     fork(watchForgotPassword),
     fork(watchResetPassword),
     fork(watchGetUser),

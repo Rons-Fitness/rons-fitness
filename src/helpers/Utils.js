@@ -51,7 +51,6 @@ export const getDirection = () => {
       }
     }
   } catch (error) {
-    console.log('>>>>: src/helpers/Utils.js : getDirection -> error', error);
     direction = defaultDirection;
   }
   return {

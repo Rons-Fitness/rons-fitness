@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import API from 'helpers/API';
-import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
+import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
@@ -32,7 +32,10 @@ const addProductAsync = async (product) => {
 function* addProductWorker({ payload }) {
   const { product, history } = payload;
   try {
-    const { data, status } = yield call(addProductAsync, product);
+    const {
+      data: { data },
+      status,
+    } = yield call(addProductAsync, product);
     const { messgae } = data;
     if (status === 201) {
       history('/app/applications/product');
@@ -46,7 +49,7 @@ function* addProductWorker({ payload }) {
 }
 
 export function* watchAddProduct() {
-  yield takeEvery(ADD_PRODUCT, addProductWorker);
+  yield takeLatest(ADD_PRODUCT, addProductWorker);
 }
 
 const getProductAsync = async (payload) => {
@@ -55,21 +58,23 @@ const getProductAsync = async (payload) => {
 };
 function* getProductWorker({ payload }) {
   try {
-    const { data, status } = yield call(getProductAsync, payload);
+    const {
+      data: { data },
+      status,
+    } = yield call(getProductAsync, payload);
+
     const { message } = data;
     if (status === 200 && data) {
-      console.log({ data });
       yield put(getProductSuccess(data));
     } else {
       yield put(getProductsError(message));
     }
   } catch (error) {
-    console.log({ error });
     yield put(getProductsError('something went wrong'));
   }
 }
 export function* watchGetProduct() {
-  yield takeEvery(GET_PRODUCTS, getProductWorker);
+  yield takeLatest(GET_PRODUCTS, getProductWorker);
 }
 
 const getSingleProductAsync = async (id) => {
@@ -78,7 +83,10 @@ const getSingleProductAsync = async (id) => {
 };
 function* getSingleProductWorker({ payload }) {
   try {
-    const { data, status } = yield call(getSingleProductAsync, payload);
+    const {
+      data: { data },
+      status,
+    } = yield call(getSingleProductAsync, payload);
     const { message } = data;
     if (status === 200 && data) {
       yield put(getSingleProductSuccess(data));
@@ -91,7 +99,7 @@ function* getSingleProductWorker({ payload }) {
   }
 }
 export function* watchGetSingleProduct() {
-  yield takeEvery(GET_SINGLE_PRODUCT, getSingleProductWorker);
+  yield takeLatest(GET_SINGLE_PRODUCT, getSingleProductWorker);
 }
 
 const updateProductAsync = async (product, _id) => {
@@ -102,7 +110,10 @@ const updateProductAsync = async (product, _id) => {
 function* updateProductWorker({ payload }) {
   const { product, history, _id } = payload;
   try {
-    const { data, status } = yield call(updateProductAsync, product, _id);
+    const {
+      data: { data },
+      status,
+    } = yield call(updateProductAsync, product, _id);
     const { message } = data;
     if (status === 200) {
       history('/app/applications/product');
@@ -115,7 +126,7 @@ function* updateProductWorker({ payload }) {
   }
 }
 export function* watchUpdateProduct() {
-  yield takeEvery(UPDATE_PRODUCT, updateProductWorker);
+  yield takeLatest(UPDATE_PRODUCT, updateProductWorker);
 }
 
 const deleteProductAsync = async (_id) => {
@@ -138,7 +149,7 @@ function* deleteProductWorker({ payload }) {
 }
 
 export function* watchDeleteProduct() {
-  yield takeEvery(DELETE_PRODUCT, deleteProductWorker);
+  yield takeLatest(DELETE_PRODUCT, deleteProductWorker);
 }
 
 const getHomeScreenDataAsync = async () => {
@@ -147,7 +158,10 @@ const getHomeScreenDataAsync = async () => {
 };
 function* getHomeScreenDataWorker() {
   try {
-    const { data, status } = yield call(getHomeScreenDataAsync);
+    const {
+      data: { data },
+      status,
+    } = yield call(getHomeScreenDataAsync);
     if (status === 200) {
       yield put(getHomeScreenDataSuccess(data));
     } else {
@@ -159,7 +173,7 @@ function* getHomeScreenDataWorker() {
 }
 
 export function* watchGetHomeScreenData() {
-  yield takeEvery(GET_HOMESCREEN_DATA, getHomeScreenDataWorker);
+  yield takeLatest(GET_HOMESCREEN_DATA, getHomeScreenDataWorker);
 }
 
 export default function* rootSaga() {

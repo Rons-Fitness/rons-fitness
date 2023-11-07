@@ -11,12 +11,9 @@ function AddressBox({
   deleteAddress,
   setDeliveryAddress,
   updateAddress,
-  addressToDeliver,
-  // setDeliverToThisAddress,
 }) {
   const history = useNavigate();
 
-  console.log({ addressToDeliver });
   return (
     <div className="delivery-contain" key={_id}>
       <div className="delivery-name">
@@ -26,22 +23,6 @@ function AddressBox({
             <span className="home-tag">{addressType}</span>
           </h5>
         </div>
-        {/* <input
-          type="radio"
-          value="Home"
-          name="address"
-          id="Home"
-          style={{ cursor: 'pointer' }}
-          checked={addressToDeliver && addressToDeliver._id === _id}
-          onClick={() =>
-            setDeliverToThisAddress({
-              _id,
-              addressType,
-              shippingAddress,
-              billingAddress,
-            })
-          }
-        />{' '} */}
       </div>
       <div className="col-lg-6 col-md-8">
         <p className="address-write">
@@ -55,33 +36,32 @@ function AddressBox({
       <div className="fw-semibold edit">
         <Link to={`/user/address/edit/${_id}`}> Edit </Link>
         <span className="Delete-colour" onClick={() => deleteAddress(_id)}>
-          {/* Delete */}
+          Delete
         </span>
       </div>
-      {addressToDeliver && addressToDeliver._id === _id && (
-        <div
-          className="delivery-btn"
-          onClick={() => {
-            setDeliveryAddress({
-              _id,
-              addressType,
-              shippingAddress,
-              billingAddress,
-            });
-            updateAddress({
-              _id,
-              addressType,
-              shippingAddress,
-              billingAddress,
-            });
-            history('/user/cart');
-          }}
-        >
-          <p>
-            <a>Deliver to this Address</a>
-          </p>
-        </div>
-      )}
+
+      <div
+        className="delivery-btn"
+        onClick={() => {
+          setDeliveryAddress({
+            _id,
+            addressType,
+            shippingAddress,
+            billingAddress,
+          });
+          updateAddress({
+            _id,
+            addressType,
+            shippingAddress,
+            billingAddress,
+          });
+          history('/user/cart');
+        }}
+      >
+        <p>
+          <a>Deliver to this Address</a>
+        </p>
+      </div>
     </div>
   );
 }

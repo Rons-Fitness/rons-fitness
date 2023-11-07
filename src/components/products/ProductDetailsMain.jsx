@@ -45,15 +45,20 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
   }, []);
 
   useEffect(() => {
-    if (selectedProduct && selectedProduct.image) {
-      setActiveImage(selectedProduct.image.find((img) => img?.url !== '')?.url);
+    if (selectedProduct && selectedProduct.images) {
+      setActiveImage(
+        selectedProduct.images.find((img) => img?.url !== '')?.url,
+      );
     }
   }, [selectedProduct]);
 
   return (
     <>
-      <section className="xzoom_part" >
-        <div className="container" style={{ backgroundColor: '#FFF', borderRadius: "6px" }}>
+      <section className="xzoom_part">
+        <div
+          className="container"
+          style={{ backgroundColor: '#FFF', borderRadius: '6px' }}
+        >
           <div className="row">
             <div className="col-lg-5 col-md-6   x-zoom-body ">
               <div className="x-zoomin-responsive">
@@ -127,15 +132,15 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                             isTablet
                               ? 4
                               : isMobile
-                                ? 3
-                                : selectedProduct &&
-                                  selectedProduct.image.length < 5
-                                  ? selectedProduct.image.length / 2
-                                  : 5
+                              ? 3
+                              : selectedProduct &&
+                                selectedProduct.images.length < 5
+                              ? selectedProduct.images.length / 2
+                              : 5
                           }
                         >
                           {selectedProduct &&
-                            selectedProduct.image.map(
+                            selectedProduct.images.map(
                               ({ url, key }) =>
                                 url && (
                                   <SwiperSlide

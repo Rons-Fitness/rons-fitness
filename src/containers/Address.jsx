@@ -20,7 +20,6 @@ const Address = ({
   setSearchText,
   loading,
   addressToDeliver,
-  setDeliverToThisAddress,
 }) => {
   const history = useNavigate();
   useEffect(() => {
@@ -51,7 +50,6 @@ const Address = ({
           setDeliveryAddress={setDeliveryAddress}
           deleteAddress={deleteAddress}
           addressToDeliver={addressToDeliver}
-          setDeliverToThisAddress={setDeliverToThisAddress}
         />
       )}
     </div>
@@ -67,7 +65,6 @@ const mapDispatchToProps = (dispatch) => ({
   setDeliveryAddress: (address) => dispatch(deliverToThisAddress(address)),
   deleteAddress: (_id) => dispatch(deleteUserAddress(_id)),
   setSearchText: (text) => dispatch(changeSearchText(text)),
-  setDeliverToThisAddress: (address) => dispatch(deliverToThisAddress(address)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Address);

@@ -31,8 +31,10 @@ const Categories = ({ category = [], isMobile, isTablet }) => {
                     <div className="carte-contain">
                       <div className="carte carte-img-box ">
                         <a>
-                          {' '}
-                          <img src={elem.image} alt={elem.name} />
+                          <img
+                            src={elem.image && elem.image?.url}
+                            alt={elem.name}
+                          />
                         </a>
                       </div>
                       <p className="text-center">
