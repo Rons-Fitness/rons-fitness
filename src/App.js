@@ -23,7 +23,7 @@ const OrderList = lazy(() => import('./containers/OrderList'));
 const OrderDetails = lazy(() => import('./containers/OrderDetails'));
 const EditReview = lazy(() => import('./containers/EditReview'));
 // const AboutUs = lazy(() => import('./containers/AboutUs'));
-const PrivacyNPolicy = lazy(() => import('./containers/PrivacyNPolicy'));
+// const PrivacyNPolicy = lazy(() => import('./containers/PrivacyNPolicy'));
 // const TermsOfUse = lazy(() => import('./containers/TermsOfUse'));
 const RefundPolicy = lazy(() => import('./containers/RefundPolicy'));
 const ShippingPolicy = lazy(() => import('./containers/ShippingPolicy'));
@@ -43,11 +43,11 @@ function App() {
             {/* <Route exact path="/blog" element={<Blog />} /> */}
             {/* <Route exact path="/blog/:id" element={<BlogDetails />} /> */}
             {/* <Route exact path="/about-us" element={<AboutUs />} /> */}
-            <Route
+            {/* <Route
               exact
               path="/privacy-n-policy"
               element={<PrivacyNPolicy />}
-            />
+            /> */}
             {/* <Route exact path="/terms-of-use" element={<TermsOfUse />} /> */}
             <Route exact path="/refund-policy" element={<RefundPolicy />} />
             <Route exact path="/shipping-policy" element={<ShippingPolicy />} />

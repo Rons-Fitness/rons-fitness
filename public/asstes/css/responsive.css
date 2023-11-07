@@ -87,6 +87,14 @@
     margin-inline: 5px;
   }
 
+  .min-hed .login-cart {
+    padding: 5px 14px;
+  }
+
+  .min-hed .login-cart a {
+    font-size: 12px;
+  }
+
   .min-hed .modal-body {
     padding: 0px;
   }
@@ -153,6 +161,10 @@
     padding: 0.5rem 0rem;
   }
 
+  .offer-contain .sub-text {
+    font-size: 14px;
+  }
+
   /* =================== /banner end ==================  */
   .cat-round .carte-body {
     padding: 0px !important;
@@ -186,7 +198,8 @@
 
   /* ==================  Tranding section Start ==============  */
   .trending-head h1 {
-    font-size: 24px !important;
+    font-size: 17px !important;
+    line-height: 50px;
   }
 
   .trending-head h1::after {
@@ -468,6 +481,18 @@
     font-size: 20px;
   }
 
+  .my-whish-section .my-whish-contain .my-wish-list a h5 {
+    font-size: 16px;
+  }
+
+  .my-whish-section .my-whish-contain .my-wish-list h3 {
+    font-size: 16px;
+  }
+
+  .my-whish-section .my-whish-head .continue-sho-text {
+    font-size: 14px;
+  }
+
   .my-whish-section .my-whish-head h1::after {
     top: 15px !important;
   }
@@ -588,7 +613,11 @@
   }
 
   .delivery-section .address-body .Address-head p {
-    font-size: 15px;
+    font-size: 12px;
+  }
+
+  .delivery-section .address-body .Address-head p a {
+    font-size: 12px;
   }
 
   .delivery-section .address-body .address-write {
@@ -602,6 +631,18 @@
 
   .delivery-section .total-body .total-body-head {
     font-size: 16px;
+  }
+
+  .delivery-section .address-body .delivery-contain .delivery-btn p {
+    padding: 8px 25px;
+  }
+
+  .delivery-section .address-body .delivery-contain .edit a {
+    font-size: 14px;
+  }
+
+  .delivery-section .address-body .delivery-contain .edit .Delete-colour {
+    font-size: 14px;
   }
 
   /* ===============  delivery-addres page End =============*/
@@ -678,7 +719,7 @@
   }
 
   .contact-section .contact-header .contact {
-    font-size: 22px;
+    font-size: 22px !important;
   }
 
   .contact-section .contact-header .contact span {
@@ -701,13 +742,13 @@
   }
 
   .contact-section .contact-body .contact-box h4 {
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .contact-section .contact-body .contact-box p {
     color: #5a5b5a;
     margin: 0;
-    font-size: 15px;
+    font-size: 12px;
     line-height: 22px;
   }
 
@@ -715,12 +756,10 @@
     padding: 10px 0px;
   }
 
-  .contact-section .get-touch-body h4 {
-    font-size: 20px;
-  }
+
 
   .contact-section .get-touch-body p {
-    font-size: 15px;
+    font-size: 12px;
     margin-bottom: 0%;
   }
 
@@ -739,6 +778,10 @@
     margin: 5px 12px;
   }
 
+  .profile-section .profile-right-body .profile-left-head h4 {
+    font-size: 20px;
+  }
+
   .profile-section .img-icon-box {
     width: 50%;
   }
@@ -751,6 +794,10 @@
   .profile-section .img-icon-box a img {
     width: 100%;
     height: 100%;
+  }
+
+  .profile-section .profile-right-body .submit-profile {
+    padding: 0 80px;
   }
 
   /* =================== profile-page End ==============*/
@@ -920,10 +967,12 @@
   .xzoom-body-contain {
     padding: 20px !important;
   }
-    .xzoom_part .xzoom_details .color-text {
-      padding: 5px 0px;
-      font-size: 12px;
-    }
+
+  .xzoom_part .xzoom_details .color-text {
+    padding: 5px 0px;
+    font-size: 12px;
+  }
+
   .xzoom_part .xzoom_details .btn-body {
     flex-wrap: nowrap;
   }

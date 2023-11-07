@@ -31,8 +31,8 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
 
   return (
     <>
-      <section className="banner-wrapper ">
-        <div className=" banner">
+      <section className="banner-wrapper">
+        <div className="banner">
           <div className="swiper mySwiper-1">
             <Swiper
               className="swiper-wrapper"
