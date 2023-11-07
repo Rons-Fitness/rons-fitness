@@ -1,14 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
-import {
-  all,
-  call,
-  fork,
-  put,
-  takeEvery,
-  takeLatest,
-} from 'redux-saga/effects';
+import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 import { adminRoot, currentUser } from 'constants/defaultValues';
 import { setCurrentUser } from 'helpers/Utils';
 import API from 'helpers/API';
@@ -121,7 +114,7 @@ export function* getUserWorker({ payload }) {
 }
 
 export function* watchGetUser() {
-  yield takeEvery(GET_USER_DETAILS, getUserWorker);
+  yield takeLatest(GET_USER_DETAILS, getUserWorker);
 }
 
 const GenerateOtpAsync = async (mobileNo) => {
@@ -208,12 +201,12 @@ function* verifyOtp({ payload }) {
   }
 }
 export function* watchVerifyOtp() {
-  yield takeEvery(OTP_VERIFY, verifyOtp);
+  yield takeLatest(OTP_VERIFY, verifyOtp);
 }
 
 export function* watchLogoutUser() {
   // eslint-disable-next-line no-use-before-define
-  yield takeEvery(LOGOUT_USER, logout);
+  yield takeLatest(LOGOUT_USER, logout);
 }
 
 const logoutAsync = async (history) => {
@@ -230,7 +223,7 @@ function* logout({ payload }) {
 
 export function* watchForgotPassword() {
   // eslint-disable-next-line no-use-before-define
-  yield takeEvery(FORGOT_PASSWORD, forgotPassword);
+  yield takeLatest(FORGOT_PASSWORD, forgotPassword);
 }
 
 function* forgotPassword({ payload }) {
@@ -253,7 +246,7 @@ function* forgotPassword({ payload }) {
 
 export function* watchResetPassword() {
   // eslint-disable-next-line no-use-before-define
-  yield takeEvery(RESET_PASSWORD, resetPassword);
+  yield takeLatest(RESET_PASSWORD, resetPassword);
 }
 
 const resetPasswordAsync = async (token, newPassword) => {
@@ -310,7 +303,7 @@ function* changePassword({ payload }) {
   }
 }
 export function* watchChangePassword() {
-  yield takeEvery(CHANGE_PASSWORD, changePassword);
+  yield takeLatest(CHANGE_PASSWORD, changePassword);
 }
 
 // wish list
@@ -337,7 +330,7 @@ function* getUserWishList() {
 }
 
 export function* watchGetUserWishList() {
-  yield takeEvery(GET_WISHLIST_DETAILS, getUserWishList);
+  yield takeLatest(GET_WISHLIST_DETAILS, getUserWishList);
 }
 
 const addToWishListAsync = async (_id, inWishlist) => {
@@ -393,7 +386,7 @@ function* removeFromWishList({ payload }) {
 }
 
 export function* watchRemoveFromWishList() {
-  yield takeEvery(DELETE_PRODUCT_FROM_WISHLIST, removeFromWishList);
+  yield takeLatest(DELETE_PRODUCT_FROM_WISHLIST, removeFromWishList);
 }
 
 // cart
@@ -428,7 +421,7 @@ function* addProductToCart({ payload }) {
   }
 }
 export function* addProductToCartWatch() {
-  yield takeEvery(ADD_PRODUCT_TO_CART, addProductToCart);
+  yield takeLatest(ADD_PRODUCT_TO_CART, addProductToCart);
 }
 const removeFromCartAsync = async ({ _id }) => {
   const res = await API.delete(`/user/cart/${_id}`);
@@ -456,7 +449,7 @@ function* removeProductFromCart({ payload }) {
   }
 }
 export function* removeProductFromCartWatch() {
-  yield takeEvery(DELETE_PRODUCT_FROM_CART, removeProductFromCart);
+  yield takeLatest(DELETE_PRODUCT_FROM_CART, removeProductFromCart);
 }
 
 // address
@@ -482,7 +475,7 @@ function* getUserAddress() {
 }
 
 export function* watchUserAddress() {
-  yield takeEvery(GET_USER_ADDRESS, getUserAddress);
+  yield takeLatest(GET_USER_ADDRESS, getUserAddress);
 }
 
 const createAddressAsync = async (address) => {
@@ -510,7 +503,7 @@ function* createAddress({ payload }) {
   }
 }
 export function* watchCreateAddress() {
-  yield takeEvery(CREATE_USER_ADDRESS, createAddress);
+  yield takeLatest(CREATE_USER_ADDRESS, createAddress);
 }
 
 const updateAddressAsync = async (address) => {
@@ -522,6 +515,7 @@ const updateAddressAsync = async (address) => {
 function* updateAddress({ payload }) {
   const { address, history } = payload;
   try {
+    console.log('i called?');
     const { status } = yield call(updateAddressAsync, address);
     if (status === 200) {
       if (history) history('/user/address');
@@ -536,7 +530,7 @@ function* updateAddress({ payload }) {
   }
 }
 export function* watchUpdateAddress() {
-  yield takeEvery(UPDATE_USER_ADDRESS, updateAddress);
+  yield takeLatest(UPDATE_USER_ADDRESS, updateAddress);
 }
 
 const getAddressByID = async (_id) => {
@@ -560,7 +554,7 @@ function* getAddressById({ payload }) {
   }
 }
 export function* watchAddressById() {
-  yield takeEvery(GET_ADDRESS_BY_ID, getAddressById);
+  yield takeLatest(GET_ADDRESS_BY_ID, getAddressById);
 }
 
 const deleteAddressByID = async (_id) => {
@@ -587,7 +581,7 @@ function* deleteAddressById({ payload }) {
   }
 }
 export function* watchDeleteAddress() {
-  yield takeEvery(DELETE_USER_ADDRESS, deleteAddressById);
+  yield takeLatest(DELETE_USER_ADDRESS, deleteAddressById);
 }
 
 const likeDislikeProductReviewAsync = async (_id, liked) => {
@@ -612,7 +606,7 @@ function* likeDislikeProductReview({ payload }) {
 }
 
 export function* watchLikeDislikeProductReview() {
-  yield takeEvery(LIKE_DISLIKE_PRODUCT_REVIEW, likeDislikeProductReview);
+  yield takeLatest(LIKE_DISLIKE_PRODUCT_REVIEW, likeDislikeProductReview);
 }
 
 const addEditUserReviewAsync = async (review) => {
@@ -641,7 +635,7 @@ function* addEditUserReview({ payload }) {
 }
 
 export function* watchAddEditUserReview() {
-  yield takeEvery(ADD_EDIT_USER_REVIEW, addEditUserReview);
+  yield takeLatest(ADD_EDIT_USER_REVIEW, addEditUserReview);
 }
 
 // user orders
@@ -667,7 +661,7 @@ function* getUserOrders() {
 }
 
 export function* watchGetUserOrders() {
-  yield takeEvery(GET_USER_ORDERS, getUserOrders);
+  yield takeLatest(GET_USER_ORDERS, getUserOrders);
 }
 
 const getOrderByIdAsync = async (_id) => {
@@ -692,7 +686,7 @@ function* getOrderByID({ payload }) {
   }
 }
 export function* watchGetOrderByID() {
-  yield takeEvery(GET_ORDER_BY_ID, getOrderByID);
+  yield takeLatest(GET_ORDER_BY_ID, getOrderByID);
 }
 
 const updateUserDetailsAsync = async (data) => {
@@ -720,7 +714,7 @@ function* updateUserDetails({ payload }) {
   }
 }
 export function* watchUpdateUserDetails() {
-  yield takeEvery(UPDATE_USER_DETAILS, updateUserDetails);
+  yield takeLatest(UPDATE_USER_DETAILS, updateUserDetails);
 }
 
 const getBlogsAsync = async () => {
@@ -745,7 +739,7 @@ function* getBlogs() {
 }
 
 export function* watchGetBlogs() {
-  yield takeEvery(GET_BLOGS, getBlogs);
+  yield takeLatest(GET_BLOGS, getBlogs);
 }
 
 const getBlogByIdAsync = async (_id) => {
@@ -771,7 +765,7 @@ function* getBlogById({ payload }) {
 }
 
 export function* watchGetBlogById() {
-  yield takeEvery(GET_BLOG_BY_ID, getBlogById);
+  yield takeLatest(GET_BLOG_BY_ID, getBlogById);
 }
 
 export default function* rootSaga() {

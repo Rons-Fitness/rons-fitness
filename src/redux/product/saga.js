@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import API from 'helpers/API';
-import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
+import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
@@ -49,7 +49,7 @@ function* addProductWorker({ payload }) {
 }
 
 export function* watchAddProduct() {
-  yield takeEvery(ADD_PRODUCT, addProductWorker);
+  yield takeLatest(ADD_PRODUCT, addProductWorker);
 }
 
 const getProductAsync = async (payload) => {
@@ -74,7 +74,7 @@ function* getProductWorker({ payload }) {
   }
 }
 export function* watchGetProduct() {
-  yield takeEvery(GET_PRODUCTS, getProductWorker);
+  yield takeLatest(GET_PRODUCTS, getProductWorker);
 }
 
 const getSingleProductAsync = async (id) => {
@@ -99,7 +99,7 @@ function* getSingleProductWorker({ payload }) {
   }
 }
 export function* watchGetSingleProduct() {
-  yield takeEvery(GET_SINGLE_PRODUCT, getSingleProductWorker);
+  yield takeLatest(GET_SINGLE_PRODUCT, getSingleProductWorker);
 }
 
 const updateProductAsync = async (product, _id) => {
@@ -126,7 +126,7 @@ function* updateProductWorker({ payload }) {
   }
 }
 export function* watchUpdateProduct() {
-  yield takeEvery(UPDATE_PRODUCT, updateProductWorker);
+  yield takeLatest(UPDATE_PRODUCT, updateProductWorker);
 }
 
 const deleteProductAsync = async (_id) => {
@@ -149,7 +149,7 @@ function* deleteProductWorker({ payload }) {
 }
 
 export function* watchDeleteProduct() {
-  yield takeEvery(DELETE_PRODUCT, deleteProductWorker);
+  yield takeLatest(DELETE_PRODUCT, deleteProductWorker);
 }
 
 const getHomeScreenDataAsync = async () => {
@@ -173,7 +173,7 @@ function* getHomeScreenDataWorker() {
 }
 
 export function* watchGetHomeScreenData() {
-  yield takeEvery(GET_HOMESCREEN_DATA, getHomeScreenDataWorker);
+  yield takeLatest(GET_HOMESCREEN_DATA, getHomeScreenDataWorker);
 }
 
 export default function* rootSaga() {

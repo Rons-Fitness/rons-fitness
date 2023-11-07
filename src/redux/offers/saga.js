@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import API from 'helpers/API';
-import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
+import { all, call, fork, put, takeLatest } from 'redux-saga/effects';
 import {
   ADD_OFFER,
   DELETE_OFFER,
@@ -44,7 +44,7 @@ function* addOfferWorker({ payload }) {
   }
 }
 export function* watchAddOffer() {
-  yield takeEvery(ADD_OFFER, addOfferWorker);
+  yield takeLatest(ADD_OFFER, addOfferWorker);
 }
 const getOfferAsync = async () => {
   try {
@@ -70,7 +70,7 @@ export function* getOfferWorker() {
   }
 }
 export function* watchGetOffer() {
-  yield takeEvery(GET_OFFERS, getOfferWorker);
+  yield takeLatest(GET_OFFERS, getOfferWorker);
 }
 const getSingleOfferAsync = async (id) => {
   const res = await API.get(`/offer/${id}`);
@@ -93,7 +93,7 @@ function* getSingleOfferWorker({ payload }) {
   }
 }
 export function* watchGetSingleOffer() {
-  yield takeEvery(GET_SINGLE_OFFER, getSingleOfferWorker);
+  yield takeLatest(GET_SINGLE_OFFER, getSingleOfferWorker);
 }
 
 const updateOfferAsync = async (offer, _id) => {
@@ -120,7 +120,7 @@ function* updateOfferWorker({ payload }) {
   }
 }
 export function* watchUpdateOffer() {
-  yield takeEvery(UPDATE_OFFER, updateOfferWorker);
+  yield takeLatest(UPDATE_OFFER, updateOfferWorker);
 }
 
 const deleteOfferAsync = async (_id) => {
@@ -142,7 +142,7 @@ function* deleteOfferWorker({ payload }) {
   }
 }
 export function* watchDeleteOffer() {
-  yield takeEvery(DELETE_OFFER, deleteOfferWorker);
+  yield takeLatest(DELETE_OFFER, deleteOfferWorker);
 }
 
 export default function* rootSaga() {
