@@ -12,8 +12,8 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
   const history = useNavigate();
   const reg = new RegExp('^[0-9]*$');
   const { shippingAddress, billingAddress, addressType, _id } = address;
-  const [setAsAbove, setsetAsAbove] = useState(false);
-  const [isValidPincode, setisValidPincode] = useState(false);
+  const [setAsAbove, setsetAsAbove] = useState(true);
+  const [isValidPincode, setisValidPincode] = useState(true);
 
   const changeDetails = (type, key, value) => {
     if (setAsAbove) {
@@ -110,6 +110,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
     }
     setsetAsAbove(!setAsAbove);
   };
+
   return (
     <div className="Checkout-section">
       <div className="container">
@@ -136,6 +137,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
+                    console.log('Prevent Default?');
                     if (!isValidPincode)
                       return Notification('info', 'Please Enter Valid Pincode');
                     if (!Object.values(address).includes('" "')) {
@@ -239,7 +241,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                       <br />
                     </div>
 
-                    {/* <div className='col-lg-6'>
+                    <div className="col-lg-6">
                       <input
                         required
                         type="number"
@@ -260,7 +262,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                           }
                         }}
                       />
-                    </div> */}
+                    </div>
 
                     {/* <div className="col-lg-6">
                       <input
@@ -416,11 +418,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     </div>
                     <div className="d-flex justify-content-end my-3">
                       <input
-                        type="submit"
                         value="Save & Continue"
                         className="shipping-btn"
                         onClick={() => {
                           const btn = document.getElementById('shipping_btn');
+                          console.log({ btn });
                           btn.click();
                         }}
                       />
@@ -677,15 +679,16 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   onClick={() => changeAddressType('other')}
                 />
                 <div className="d-flex justify-content-end my-3">
-                  <input
+                  {/* <input
                     type="submit"
                     value="Save & Continue"
                     className="shipping-btn"
                     onClick={() => {
+                      console.log('called');
                       const btn = document.getElementById('shipping_btn');
                       btn.click();
                     }}
-                  />
+                  /> */}
                 </div>
               </form>
             </div>

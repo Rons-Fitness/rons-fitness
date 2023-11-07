@@ -20,7 +20,9 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
           <h1>
             My Wishlist <span>({wishlist.length})</span>
           </h1>
-          <Link to="/" className=" continue-sho-text">Continue Shopping</Link>
+          <Link to="/" className=" continue-sho-text">
+            Continue Shopping
+          </Link>
         </div>
         <div className="my-whish-body">
           {Boolean(wishlist.length) ? (
@@ -31,7 +33,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                     <div className="my-whish-img-box">
                       <Link to={`/product/${wish._id}`}>
                         <img
-                          src={wish.image.find((img) => img?.url !== '')?.url}
+                          src={wish.images.find((img) => img?.url !== '')?.url}
                           alt=""
                         />
                       </Link>

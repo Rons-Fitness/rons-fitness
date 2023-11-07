@@ -29,7 +29,8 @@ const Navbar = ({
   const [text, settext] = useState('');
   const {
     // brands,
-    category } = homeScreenData;
+    category,
+  } = homeScreenData;
 
   const closeMenu = () => {
     setshow(false);
@@ -63,11 +64,7 @@ const Navbar = ({
                 setSearchText('');
               }}
             >
-              <img
-                src="../asstes/img/logo/logo.png"
-                alt=""
-                className="pe-3"
-              />
+              <img src="../asstes/img/logo/logo.png" alt="" className="pe-3" />
               ESPACE CARRE
             </Link>
             <button
@@ -84,7 +81,7 @@ const Navbar = ({
               <i className="fas fa-bars" />
             </button>
             <div
-              className={`collapse navbar-collapse ${show ? "show" : ""}`}
+              className={`collapse navbar-collapse ${show ? 'show' : ''}`}
               id="navbar_1"
               tabIndex="-1"
             >
@@ -96,10 +93,12 @@ const Navbar = ({
                     role="button"
                     data-mdb-toggle="dropdown"
                     aria-expanded="false"
-
                   >
                     Category
-                    <span> <i className="fas fa-chevron-right chevron-right-arrow" /></span>
+                    <span>
+                      {' '}
+                      <i className="fas fa-chevron-right chevron-right-arrow" />
+                    </span>
                   </Link>
 
                   {Boolean(category.length) && (
@@ -111,7 +110,10 @@ const Navbar = ({
                               onClick={() => {
                                 closeMenu();
                               }}
-                              className="dropdown-item">{elem.name}</Link>
+                              className="dropdown-item"
+                            >
+                              {elem.name}
+                            </Link>
                           </Link>
                         </li>
                       ))}
@@ -209,10 +211,16 @@ const Navbar = ({
                       setSearchText('');
                     }}
                   >
-                    <p className=" login-cart" style={{ margin: '0 15px' }}>
+                    <p
+                      className="login-cart"
+                      style={{
+                        margin: '0 15px',
+                        // borderRadius: '50%',
+                        // width: 10,
+                      }}
+                    >
                       <a>
-                        {/* <i className="bi bi-person" /> */}
-                        Login
+                        <i className="bi bi-person" />
                       </a>
                     </p>
                   </Link>
