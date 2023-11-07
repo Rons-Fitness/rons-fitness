@@ -56,7 +56,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "precommit": "lint-staged",
-    "format": "prettier --write ."
+    "format": "npx prettier --write **/*.jsx"
   },
   "husky": {
     "hooks": {
