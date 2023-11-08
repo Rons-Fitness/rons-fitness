@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import useRazorpay from 'react-razorpay';
+// import useRazorpay from 'react-razorpay';
 import API from 'helpers/API';
 import EmptyCart from 'components/notFound/EmptyCart';
 import Notification from 'components/Notification/Notification';
@@ -11,15 +12,15 @@ function CartMain({
   removeItemFromCart,
   addtoCart,
   addressToDeliver,
-  currentUser,
+  // currentUser,
 }) {
   const history = useNavigate();
-  const [Razorpay] = useRazorpay();
-  const { lastName, firstName, mobileNo } = currentUser;
+  // const [Razorpay] = useRazorpay();
+  // const { lastName, firstName, mobileNo } = currentUser;
 
-  const [oldOrderState, setOldOrderState] = useState(
-    JSON.parse(localStorage.getItem('order_Details')),
-  );
+  // const [oldOrderState, setOldOrderState] = useState(
+  //   JSON.parse(localStorage.getItem('order_Details')),
+  // );
 
   const handlePayment = async (addressId) => {
     try {
@@ -27,50 +28,51 @@ function CartMain({
         Notification('info', 'Please Select An Address');
         return;
       }
-      let orderState = {};
-      if (oldOrderState) {
-        orderState = { ...oldOrderState };
-      } else {
-        const order = await API.post('/order', {
-          addressId,
-        });
-        const {
-          data: {
-            data: { id, amount },
-          },
-        } = order;
-        orderState = { id, amount };
-        setOldOrderState({ id, amount });
-      }
+      // let orderState = {};
+      // if (oldOrderState) {
+      //   orderState = { ...oldOrderState };
+      // } else {
+      await API.post('/order', {
+        addressId,
+      });
+      //   const {
+      //     data: {
+      //       data: { id, amount },
+      //     },
+      //   } = order;
+      //   orderState = { id, amount };
+      //   setOldOrderState({ id, amount });
+      // }
 
-      const { id, amount } = orderState;
-      localStorage.setItem('order_Details', JSON.stringify({ id, amount }));
-      const options = {
-        key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
-        amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        currency: 'INR',
-        name: 'Gym Cart',
-        description: 'Test Transaction',
-        image:
-          'https://rons-fitness-dev.s3.ap-northeast-1.amazonaws.com/1680499818975.webp',
-        order_id: id,
-        prefill: {
-          name: firstName + lastName,
-          contact: mobileNo,
-        },
-        notes: {
-          address: 'Razorpay Corporate Office',
-        },
-        theme: {
-          color: '#3399cc',
-        },
-        handler: (response) => {
-          localStorage.removeItem('order_Details');
-          if (response.razorpay_payment_id) history('/user/orders');
-        },
-      };
-      const rzp1 = new Razorpay(options);
-      rzp1.open();
+      // const { id, amount } = orderState;
+      // localStorage.setItem('order_Details', JSON.stringify({ id, amount }));
+      // const options = {
+      //   key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
+      //   amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      //   currency: 'INR',
+      //   name: 'Gym Cart',
+      //   description: 'Test Transaction',
+      //   image:
+      //     'https://rons-fitness-dev.s3.ap-northeast-1.amazonaws.com/1680499818975.webp',
+      //   order_id: id,
+      //   prefill: {
+      //     name: firstName + lastName,
+      //     contact: mobileNo,
+      //   },
+      //   notes: {
+      //     address: 'Razorpay Corporate Office',
+      //   },
+      //   theme: {
+      //     color: '#3399cc',
+      //   },
+      //   handler: (response) => {
+      //     localStorage.removeItem('order_Details');
+      //     if (response.razorpay_payment_id) history('/user/orders');
+      //   },
+      // };
+      // const rzp1 = new Razorpay(options);
+      // rzp1.open();
+      history('/user/orders');
     } catch (error) {
       console.log(error);
     }
