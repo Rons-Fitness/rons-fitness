@@ -10,16 +10,16 @@ const OrderItem = ({ item, currentOrderStatus }) => {
     price,
     qty,
     userReview,
-    _id,
     flavour,
     nonVeg,
+    product,
   } = item;
   return (
     <div className="order-details-traking-contain col-lg-11 col-md-12 ">
       <div className="row ">
         <div className="col-lg-2 col-md-3  d-flex align-items-center justify-content-center m-0 p-0">
           <div className="order-details-traking-img-box">
-            <Link to={`/product/${_id}`}>
+            <Link to={`/product/${product?._id}`}>
               <a>
                 {' '}
                 <img src={image} alt="" />
@@ -29,7 +29,7 @@ const OrderItem = ({ item, currentOrderStatus }) => {
         </div>
         <div className="col-lg-7 col-md-6 ">
           <div className="order-details-traking-list">
-            <Link to={`/product/${_id}`}>
+            <Link to={`/product/${product?._id}`}>
               <a>
                 <h5>{name}</h5>
                 {flavour !== '' && (
@@ -58,7 +58,7 @@ const OrderItem = ({ item, currentOrderStatus }) => {
         {currentOrderStatus &&
           currentOrderStatus.status === 'Order Delivered' && (
             <div className="col-lg-3 col-md-3" style={{ textAlign: 'center' }}>
-              <Link to={`/user/order/${_id}/review`}>
+              <Link to={`/user/order/${product?._id}/review`}>
                 <div className="star-rating">
                   <a>
                     {userReview &&
