@@ -76,7 +76,7 @@
   flex-wrap: wrap;
   align-items: center;
   /* justify-content: center; */
-  gap: 40px 40px;
+  gap: 30px 30px;
   /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));*/
   padding: 0px 73px;
   padding-bottom: 20px;
@@ -96,7 +96,7 @@
   margin-top: 5px;
   overflow: hidden;
   height: 150px;
-  width: min(100% - 10px, 150px);
+  width: min(100% - 10px, 210px);
   margin-inline: auto;
   display: flex;
   justify-content: center;
@@ -557,6 +557,7 @@
 .xzoom_part .xzoom_details h4 {
   font-size: 22px;
   font-weight: 400;
+  letter-spacing: 1px;
 }
 
 .xzoom_part .xzoom_details h3 {
@@ -581,7 +582,7 @@
 }
 
 .xzoom_part .xzoom_details .star i {
-  color: #ff8332;
+  color: var(--them-colour);
 }
 
 .xzoom_part .xzoom_details h6 {
@@ -952,6 +953,7 @@
 
 .my-whish-section .my-whish-contain .my-wish-list a h5 {
   margin: 0;
+  letter-spacing: 1px;
 }
 
 .my-whish-section .my-whish-contain .my-wish-list p {
@@ -1176,6 +1178,7 @@
   background-color: var(--white);
   border: 1px solid #dee2e7;
   /* shadow-sm */
+  margin-top: 5px;
   box-shadow: 0px 1px 2px rgba(56, 56, 56, 0.08);
   border-radius: 6px;
 }
@@ -2771,7 +2774,6 @@ h1 {
   font-weight: 600;
   font-size: 50px;
   line-height: 59px;
-  letter-spacing: -0.04em;
 }
 
 h2 {
@@ -2779,28 +2781,25 @@ h2 {
   font-weight: 600;
   font-size: 48px;
   line-height: 58px;
-  letter-spacing: -0.04em;
 }
 
 h3 {
   font-weight: 600;
   font-size: 36px;
   line-height: 44px;
-  letter-spacing: -0.04em;
+
 }
 
 h4 {
   font-weight: 600;
   font-size: 24px;
   line-height: 32px;
-  letter-spacing: -0.04em;
 }
 
 h5 {
   font-weight: 600;
   font-size: 18px;
   line-height: 26px;
-  letter-spacing: -0.04em;
 }
 
 p {
@@ -3144,13 +3143,18 @@ select:focus {
 
 .min-hed .login-cart {
   height: 40px;
-  padding: 0px 30px;
+  padding: 0px 13px;
   display: flex;
   align-items: center;
   background-color: var(--them-colour);
   justify-content: center;
   margin-right: 20px;
   cursor: pointer;
+}
+
+.min-hed .login-cart i {
+  color: var(--black);
+  font-size: 17px;
 }
 
 .min-hed .shoping-cart {
@@ -3185,7 +3189,6 @@ select:focus {
 /* ======================= banner start ============== */
 .banner-wrapper {
   padding: 1rem 0rem;
-  background-color: var(--white);
 }
 
 .banner-wrapper .mySwiper-1 {
@@ -3208,7 +3211,7 @@ select:focus {
 /* ================  Categories round shape section start =========== */
 .cat-round {
   background-color: var(--white);
-
+  padding: 15px 0;
 }
 
 .cat-round .carte-body {
@@ -3233,11 +3236,7 @@ select:focus {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  width: 130px;
-  height: 130px;
-  background: #ffffff;
-  border-radius: 50%;
+  width: 170px;
 }
 
 .cat-round .carte-body .carte-contain .carte-img-box a img {
@@ -3255,15 +3254,15 @@ select:focus {
 }
 
 .cat-round .carte-body .swiper-button-next {
-  right: 0;
+  right: -7px;
   color: var(--them-colour);
-  top: 70px;
+  /* top: 70px; */
 }
 
 .cat-round .carte-body .swiper-button-prev {
-  left: 0;
+  left: -7px;
   color: var(--them-colour);
-  top: 70px;
+  /* top: 70px; */
 }
 
 .swiper-button-next:after,
@@ -3371,7 +3370,7 @@ select:focus {
   margin-top: 5px;
   overflow: hidden;
   height: 150px;
-  width: min(100% - 10px, 150px);
+  width: min(100% - 10px, 212px);
   margin-inline: auto;
   display: flex;
   justify-content: center;
@@ -3407,6 +3406,7 @@ select:focus {
   margin: 0;
   display: flex;
   justify-content: space-between;
+  letter-spacing: 1px;
 }
 
 .slider-card .slider-cat .box-card .card-body .card-con h6 {
@@ -3529,10 +3529,20 @@ select:focus {
 
 /* ==================  Tranding section End ==============  */
 /* offer- boday section start */
+
+.offer-section {
+  padding: 0 67px;
+}
+
 .offer-boday {
   background: linear-gradient(97deg, #F9DF23 1.41%, rgba(255, 255, 255, 0.00) 80.18%);
-  padding: 20px 10px;
+  padding: 50px 10px;
   margin: 30px 0;
+
+  .img-box {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .offer-contain {
@@ -3567,6 +3577,8 @@ select:focus {
     line-height: normal;
     width: min(100% - 0px, 80%);
   }
+
+
 }
 
 /* offer- boday section end */

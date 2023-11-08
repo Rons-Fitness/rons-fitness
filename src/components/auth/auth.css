@@ -57,7 +57,7 @@ h1 {
   font-weight: 600;
   font-size: 50px;
   line-height: 59px;
-  letter-spacing: -0.04em;
+
 }
 
 h2 {
@@ -65,28 +65,28 @@ h2 {
   font-weight: 600;
   font-size: 48px;
   line-height: 58px;
-  letter-spacing: -0.04em;
+
 }
 
 h3 {
   font-weight: 600;
   font-size: 36px;
   line-height: 44px;
-  letter-spacing: -0.04em;
+
 }
 
 h4 {
   font-weight: 600;
   font-size: 24px;
   line-height: 32px;
-  letter-spacing: -0.04em;
+
 }
 
 h5 {
   font-weight: 600;
   font-size: 18px;
   line-height: 26px;
-  letter-spacing: -0.04em;
+
 }
 
 p {
@@ -98,6 +98,8 @@ p {
 
 :root {
   --them-colour: #F9DF23;
+  --black-gry: #3B3B3B;
+  --gray: #DEDEDE;
   --black: #000000;
   --white: #ffffff;
   --light: #fdead3;
@@ -219,7 +221,7 @@ select:focus {
   color: var(--black);
   padding: 8px 20px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   width: 60%;
   transition: ease-out 0.4s;
 }
@@ -235,4 +237,30 @@ select:focus {
 
 .modal-content .modal-footer {
   border: none;
+}
+
+@media (max-width:991px) {
+  .modal-title {
+    font-size: 17px;
+  }
+
+  .modal-content .modal-header p {
+    font-size: 12px;
+  }
+
+  .modal-content .dont-act {
+    font-size: 12px;
+  }
+
+  .modal-content .modal-body .submit-profile {
+    padding: 8px 20px;
+    font-size: 12px;
+    font-weight: 400;
+    width: 50%;
+  }
+
+  .modal-content .modal-body .resend-p {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
 }

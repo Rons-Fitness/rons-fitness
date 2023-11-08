@@ -223,8 +223,8 @@ const Navbar = ({
                       }}
                     >
                       <a>
-                        {/* <i className="bi bi-person" /> */}
-                        Login
+                        <i className="bi bi-person" />
+                        {/* Login */}
                       </a>
                     </p>
                   </Link>

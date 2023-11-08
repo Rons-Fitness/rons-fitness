@@ -20,7 +20,7 @@ const ProductListing = ({
   const history = useNavigate();
   return (
     <section id="trendinslider-cardg-sec">
-      <div className="container-fluid">
+      <div className="container-xxl">
         <div className="slider-card">
           <div className=" trending-head">
             <h1 style={{ zIndex: 1 }}>{type}</h1>
@@ -28,12 +28,13 @@ const ProductListing = ({
           <div className="swiper slider-cat">
             <Swiper
               className="swiper-wrapper"
+              speed={3000}
               autoplay={{
-                delay: 2500,
+                delay: 2000,
                 disableOnInteraction: false,
               }}
               modules={[Autoplay, Pagination]}
-              slidesPerView={isTablet ? 3 : isMobile ? 1 : 5}
+              slidesPerView={isTablet ? 3 : isMobile ? 1 : 4}
               spaceBetween={25}
               loop
             >

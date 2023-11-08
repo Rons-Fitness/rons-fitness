@@ -15,13 +15,8 @@ const Categories = ({ category = [], isMobile, isTablet }) => {
           <div className="swiper carte-slider">
             <Swiper
               className="swiper-wrapper"
-              slidesPerView={isTablet ? 5 : isMobile ? 1 : 5}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              spaceBetween={80}
-              loop
+              slidesPerView={isTablet ? 5 : isMobile ? 3 : 5}
+              spaceBetween={isTablet ? 5 : isMobile ? 1 : 10}
               navigation
               modules={[Autoplay, Pagination, Navigation]}
             >
