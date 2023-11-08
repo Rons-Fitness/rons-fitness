@@ -94,12 +94,12 @@ function AuthPopup({
                   type="submit"
                   className="number-to-text submit-profile"
                   onClick={handleSubmit}
-                  value={otpSent ? 'Verify' : 'send OTP'}
+                  value={otpSent ? 'Verify' : 'Send OTP'}
                   style={{ textAlign: 'center', cursor: 'pointer' }}
                 />
               </div>
             </div>
-            <div className="text-center mt-3">
+            <div className="text-center mt-2 ">
               <a href="#" className="dont-act">
                 Don’t have an Account? Create account
               </a>

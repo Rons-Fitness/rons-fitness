@@ -29,7 +29,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
             wishlist.map((wish) => (
               <div className="my-whish-contain" key={wish._id}>
                 <div className="row">
-                  <div className="col-lg-2 col-md- col-sm-12 d-flex justify-content-center">
+                  <div className="col-lg-2 col-md-3 col-sm-12 d-flex justify-content-center">
                     <div className="my-whish-img-box">
                       <Link to={`/product/${wish._id}`}>
                         <img
@@ -39,7 +39,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                       </Link>
                     </div>
                   </div>
-                  <div className="col-lg-9 com-md- col-sm-12">
+                  <div className="col-lg-9 col-md-8 col-sm-12">
                     <div className="my-wish-list">
                       <a>
                         {' '}
@@ -74,12 +74,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                         {wish.rating}
                       </p>
                       <div className="btn-mywish-body">
-                        <p className="bin-body">
-                          <i
-                            className="far fa-trash-alt"
-                            onClick={() => removeFromWishList(wish._id)}
-                          />
-                        </p>
+
                         <a
                           onClick={() =>
                             addtoCart(
@@ -99,10 +94,16 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                             <span className=""> Move To Cart </span>
                           </p>
                         </a>
+                        <p className="bin-body">
+                          <i
+                            className="far fa-trash-alt"
+                            onClick={() => removeFromWishList(wish._id)}
+                          />
+                        </p>
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-1 col-md- col-sm-12 d-flex justify-content-end">
+                  <div className="col-lg-1 col-md-1 col-sm-12 d-flex justify-content-end">
                     <div className="bin-body">
                       <a href="#">
                         <i

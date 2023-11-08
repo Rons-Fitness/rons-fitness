@@ -31,7 +31,7 @@ const NotFound = lazy(() => import('containers/NotFound'));
 
 function App() {
   return (
-    <div className="h-100">
+    <div className="h-100 ">
       <BrowserRouter>
         <Suspense fallback={<Loader />}>
           <Navbar />

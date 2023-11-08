@@ -31,56 +31,59 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
 
   return (
     <>
-      <section className="banner-wrapper">
-        <div className="banner">
-          <div className="swiper mySwiper-1">
-            <Swiper
-              className="swiper-wrapper"
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              spaceBetween={30}
-              modules={[Autoplay, Pagination, Navigation]}
-              // slidesPerView={1.1}
-              centeredSlides
-              loop
-            >
-              <SwiperSlide className=" swiper-slide">
-                <img
-                  src="asstes/img/hero/1.png"
-                  className="img-fluied banner-img"
-                  alt=""
-                />
-              </SwiperSlide>
+      <div className="bg-white">
+        <section className="banner-wrapper container-xxl">
+          <div className="banner ">
+            <div className="swiper mySwiper-1">
+              <Swiper
+                className="swiper-wrapper"
+                speed={3000}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: false,
+                }}
+                spaceBetween={10}
+                modules={[Autoplay, Pagination, Navigation]}
+                // slidesPerView={1.1}
+                centeredSlides
+                loop
+              >
+                <SwiperSlide className=" swiper-slide">
+                  <img
+                    src="asstes/img/hero/1.png"
+                    className="img-fluied banner-img"
+                    alt=""
+                  />
+                </SwiperSlide>
 
-              <SwiperSlide className=" swiper-slide">
-                <img
-                  src="asstes/img/hero/1.png"
-                  className="img-fluied banner-img"
-                  alt=""
-                />
-              </SwiperSlide>
+                <SwiperSlide className=" swiper-slide">
+                  <img
+                    src="asstes/img/hero/1.png"
+                    className="img-fluied banner-img"
+                    alt=""
+                  />
+                </SwiperSlide>
 
-              <SwiperSlide className=" swiper-slide">
-                <img
-                  src="asstes/img/hero/1.png"
-                  className="img-fluied banner-img"
-                  alt=""
-                />
-              </SwiperSlide>
+                <SwiperSlide className=" swiper-slide">
+                  <img
+                    src="asstes/img/hero/1.png"
+                    className="img-fluied banner-img"
+                    alt=""
+                  />
+                </SwiperSlide>
 
-              <SwiperSlide className=" swiper-slide">
-                <img
-                  src="asstes/img/hero/1.png"
-                  className="img-fluied banner-img"
-                  alt=""
-                />
-              </SwiperSlide>
-            </Swiper>
+                <SwiperSlide className=" swiper-slide">
+                  <img
+                    src="asstes/img/hero/1.png"
+                    className="img-fluied banner-img"
+                    alt=""
+                  />
+                </SwiperSlide>
+              </Swiper>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
       <Categories
         category={homeScreenData.category}
         isMobile={isMobile}
@@ -101,25 +104,27 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
           </div>
         </div>
       </div> */}
-      <div className="container-xl">
-        <div className="offer-boday">
-          <div className="row">
-            <div className=" col-lg-6 col-md-6 col-sm-12 ">
-              <div className="offer-contain">
-                <p className="main-text">Save Up to 40% Off</p>
-                <p className="sub-text">
-                  Your spot to find the most sophisticated home accessories!
-                </p>
-                <a href="#">
-                  <button type="button" className="btn-read-more">
-                    Read more
-                  </button>
-                </a>
+      <div className="container-xxl">
+        <div className="offer-section">
+          <div className="offer-boday">
+            <div className="row">
+              <div className=" col-lg-6 col-md-6 col-sm-12 ">
+                <div className="offer-contain">
+                  <p className="main-text">Save Up to 40% Off</p>
+                  <p className="sub-text">
+                    Your spot to find the most sophisticated home accessories!
+                  </p>
+                  <a href="#">
+                    <button type="button" className="btn-read-more">
+                      Read more
+                    </button>
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className=" col-lg-6 col-md-6 col-sm-12  ">
-              <div className="img-box justify-content-center d-flex">
-                <img src="asstes/img/brand/home.png" alt="" />
+              <div className=" col-lg-6 col-md-6 col-sm-12  ">
+                <div className="img-box">
+                  <img src="asstes/img/brand/home.png" alt="" />
+                </div>
               </div>
             </div>
           </div>

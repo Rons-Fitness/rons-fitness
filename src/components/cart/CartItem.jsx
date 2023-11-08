@@ -25,7 +25,7 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
   return (
     <div className="my-cart-contain">
       <div className="row">
-        <div className="col-lg-2 col-md- col-sm-12 d-flex align-items-center justify-content-center m-0 p-0">
+        <div className="col-lg-2 col-md-2 col-sm-12 d-flex align-items-center justify-content-center m-0 p-0">
           <div className="my-cart-img-box">
             <Link to={`/product/${value._id}`}>
               {' '}
@@ -36,7 +36,7 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
             </Link>
           </div>
         </div>
-        <div className="col-lg-8 com-md- col-sm-12">
+        <div className="col-lg-8 col-md-7 col-sm-12">
           <div className="my-cart-list">
             <Link to={`/product/${value._id}`}>
               <h5>{value.name} </h5>
@@ -91,7 +91,7 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
             </div> */}
           </div>
         </div>
-        <div className="col-lg-2 col-md- col-sm-12   bin-box ">
+        <div className="col-lg-2 col-md-3 col-sm-12   bin-box ">
           <div className="cart-oty-body">
             <div className="cart-price-text"> {qty * value.price} $</div>
             <div className=" oty-box">

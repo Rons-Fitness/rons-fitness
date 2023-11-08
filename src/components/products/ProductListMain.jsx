@@ -15,7 +15,7 @@ function ProductListMain({
   loading,
 }) {
   return (
-    <div className=" container-fluid">
+    <div className="container-xxl">
       <div className="row">
         <ProductsFilters
           homeScreenData={homeScreenData}

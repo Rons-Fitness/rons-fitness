@@ -4,7 +4,6 @@
     font-weight: 600;
     font-size: 28px;
     line-height: 38px;
-    letter-spacing: 0.1;
   }
 
   h2 {
@@ -12,7 +11,6 @@
     font-weight: 600;
     font-size: 30px;
     line-height: 34px;
-    letter-spacing: -0.04em;
   }
 
   h3 {
@@ -24,7 +22,6 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 26px;
-    letter-spacing: -0.04em;
   }
 
   p {
@@ -145,6 +142,10 @@
     padding: 30px !important;
   }
 
+  .nav-section .nav-ul .nav-item a {
+    font-size: 15px;
+  }
+
   .mydropudowan {
     left: 0;
     width: 100% !important;
@@ -171,16 +172,26 @@
   }
 
   .cat-round .carte-body .carte-contain {
-    padding: 10px 0px !important;
+    padding: 0px 0px !important;
   }
 
   .cat-round .carte-body .carte-contain P {
     margin: 0;
+    line-height: 15px;
   }
 
   .cat-round .carte-body .carte-contain P a {
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 12px;
+  }
+
+  .cat-round .carte-body .swiper-button-next {
+    right: -7px;
+    top: 50px;
+  }
+
+  .cat-round .carte-body .swiper-button-prev {
+    left: -7px;
+    top: 50px;
   }
 
   .cat-round .carte-body .carte-contain .carte-img-box {
@@ -188,12 +199,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 15px;
-    gap: 10px;
+    /* padding: 15px; */
     width: 100px;
     height: 100px;
-    background: #ffffff;
-    border-radius: 50%;
   }
 
   /* ==================  Tranding section Start ==============  */
@@ -268,6 +276,10 @@
 
   footer .footer-left-body .footer-icon-box {
     width: 70px;
+  }
+
+  footer .copy-right-text {
+    font-size: 12px;
   }
 
   /* ======================  footer section End ======================== */
@@ -380,8 +392,12 @@
   }
 
   .xzoom_part .btn-xzone-body .btn-xzone {
-    padding: 8px 10px;
-    font-size: 15px;
+    padding: 8px 10px !important;
+    font-size: 15px !important;
+  }
+
+  .xzoom_part .btn-xzone-body .btn-xzone i {
+    font-size: 17px !important;
   }
 
   .xzoom_part .btn-body .btn-views a {
@@ -421,7 +437,7 @@
   }
 
   .reviews-body .Description-contain p {
-    font-size: 13px;
+    font-size: 12px;
     line-height: 22px;
   }
 
@@ -459,6 +475,10 @@
   .reviews-body .reviews-container {
     border-left: none;
     padding: 20px 25px;
+  }
+
+  .reviews-body nav .nav-tabs .nav-link {
+    font-size: 14px;
   }
 
   .customer-body .profile-face {
@@ -531,7 +551,7 @@
     width: 30px;
     height: 30px;
     margin-bottom: 0px !important;
-    margin-right: 10px !important;
+    margin-left: auto !important;
   }
 
   .my-whish-section .btn-mywish-body .bin-body a i {
@@ -547,6 +567,10 @@
   .cart-section .my-cart-head h1::after {
     top: 10px;
     /* left: 0px; */
+  }
+
+  .cart-section .my-cart-contain .my-cart-list a h5 {
+    font-size: 17px;
   }
 
   .my-cart-contain .cart-oty-body {
@@ -570,7 +594,7 @@
 
   .my-cart-contain .cart-input {
     height: fit-content !important;
-    width: 30%;
+    width: 73%;
   }
 
   .cart-section .my-cart-contain .my-cart-list p {
@@ -774,12 +798,16 @@
     padding: 10px 10px;
   }
 
+  .profile-section .profile-right-body form label {
+    font-size: 14px;
+  }
+
   .profile-section .profile-left-body {
     margin: 5px 12px;
   }
 
   .profile-section .profile-right-body .profile-left-head h4 {
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .profile-section .img-icon-box {
@@ -863,6 +891,10 @@
 
 /* ======== custom css ======= */
 @media (max-width: 1024px) {
+  .offer-section {
+    padding: 0 13px;
+  }
+
   .banner-wrapper .banner .mySwiper-1 .banner-txt h1 {
     font-size: 24px;
     line-height: 30px;
@@ -991,7 +1023,9 @@
 
   .reviews-body nav .nav-tabs .nav-link {
     padding: 9px 18px;
+    font-size: 14px;
   }
+
 
   .reviews-body .reviews-container .progress {
     width: 153px;
@@ -1030,6 +1064,19 @@
 }
 
 @media (max-width: 767px) {
+  .my-cart-contain .cart-input {
+    width: 30%;
+  }
+
+  .cat-round .carte-body .carte-contain .carte-img-box {
+    padding: 10px;
+  }
+
+  .offer-boday .img-box {
+    display: flex;
+    justify-content: end;
+  }
+
   .User-rating-review-section .rating-from h5 {
     font-size: 17px !important;
   }
@@ -1082,8 +1129,6 @@
   .traking-progress-section-mobile .traking-body .discompleted {
     color: #acabab;
   }
-
-
 }
 
 /*# sourceMappingURL=responsive.css.map */
