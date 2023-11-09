@@ -2215,7 +2215,6 @@
   background-color: #ffeecc;
   height: 65px;
   width: 65px;
-  border-radius: 10px;
 }
 
 .my-order-section .my-order-contain .my-order-img-box img {
@@ -2261,6 +2260,12 @@
 
 .my-order-section .my-order-contain .my-order-list a h5 {
   margin-bottom: 0px !important;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.my-order-section .my-order-contain .my-order-list .sub-title {
+  font-size: 14px;
 }
 
 .my-order-section .my-order-contain .my-order-list p {
@@ -2440,7 +2445,8 @@
 
 /* ======= User-Rateing-Review-section End ========== */
 .Order-Details-traking-section {
-  margin: 50px 0px;
+  padding: 50px 0px;
+  background-color: var(--white);
 }
 
 .Order-Details-traking-section .traking-progress-section-mobile {
@@ -2518,7 +2524,7 @@
 }
 
 .Order-Details-traking-section .traking-progress-section .stepper-item .step-counter iconify-icon {
-  color: white;
+  color: var(--black);
 }
 
 .Order-Details-traking-section .traking-progress-section .stepper-item.completed .step-counter {
@@ -2551,7 +2557,6 @@
 
 .Order-Details-traking-section .Order-ID-body .Order-ID-box {
   background-color: #ffeecc;
-  border-radius: 5px;
   width: 50px !important;
   height: 50px;
   display: flex;
@@ -2575,11 +2580,12 @@
 .Order-Details-traking-section .Order-ID-body .order-id-list h5 {
   margin: 0;
   color: var(--black);
+  font-size: 16px;
 }
 
 .Order-Details-traking-section .Order-ID-body .order-id-list p {
   color: #949494;
-  font-size: 17px;
+  font-size: 14px;
   margin: 0;
 }
 
@@ -2588,8 +2594,7 @@
 }
 
 .Order-Details-traking-section .order-details-traking-contain {
-  background-color: var(--light);
-  border-radius: 20px;
+  background-color: #DEDEDE;
   padding: 14px 20px;
   margin-bottom: 15px;
 }
@@ -2603,7 +2608,6 @@
   height: 100px;
   width: 100px;
   margin: 0px 10px;
-  border-radius: 5px;
 }
 
 .Order-Details-traking-section .order-details-traking-contain .order-details-traking-img-box img {
@@ -2618,7 +2622,8 @@
 .Order-Details-traking-section .order-details-traking-contain .order-details-traking-list a h5 {
   margin-bottom: 0px !important;
   color: var(--black);
-  font-size: 15px;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .Order-Details-traking-section .order-details-traking-contain .order-details-traking-list .Price-tag {
@@ -2657,9 +2662,9 @@
 }
 
 .Order-Details-traking-section .delivery-address-details .Shipping-details {
-  background-color: #fff6ea;
+  background-color: #DEDEDE;
   padding: 10px 12px;
-  font-weight: 600;
+  font-weight: 500;
   border-bottom: 1px solid gray;
 }
 
@@ -2693,9 +2698,9 @@
 
 .Order-Details-traking-section .total-box thead .Price-detal {
   padding: 10px 12px;
-  font-weight: 700;
-  color: rgba(0, 0, 0);
+  color: var(--black);
   font-weight: 500;
+  background-color: #DEDEDE;
 }
 
 .Order-Details-traking-section .total-box tbody tr td,

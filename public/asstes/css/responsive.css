@@ -872,6 +872,18 @@
     margin: 8px !important;
   }
 
+  .my-order-section .my-order-contain .my-order-list a h5 {
+    font-size: 15px;
+  }
+
+  .my-order-section .my-order-contain .my-order-list .sub-title {
+    font-size: 12px;
+  }
+
+  .Order-Details-traking-section .Order-ID-body .order-id-list h5 {
+    font-size: 14px;
+  }
+
   /* ========= My-order-section End =========== */
   /* ============ user-rateing-revies section Start ============*/
   .User-rating-review-section .Rating-Review-head h1 {

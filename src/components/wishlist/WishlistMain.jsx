@@ -74,7 +74,6 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                         {wish.rating}
                       </p>
                       <div className="btn-mywish-body">
-
                         <a
                           onClick={() =>
                             addtoCart(

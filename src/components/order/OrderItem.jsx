@@ -10,9 +10,10 @@ const OrderItem = ({ item, currentOrderStatus }) => {
     price,
     qty,
     userReview,
-    flavour,
-    nonVeg,
+    // flavour,
+    // nonVeg,
     product,
+
   } = item;
   return (
     <div className="order-details-traking-contain col-lg-11 col-md-12 ">
@@ -32,26 +33,26 @@ const OrderItem = ({ item, currentOrderStatus }) => {
             <Link to={`/product/${product?._id}`}>
               <a>
                 <h5>{name}</h5>
-                {flavour !== '' && (
+                {/* {flavour !== '' && (
                   <iconify-icon
                     icon="mdi:lacto-vegetarian"
                     className="veg-icon"
                     style={
                       nonVeg
                         ? {
-                            color: 'red',
-                          }
+                          color: 'red',
+                        }
                         : {
-                            color: 'green',
-                          }
+                          color: 'green',
+                        }
                     }
                   />
-                )}
+                )} */}
               </a>
             </Link>
             <div className="Price-tag">
               <p>Qty: {qty}</p>
-              <p>Price : ₹{qty * price}</p>
+              <p>Price : {qty * price}$</p>
             </div>
           </div>
         </div>

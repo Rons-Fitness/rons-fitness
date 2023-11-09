@@ -62,19 +62,19 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                 className={classnames(
                   'Order-ID-box',
                   currentOrderStatus &&
-                    currentOrderStatus.status === 'Order Delivered' &&
-                    'my-order-img-box-green',
+                  currentOrderStatus.status === 'Order Delivered' &&
+                  'my-order-img-box-green',
                   currentOrderStatus &&
-                    currentOrderStatus.status === 'Cancelled' &&
-                    'my-order-img-box-red',
+                  currentOrderStatus.status === 'Cancelled' &&
+                  'my-order-img-box-red',
                 )}
               >
                 {currentOrderStatus &&
-                [
-                  'Order Placed',
-                  'Order Confirmed',
-                  'Out For Delivery',
-                ].includes(currentOrderStatus.status) ? (
+                  [
+                    'Order Placed',
+                    'Order Confirmed',
+                    'Out For Delivery',
+                  ].includes(currentOrderStatus.status) ? (
                   <img src="/asstes/img/order-logo/package.png" alt="" />
                 ) : (
                   <img src="/asstes/img/order-logo/package 1.png" alt="" />
@@ -101,8 +101,8 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                         className={classnames(
                           'step-counter',
                           currentOrderStatus &&
-                            currentOrderStatus.status === 'Order Delivered' &&
-                            'my-order-img-box-green',
+                          currentOrderStatus.status === 'Order Delivered' &&
+                          'my-order-img-box-green',
                         )}
                       >
                         <iconify-icon icon="ph:check" />
@@ -137,8 +137,8 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                       className={classnames(
                         'stepper-item',
                         currentOrderStatus &&
-                          currentOrderStatus.status === 'Order Delivered' &&
-                          'my-order-img-box-green',
+                        currentOrderStatus.status === 'Order Delivered' &&
+                        'my-order-img-box-green',
                       )}
                       key={track}
                     >
@@ -187,12 +187,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
               <div className="row">
                 <div className="col-lg-12 col-md-6 col-sm-12">
                   <div className="delivery-address-details ">
-                    <p
-                      className="Shipping-details"
-                      style={{ background: '#fdead3' }}
-                    >
-                      Shipping Details
-                    </p>
+                    <p className="Shipping-details">Shipping Details</p>
                     <div className=" name-addres-details">
                       <h6>
                         {shippingAddress && shippingAddress.firstName}{' '}
@@ -217,12 +212,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                     <table className="table">
                       <thead>
                         <tr>
-                          <th
-                            scope="col"
-                            colSpan="4"
-                            className="Price-detal "
-                            style={{ background: '#fdead3' }}
-                          >
+                          <th scope="col" colSpan="4" className="Price-detal ">
                             Price Details
                           </th>
                         </tr>

@@ -93,7 +93,7 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                     )}
                                   </h5>
                                 </a>
-                                <div>
+                                <div className="sub-title">
                                   {order.orderItems[0].name}{' '}
                                   <span className="fw-semibold ">
                                     {Boolean(
@@ -104,7 +104,7 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                       )} more`}
                                   </span>
                                 </div>
-                                <p className="fw-semibold">₹{order.total}</p>
+                                <p className="fw-semibold">{order.total}$</p>
                               </div>
                             </div>
                           </div>
