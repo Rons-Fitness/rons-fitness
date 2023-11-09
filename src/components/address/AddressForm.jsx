@@ -418,6 +418,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     </div>
                     <div className="d-flex  my-3">
                       <input
+                        type="submit"
                         value="Save & Continue"
                         className="shipping-btn"
                         onClick={() => {
