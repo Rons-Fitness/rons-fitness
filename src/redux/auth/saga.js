@@ -175,15 +175,12 @@ function* verifyOtp({ payload }) {
 
   try {
     const {
-      data: {
-        data: { token, user },
-        message,
-        status: success,
-      },
+      data: { data, message, status: success },
       status,
     } = yield call(verifyOtpAsync, mobileNo, otp);
 
-    if (status === 200 && success) {
+    if (status === 200 && success && data) {
+      const { token } = data;
       Notification('success', message);
       yield put(verifyOtpSuccess());
       localStorage.removeItem('mobileNo');

@@ -74,7 +74,15 @@ function AuthPopup({
                     type="number"
                     placeholder="OTP"
                     name="otp"
-                    onChange={(e) => setOtp(e.target.value)}
+                    minLength="6" // Minimum length
+                    maxLength="6" // Maximum length
+                    value={otp}
+                    onChange={(e) => {
+                      const newValue = e.target.value;
+                      if (newValue.length <= 6) {
+                        setOtp(newValue);
+                      }
+                    }}
                   />
                   <p className="resend-p ">
                     Didn’t Receive?{' '}
@@ -99,11 +107,11 @@ function AuthPopup({
                 />
               </div>
             </div>
-            <div className="text-center mt-2 ">
+            {/* <div className="text-center mt-2 ">
               <a href="#" className="dont-act">
                 Don’t have an Account? Create account
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </Modal>
