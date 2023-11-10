@@ -245,7 +245,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                       )}
                   </div>
                 </div> */}
-                {selectedProduct && selectedProduct.flavour && (
+                {/* {selectedProduct && selectedProduct.flavour && (
                   <div className=" btn-contain mb-2">
                     <p>Flavour</p>
                     <div className="btn-body">
@@ -267,8 +267,8 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                         )}
                     </div>
                   </div>
-                )}
-                {selectedProduct && selectedProduct.color && (
+                )} */}
+                {/* {selectedProduct && selectedProduct.color && (
                   <div className=" btn-contain">
                     <p>Color</p>
                     <div className="btn-body">
@@ -290,80 +290,41 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                         )}
                     </div>
                   </div>
-                )}
+                )} */}
                 <div className="col-lg-10 col-md-12 col-sm-12 color-select-section">
                   <p className="mb-2">Color</p>
-                  <Swiper
-                    slidesPerView={
-                      isTablet
-                        ? 3
-                        : isMobile
-                        ? 3
-                        : selectedProduct && selectedProduct.images.length < 5
-                        ? selectedProduct.images.length / 2
-                        : 4
-                    }
-                    spaceBetween={30}
-                    navigation
-                    modules={[Navigation]}
-                    className="mySwiper color-swiper-select"
-                  >
-                    <SwiperSlide>
-                      <div>
-                        <p className="color-text">red</p>
-                        <div className="img-box">
-                          <img
-                            src="https://i.imgur.com/e2ztBrp.jpg"
-                            alt="redcup"
-                          />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div>
-                        <p className="color-text">orange</p>
-                        <div className="img-box">
-                          <img
-                            src="https://i.imgur.com/e2ztBrp.jpg"
-                            alt="redcup"
-                          />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div>
-                        <p className="color-text">purple</p>
-                        <div className="img-box">
-                          <img
-                            src="https://i.imgur.com/e2ztBrp.jpg"
-                            alt="redcup"
-                          />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div>
-                        <p className="color-text">blue</p>
-                        <div className="img-box">
-                          <img
-                            src="https://i.imgur.com/e2ztBrp.jpg"
-                            alt="redcup"
-                          />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <div>
-                        <p className="color-text">blue</p>
-                        <div className="img-box">
-                          <img
-                            src="https://i.imgur.com/e2ztBrp.jpg"
-                            alt="redcup"
-                          />
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                  </Swiper>
+                  {selectedProduct && selectedProduct?.colors && (
+                    <Swiper
+                      slidesPerView={
+                        isTablet
+                          ? 3
+                          : isMobile
+                          ? 3
+                          : selectedProduct && selectedProduct.images.length < 5
+                          ? selectedProduct.images.length / 2
+                          : 4
+                      }
+                      spaceBetween={30}
+                      navigation
+                      modules={[Navigation]}
+                      className="mySwiper color-swiper-select"
+                    >
+                      {selectedProduct?.colors.map(
+                        ({ color, images, path }) => (
+                          <SwiperSlide key={color}>
+                            <Link to={`/product/${path}`}>
+                              <div>
+                                <p className="color-text">{color}</p>
+                                <div className="img-box">
+                                  <img src={images?.url} alt={color} />
+                                </div>
+                              </div>
+                            </Link>
+                          </SwiperSlide>
+                        ),
+                      )}
+                    </Swiper>
+                  )}
                 </div>
                 <div className="d-flex align-items-center mt-3">
                   {/* <label for=""> Qty: </label>
