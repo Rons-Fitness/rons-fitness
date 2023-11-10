@@ -22,7 +22,7 @@ const Categories = ({ category = [], isMobile, isTablet }) => {
             >
               {category.map((elem) => (
                 <SwiperSlide className="swiper-slide" key={elem._id}>
-                  <Link to={`/products/category=${elem.name}`}>
+                  <Link to={`/products/category=${elem._id}`}>
                     <div className="carte-contain">
                       <div className="carte carte-img-box ">
                         <a>
