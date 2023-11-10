@@ -107,18 +107,24 @@ const Navbar = ({
                   {Boolean(category.length) && (
                     <ul className="dropdown-menu ">
                       {category.map((elem) => (
-                        <li key={elem._id}>
-                          <Link to={`/products/category=${elem.name}`}>
-                            <Link
+                        <Link
+                          to={`/products/category=${elem._id}`}
+                          key={elem._id}
+                          onClick={() => {
+                            closeMenu();
+                          }}
+                        >
+                          <li>
+                            <div
                               onClick={() => {
                                 closeMenu();
                               }}
                               className="dropdown-item"
                             >
                               {elem.name}
-                            </Link>
-                          </Link>
-                        </li>
+                            </div>
+                          </li>
+                        </Link>
                       ))}
                     </ul>
                   )}
