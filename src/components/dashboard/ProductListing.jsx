@@ -34,8 +34,8 @@ const ProductListing = ({
                 disableOnInteraction: false,
               }}
               modules={[Autoplay, Pagination]}
-              slidesPerView={isTablet ? 3 : isMobile ? 1 : 4}
-              spaceBetween={25}
+              slidesPerView={isTablet ? 3 : isMobile ? 1 : 5}
+              spaceBetween={35}
               loop
             >
               {products.map((elem) => (

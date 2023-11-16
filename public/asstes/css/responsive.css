@@ -166,6 +166,15 @@
     font-size: 14px;
   }
 
+  .banner-wrapper .hero-body {
+    top: 40%;
+    left: 70px;
+  }
+
+  .banner-wrapper .hero-body img {
+    width: 280px;
+  }
+
   /* =================== /banner end ==================  */
   .cat-round .carte-body {
     padding: 0px !important;
@@ -935,7 +944,7 @@
 
 @media (min-width: 1280px) {
   .products-grid-body .box-card {
-    width: 252px;
+    width: 205px;
   }
 }
 
@@ -1076,6 +1085,15 @@
 }
 
 @media (max-width: 767px) {
+  .banner-wrapper .hero-body {
+    top: 40%;
+    left: 60px;
+  }
+
+  .banner-wrapper .hero-body img {
+    width: 100px;
+  }
+
   .my-cart-contain .cart-input {
     width: 30%;
   }

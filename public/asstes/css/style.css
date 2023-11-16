@@ -60,11 +60,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 66px;
+  /* padding-left: 66px; */
 }
 
 .product-grid-section-header h1 {
-  font-size: 30px;
+  font-size: 22px;
   font-weight: 400;
   position: relative;
 }
@@ -78,7 +78,7 @@
   /* justify-content: center; */
   gap: 30px 30px;
   /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));*/
-  padding: 0px 73px;
+  padding: 0px 38px;
   padding-bottom: 20px;
   justify-content: flex-start;
 }
@@ -89,6 +89,7 @@
   height: fit-content;
   width: 266px;
   background-color: var(--white);
+  border: 2.705px solid #E9E9E9;
 }
 
 .products-grid-body .box-card .card-img {
@@ -125,7 +126,7 @@
 .products-grid-body .box-card .card-body .card-con h1 {
   font-weight: 400;
   line-height: normal;
-  font-size: 17px;
+  font-size: 15px;
   padding-bottom: 0;
   line-height: normal;
   text-transform: capitalize;
@@ -151,11 +152,11 @@
 
 .products-grid-body .box-card .card-body .card-con .card-price {
   color: var(--black);
-  font-size: 12px;
+  font-size: 9px;
 }
 
 .products-grid-body .box-card .card-body .card-con .card-price span:nth-child(1) {
-  font-size: 19px;
+  font-size: 14px;
   font-weight: 400;
 }
 
@@ -172,7 +173,8 @@
 .products-grid-body .box-card .card-body .card-con a .shpoing-btn {
   padding: 7px 10px;
   border: 1px solid #E9E9E9;
-  font-size: 14px;
+  background-color: #E9E9E9;
+  font-size: 12px;
   font-weight: 400;
   text-align: center;
   transition: ease-out 0.4s;
@@ -203,11 +205,11 @@
 
 .products-grid-body .box-card .head-stars .reviews {
   background-color: var(--them-colour);
-  padding: 2px 5px;
+  padding: 4px 5px;
   display: flex;
   align-items: center;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
   text-transform: capitalize;
   line-height: normal;
@@ -333,16 +335,18 @@
 
 .xzoom_part {
   padding: 30px 0px;
-  background: #E9E9E9;
+  /* background: #E9E9E9; */
 }
 
 .xzoom_part .xzoom-heart-hide {
   display: none !important;
 }
 
-.xzoom_part .container {
+.xzoom_part .xzoom-section {
   background-color: white;
   padding: 25px 0px;
+  border-radius: 6px;
+  border: 1px solid #E9E9E9;
 }
 
 .xzoom_part .xzoom_container {
@@ -474,7 +478,7 @@
   border: 1px solid #000000;
   text-align: center;
   cursor: pointer;
-  padding: 5px 8px;
+  padding: 4px 8px;
   font-size: 12px;
   font-weight: 400;
 }
@@ -561,7 +565,7 @@
 }
 
 .xzoom_part .xzoom_details h3 {
-  font-size: 22px;
+  font-size: 17px;
   margin-bottom: 0;
   font-weight: 400;
 }
@@ -569,7 +573,7 @@
 .xzoom_part .xzoom_details h3 span {
   color: rgba(34, 34, 34, 0.75);
   font-weight: 400;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .xzoom_part .xzoom_details h4 span .veg-nonveg-icon {
@@ -587,14 +591,14 @@
 
 .xzoom_part .xzoom_details h6 {
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .xzoom_part .xzoom_details label {
   font-weight: 600;
   font-size: 17px;
   margin-right: 10px;
-  color: #1f2531;
+  color: rgba(0, 0, 0, 0.66);
 }
 
 .xzoom_part .xzoom_details .form-control {
@@ -620,7 +624,7 @@
   padding: 7px 20px;
   border: 1px solid var(--them-colour);
   background-color: var(--them-colour);
-  font-size: 17px;
+  font-size: 13px;
   font-weight: 400;
   color: black;
   text-align: center;
@@ -679,6 +683,7 @@
   font-size: 13px;
   line-height: 22px;
   margin-bottom: 10px;
+  color: #505050;
 }
 
 .reviews-body .Description-contain b {
@@ -1043,7 +1048,7 @@
 }
 
 .cart-section .my-cart-head h1 {
-  font-size: 25px;
+  font-size: 22px;
   font-weight: 400;
   position: relative;
 }
@@ -1097,6 +1102,7 @@
 .cart-section .my-cart-contain .my-cart-list a h5 {
   margin-bottom: 0px !important;
   font-weight: 400;
+  font-size: 17px;
 }
 
 .cart-section .my-cart-contain .my-cart-list p {
@@ -2887,7 +2893,7 @@ select:focus {
 .nav-section .nav-ul .nav-item a {
   color: var(--white);
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
 }
 
@@ -2920,7 +2926,7 @@ select:focus {
 }
 
 .nav-section .nav-ul .dropdown-menu .dropdown-item {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -3210,6 +3216,19 @@ select:focus {
   -o-object-fit: contain;
   object-fit: contain;
   padding: 0;
+  position: relative;
+  z-index: 0;
+}
+
+.banner-wrapper .hero-body {
+  position: absolute;
+  z-index: 1;
+  top: 40%;
+  left: 70px;
+}
+
+.banner-wrapper .hero-body img {
+  width: 380px;
 }
 
 /* ====================== banner end ============= */
@@ -3290,7 +3309,7 @@ select:focus {
 /* ==================  Categories round shape section End ==============  */
 /* ==================  Tranding section Start ==============  */
 #trendinslider-cardg-sec {
-  background-color: var(--gray);
+  background-color: var(--white);
 }
 
 .slider-card {
@@ -3306,10 +3325,10 @@ select:focus {
 
 .slider-card .trending-head h1 {
   color: #3B3B3B;
-  font-size: 30px;
-  letter-spacing: 2.28px;
+  font-size: 25px;
+  letter-spacing: 2.1px;
   font-weight: 400;
-  padding: 0px 7px;
+  padding: 0px 30px;
   position: relative;
   background-color: var(--them-colour);
 }
@@ -3364,10 +3383,8 @@ select:focus {
   position: relative;
   height: -moz-fit-content;
   height: fit-content;
-  /* box-shadow:
-    rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
   background-color: white;
+  border: 2.705px solid #E9E9E9;
 }
 
 .slider-card .slider-cat .box-card .card-img {
@@ -3375,7 +3392,7 @@ select:focus {
   margin-top: 5px;
   overflow: hidden;
   height: 150px;
-  width: min(100% - 10px, 212px);
+  width: min(100% - 10px, 164px);
   margin-inline: auto;
   display: flex;
   justify-content: center;
@@ -3404,7 +3421,7 @@ select:focus {
 .slider-card .slider-cat .box-card .card-body .card-con h1 {
   font-weight: 400;
   line-height: normal;
-  font-size: 17px;
+  font-size: 16px;
   padding-bottom: 0;
   line-height: normal;
   text-transform: capitalize;
@@ -3415,7 +3432,7 @@ select:focus {
 }
 
 .slider-card .slider-cat .box-card .card-body .card-con h6 {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
 }
 
@@ -3435,7 +3452,7 @@ select:focus {
 }
 
 .slider-card .slider-cat .box-card .card-body .card-con .card-price {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
 }
 
@@ -3457,13 +3474,14 @@ select:focus {
 .slider-card .slider-cat .box-card .card-body .card-con a .shpoing-btn {
   padding: 7px 10px;
   border: 1px solid #E9E9E9;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 400;
   text-align: center;
   transition: ease-out 0.4s;
   color: #3B3B3B;
   line-height: normal;
   text-transform: capitalize;
+  background-color: #E9E9E9;
 }
 
 .slider-card .slider-cat .box-card .card-body .card-con a .shpoing-btn:hover {
@@ -3487,11 +3505,11 @@ select:focus {
 
 .slider-card .slider-cat .box-card .head-stars .reviews {
   background-color: var(--them-colour);
-  padding: 2px 5px;
+  padding: 5px 5px;
   display: flex;
   align-items: center;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 11px;
   font-style: normal;
   text-transform: capitalize;
   line-height: normal;
@@ -3537,16 +3555,17 @@ select:focus {
 
 .offer-section {
   padding: 0 67px;
+  background-color: var(--white);
 }
 
 .offer-boday {
-  background: linear-gradient(97deg, #F9DF23 1.41%, rgba(255, 255, 255, 0.00) 80.18%);
+  background: linear-gradient(97deg, #F9DF23 34.82%, rgba(255, 255, 255, 0.00) 100.39%);
   padding: 50px 10px;
   margin: 30px 0;
 
   .img-box {
     display: flex;
-    justify-content: center;
+    justify-content: end;
   }
 }
 
@@ -3556,10 +3575,10 @@ select:focus {
   .btn-read-more {
     color: #3B3B3B;
     text-align: center;
-    font-size: 17px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    padding: 7px 25px;
+    padding: 12px 25px;
     line-height: normal;
     text-transform: capitalize;
     background: #E9E9E9;

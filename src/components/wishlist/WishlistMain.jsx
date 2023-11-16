@@ -43,7 +43,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                     <div className="my-wish-list">
                       <a>
                         {' '}
-                        <Link to={`/product/${wish._id}`}>
+                        <Link to={`/product/${wish._id}`} className='col-lg-9 col-md-8 col-sm-12' >
                           <h5 className="align-items-center">{wish.name}</h5>
                         </Link>
                         {/* {wish.flavour !== '' && (
@@ -75,6 +75,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                       </p>
                       <div className="btn-mywish-body">
                         <a
+                          style={{ display: "flex" }}
                           onClick={() =>
                             addtoCart(
                               {

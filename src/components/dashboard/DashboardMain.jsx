@@ -50,7 +50,7 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
               >
                 <SwiperSlide className=" swiper-slide">
                   <img
-                    src="asstes/img/hero/1.png"
+                    src="asstes/img/hero/2.png"
                     className="img-fluied banner-img"
                     alt=""
                   />
@@ -58,7 +58,7 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
 
                 <SwiperSlide className=" swiper-slide">
                   <img
-                    src="asstes/img/hero/1.png"
+                    src="asstes/img/hero/2.png"
                     className="img-fluied banner-img"
                     alt=""
                   />
@@ -66,19 +66,22 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
 
                 <SwiperSlide className=" swiper-slide">
                   <img
-                    src="asstes/img/hero/1.png"
+                    src="asstes/img/hero/2.png"
                     className="img-fluied banner-img"
                     alt=""
                   />
                 </SwiperSlide>
 
-                <SwiperSlide className=" swiper-slide">
+                <SwiperSlide className="swiper-slide">
                   <img
-                    src="asstes/img/hero/1.png"
+                    src="asstes/img/hero/2.png"
                     className="img-fluied banner-img"
                     alt=""
                   />
                 </SwiperSlide>
+                <div className="hero-body">
+                  <img src="asstes/img/hero/text-bg.png" alt="" />
+                </div>
               </Swiper>
             </div>
           </div>
