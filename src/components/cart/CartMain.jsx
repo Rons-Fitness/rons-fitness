@@ -32,9 +32,12 @@ function CartMain({
       // if (oldOrderState) {
       //   orderState = { ...oldOrderState };
       // } else {
-      await API.post('/order', {
+      const {
+        data: { message },
+      } = await API.post('/order', {
         addressId,
       });
+      if (message) Notification('success', message);
       //   const {
       //     data: {
       //       data: { id, amount },
