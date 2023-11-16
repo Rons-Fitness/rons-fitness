@@ -128,16 +128,15 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   <p>Checkout</p>
                 </div>
                 <div className="col-lg-6 col-md-8 col-sm-12">
-                  <p className="checkout-login">
+                  {/* <p className="checkout-login">
                     Already have an account?<a href="#">Log in</a> for faster
                     checkout
-                  </p>
+                  </p> */}
                 </div>
 
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
-                    console.log('Prevent Default?');
                     if (!isValidPincode)
                       return Notification('info', 'Please Enter Valid Pincode');
                     if (!Object.values(address).includes('" "')) {
@@ -418,12 +417,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     </div>
                     <div className="d-flex  my-3">
                       <input
-                        type="submit"
+                        // type="submit"
                         value="Save & Continue"
                         className="shipping-btn"
                         onClick={() => {
                           const btn = document.getElementById('shipping_btn');
-                          console.log({ btn });
                           btn.click();
                         }}
                       />

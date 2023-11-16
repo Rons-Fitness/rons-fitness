@@ -87,13 +87,17 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                             <div className="col-lg-9 col-md-9  ">
                               <div className="my-order-list">
                                 <a>
-                                  <h5>
-                                    {moment(order.createdAt).format(
-                                      'Do MMMM YYYY ,  h:mm a',
-                                    )}
+                                  <h5 style={{ fontWeight: 800 }}>
+                                    Order ID: {order._id}
                                   </h5>
+                                  <h6>
+                                    Delivery On{' '}
+                                    {moment(order.createdAt)
+                                      .add(4, 'days')
+                                      .format('Do MMMM YYYY')}
+                                  </h6>
                                 </a>
-                                <div className="sub-title">
+                                {/* <div className="sub-title">
                                   {order.orderItems[0].name}{' '}
                                   <span className="fw-semibold ">
                                     {Boolean(
@@ -103,8 +107,8 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                         order.orderItems.length - 1,
                                       )} more`}
                                   </span>
-                                </div>
-                                <p className="fw-semibold">{order.total}$</p>
+                                </div> */}
+                                {/* <p className="fw-semibold">{order.total}$</p> */}
                               </div>
                             </div>
                           </div>
