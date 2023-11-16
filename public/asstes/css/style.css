@@ -2100,7 +2100,14 @@
   color: white;
   box-shadow: inset 400px 0 0 0 var(--btn-hover);
 } */
-
+.address-btn{  background-color: var(--them-colour);
+  background-color: var(--white);
+  color: var(--black);
+  font-size: 17px;
+  font-weight: 600;
+  padding: 7px 30px;
+  transition: ease-out 0.4s
+}
 .activeAddressType {
   background-color: var(--them-colour) !important;
 }

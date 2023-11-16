@@ -373,7 +373,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         type="button"
                         value="Home"
                         className={classNames(
-                          'shipping-btn  btn-views-active',
+                          'address-btn ',
                           addressType === 'home' && 'activeAddressType',
                         )}
                         style={{
@@ -388,7 +388,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         type="button"
                         value="Office"
                         className={classNames(
-                          'shipping-btn  btn-views-active',
+                          'address-btn  ',
                           addressType === 'office' && 'activeAddressType',
                         )}
                         style={{
@@ -404,7 +404,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         type="button"
                         value="Other"
                         className={classNames(
-                          'shipping-btn  btn-views-active',
+                          'address-btn ',
                           addressType === 'other' && 'activeAddressType',
                         )}
                         style={{
@@ -418,6 +418,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                     <div className="d-flex  my-3">
                       <input
                         // type="submit"
+                        style={{ cursor: 'pointer' }}
                         value="Save & Continue"
                         className="shipping-btn"
                         onClick={() => {
@@ -647,7 +648,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   value="Home"
                   className={classNames(
                     'shipping-btn  btn-views-active',
-                    addressType === 'home' && 'activeAddressType',
+                    addressType === 'home' && 'btn-views-active',
                   )}
                   style={{ height: 35.5, padding: '0 30px', borderRadius: 0 }}
                   onClick={() => changeAddressType('home')}
@@ -657,7 +658,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   value="Office"
                   className={classNames(
                     'shipping-btn  btn-views-active',
-                    addressType === 'office' && 'activeAddressType',
+                    addressType === 'office' && 'btn-views-active',
                   )}
                   style={{
                     margin: '0 10px',
@@ -672,7 +673,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                   value="Other"
                   className={classNames(
                     'shipping-btn  btn-views-active',
-                    addressType === 'other' && 'activeAddressType',
+                    addressType === 'other' && 'btn-views-active',
                   )}
                   style={{ height: 35.5, padding: '0 30px', borderRadius: 0 }}
                   onClick={() => changeAddressType('other')}
