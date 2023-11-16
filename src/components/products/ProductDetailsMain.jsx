@@ -131,11 +131,11 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                               isTablet
                                 ? 4
                                 : isMobile
-                                  ? 3
-                                  : selectedProduct &&
-                                    selectedProduct.images.length < 5
-                                    ? selectedProduct.images.length / 2
-                                    : 5
+                                ? 3
+                                : selectedProduct &&
+                                  selectedProduct.images.length < 5
+                                ? selectedProduct.images.length / 2
+                                : 5
                             }
                           >
                             {selectedProduct &&
@@ -221,7 +221,9 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                     <span>
                       DISCOUNT:
                       <del className="ms-1">
-                        {selectedProduct && selectedProduct.mrp}$
+                        {selectedProduct &&
+                          selectedProduct.mrp - selectedProduct.price}
+                        $
                       </del>
                     </span>{' '}
                   </h3>
@@ -300,10 +302,11 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                           isTablet
                             ? 3
                             : isMobile
-                              ? 3
-                              : selectedProduct && selectedProduct.images.length < 5
-                                ? selectedProduct.images.length / 2
-                                : 4
+                            ? 3
+                            : selectedProduct &&
+                              selectedProduct.images.length < 5
+                            ? selectedProduct.images.length / 2
+                            : 4
                         }
                         spaceBetween={30}
                         navigation

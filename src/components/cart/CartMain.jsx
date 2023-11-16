@@ -123,7 +123,7 @@ function CartMain({
                       <th scope="row" />
                       <td className="subtotal">Subtotal :</td>
                       <td />
-                      <td className="text-end ">{cart?.totalPrice} $</td>
+                      <td className="text-end ">{cart?.subTotal} $</td>
                     </tr>
                     <tr>
                       <th scope="row" />

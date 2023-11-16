@@ -86,7 +86,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
             <a className="card-price">
               <span className="px-1">{product.price}$</span>
               <span className="px-1 discount-text">
-                DISCOUNT:<del>{product.mrp}$</del>
+                DISCOUNT:<del>{product.mrp - product.price}$</del>
               </span>
             </a>
           </p>
