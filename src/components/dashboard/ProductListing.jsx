@@ -26,29 +26,44 @@ const ProductListing = ({
             <h1 style={{ zIndex: 1 }}>{type}</h1>
           </div>
           <div className="swiper slider-cat">
-            <Swiper
-              className="swiper-wrapper"
-              speed={3000}
-              autoplay={{
-                delay: 2000,
-                disableOnInteraction: false,
-              }}
-              modules={[Autoplay, Pagination]}
-              slidesPerView={isTablet ? 3 : isMobile ? 1 : 4}
-              spaceBetween={25}
-              loop
-            >
-              {products.map((elem) => (
-                <SwiperSlide className="swiper-slide  box-card " key={elem._id}>
-                  <Product
-                    product={elem}
-                    addToWishlist={addToWishlist}
-                    addtoCart={addtoCart}
-                    history={history}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            {isMobile ? (
+              products.map((elem) => (
+                <div
+                  key={elem._id}
+                  style={{ display: 'flxe', flexDirection: 'column' }}
+                >
+                  <SmallProduct />
+                </div>
+              ))
+            ) : (
+              <Swiper
+                className="swiper-wrapper"
+                speed={3000}
+                autoplay={{
+                  delay: 2000,
+                  disableOnInteraction: false,
+                }}
+                modules={[Autoplay, Pagination]}
+                slidesPerView={isTablet ? 3 : isMobile ? 1 : 4}
+                spaceBetween={25}
+                loop
+              >
+                {products.map((elem) => (
+                  <SwiperSlide
+                    className="swiper-slide  box-card "
+                    key={elem._id}
+                  >
+                    <Product
+                      product={elem}
+                      addToWishlist={addToWishlist}
+                      addtoCart={addtoCart}
+                      history={history}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            )}
+
             {/* <div className="swiper-button-next"></div>
             <div className="swiper-button-prev"></div> */}
           </div>
@@ -60,6 +75,7 @@ const ProductListing = ({
 
 export default ProductListing;
 
+// WEb View
 const Product = ({ product, addToWishlist, addtoCart, history }) => {
   const [wishList, setWishlist] = useState(product.inWishlist);
 
@@ -172,5 +188,13 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
         </div>
       </div>
     </>
+  );
+};
+
+// MobileVIew
+
+const SmallProduct = () => {
+  return (
+    <div style={{ height: 200, wodtj: 200, background: 'red' }}>Mobile</div>
   );
 };

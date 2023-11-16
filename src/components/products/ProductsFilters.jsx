@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-duplicate-props */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
@@ -19,6 +21,9 @@ function queryStringToObject(queryString = '') {
 const ProductsFilters = ({ homeScreenData, getProductList }) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [isRatingOpen, setIsRatingOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  const [isTablet, setIsTablet] = useState(false);
 
   const { brands } = homeScreenData;
   const { params } = useParams();
@@ -33,6 +38,24 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
   const toggleSortRating = () => {
     setIsRatingOpen(!isRatingOpen); // Toggle the visibility of the options
   };
+
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+    if (window.innerWidth > 720 && window.innerWidth < 1200) {
+      setIsTablet(true);
+    } else {
+      setIsTablet(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize();
+  }, []);
+
   useEffect(() => {
     setFilterState((oldState) => {
       return {
@@ -105,9 +128,13 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
                 )}
               </p>
             </p>
+            {console.log({ isMobile })}
             <div
               className={`${isOptionsOpen ? '' : 'Left-contain'}`}
-              style={{ display: isOptionsOpen ? 'none' : 'block' }}
+              // style={{ display: isOptionsOpen ? 'none' : 'block' }}
+              style={{
+                display: isOptionsOpen ? 'none' : isMobile ? 'flex' : 'block',
+              }}
             >
               <p
                 className={
