@@ -220,16 +220,16 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                       <tbody>
                         <tr>
                           <th scope="row" />
-                          <td className="subtotal">Subtotal :</td>
+                          <td className="subtotal ">Subtotal :</td>
                           <td />
-                          <td className="text-end ">₹{subTotal}</td>
+                            <td className="text-end price-text">{subTotal} $</td>
                         </tr>
                         <tr>
                           <th scope="row" />
                           <td className="discount">Discount :</td>
                           <td className="text-end" />
-                          <td className="text-end">
-                            <span className="me-2">-</span> ₹{discount}
+                            <td className="text-end price-text">
+                            <span className="me-2">-</span> {discount} $
                           </td>
                         </tr>
                         <tr>
@@ -240,15 +240,15 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                             <span className="ms-3">:</span>{' '}
                           </td>
                           <td className="text-end" />
-                          <td className="text-end">
-                            <span className="me-2">+</span> ₹{tax}
+                          <td className="text-end price-text">
+                            <span className="me-2">+</span> {tax} $
                           </td>
                         </tr>
                         <tr className="total-border">
                           <th scope="row" />
-                          <th className="fw-semibold">Total :</th>
+                          <th className="fw-semibold total-text">Total :</th>
                           <td className="" />
-                          <th className="text-end fw-semibold">₹ {total}</th>
+                          <th className="text-end fw-semibold total-text"> {total} $</th>
                         </tr>
                       </tbody>
                     </table>

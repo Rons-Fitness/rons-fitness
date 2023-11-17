@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -109,9 +110,10 @@ const Footer = () => {
             </ul>
           </div> */}
           <div className="col-lg-6 col-md-6 col-sm-6 ">
-            <div className="icon-footer-box ">
+            <Link className="icon-footer-box ">
               instagram <i className="fab fa-instagram" />
-            </div>
+            </Link>
+            <Link className="icon-footer-box mt-2 ">Whatsapp <i className="fab fa-whatsapp" /></Link>
           </div>
         </div>
         <div className="d-flex justify-content-end mt-3">

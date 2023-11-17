@@ -95,7 +95,7 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
           <div className="cart-oty-body">
             <div className="cart-price-text"> {qty * value.price} $</div>
             <div className=" oty-box">
-              <label for="number"> Qty: </label>
+              <label for="number" className='qty-text'> Qty: </label>
               <input
                 min="1"
                 type="number"

@@ -82,164 +82,166 @@ function CartMain({
   };
 
   return (
-    <div className="cart-section">
-      <div className="container">
-        {cart && cart?.products && cart?.products.length === 0 ? (
-          <EmptyCart />
-        ) : (
-          <div className="row">
-            <div className="col-lg-8 com-md-9 col-sm-12">
-              <div className="my-cart-body">
-                <div className=" my-cart-head">
-                  <h1 style={{ zIndex: 1 }}>
-                    My Cart<span>({cart && cart?.products.length})</span>
-                  </h1>
-                  <p>
-                    <Link to="/user/wishlist"> My Wishlist</Link>
-                  </p>
-                </div>
-                {cart &&
-                  cart?.products.map((value) => (
-                    <CartItem
-                      value={value}
-                      removeItemFromCart={removeItemFromCart}
-                      addtoCart={addtoCart}
-                      qty={value.qty}
-                      key={value._id}
-                    />
-                  ))}
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-7 col-sm-12">
-              <div className="total-box">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col" colSpan="4" className="Price-detal ">
-                        Price Details
-                      </th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr>
-                      <th scope="row" />
-                      <td className="subtotal">Subtotal :</td>
-                      <td />
-
-                      <td className="text-end price-text">{cart?.subTotal} $</td>
-
-                    </tr>
-                    <tr>
-                      <th scope="row" />
-                      <td className="discount">Discount :</td>
-                      <td className="text-end" />
-                      <td className="text-end">
-                        <span className="me-2 price-text">-</span> {cart?.discount} $
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row" />
-                      <td className="info-btn">
-                        Tax
-                        {/* <i className="bi bi-info-circle" /> */}
-                        <span className="ms-3">:</span>{' '}
-                      </td>
-                      <td className="text-end" />
-                      <td className="text-end price-text">
-                        <span className="me-2">+</span> {cart?.tax} $
-                      </td>
-                    </tr>
-                    <tr className="total-border">
-                      <th scope="row" />
-                      <th className="fw-semibold">Total :</th>
-                      <td className="" />
-                      <th className="text-end  fw-semibold">
-                        {cart?.totalPrice} $
-                      </th>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              {
-                addressToDeliver ? (
-                  <div className="Delivery-fix-body" >
-                    <div className="Delivery-at-contain">
-                      <div className="icon-box">
-                        <iconify-icon icon="mdi:map-marker-outline" />{' '}
-                      </div>
-                      <div style={{ width: '88%' }}>
-                        <div className="Delivery-at">
-                          <p>
-                            {' '}
-                            Delivery at{' '}
-                            <span className="tag">
-                              {' '}
-                              {addressToDeliver?.addressType}
-                            </span>
-                          </p>{' '}
-                          <span className="">
-                            <Link to="/user/address" className="Change">
-                              <a>Change</a>
-                            </Link>
-                          </span>
-                        </div>
-                        <p
-                          className="addres"
-                          style={{
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                          }}
-                        >
-                          {addressToDeliver?.shippingAddress.addressLine1}
-                          <br />
-                          {/* {addressToDeliver?.shippingAddress.addressLine2} */}
+    <div className='container-xxl'>
+      <div className='row'>
+        <div className='col-lg-2' style={{ borderRight: "1px solid #E9E9E9 " }}><span style={{ display: "none" }}>.</span></div>
+        <div className='col-lg-9'>
+          <div className="cart-section">
+            <div className="container">
+              {cart && cart?.products && cart?.products.length === 0 ? (
+                <EmptyCart />
+              ) : (
+                <div className="row">
+                  <div className="col-lg-8 com-md-9 col-sm-12">
+                    <div className="my-cart-body">
+                      <div className=" my-cart-head">
+                        <h1 style={{ zIndex: 1 }}>
+                          My Cart<span>({cart && cart?.products.length})</span>
+                        </h1>
+                        <p>
+                          <Link to="/user/wishlist"> My Wishlist</Link>
                         </p>
                       </div>
+                      {cart &&
+                        cart?.products.map((value) => (
+                          <CartItem
+                            value={value}
+                            removeItemFromCart={removeItemFromCart}
+                            addtoCart={addtoCart}
+                            qty={value.qty}
+                            key={value._id}
+                          />
+                        ))}
                     </div>
-                    <a
-                      onClick={() =>
-                        handlePayment(addressToDeliver && addressToDeliver._id)
-                      }
-                      className="place-btn"
-                    >
-                      <p>Place Order</p>
-                    </a>
                   </div>
-                ) : (
-                  <div className="Delivery-fix-body">
-                    <div className="Delivery-at-contain">
-                      <div className="icon-box">
-                        <iconify-icon icon="mdi:map-marker-outline" />{' '}
-                      </div>
-                      <div>
-                        <div className="Delivery-at">
-                          <Link to="/user/address/new" className="Change">
-                            <p style={{ margin: 'auto', color: '#F9DF23' }}>
-                              Select Delivery Address
-                            </p>{' '}
-                          </Link>
+                  <div className="col-lg-4 col-md-7 col-sm-12">
+                    <div className="total-box">
+                      <table className="table">
+                        <thead>
+                          <tr>
+                            <th scope="col" colSpan="4" className="Price-detal ">
+                              Price Details
+                            </th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr>
+                            <th scope="row" />
+                            <td className="subtotal">Subtotal :</td>
+                            <td className="text-end price-text">{cart?.subTotal} $</td>
+                          </tr>
+                          <tr>
+                            <th scope="row" />
+                            <td className="discount">Discount :</td>
+                            <td className="text-end price-text">
+                              <span className="me-2 ">-</span> {cart?.discount} $
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row" />
+                            <td className="info-btn">
+                              Tax
+                              {/* <i className="bi bi-info-circle" /> */}
+                              <span className="ms-3">:</span>{' '}
+                            </td>
+                            <td className="text-end price-text">
+                              <span className="me-2">+</span> {cart?.tax} $
+                            </td>
+                          </tr>
+                          <tr className="total-border">
+                            <th scope="row" />
+                            <th className="total-text">Total :</th>
+                            <th className="text-end  total-text ">
+                              {cart?.totalPrice} $
+                            </th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    {
+                      addressToDeliver ? (
+                        <div className="Delivery-fix-body" >
+                          <div className="Delivery-at-contain">
+                            <div className="icon-box">
+                              <iconify-icon icon="mdi:map-marker-outline" />{' '}
+                            </div>
+                            <div style={{ width: '88%' }}>
+                              <div className="Delivery-at">
+                                <p>
+                                  {' '}
+                                  Delivery at{' '}
+                                  <span className="tag">
+                                    {' '}
+                                    {addressToDeliver?.addressType}
+                                  </span>
+                                </p>{' '}
+                                <span className="">
+                                  <Link to="/user/address" className="Change">
+                                    <a>Change</a>
+                                  </Link>
+                                </span>
+                              </div>
+                              <p
+                                className="addres"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                  overflow: 'hidden',
+                                  textOverflow: 'ellipsis',
+                                }}
+                              >
+                                {addressToDeliver?.shippingAddress.addressLine1}
+                                <br />
+                                {/* {addressToDeliver?.shippingAddress.addressLine2} */}
+                              </p>
+                            </div>
+                          </div>
+                          <a
+                            onClick={() =>
+                              handlePayment(addressToDeliver && addressToDeliver._id)
+                            }
+                            className="place-btn"
+                          >
+                            <p>Place Order</p>
+                          </a>
                         </div>
-                      </div>
-                    </div>
-                    <a
-                      onClick={() =>
-                        handlePayment(addressToDeliver && addressToDeliver._id)
-                      }
-                      className="place-btn"
-                      style={{ cursor: 'pointer' }}
-                    >
-                      <p>Place Order</p>
-                    </a>
+                      ) : (
+                        <div className="Delivery-fix-body">
+                          <div className="Delivery-at-contain">
+                            <div className="icon-box">
+                              <iconify-icon icon="mdi:map-marker-outline" />{' '}
+                            </div>
+                            <div>
+                              <div className="Delivery-at">
+                                <Link to="/user/address/new" className="Change">
+                                  <p style={{ margin: 'auto', color: '#F9DF23' }}>
+                                    Select Delivery Address
+                                  </p>{' '}
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                          <a
+                            onClick={() =>
+                              handlePayment(addressToDeliver && addressToDeliver._id)
+                            }
+                            className="place-btn"
+                            style={{ cursor: 'pointer' }}
+                          >
+                            <p>Place Order</p>
+                          </a>
+                        </div>
+                      )
+                    }
                   </div>
-                )
-              }
+                </div>
+              )}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
+
   );
 }
 
