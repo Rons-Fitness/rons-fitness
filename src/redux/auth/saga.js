@@ -608,7 +608,7 @@ export function* watchLikeDislikeProductReview() {
 
 const addEditUserReviewAsync = async (review) => {
   const { _id } = review;
-  const res = await API.post(`/product/${_id}/review`, review);
+  const res = await API.post(`/product/${_id}/reviews`, review);
 
   return res;
 };
@@ -616,18 +616,17 @@ const addEditUserReviewAsync = async (review) => {
 function* addEditUserReview({ payload }) {
   const { review, history } = payload;
   try {
-    const {
-      status,
-      data: { message },
-    } = yield call(addEditUserReviewAsync, review);
+    const { status, data } = yield call(addEditUserReviewAsync, review);
     if (status === 201) {
+      const {
+        data: { message },
+      } = data;
       Notification('success', message);
-      history('/user/orders');
     } else {
-      Notification('error', message);
+      Notification('error', data?.message);
     }
   } catch (error) {
-    Notification('error');
+    Notification('error', error.message);
   }
 }
 

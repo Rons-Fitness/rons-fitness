@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import EditReview from 'containers/EditReview';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -6,14 +7,11 @@ const OrderItem = ({ item, currentOrderStatus }) => {
   const {
     name,
     image,
-    alreadyReviewed,
     price,
     qty,
-    userReview,
     // flavour,
     // nonVeg,
     product,
-
   } = item;
   return (
     <div className="order-details-traking-contain col-lg-11 col-md-12 ">
@@ -33,21 +31,6 @@ const OrderItem = ({ item, currentOrderStatus }) => {
             <Link to={`/product/${product?._id}`}>
               <a>
                 <h5>{name}</h5>
-                {/* {flavour !== '' && (
-                  <iconify-icon
-                    icon="mdi:lacto-vegetarian"
-                    className="veg-icon"
-                    style={
-                      nonVeg
-                        ? {
-                          color: 'red',
-                        }
-                        : {
-                          color: 'green',
-                        }
-                    }
-                  />
-                )} */}
               </a>
             </Link>
             <div className="Price-tag">
@@ -56,34 +39,9 @@ const OrderItem = ({ item, currentOrderStatus }) => {
             </div>
           </div>
         </div>
-        {currentOrderStatus &&
-          currentOrderStatus.status === 'Order Delivered' && (
-            <div className="col-lg-3 col-md-3" style={{ textAlign: 'center' }}>
-              <Link to={`/user/order/${product?._id}/review`}>
-                <div className="star-rating">
-                  <a>
-                    {userReview &&
-                      [...Array(Number(userReview.rating) || 0)].map(
-                        (active) => (
-                          <i className="fas fa-star active " key={active} />
-                        ),
-                      )}
-                    {userReview &&
-                      [...Array(5 - Number(userReview.rating) || 0)].map(
-                        (inActive) => (
-                          <i className="fas fa-star" key={inActive} />
-                        ),
-                      )}
-                  </a>
-                </div>
-                <div className="rating-a" style={{ cursor: 'pointer' }}>
-                  <a>
-                    {alreadyReviewed ? 'Edit Review' : 'Write a Review here'}
-                  </a>
-                </div>
-              </Link>
-            </div>
-          )}
+        {currentOrderStatus === 'Order Delivered' && (
+          <EditReview id={product?._id} />
+        )}
       </div>
     </div>
   );
