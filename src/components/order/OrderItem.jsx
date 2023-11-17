@@ -39,7 +39,7 @@ const OrderItem = ({ item, currentOrderStatus }) => {
             </div>
           </div>
         </div>
-        {currentOrderStatus === 'Order Delivered' && (
+        {currentOrderStatus?.status === 'Order Delivered' && (
           <EditReview id={product?._id} />
         )}
       </div>
