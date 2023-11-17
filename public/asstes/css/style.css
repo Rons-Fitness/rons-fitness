@@ -38,6 +38,7 @@
 
 .product-grid-left-section .product-grid-left-box .left-box-main .Left-contain .High-light-p {
   cursor: default;
+  font-size: 14px;
 }
 
 .product-grid-left-section .product-grid-left-box .left-box-main .Left-contain .High-light-p:hover {
@@ -64,7 +65,7 @@
 }
 
 .product-grid-section-header h1 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   position: relative;
 }
@@ -1102,7 +1103,7 @@
 .cart-section .my-cart-contain .my-cart-list a h5 {
   margin-bottom: 0px !important;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .cart-section .my-cart-contain .my-cart-list p {
@@ -1222,11 +1223,16 @@
   font-weight: 700;
   color: rgba(0, 0, 0);
   font-weight: 500;
+  font-size: 15px;
 }
 
 .cart-section .total-box tbody tr td,
 .cart-section .total-box tbody tr th {
   border: none !important;
+}
+
+.cart-section .total-box .price-text {
+  font-size: 14px;
 }
 
 .cart-section .total-box tbody .total-border {
@@ -1339,7 +1345,7 @@
 }
 
 .delivery-section .address-body .Address-head p {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .delivery-section .address-body .Address-head p a {
@@ -1378,12 +1384,14 @@
 
 .delivery-section .address-body .delivery-contain .edit a {
   color: #3B3B3B;
+  font-size: 14px;
 }
 
 .delivery-section .address-body .delivery-contain .edit .Delete-colour {
   color: red;
   margin-left: 20px;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .delivery-section .address-body .delivery-contain .delivery-btn {
@@ -1395,7 +1403,7 @@
 
 .delivery-section .address-body .delivery-contain .address-write {
   color: rgba(0, 0, 0, 0.59);
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -1419,7 +1427,7 @@
 
 .delivery-section .address-body .delivery-contain .delivery-btn p a {
   color: var(--black);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
 }
 
@@ -1914,11 +1922,12 @@
 }
 
 .Checkout-section .Checkout-header h4 {
-  font-size: 30px;
+  font-size: 22px;
   font-weight: 400;
   margin-bottom: 10px;
   position: relative;
   font-style: normal;
+  color: #3B3B3B;
 }
 
 /* .Checkout-section .Checkout-header h4::after {
@@ -1975,7 +1984,7 @@
 
 .Checkout-section .Checkout-left-body .billing-p {
   color: var(--black);
-  font-size: 19px;
+  font-size: 17px;
   font-weight: 500;
 }
 
@@ -1986,7 +1995,9 @@
 .Checkout-section .Checkout-left-body input {
   padding: 5px 5px;
   margin: 5px 0px;
-  border: 1px solid #828282;
+  border: 1px solid #D3D3D3;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .Checkout-section .Checkout-left-body input::-webkit-outer-spin-button,
@@ -2090,17 +2101,19 @@
   background-color: var(--them-colour);
   border: 1px solid var(--them-colour);
   color: var(--black);
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   padding: 7px 30px;
   transition: ease-out 0.4s;
+  text-align: center;
 }
 
 /* .Checkout-section .billing-body .shipping-btn:hover {
   color: white;
   box-shadow: inset 400px 0 0 0 var(--btn-hover);
 } */
-.address-btn{  background-color: var(--them-colour);
+.address-btn {
+  background-color: var(--them-colour);
   background-color: var(--white);
   color: var(--black);
   font-size: 17px;
@@ -2108,6 +2121,7 @@
   padding: 7px 30px;
   transition: ease-out 0.4s
 }
+
 .activeAddressType {
   background-color: var(--them-colour) !important;
 }
@@ -2189,8 +2203,8 @@
 }
 
 .my-order-section .my-order-head h1 {
-  font-size: 25px;
-  font-weight: 400;
+  font-size: 20px;
+  font-weight: 500;
   position: relative;
 }
 
@@ -2273,12 +2287,16 @@
 
 .my-order-section .my-order-contain .my-order-list a h5 {
   margin-bottom: 0px !important;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
 }
 
+.my-order-section .my-order-contain .my-order-list a h6 {
+  font-size: 12px;
+}
+
 .my-order-section .my-order-contain .my-order-list .sub-title {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .my-order-section .my-order-contain .my-order-list p {
@@ -2497,6 +2515,7 @@
 
 .Order-Details-traking-section .traking-progress-section .stepper-item .step-name {
   color: var(--black);
+  font-size: 14px;
 }
 
 .Order-Details-traking-section .traking-progress-section .stepper-item .disactive {
@@ -2593,12 +2612,13 @@
 .Order-Details-traking-section .Order-ID-body .order-id-list h5 {
   margin: 0;
   color: var(--black);
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .Order-Details-traking-section .Order-ID-body .order-id-list p {
   color: #949494;
-  font-size: 14px;
+  font-size: 12px;
   margin: 0;
 }
 
@@ -2635,7 +2655,7 @@
 .Order-Details-traking-section .order-details-traking-contain .order-details-traking-list a h5 {
   margin-bottom: 0px !important;
   color: var(--black);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -2647,6 +2667,7 @@
 
 .Order-Details-traking-section .order-details-traking-contain .order-details-traking-list .Price-tag p {
   font-weight: 500;
+  font-size: 14px;
 }
 
 .Order-Details-traking-section .order-details-traking-contain .rating-a a {
@@ -3251,6 +3272,7 @@ select:focus {
   align-items: center;
   justify-content: space-between;
   padding-top: 20px;
+  padding-inline: 60px;
 }
 
 .cat-round .carte-body .carte-contain {
@@ -3267,7 +3289,7 @@ select:focus {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 170px;
+  width: 192px;
 }
 
 .cat-round .carte-body .carte-contain .carte-img-box a img {
@@ -3278,10 +3300,11 @@ select:focus {
 .cat-round .carte-body .carte-contain p a {
 
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   text-align: center;
   text-transform: capitalize;
   color: var(--black);
+
 }
 
 .cat-round .carte-body .swiper-button-next {
@@ -3332,10 +3355,10 @@ select:focus {
 
 .slider-card .trending-head h1 {
   color: #3B3B3B;
-  font-size: 25px;
+  font-size: 20px;
   letter-spacing: 2.1px;
   font-weight: 400;
-  padding: 0px 30px;
+  padding: 0px 18px;
   position: relative;
   background-color: var(--them-colour);
 }
@@ -3465,7 +3488,7 @@ select:focus {
 
 .slider-card .slider-cat .box-card .card-body .card-con .card-price span:nth-child(1) {
   font-weight: 400;
-  font-size: 19px;
+  font-size: 15px;
 }
 
 .slider-card .slider-cat .box-card .card-body .card-con .card-price .mrp {
@@ -3602,7 +3625,7 @@ select:focus {
 
   .sub-text {
     color: #3B3B3B;
-    font-size: 17px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;

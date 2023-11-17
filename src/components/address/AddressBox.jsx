@@ -18,10 +18,10 @@ function AddressBox({
     <div className="delivery-contain" key={_id}>
       <div className="delivery-name">
         <div>
-          <h5>
+          <h6>
             {shippingAddress.firstName} {shippingAddress?.lastName}
             <span className="home-tag">{addressType}</span>
-          </h5>
+          </h6>
         </div>
       </div>
       <div className="col-lg-6 col-md-8">

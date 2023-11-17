@@ -17,7 +17,7 @@ function AddressMain({
       <div className="container">
         <div className="row  ">
           {addresses.length ? (
-            <div className="col-lg-6">
+            <div className="col-lg-6 offset-lg-2">
               <div className="address-body">
                 <div className="Address-head">
                   <p>Select Delivery Address</p>

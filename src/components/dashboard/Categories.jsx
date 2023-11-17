@@ -10,13 +10,13 @@ import { Link } from 'react-router-dom';
 const Categories = ({ category = [], isMobile, isTablet }) => {
   return (
     <div className="cat-round">
-      <div className="container">
+      <div className="container-xxl">
         <div className="carte-body">
           <div className="swiper carte-slider">
             <Swiper
               className="swiper-wrapper"
               slidesPerView={isTablet ? 5 : isMobile ? 3 : 5}
-              spaceBetween={isTablet ? 5 : isMobile ? 1 : 10}
+              spaceBetween={isTablet ? 5 : isMobile ? 1 : 2}
               navigation
               modules={[Autoplay, Pagination, Navigation]}
             >

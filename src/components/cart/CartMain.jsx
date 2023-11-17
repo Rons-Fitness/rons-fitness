@@ -126,14 +126,16 @@ function CartMain({
                       <th scope="row" />
                       <td className="subtotal">Subtotal :</td>
                       <td />
-                      <td className="text-end ">{cart?.subTotal} $</td>
+
+                      <td className="text-end price-text">{cart?.subTotal} $</td>
+
                     </tr>
                     <tr>
                       <th scope="row" />
                       <td className="discount">Discount :</td>
                       <td className="text-end" />
                       <td className="text-end">
-                        <span className="me-2">-</span> {cart?.discount} $
+                        <span className="me-2 price-text">-</span> {cart?.discount} $
                       </td>
                     </tr>
                     <tr>
@@ -144,7 +146,7 @@ function CartMain({
                         <span className="ms-3">:</span>{' '}
                       </td>
                       <td className="text-end" />
-                      <td className="text-end">
+                      <td className="text-end price-text">
                         <span className="me-2">+</span> {cart?.tax} $
                       </td>
                     </tr>
@@ -152,85 +154,87 @@ function CartMain({
                       <th scope="row" />
                       <th className="fw-semibold">Total :</th>
                       <td className="" />
-                      <th className="text-end fw-semibold">
+                      <th className="text-end  fw-semibold">
                         {cart?.totalPrice} $
                       </th>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              {addressToDeliver ? (
-                <div className="Delivery-fix-body">
-                  <div className="Delivery-at-contain">
-                    <div className="icon-box">
-                      <iconify-icon icon="mdi:map-marker-outline" />{' '}
-                    </div>
-                    <div style={{ width: '88%' }}>
-                      <div className="Delivery-at">
-                        <p>
-                          {' '}
-                          Delivery at{' '}
-                          <span className="tag">
+              {
+                addressToDeliver ? (
+                  <div className="Delivery-fix-body" >
+                    <div className="Delivery-at-contain">
+                      <div className="icon-box">
+                        <iconify-icon icon="mdi:map-marker-outline" />{' '}
+                      </div>
+                      <div style={{ width: '88%' }}>
+                        <div className="Delivery-at">
+                          <p>
                             {' '}
-                            {addressToDeliver?.addressType}
-                          </span>
-                        </p>{' '}
-                        <span className="">
-                          <Link to="/user/address" className="Change">
-                            <a>Change</a>
-                          </Link>
-                        </span>
-                      </div>
-                      <p
-                        className="addres"
-                        style={{
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                        }}
-                      >
-                        {addressToDeliver?.shippingAddress.addressLine1}
-                        <br />
-                        {/* {addressToDeliver?.shippingAddress.addressLine2} */}
-                      </p>
-                    </div>
-                  </div>
-                  <a
-                    onClick={() =>
-                      handlePayment(addressToDeliver && addressToDeliver._id)
-                    }
-                    className="place-btn"
-                  >
-                    <p>Place Order</p>
-                  </a>
-                </div>
-              ) : (
-                <div className="Delivery-fix-body">
-                  <div className="Delivery-at-contain">
-                    <div className="icon-box">
-                      <iconify-icon icon="mdi:map-marker-outline" />{' '}
-                    </div>
-                    <div>
-                      <div className="Delivery-at">
-                        <Link to="/user/address/new" className="Change">
-                          <p style={{ margin: 'auto', color: '#F9DF23' }}>
-                            Select Delivery Address
+                            Delivery at{' '}
+                            <span className="tag">
+                              {' '}
+                              {addressToDeliver?.addressType}
+                            </span>
                           </p>{' '}
-                        </Link>
+                          <span className="">
+                            <Link to="/user/address" className="Change">
+                              <a>Change</a>
+                            </Link>
+                          </span>
+                        </div>
+                        <p
+                          className="addres"
+                          style={{
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                          }}
+                        >
+                          {addressToDeliver?.shippingAddress.addressLine1}
+                          <br />
+                          {/* {addressToDeliver?.shippingAddress.addressLine2} */}
+                        </p>
                       </div>
                     </div>
+                    <a
+                      onClick={() =>
+                        handlePayment(addressToDeliver && addressToDeliver._id)
+                      }
+                      className="place-btn"
+                    >
+                      <p>Place Order</p>
+                    </a>
                   </div>
-                  <a
-                    onClick={() =>
-                      handlePayment(addressToDeliver && addressToDeliver._id)
-                    }
-                    className="place-btn"
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <p>Place Order</p>
-                  </a>
-                </div>
-              )}
+                ) : (
+                  <div className="Delivery-fix-body">
+                    <div className="Delivery-at-contain">
+                      <div className="icon-box">
+                        <iconify-icon icon="mdi:map-marker-outline" />{' '}
+                      </div>
+                      <div>
+                        <div className="Delivery-at">
+                          <Link to="/user/address/new" className="Change">
+                            <p style={{ margin: 'auto', color: '#F9DF23' }}>
+                              Select Delivery Address
+                            </p>{' '}
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                    <a
+                      onClick={() =>
+                        handlePayment(addressToDeliver && addressToDeliver._id)
+                      }
+                      className="place-btn"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <p>Place Order</p>
+                    </a>
+                  </div>
+                )
+              }
             </div>
           </div>
         )}

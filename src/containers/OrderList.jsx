@@ -36,7 +36,7 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
           <div className="container">
             <div
               className="row"
-              // style={{ justifyContent: 'center' }}
+            // style={{ justifyContent: 'center' }}
             >
               <div className="col-lg-8 com-md-9 col-sm-12">
                 <div className="my-order-body">
@@ -49,27 +49,27 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                       <Link to={`/user/orders/${order._id}`} key={order._id}>
                         <div className="my-order-contain">
                           <div className="row">
-                            <div className="col-lg-2 col-md-3    m-0 p-0">
+                            <div className="col-lg-2 col-md-3  m-0 p-0">
                               <div className="d-flex justify-content-center align-items-center">
                                 <div
                                   className={classNames(
                                     'my-order-img-box',
                                     order.currentOrderStatus.status ===
-                                      'Order Delivered' &&
-                                      'my-order-img-box-green',
+                                    'Order Delivered' &&
+                                    'my-order-img-box-green',
                                     order.currentOrderStatus.status ===
-                                      'Cancelled' && 'my-order-img-box-red',
+                                    'Cancelled' && 'my-order-img-box-red',
                                   )}
                                 >
                                   <a>
                                     {order.currentOrderStatus &&
-                                    [
-                                      'Order Placed',
-                                      'Order Confirmed',
-                                      'Out For Delivery',
-                                    ].includes(
-                                      order.currentOrderStatus.status,
-                                    ) ? (
+                                      [
+                                        'Order Placed',
+                                        'Order Confirmed',
+                                        'Out For Delivery',
+                                      ].includes(
+                                        order.currentOrderStatus.status,
+                                      ) ? (
                                       <img
                                         src="/asstes/img/order-logo/package.png"
                                         alt=""
@@ -87,7 +87,7 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                             <div className="col-lg-9 col-md-9  ">
                               <div className="my-order-list">
                                 <a>
-                                  <h5 style={{ fontWeight: 800 }}>
+                                  <h5>
                                     Order ID: {order._id}
                                   </h5>
                                   <h6>
