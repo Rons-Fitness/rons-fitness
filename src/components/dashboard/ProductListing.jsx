@@ -115,7 +115,7 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
       <div className="card-body">
         <div className="card-con" style={{ position: 'relative' }}>
           <Link to={`/product/${product._id}`}>
-            <h1
+            <p
               className="align-items-center"
               style={{
                 whiteSpace: 'nowrap',
@@ -125,7 +125,7 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
             >
               {product.name} {/* {product.flavour !== '' && ( */}
               {/* )} */}
-            </h1>
+            </p>
             {/* {product.flavour !== '' && (
                 <span className="text-end">
                   <iconify-icon
@@ -139,7 +139,6 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
                   />
                 </span>
               )} */}
-
           </Link>
           <h6 style={{ width: '100%' }}>The specific products included</h6>
           <p>

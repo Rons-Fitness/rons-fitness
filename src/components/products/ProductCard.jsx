@@ -57,7 +57,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
         <div className="card-con">
           <a>
             <Link to={`/product/${product._id}`}>
-              <h1
+              <p
                 style={{
                   whiteSpace: 'nowrap',
                   overflow: 'hidden',
@@ -65,7 +65,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
                 }}
               >
                 {product.name}{' '}
-              </h1>
+              </p>
             </Link>
             {/* {product.flavour !== '' && (
               <span className="text-end">
