@@ -133,24 +133,25 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
               <div className="traking-body">
                 {orderDetails &&
                   orderDetails.orderTrack.map((track) => (
-                    <div
-                      className={classnames(
-                        'stepper-item',
-                        currentOrderStatus &&
-                          currentOrderStatus.status === 'Order Delivered' &&
-                          'my-order-img-box-green',
-                      )}
-                      key={track}
-                    >
+                    <div className={classnames('stepper-item')} key={track}>
                       <iconify-icon
                         icon="mdi:check-circle"
-                        className="completed"
-                        style={{ color: '#F9DF23' }}
+                        className={classnames('completed')}
+                        style={{
+                          color:
+                            currentOrderStatus &&
+                            currentOrderStatus.status === 'Order Delivered'
+                              ? 'green'
+                              : '#F9DF23',
+                        }}
                       />
+
                       <div>
                         <div>{track.status}</div>
                         <div>
-                          1 <sup>th</sup>Jan, 9:50pm{' '}
+                          {moment(track.createdAt).format('Do MMMM YYYY')}
+                          <br />
+                          {moment(track.createdAt).format('h:mm a')}
                         </div>
                       </div>
                     </div>
@@ -222,13 +223,13 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                           <th scope="row" />
                           <td className="subtotal ">Subtotal :</td>
                           <td />
-                            <td className="text-end price-text">{subTotal} $</td>
+                          <td className="text-end price-text">{subTotal} $</td>
                         </tr>
                         <tr>
                           <th scope="row" />
                           <td className="discount">Discount :</td>
                           <td className="text-end" />
-                            <td className="text-end price-text">
+                          <td className="text-end price-text">
                             <span className="me-2">-</span> {discount} $
                           </td>
                         </tr>
@@ -248,7 +249,10 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                           <th scope="row" />
                           <th className="fw-semibold total-text">Total :</th>
                           <td className="" />
-                          <th className="text-end fw-semibold total-text"> {total} $</th>
+                          <th className="text-end fw-semibold total-text">
+                            {' '}
+                            {total} $
+                          </th>
                         </tr>
                       </tbody>
                     </table>
