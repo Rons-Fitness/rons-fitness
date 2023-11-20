@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ContactUs = () => {
+  const [ContactDetails, setContactDetails] = useState({});
+  const handleChange = (e) => {
+    setContactDetails((oldState) => {
+      return { ...oldState, [e.target.name]: e.target.value };
+    });
+  };
+
   return (
     <div className="container-xxl">
       <div className="row">
-
-        <div className="col-lg-2" style={{ borderRight: "1px solid #E9E9E9" }}><span style={{ display: "none" }}>.</span></div>
+        <div className="col-lg-2" style={{ borderRight: '1px solid #E9E9E9' }}>
+          <span style={{ display: 'none' }}>.</span>
+        </div>
         <div className="col-lg-9">
           <div className="contact-section">
             <div className="container">
@@ -36,7 +44,10 @@ const ContactUs = () => {
                               <div className="ps-1 py-2">
                                 <p>
                                   Tel:
-                                  <span className="num-email-colour"> 877-67-88-99</span>
+                                  <span className="num-email-colour">
+                                    {' '}
+                                    877-67-88-99
+                                  </span>
                                 </p>
                                 <p>
                                   E-Mail:{' '}
@@ -102,30 +113,66 @@ const ContactUs = () => {
                   <div className="get-touch-body">
                     <h4>Get In Touch</h4>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mattis
-                      neque ultrices tristique amet erat vitae eget dolor los vitae
-                      lobortis quis bibendum quam.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Mattis neque ultrices tristique amet erat vitae eget dolor
+                      los vitae lobortis quis bibendum quam.
                     </p>
                     <form>
                       <div className="">
                         <div className="row justify-content-between">
                           <div className="first-name col-lg-6 col-md-6 col-sm-12">
-                            <input type="text" placeholder="Your Name*" required />
+                            <input
+                              type="text"
+                              placeholder="Your Name*"
+                              required
+                              name="name"
+                              onChange={handleChange}
+                              value={ContactDetails.name}
+                            />
                           </div>
                           <div className="email-name col-lg-6 col-md-6 col-sm-12">
-                            <input type="email" placeholder="Your E-mail" required />
+                            <input
+                              type="email"
+                              placeholder="Your E-mail"
+                              required
+                              name="email"
+                              onChange={handleChange}
+                              value={ContactDetails.email}
+                            />
                           </div>
                         </div>
                         <div className="row">
-
                           <div className="number col-lg-12 col-md-12 col-sm-12">
-                            <input type="number" placeholder="Contact Number" required />
+                            <input
+                              type="number"
+                              placeholder="Contact Number"
+                              required
+                              name="number"
+                              value={ContactDetails.number}
+                              onChange={(e) => {
+                                const newValue = e.target.value;
+                                if (newValue.length <= 10) {
+                                  setContactDetails((oldState) => {
+                                    return {
+                                      ...oldState,
+                                      number: e.target.value,
+                                    };
+                                  });
+                                }
+                              }}
+                            />
                           </div>
                         </div>
                         <div className="row">
-
                           <div className="Subject col-lg-12 col-md-12 col-sm-12">
-                            <input type="text" placeholder="Subject*" required />
+                            <input
+                              type="text"
+                              placeholder="Subject*"
+                              required
+                              onChange={handleChange}
+                              name="subject"
+                              value={ContactDetails.subject}
+                            />
                           </div>
                         </div>
                         <div className=" row">
@@ -136,17 +183,21 @@ const ContactUs = () => {
                               cols=""
                               placeholder="Type Your Messege*"
                               required
+                              onChange={handleChange}
+                              value={ContactDetails.message}
                             />
                           </div>
                           <div className=" text-end col-lg-4 col-sm-12 d-flex  justify-content-end">
                             <div className="submit-btn">
-                              <input type="submit" placeholder="Submit" value="Submit" />
+                              <input
+                                type="submit"
+                                placeholder="Submit"
+                                value="Submit"
+                              />
                             </div>
                           </div>
                         </div>
                       </div>
-
-
                     </form>
                   </div>
                 </div>
@@ -154,8 +205,8 @@ const ContactUs = () => {
             </div>
           </div>
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 
