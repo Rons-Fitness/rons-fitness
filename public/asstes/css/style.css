@@ -3380,10 +3380,10 @@ select:focus {
 }
 
 .cat-round .carte-body {
-  display: flex;
-  gap: 60px;
-  align-items: center;
-  justify-content: space-between;
+  /* display: flex; */
+  /* gap: 60px; */
+  /* align-items: center; */
+  /* justify-content: space-between; */
   padding-top: 20px;
   padding-inline: 60px;
 }
