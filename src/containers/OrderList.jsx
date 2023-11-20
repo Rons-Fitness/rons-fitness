@@ -100,33 +100,26 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                     </div>
                                     <div className="col-lg-9 col-md-9  ">
                                       <div className="my-order-list">
-                                        <a>
-                                          <h5>Order ID: {order._id}</h5>
+                                        <h5>Order ID: {order._id}</h5>
+
+                                        {order &&
+                                        order.currentOrderStatus.status ===
+                                          'Order Delivered' ? (
+                                          <h6>
+                                            Delivered On{' '}
+                                            {moment(
+                                              order.currentOrderStatus
+                                                .createdAt,
+                                            ).format('Do MMMM  YYYY')}
+                                          </h6>
+                                        ) : (
                                           <h6>
                                             Delivery On{' '}
-                                            {order.currentOrderStatus.status ===
-                                            'Order Delivered'
-                                              ? moment(
-                                                  order.currentOrderStatus
-                                                    .createdAt,
-                                                ).format('Do MMMM YYYY')
-                                              : moment(order.createdAt)
-                                                  .add(4, 'days')
-                                                  .format('Do MMMM YYYY')}
+                                            {moment(order.createdAt)
+                                              .add(4, 'days')
+                                              .format('Do MMMM YYYY')}
                                           </h6>
-                                        </a>
-                                        {/* <div className="sub-title">
-                                  {order.orderItems[0].name}{' '}
-                                  <span className="fw-semibold ">
-                                    {Boolean(
-                                      Number(order.orderItems.length - 1),
-                                    ) &&
-                                      `+${Number(
-                                        order.orderItems.length - 1,
-                                      )} more`}
-                                  </span>
-                                </div> */}
-                                        {/* <p className="fw-semibold">{order.total}$</p> */}
+                                        )}
                                       </div>
                                     </div>
                                   </div>
