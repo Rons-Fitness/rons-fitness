@@ -38,7 +38,7 @@
 
 
   .trending-head h1 {
-    font-size: 20px;
+    font-size: 15px;
   }
 
   .trending-head h1::after {
@@ -215,8 +215,8 @@
 
   /* ==================  Tranding section Start ==============  */
   .trending-head h1 {
-    font-size: 17px !important;
-    line-height: 50px;
+    font-size: 15px !important;
+    line-height: 40px;
   }
 
   .trending-head h1::after {
@@ -228,7 +228,7 @@
   }
 
   .slider-cat {
-    padding-inline: 30px !important;
+    padding-inline: 20px !important;
   }
 
   /* ==================  Tranding section End ==============  */
@@ -309,7 +309,7 @@
   }
 
   .product-grid-section-header h1 {
-    font-size: 24px !important;
+    font-size: 17px !important;
   }
 
   .product-grid-section-header h1::after {
@@ -396,9 +396,7 @@
     margin-right: 0px !important;
   }
 
-  .xzoom_part .container {
-    padding: 0px !important;
-  }
+
 
   .xzoom_part .btn-xzone-body .btn-xzone {
     padding: 8px 10px !important;
@@ -507,7 +505,7 @@
   /*  ================  rating and reviews page start =================== */
   /* ================= whish list page section start ===================== */
   .my-whish-section .my-whish-head h1 {
-    font-size: 20px;
+    font-size: 17px;
   }
 
   .my-whish-section .my-whish-contain .my-wish-list a h5 {
@@ -519,7 +517,7 @@
   }
 
   .my-whish-section .my-whish-head .continue-sho-text {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .my-whish-section .my-whish-head h1::after {
@@ -543,14 +541,10 @@
   }
 
   .my-whish-section .my-whish-contain .bin-body {
-    display: none;
+    /* display: none; */
   }
 
-  .my-whish-section .btn-mywish-body {
-    display: flex;
-    align-items: center;
-    margin-top: 0px !important;
-  }
+
 
   .my-whish-section .btn-mywish-body .bin-body {
     display: block !important;
@@ -570,7 +564,7 @@
   /* ================= whish list page section start ===================== */
   /* ============== cart page section start ================== */
   .cart-section .my-cart-head h1 {
-    font-size: 22px;
+    font-size: 17px;
   }
 
   .cart-section .my-cart-head h1::after {
@@ -579,7 +573,8 @@
   }
 
   .cart-section .my-cart-contain .my-cart-list a h5 {
-    font-size: 17px;
+    font-size: 14px;
+    line-height: 25px;
   }
 
   .my-cart-contain .cart-oty-body {
@@ -591,7 +586,7 @@
 
   .my-cart-contain .cart-price-text {
     font-weight: 400;
-    font-size: 17px;
+    font-size: 15px;
   }
 
   .my-cart-contain .oty-box {
@@ -1158,6 +1153,54 @@
 
   .traking-progress-section-mobile .traking-body .discompleted {
     color: #acabab;
+  }
+
+  .offer-contain .sub-text {
+    width: min(100% - 0px, 90%);
+  }
+
+  .product-grid-section-header h1 {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  .xzoom_part .xzoom-thumbs {
+    margin-inline: 20px;
+  }
+
+  .xzoom_part .btn-xzone-body .btn-xzone {
+    font-size: 13px !important;
+  }
+
+  .xzoom_part .xzoom-section {
+    padding: 15px 0px;
+  }
+
+  .cart-section .my-cart-contain .my-cart-list p {
+    /* margin-left: auto; */
+  }
+
+  .cart-section .my-cart-head p a {
+    font-size: 12px;
+  }
+
+  .my-whish-section .my-whish-contain .my-wish-list a h5 {
+    font-size: 14px;
+  }
+
+  .my-whish-section .my-whish-contain .my-wish-list h3 {
+    font-size: 15px;
+  }
+
+  .my-whish-section .my-whish-contain .wish-card-right-body {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .my-whish-section .btn-mywish-body {
+    margin-top: 0px !important;
+
   }
 }
 

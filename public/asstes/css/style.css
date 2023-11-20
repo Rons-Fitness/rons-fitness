@@ -386,7 +386,8 @@
 
 .xzoom_part .xzoom-thumbs .swiper-slide img {
   border: none;
-  opacity: 0.8;
+  /* opacity: 0.8; */
+  cursor: pointer;
 }
 
 .xzoom_part .xzoom-thumbs .swiper-slide img:hover {
@@ -651,7 +652,7 @@
   background-color: var(--them-colour);
   font-size: 13px;
   font-weight: 400;
-  color: black;
+  color: #181817;
   text-align: center;
   /* margin-left: 20px; */
   transition: ease-out 0.4s;
@@ -970,7 +971,7 @@
   background-color: var(--white);
   height: 108px;
   width: 135px;
-  margin: 8px;
+  /* margin: 8px; */
 
 }
 
@@ -1029,17 +1030,33 @@
   color: var(--black);
 }
 
-.my-whish-section .my-whish-contain .my-wish-list .btn-mywish-body a .btn-mywhish {
-  padding: 10px 7px;
+.my-whish-section .my-whish-contain .btn-mywish-body {
+  margin-top: 22px;
+}
+
+.my-whish-section .my-whish-contain .wish-card-right-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.my-whish-section .my-whish-contain .btn-mywish-body a .btn-mywhish {
+  padding: 7px 7px;
   border: 1px solid var(--them-colour);
   background-color: var(--them-colour);
   font-size: 16px;
   font-weight: 400;
   color: #333030;
   text-align: center;
-  width: 160px;
+  width: 158px;
   transition: ease-out 0.4s;
   margin-bottom: 0px;
+  cursor: pointer;
+}
+
+.my-whish-section .my-whish-contain .btn-mywish-body a .btn-mywhish span {
+  font-size: 12px;
+  font-weight: 500;
 }
 
 /* .my-whish-section .my-whish-contain .my-wish-list .btn-mywish-body a .btn-mywhish:hover {
@@ -1890,12 +1907,13 @@
 /* ============ Contact section End ================*/
 /* =============== Profile Setion Start ================ */
 .profile-section {
-  padding: 20px 0px;
+  padding: 0px 20px;
 }
 
 .profile-section .profile-left-body {
   background-color: white;
   padding-inline: 20px 20px;
+  margin-top: 20px;
 }
 
 .profile-section .profile-left-body a {
@@ -1923,6 +1941,12 @@
   background-color: white;
   padding: 20px 30px;
   color: var(--black);
+  margin-top: 20px;
+}
+
+.profile-section .profile-right-body .profile-left-head h4 {
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .profile-section .profile-right-body .submit-profile {
@@ -1946,6 +1970,10 @@
   padding: 2px 4px;
   height: 36px;
 
+}
+
+.profile-section .profile-right-body label {
+  font-size: 15px;
 }
 
 .profile-section .profile-right-body textarea {
@@ -2566,7 +2594,7 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
-  font-size: 15px;
+  font-size: 12px;
   text-align: center;
 }
 
@@ -2576,7 +2604,7 @@
 
 .Order-Details-traking-section .traking-progress-section .stepper-item .step-name {
   color: var(--black);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .Order-Details-traking-section .traking-progress-section .stepper-item .disactive {
@@ -2741,11 +2769,11 @@
 }
 
 .Order-Details-traking-section .order-details-traking-contain .star-rating a i:hover {
-  color: #ff8332;
+  color: var(--them-colour);
 }
 
 .Order-Details-traking-section .order-details-traking-contain .star-rating .active {
-  color: #ff8332;
+  color: var(--them-colour);
 }
 
 .Order-Details-traking-section .order-details-traking-contain .star-rating .rate-reveiws-link a {

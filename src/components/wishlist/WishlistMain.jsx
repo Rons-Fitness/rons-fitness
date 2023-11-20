@@ -11,10 +11,12 @@ import { Link, useNavigate } from 'react-router-dom';
 const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
   const history = useNavigate();
   return (
-    <div className='container-xxl'>
-      <div className='row'>
-        <div className='col-lg-2' style={{ borderRight: "1px solid #E9E9E9 " }} > <span style={{ display: "none" }}>.</span></div>
-        <div className='col-lg-8'>
+    <div className="container-xxl">
+      <div className="row">
+        <div className="col-lg-2" style={{ borderRight: "1px solid #E9E9E9 " }}>
+          <span style={{ display: "none" }}>.</span>
+        </div>
+        <div className="col-lg-8">
           <div
             className="my-whish-section"
             style={{ minHeight: 'calc(100vh - 115px)' }}
@@ -33,7 +35,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                   wishlist.map((wish) => (
                     <div className="my-whish-contain" key={wish._id}>
                       <div className="row">
-                        <div className="col-lg-2 col-md-3 col-sm-12 d-flex justify-content-center">
+                        <div className="col-lg-2 col-md-2 col-sm-12 d-flex justify-content-center">
                           <div className="my-whish-img-box">
                             <Link to={`/product/${wish._id}`}>
                               <img
@@ -43,7 +45,7 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                             </Link>
                           </div>
                         </div>
-                        <div className="col-lg-9 col-md-8 col-sm-12">
+                        <div className="col-lg-7 col-md-7 col-sm-12">
                           <div className="my-wish-list">
                             <a>
                               {' '}
@@ -81,45 +83,53 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                               <i className="fas fa-star" />
                               {wish.rating}
                             </p>
-                            <div className="btn-mywish-body">
-                              <a
-                                style={{ display: 'flex' }}
-                                onClick={() =>
-                                  addtoCart(
-                                    {
-                                      _id: wish._id,
-                                      qty: 1,
-                                    },
-                                    history,
-                                  )
-                                }
-                              >
-                                <p
-                                  className="btn-mywhish"
-                                  style={{ cursor: 'pointer' }}
-                                >
-                                  <i className="bi bi-cart2" />
-                                  <span className=""> Move To Cart </span>
-                                </p>
-                              </a>
-                              <p className="bin-body">
-                                <i
-                                  className="far fa-trash-alt"
-                                  onClick={() => removeFromWishList(wish._id)}
-                                />
-                              </p>
-                            </div>
                           </div>
+
                         </div>
-                        <div className="col-lg-1 col-md-1 col-sm-12 d-flex justify-content-end">
-                          <div className="bin-body">
-                            <a href="#">
+                        <div className="col-lg-3 col-md-3 col-sm-12">
+                          <div className="  wish-card-right-body">
+                            <div className="d-flex justify-content-end align-items-center">
+                              <div className="bin-body ">
+                                <a href="#">
+                                  <i
+                                    className="far fa-trash-alt"
+                                    onClick={() => removeFromWishList(wish._id)}
+                                  />
+                                </a>
+                              </div>
+                            </div>
+                            <div className="">
+                              <div className="btn-mywish-body">
+                                <a
+                                  style={{ display: 'flex' }}
+                                  onClick={() =>
+                                    addtoCart(
+                                      {
+                                        _id: wish._id,
+                                        qty: 1,
+                                      },
+                                      history,
+                                    )
+                                  }
+                                >
+                                  <p
+                                    className="btn-mywhish"
+                                  >
+                                    <i className="bi bi-cart2" />
+                                    <span className=""> Move To Cart </span>
+                                  </p>
+                                </a>
+                                {/* <p className="bin-body">
                               <i
                                 className="far fa-trash-alt"
                                 onClick={() => removeFromWishList(wish._id)}
                               />
-                            </a>
+                            </p> */}
+                              </div>
+                            </div>
                           </div>
+
+
                         </div>
                       </div>
                     </div>

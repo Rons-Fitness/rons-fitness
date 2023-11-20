@@ -17,7 +17,7 @@ const ContactUs = () => {
                 </div>
               </div>
               <div className="row from-contact-body">
-                <div className="col-lg-12 col-md-12 ">
+                <div className="col-lg-12 col-md-12 order-lg-1 order-2 order-md-2">
                   <div
                     className="col-lg-12  contact-body"
                     style={{ backgroundColor: '#FFFFFF' }}
@@ -98,7 +98,7 @@ const ContactUs = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-8 ">
+                <div className="col-lg-8 order-lg-2 order-1 order-md-1">
                   <div className="get-touch-body">
                     <h4>Get In Touch</h4>
                     <p>
@@ -107,36 +107,45 @@ const ContactUs = () => {
                       lobortis quis bibendum quam.
                     </p>
                     <form>
-                      <div className="d-flex justify-content-between">
-                        <div className="first-name">
-                          <input type="text" placeholder="Your Name*" required />
+                      <div className="">
+                        <div className="row justify-content-between">
+                          <div className="first-name col-lg-6 col-md-6 col-sm-12">
+                            <input type="text" placeholder="Your Name*" required />
+                          </div>
+                          <div className="email-name col-lg-6 col-md-6 col-sm-12">
+                            <input type="email" placeholder="Your E-mail" required />
+                          </div>
                         </div>
-                        <div className="email-name">
-                          <input type="email" placeholder="Your E-mail" required />
+                        <div className="row">
+
+                          <div className="number col-lg-12 col-md-12 col-sm-12">
+                            <input type="number" placeholder="Contact Number" required />
+                          </div>
                         </div>
-                      </div>
-                      <div className="number">
-                        <input type="number" placeholder="Contact Number" required />
-                      </div>
-                      <div className="Subject">
-                        <input type="text" placeholder="Subject*" required />
-                      </div>
-                      <div className="d-flex ">
-                        <div className="message col-lg-8 col-sm-12">
-                          <textarea
-                            name="message"
-                            rows="5"
-                            cols=""
-                            placeholder="Type Your Messege*"
-                            required
-                          />
+                        <div className="row">
+
+                          <div className="Subject col-lg-12 col-md-12 col-sm-12">
+                            <input type="text" placeholder="Subject*" required />
+                          </div>
                         </div>
-                        <div className=" text-end col-lg-4 col-sm-12 d-flex  justify-content-end">
-                          <div className="submit-btn">
-                            <input type="submit" placeholder="Submit" value="Submit" />
+                        <div className=" row">
+                          <div className="message col-lg-8 col-md-12 col-sm-12">
+                            <textarea
+                              name="message"
+                              rows="5"
+                              cols=""
+                              placeholder="Type Your Messege*"
+                              required
+                            />
+                          </div>
+                          <div className=" text-end col-lg-4 col-sm-12 d-flex  justify-content-end">
+                            <div className="submit-btn">
+                              <input type="submit" placeholder="Submit" value="Submit" />
+                            </div>
                           </div>
                         </div>
                       </div>
+
 
                     </form>
                   </div>

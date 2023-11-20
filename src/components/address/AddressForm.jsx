@@ -196,7 +196,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                 className="col-12"
                                 type="text"
                                 // placeholder="Flat, house no, Building, company, Apartment"
-                                placeholder="Address line - 2"
+                                placeholder="Address line - 1"
                                 value={shippingAddress.addressLine1}
                                 onChange={(e) =>
                                   changeDetails(
@@ -214,7 +214,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                 className="col-12"
                                 type="text"
                                 // placeholder="Area , street, sector ,village "
-                                placeholder="Address line - 1"
+                                placeholder="Address line - 2"
                                 value={shippingAddress.addressLine2}
                                 onChange={(e) =>
                                   changeDetails(

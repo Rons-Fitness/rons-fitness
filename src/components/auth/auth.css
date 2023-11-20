@@ -140,11 +140,17 @@ select:focus {
 
 .modal-dialog {
   z-index: 9999999;
+
 }
 
 .modal-content {
   border: none;
   padding-bottom: 10px;
+  border-radius: 0px;
+}
+
+.modal-title {
+  font-size: 20px;
 }
 
 .modal-content p {
@@ -171,7 +177,7 @@ select:focus {
 }
 
 .modal-content .modal-header p {
-  font-size: 15px;
+  font-size: 14px;
   margin-bottom: 0;
 }
 
@@ -203,7 +209,7 @@ select:focus {
 }
 
 .modal-content .modal-body .resend-p {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .modal-content .dont-act {
@@ -220,7 +226,7 @@ select:focus {
   border: 1px solid var(--them-colour);
   color: var(--black);
   padding: 8px 20px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   width: 60%;
   transition: ease-out 0.4s;
