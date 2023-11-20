@@ -16,6 +16,8 @@ import ProductReviewsAndDes from './ProductReviewsAndDes';
 const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
   const history = useNavigate();
   const [activeImage, setActiveImage] = useState('');
+
+  const [swiperImages, setSwiperImages] = useState([]);
   // const [qty, setQty] = useState(1);
   const [qty] = useState(1);
 
@@ -49,16 +51,17 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
       setActiveImage(
         selectedProduct.images.find((img) => img?.url !== '')?.url,
       );
+      setSwiperImages(selectedProduct.images.filter((img) => img?.url));
     }
   }, [selectedProduct]);
 
   return (
-    <div className='container-xxl'>
-      <div className='row'>
-        <div className='col-lg-2' style={{ borderRight: "1px solid #E9E9E9" }}>
-          <span style={{ display: "none" }}>.</span>
+    <div className="container-xxl">
+      <div className="row">
+        <div className="col-lg-2" style={{ borderRight: '1px solid #E9E9E9' }}>
+          <span style={{ display: 'none' }}>.</span>
         </div>
-        <div className='col-lg-9'>
+        <div className="col-lg-9">
           <section className="xzoom_part">
             <div
               className="container "
@@ -136,32 +139,30 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                                   isTablet
                                     ? 4
                                     : isMobile
-                                      ? 3
-                                      : selectedProduct &&
-                                        selectedProduct.images.length < 5
-                                        ? selectedProduct.images.length / 2
-                                        : 5
+                                    ? 3
+                                    : swiperImages.length === 5
+                                    ? 3
+                                    : swiperImages.length
                                 }
                               >
-                                {selectedProduct &&
-                                  selectedProduct.images.map(
-                                    ({ url, key }) =>
-                                      url && (
-                                        <SwiperSlide
-                                          className="swiper-slide"
-                                          key={key}
-                                          onClick={() => setActiveImage(url)}
-                                        >
-                                          <img
-                                            src={url}
-                                            alt=""
-                                            className="xzoom-gallery"
-                                            width="80"
-                                            xpreview={url}
-                                          />
-                                        </SwiperSlide>
-                                      ),
-                                  )}
+                                {swiperImages.map(
+                                  ({ url, key }) =>
+                                    url && (
+                                      <SwiperSlide
+                                        className="swiper-slide"
+                                        key={key}
+                                        onClick={() => setActiveImage(url)}
+                                      >
+                                        <img
+                                          src={url}
+                                          alt=""
+                                          className="xzoom-gallery"
+                                          width="80"
+                                          xpreview={url}
+                                        />
+                                      </SwiperSlide>
+                                    ),
+                                )}
                               </Swiper>
                               {/* <div className="swiper-button-next"></div>
                         <div className="swiper-button-prev"></div> */}
@@ -307,11 +308,11 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                               isTablet
                                 ? 3
                                 : isMobile
-                                  ? 3
-                                  : selectedProduct &&
-                                    selectedProduct.images.length < 5
-                                    ? selectedProduct.images.length / 2
-                                    : 4
+                                ? 3
+                                : selectedProduct &&
+                                  selectedProduct.images.length < 5
+                                ? selectedProduct.images.length / 2
+                                : 4
                             }
                             spaceBetween={30}
                             navigation
