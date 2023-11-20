@@ -32,16 +32,21 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
       {loading ? (
         <Loader />
       ) : (
-        <div className='container-xxl'>
-          <div className='row'>
-            <div className='col-lg-2' style={{ borderRight: "1px solid #E9E9E9 " }}><span style={{ display: "none" }}>.</span></div>
-            <div className='col-lg-9'>
+        <div className="container-xxl">
+          <div className="row">
+            <div
+              className="col-lg-2"
+              style={{ borderRight: '1px solid #E9E9E9 ' }}
+            >
+              <span style={{ display: 'none' }}>.</span>
+            </div>
+            <div className="col-lg-9">
               <div className="my-order-section">
                 <div className="container">
                   <div className="col-lg-9 ">
                     <div
                       className="row"
-                    // style={{ justifyContent: 'center' }}
+                      // style={{ justifyContent: 'center' }}
                     >
                       <div className="col-lg-12 com-md-9 col-sm-12">
                         <div className="my-order-body">
@@ -51,7 +56,10 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
 
                           {orders.length ? (
                             orders.map((order) => (
-                              <Link to={`/user/orders/${order._id}`} key={order._id}>
+                              <Link
+                                to={`/user/orders/${order._id}`}
+                                key={order._id}
+                              >
                                 <div className="my-order-contain">
                                   <div className="row">
                                     <div className="col-lg-2 col-md-3  m-0 p-0">
@@ -60,21 +68,22 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                           className={classNames(
                                             'my-order-img-box',
                                             order.currentOrderStatus.status ===
-                                            'Order Delivered' &&
-                                            'my-order-img-box-green',
+                                              'Order Delivered' &&
+                                              'my-order-img-box-green',
                                             order.currentOrderStatus.status ===
-                                            'Cancelled' && 'my-order-img-box-red',
+                                              'Cancelled' &&
+                                              'my-order-img-box-red',
                                           )}
                                         >
                                           <a>
                                             {order.currentOrderStatus &&
-                                              [
-                                                'Order Placed',
-                                                'Order Confirmed',
-                                                'Out For Delivery',
-                                              ].includes(
-                                                order.currentOrderStatus.status,
-                                              ) ? (
+                                            [
+                                              'Order Placed',
+                                              'Order Confirmed',
+                                              'Out For Delivery',
+                                            ].includes(
+                                              order.currentOrderStatus.status,
+                                            ) ? (
                                               <img
                                                 src="/asstes/img/order-logo/package.png"
                                                 alt=""
@@ -92,14 +101,18 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                     <div className="col-lg-9 col-md-9  ">
                                       <div className="my-order-list">
                                         <a>
-                                          <h5>
-                                            Order ID: {order._id}
-                                          </h5>
+                                          <h5>Order ID: {order._id}</h5>
                                           <h6>
                                             Delivery On{' '}
-                                            {moment(order.createdAt)
-                                              .add(4, 'days')
-                                              .format('Do MMMM YYYY')}
+                                            {order.currentOrderStatus.status ===
+                                            'Order Delivered'
+                                              ? moment(
+                                                  order.currentOrderStatus
+                                                    .createdAt,
+                                                ).format('Do MMMM YYYY')
+                                              : moment(order.createdAt)
+                                                  .add(4, 'days')
+                                                  .format('Do MMMM YYYY')}
                                           </h6>
                                         </a>
                                         {/* <div className="sub-title">
@@ -132,9 +145,7 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
             </div>
           </div>
         </div>
-      )
-      }
-
+      )}
     </div>
   );
 }

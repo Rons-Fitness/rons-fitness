@@ -369,11 +369,12 @@ function* removeFromWishList({ payload }) {
   const { _id } = payload;
   try {
     const {
-      data: { data },
+      data: { data, message },
       status,
     } = yield call(removeFromWishListAsync, _id);
     if (status === 200) {
       yield put(removeProductToWishListSuccess(data));
+      Notification('success', message);
     } else {
       yield put(removeProductToWishListError('add product to wishlist error'));
     }
