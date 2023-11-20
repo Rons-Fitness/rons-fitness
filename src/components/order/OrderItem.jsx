@@ -39,9 +39,11 @@ const OrderItem = ({ item, currentOrderStatus }) => {
             </div>
           </div>
         </div>
-        {currentOrderStatus?.status === 'Order Delivered' && (
-          <EditReview id={product?._id} />
-        )}
+        <div className="col-lg-3 col-md-3 ">
+          {currentOrderStatus?.status === 'Order Delivered' && (
+            <EditReview id={product?._id} />
+          )}
+        </div>
       </div>
     </div>
   );

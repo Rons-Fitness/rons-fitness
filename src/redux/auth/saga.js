@@ -403,7 +403,7 @@ function* addProductToCart({ payload }) {
     if (status === 200) {
       localStorage.removeItem('order_Details');
       yield put(addToCartSuccess(cartData));
-      yield put(removeProductToWishList(data._id));
+      // yield put(removeProductToWishList(data._id));
       Notification('success', message);
       if (history) history('/user/cart');
     } else {

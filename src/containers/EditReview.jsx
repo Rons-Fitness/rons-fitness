@@ -24,48 +24,37 @@ const EditReview = ({ updateReview, id }) => {
   }, []);
 
   return (
-    <div style={{ width: '24%', maxWidth: '24%' }}>
-      <div className="User-rating-review-section">
-        <div
-          className="user-rating-review-contain"
-          style={{ margin: 0, padding: 0, background: '#DEDEDE' }}
-        >
-          <div className="row">
-            <div className="col-lg-3 col-md-3" style={{ display: 'contents' }}>
-              <div className="star-rating">
-                <a>
-                  {' '}
-                  {[...Array(rating)].map((active, i) => (
-                    <i
-                      className="fas fa-star active "
-                      key={active}
-                      onClick={() => {
-                        setRating(i + 1);
-                        updateReview({ rating: i + 1, _id: id });
-                      }}
-                      style={{ cursor: 'pointer' }}
-                    />
-                  ))}
-                  {[...Array(5 - rating)].map((inActive, i) => (
-                    <i
-                      className="fas fa-star"
-                      key={inActive}
-                      onClick={() => {
-                        setRating(rating + i + 1);
-                        updateReview({
-                          rating: rating + i + 1,
-                          _id: id,
-                        });
-                      }}
-                      style={{ cursor: 'pointer' }}
-                    />
-                  ))}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>{' '}
+    <div className="col-lg-3 col-md-3" style={{ display: 'contents' }}>
+      <div className="star-rating">
+        <a>
+          {' '}
+          {[...Array(rating)].map((active, i) => (
+            <i
+              className="fas fa-star active "
+              key={active}
+              onClick={() => {
+                setRating(i + 1);
+                updateReview({ rating: i + 1, _id: id });
+              }}
+              style={{ cursor: 'pointer' }}
+            />
+          ))}
+          {[...Array(5 - rating)].map((inActive, i) => (
+            <i
+              className="fas fa-star"
+              key={inActive}
+              onClick={() => {
+                setRating(rating + i + 1);
+                updateReview({
+                  rating: rating + i + 1,
+                  _id: id,
+                });
+              }}
+              style={{ cursor: 'pointer' }}
+            />
+          ))}
+        </a>
+      </div>
     </div>
   );
 };
