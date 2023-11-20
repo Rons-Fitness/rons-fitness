@@ -143,7 +143,7 @@
   }
 
   .nav-section .nav-ul .nav-item a {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .mydropudowan {
@@ -316,6 +316,10 @@
     top: 18px !important;
     height: 15px;
     width: 70px;
+  }
+
+  .High-light-p-active {
+    font-size: 12px;
   }
 
   /* ==============  Product Grid View page end ========================= */
@@ -876,7 +880,7 @@
     margin: 8px !important;
   }
 
-  .my-order-section .my-order-contain .my-order-list a h5 {
+  .my-order-section .my-order-contain .my-order-list h5 {
     font-size: 15px;
   }
 
@@ -1127,6 +1131,7 @@
   .traking-progress-section-mobile .traking-body .stepper-item {
     display: flex;
     gap: 30px;
+    font-size: 12px;
   }
 
   .traking-progress-section-mobile .traking-body .stepper-item iconify-icon {
@@ -1166,7 +1171,7 @@
   }
 
   .xzoom_part .xzoom-thumbs {
-    margin-inline: 20px;
+    margin-inline: 20px !important;
   }
 
   .xzoom_part .btn-xzone-body .btn-xzone {
@@ -1201,6 +1206,16 @@
   .my-whish-section .btn-mywish-body {
     margin-top: 0px !important;
 
+  }
+
+  .delivery-section .address-body .Address-head p a {
+    font-size: 10px;
+  }
+
+  .xzoom_part .xzoom_details .btn-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 

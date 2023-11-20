@@ -115,19 +115,18 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
       <div className="card-body">
         <div className="card-con" style={{ position: 'relative' }}>
           <Link to={`/product/${product._id}`}>
-            <a>
-              <h1
-                className="align-items-center"
-                style={{
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                }}
-              >
-                {product.name} {/* {product.flavour !== '' && ( */}
-                {/* )} */}
-              </h1>
-              {/* {product.flavour !== '' && (
+            <h1
+              className="align-items-center"
+              style={{
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              {product.name} {/* {product.flavour !== '' && ( */}
+              {/* )} */}
+            </h1>
+            {/* {product.flavour !== '' && (
                 <span className="text-end">
                   <iconify-icon
                     icon="mdi:lacto-vegetarian"
@@ -140,7 +139,7 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
                   />
                 </span>
               )} */}
-            </a>
+
           </Link>
           <h6 style={{ width: '100%' }}>The specific products included</h6>
           <p>

@@ -62,19 +62,19 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                 className={classnames(
                   'Order-ID-box',
                   currentOrderStatus &&
-                    currentOrderStatus.status === 'Order Delivered' &&
-                    'my-order-img-box-green',
+                  currentOrderStatus.status === 'Order Delivered' &&
+                  'my-order-img-box-green',
                   currentOrderStatus &&
-                    currentOrderStatus.status === 'Cancelled' &&
-                    'my-order-img-box-red',
+                  currentOrderStatus.status === 'Cancelled' &&
+                  'my-order-img-box-red',
                 )}
               >
                 {currentOrderStatus &&
-                [
-                  'Order Placed',
-                  'Order Confirmed',
-                  'Out For Delivery',
-                ].includes(currentOrderStatus.status) ? (
+                  [
+                    'Order Placed',
+                    'Order Confirmed',
+                    'Out For Delivery',
+                  ].includes(currentOrderStatus.status) ? (
                   <img src="/asstes/img/order-logo/package.png" alt="" />
                 ) : (
                   <img src="/asstes/img/order-logo/package 1.png" alt="" />
@@ -101,8 +101,8 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                         className={classnames(
                           'step-counter',
                           currentOrderStatus &&
-                            currentOrderStatus.status === 'Order Delivered' &&
-                            'my-order-img-box-green',
+                          currentOrderStatus.status === 'Order Delivered' &&
+                          'my-order-img-box-green',
                         )}
                       >
                         <iconify-icon icon="ph:check" />
@@ -140,7 +140,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                         style={{
                           color:
                             currentOrderStatus &&
-                            currentOrderStatus.status === 'Order Delivered'
+                              currentOrderStatus.status === 'Order Delivered'
                               ? 'green'
                               : '#F9DF23',
                         }}
@@ -171,7 +171,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
               </div>
             </div>
 
-            <div className=" order-details-traking-section  ">
+            <div className=" order-details-traking-section ">
               {orderItems &&
                 orderItems.map((item) => (
                   <OrderItem

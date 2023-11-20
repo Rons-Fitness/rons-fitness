@@ -139,10 +139,10 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                                   isTablet
                                     ? 4
                                     : isMobile
-                                    ? 3
-                                    : swiperImages.length === 5
-                                    ? 3
-                                    : swiperImages.length
+                                      ? 3
+                                      : swiperImages.length === 5
+                                        ? 3
+                                        : swiperImages.length
                                 }
                               >
                                 {swiperImages.map(
@@ -308,11 +308,11 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                               isTablet
                                 ? 3
                                 : isMobile
-                                ? 3
-                                : selectedProduct &&
-                                  selectedProduct.images.length < 5
-                                ? selectedProduct.images.length / 2
-                                : 4
+                                  ? 3
+                                  : selectedProduct &&
+                                    selectedProduct.images.length < 5
+                                    ? selectedProduct.images.length / 2
+                                    : 4
                             }
                             spaceBetween={30}
                             navigation
@@ -336,7 +336,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                           </Swiper>
                         )}
                       </div>
-                      <div className="d-flex align-items-center mt-3">
+                      <div className=" mt-3 btn-body">
                         {/* <label for=""> Qty: </label>
                   <input
                     type="number"
