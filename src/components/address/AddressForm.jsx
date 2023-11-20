@@ -114,7 +114,9 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
   return (
     <div className="container-xxl">
       <div className="row">
-        <div className="col-lg-2" style={{ borderRight: "1px solid #E9E9E9 " }}><span style={{ display: "none" }}>.</span></div>
+        <div className="col-lg-2" style={{ borderRight: '1px solid #E9E9E9 ' }}>
+          <span style={{ display: 'none' }}>.</span>
+        </div>
         <div className="col-lg-9">
           <div className="Checkout-section">
             <div className="container">
@@ -143,7 +145,10 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                           onSubmit={(e) => {
                             e.preventDefault();
                             if (!isValidPincode)
-                              return Notification('info', 'Please Enter Valid Pincode');
+                              return Notification(
+                                'info',
+                                'Please Enter Valid Pincode',
+                              );
                             if (!Object.values(address).includes('" "')) {
                               saveAddress(
                                 {
@@ -394,7 +399,8 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                 value="Office"
                                 className={classNames(
                                   'address-btn  ',
-                                  addressType === 'office' && 'activeAddressType',
+                                  addressType === 'office' &&
+                                    'activeAddressType',
                                 )}
                                 style={{
                                   margin: '0 10px',
@@ -410,7 +416,8 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                 value="Other"
                                 className={classNames(
                                   'address-btn ',
-                                  addressType === 'other' && 'activeAddressType',
+                                  addressType === 'other' &&
+                                    'activeAddressType',
                                 )}
                                 style={{
                                   height: 35.5,
@@ -422,13 +429,12 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                             </div>
                             <div className="d-flex  my-3">
                               <input
-                                type="submit"
                                 style={{ cursor: 'pointer' }}
                                 value="Save & Continue"
-
                                 className="shipping-btn"
                                 onClick={() => {
-                                  const btn = document.getElementById('shipping_btn');
+                                  const btn =
+                                    document.getElementById('shipping_btn');
                                   btn.click();
                                 }}
                               />
@@ -535,7 +541,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                           placeholder="City"
                           value={billingAddress.city}
                           onChange={(e) =>
-                            changeDetails('billingAddress', 'city', e.target.value)
+                            changeDetails(
+                              'billingAddress',
+                              'city',
+                              e.target.value,
+                            )
                           }
                         />
                         <br />
@@ -569,7 +579,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                             className="checkout-input-wid"
                             value={billingAddress.state}
                             onChange={(e) =>
-                              changeDetails('billingAddress', 'state', e.target.value)
+                              changeDetails(
+                                'billingAddress',
+                                'state',
+                                e.target.value,
+                              )
                             }
                           />
                         </div>
@@ -582,7 +596,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                             className="checkout-input-wid"
                             value={billingAddress.country}
                             onChange={(e) =>
-                              changeDetails('billingAddress', 'country', e.target.value)
+                              changeDetails(
+                                'billingAddress',
+                                'country',
+                                e.target.value,
+                              )
                             }
                           />
 
@@ -656,7 +674,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                             'shipping-btn  btn-views-active',
                             addressType === 'home' && 'btn-views-active',
                           )}
-                          style={{ height: 35.5, padding: '0 30px', borderRadius: 0 }}
+                          style={{
+                            height: 35.5,
+                            padding: '0 30px',
+                            borderRadius: 0,
+                          }}
                           onClick={() => changeAddressType('home')}
                         />
                         <input
@@ -681,7 +703,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                             'shipping-btn  btn-views-active',
                             addressType === 'other' && 'btn-views-active',
                           )}
-                          style={{ height: 35.5, padding: '0 30px', borderRadius: 0 }}
+                          style={{
+                            height: 35.5,
+                            padding: '0 30px',
+                            borderRadius: 0,
+                          }}
                           onClick={() => changeAddressType('other')}
                         />
                         <div className="d-flex justify-content-end my-3">
@@ -704,8 +730,8 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
             </div>
           </div>
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 
