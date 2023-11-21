@@ -433,7 +433,6 @@
   }
 
   .xzoom-thumbs {
-    display: flex;
     gap: 10px;
     margin-inline: 50px !important;
   }
@@ -1084,6 +1083,14 @@
 }
 
 @media (max-width: 767px) {
+  .navbar-nav .dropdown-menu {
+    left: 100px;
+  }
+
+  .navbar-nav .dropdown-menu a {
+    font-size: 12px;
+  }
+
   .banner-wrapper .hero-body {
     top: 40%;
     left: 60px;
@@ -1190,6 +1197,10 @@
     font-size: 12px;
   }
 
+  .cart-section .Delivery-fix-body .place-btn p {
+    margin-left: auto;
+  }
+
   .my-whish-section .my-whish-contain .my-wish-list a h5 {
     font-size: 14px;
   }
@@ -1212,10 +1223,28 @@
     font-size: 10px;
   }
 
-  .xzoom_part .xzoom_details .btn-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+
+  .xzoom-body-contain {
+    padding: 20px !important;
+  }
+
+
+
+  .xzoom_part .xzoom_details .color-select-section {
+    margin-top: 20px;
+  }
+
+  .xzoom_part .xzoom_details .color-text {
+    padding: 2px 0px;
+  }
+
+  .contact-section .get-touch-body form .first-name {
+    width: 100%;
+  }
+
+  .contact-section .get-touch-body form .email-name {
+    width: 100%;
   }
 }
 

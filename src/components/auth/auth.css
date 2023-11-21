@@ -140,7 +140,7 @@ select:focus {
 
 .modal-dialog {
   z-index: 9999999;
-
+  width: 377px;
 }
 
 .modal-content {
@@ -228,7 +228,7 @@ select:focus {
   padding: 8px 20px;
   font-size: 15px;
   font-weight: 400;
-  width: 60%;
+  width: 100%;
   transition: ease-out 0.4s;
 }
 
@@ -262,7 +262,7 @@ select:focus {
     padding: 8px 20px;
     font-size: 12px;
     font-weight: 400;
-    width: 50%;
+    width: 100%;
   }
 
   .modal-content .modal-body .resend-p {

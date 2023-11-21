@@ -58,6 +58,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
           <a>
             <Link to={`/product/${product._id}`}>
               <p
+                className="main-text"
                 style={{
                   whiteSpace: 'nowrap',
                   overflow: 'hidden',
@@ -69,16 +70,16 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
             </Link>
             {/* {product.flavour !== '' && (
               <span className="text-end">
-                <iconify-icon
-                  icon="mdi:lacto-vegetarian"
-                  className="veg-icon"
-                  style={
-                    product.nonVeg
-                      ? { color: 'red', position: 'absolute', right: 17 }
-                      : { color: 'green', position: 'absolute', right: 17 }
-                  }
-                />
-              </span>
+              <iconify-icon
+                icon="mdi:lacto-vegetarian"
+                className="veg-icon"
+                style={
+                  product.nonVeg
+                    ? { color: 'red', position: 'absolute', right: 17 }
+                    : { color: 'green', position: 'absolute', right: 17 }
+                }
+              />
+            </span>
             )} */}
           </a>
           <h6 style={{ width: '100%' }}>The specific products included</h6>
@@ -110,7 +111,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
           </a>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

@@ -9,7 +9,7 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ReactImageMagnify from 'react-image-magnify';
-import { Autoplay, Pagination, Navigation } from 'swiper';
+import { Navigation } from 'swiper';
 import { Link, useNavigate } from 'react-router-dom';
 import ProductReviewsAndDes from './ProductReviewsAndDes';
 
@@ -127,46 +127,44 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                             }}
                           />
                         </div>
-                        <div className="container">
-                          <div className="xzoom-thumbs">
-                            <div className="swiper mySwiper">
-                              <Swiper
-                                className="swiper-wrapper"
-                                navigation
-                                modules={[Autoplay, Pagination, Navigation]}
-                                spaceBetween={25}
-                                slidesPerView={
-                                  isTablet
-                                    ? 4
-                                    : isMobile
+                        <div className="xzoom-thumbs">
+                          <div className="">
+                            <Swiper
+                              className="mySwiper color-swiper-select"
+                              navigation
+                              modules={[Navigation]}
+                              spaceBetween={25}
+                              slidesPerView={
+                                isTablet
+                                  ? 4
+                                  : isMobile
+                                    ? 3
+                                    : swiperImages.length === 5
                                       ? 3
-                                      : swiperImages.length === 5
-                                        ? 3
-                                        : swiperImages.length
-                                }
-                              >
-                                {swiperImages.map(
-                                  ({ url, key }) =>
-                                    url && (
-                                      <SwiperSlide
-                                        className="swiper-slide"
-                                        key={key}
-                                        onClick={() => setActiveImage(url)}
-                                      >
-                                        <img
-                                          src={url}
-                                          alt=""
-                                          className="xzoom-gallery"
-                                          width="80"
-                                          xpreview={url}
-                                        />
-                                      </SwiperSlide>
-                                    ),
-                                )}
-                              </Swiper>
-                              {/* <div className="swiper-button-next"></div>
+                                      : swiperImages.length
+                              }
+                            >
+                              {swiperImages.map(
+                                ({ url, key }) =>
+                                  url && (
+                                    <SwiperSlide
+                                      className="swiper-slide"
+                                      key={key}
+                                      onClick={() => setActiveImage(url)}
+                                    >
+                                      <img
+                                        src={url}
+                                        alt=""
+                                        className="xzoom-gallery"
+                                        width="80"
+                                        xpreview={url}
+                                      />
+                                    </SwiperSlide>
+                                  ),
+                              )}
+                            </Swiper>
+                            {/* <div className="swiper-button-next"></div>
                         <div className="swiper-button-prev"></div> */}
-                            </div>
                           </div>
                         </div>
                       </div>

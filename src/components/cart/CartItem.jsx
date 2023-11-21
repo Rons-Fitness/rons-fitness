@@ -36,7 +36,7 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
             </Link>
           </div>
         </div>
-        <div className="col-lg-8 col-md-7 col-sm-12">
+        <div className="col-lg-7 col-md-7 col-sm-12">
           <div className="my-cart-list">
             <Link to={`/product/${value._id}`}>
               <h5>{value.name} </h5>
@@ -91,11 +91,11 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
             </div> */}
           </div>
         </div>
-        <div className="col-lg-2 col-md-3 col-sm-12   bin-box ">
+        <div className="col-lg-3 col-md-3 col-sm-12   bin-box ">
           <div className="cart-oty-body">
             <div className="cart-price-text"> {qty * value.price} $</div>
             <div className=" oty-box">
-              <label for="number" className='qty-text'> Qty: </label>
+              <label for="number" className='qty-text'> Qty </label>
               <input
                 min="1"
                 type="number"

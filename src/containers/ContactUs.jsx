@@ -111,7 +111,7 @@ const ContactUs = () => {
                 </div>
                 <div className="col-lg-8 order-lg-2 order-1 order-md-1">
                   <div className="get-touch-body">
-                    <h4>Get In Touch</h4>
+                    <h4 className="pb-3 ">Get In Touch</h4>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Mattis neque ultrices tristique amet erat vitae eget dolor
@@ -130,19 +130,8 @@ const ContactUs = () => {
                               value={ContactDetails.name}
                             />
                           </div>
-                          <div className="email-name col-lg-6 col-md-6 col-sm-12">
-                            <input
-                              type="email"
-                              placeholder="Your E-mail"
-                              required
-                              name="email"
-                              onChange={handleChange}
-                              value={ContactDetails.email}
-                            />
-                          </div>
-                        </div>
-                        <div className="row">
-                          <div className="number col-lg-12 col-md-12 col-sm-12">
+
+                          <div className="number col-lg-6 col-md-6 col-sm-12">
                             <input
                               type="number"
                               placeholder="Contact Number"
@@ -163,8 +152,18 @@ const ContactUs = () => {
                             />
                           </div>
                         </div>
-                        <div className="row">
-                          <div className="Subject col-lg-12 col-md-12 col-sm-12">
+                        <div className="row justify-content-between">
+                          <div className="email-name col-lg-6 col-md-6 col-sm-12">
+                            <input
+                              type="email"
+                              placeholder="Your E-mail"
+                              required
+                              name="email"
+                              onChange={handleChange}
+                              value={ContactDetails.email}
+                            />
+                          </div>
+                          <div className="Subject col-lg-6 col-md-6 col-sm-12">
                             <input
                               type="text"
                               placeholder="Subject*"
