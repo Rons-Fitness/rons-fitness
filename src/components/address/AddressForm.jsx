@@ -163,7 +163,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                           }}
                         >
                           <div className="row">
-                            <div className="col-lg-3 col-md-6 col-sm-12 d-flex justify-content-between">
+                            <div className="col-lg-3 col-md-6 col-sm-6 d-flex justify-content-between">
                               <input
                                 type="text"
                                 required
@@ -179,7 +179,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                 }
                               />
                             </div>
-                            <div className="col-lg-3 col-md-6  col-sm-12">
+                            <div className="col-lg-3 col-md-6  col-sm-6">
                               <input
                                 type="text"
                                 required
@@ -388,7 +388,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                 )}
                                 style={{
                                   height: 35.5,
-                                  padding: '0 30px',
+
                                   borderRadius: 0,
                                 }}
                                 onClick={() => changeAddressType('home')}
@@ -400,12 +400,12 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                 className={classNames(
                                   'address-btn  ',
                                   addressType === 'office' &&
-                                    'activeAddressType',
+                                  'activeAddressType',
                                 )}
                                 style={{
                                   margin: '0 10px',
                                   height: 35.5,
-                                  padding: '0 30px',
+
                                   borderRadius: 0,
                                 }}
                                 onClick={() => changeAddressType('office')}
@@ -417,11 +417,11 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                 className={classNames(
                                   'address-btn ',
                                   addressType === 'other' &&
-                                    'activeAddressType',
+                                  'activeAddressType',
                                 )}
                                 style={{
                                   height: 35.5,
-                                  padding: '0 30px',
+
                                   borderRadius: 0,
                                 }}
                                 onClick={() => changeAddressType('other')}

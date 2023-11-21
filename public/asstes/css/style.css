@@ -1450,7 +1450,6 @@
   color: #797676;
   font-weight: 400;
   padding: 2px 8px;
-  border-radius: 5px;
   margin-left: 10px;
   font-size: 12px;
   background: #e0dcdc;
@@ -3568,7 +3567,7 @@ select:focus {
 }
 
 .slider-card .slider-cat .box-card .card-body .card-con {
-  padding: 1rem 1rem;
+  padding: 0rem 1rem;
 }
 
 .slider-card .slider-cat .box-card .card-body .card-con .main-text {
