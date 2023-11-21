@@ -34,7 +34,11 @@
   margin: 0;
   cursor: pointer;
   font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+}
+
+.product-grid-left-section .product-grid-left-box .left-box-main .main-white p {
+  font-size: 16px;
 }
 
 .product-grid-left-section .product-grid-left-box .left-box-main .Left-contain {
@@ -52,7 +56,7 @@
 
 .product-grid-left-section .product-grid-left-box .left-box-main .Left-contain .High-light-p {
   cursor: default;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .product-grid-left-section .product-grid-left-box .left-box-main .Left-contain .High-light-p:hover {
@@ -61,6 +65,7 @@
 
 .High-light-p-active {
   color: var(--them-colour);
+  font-size: 15px;
 }
 
 .product-grid-left-section .product-grid-left-box .left-box-main .Left-contain .star {
@@ -591,8 +596,8 @@
 }
 
 .xzoom_part .xzoom_details h4 {
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: 500;
   letter-spacing: 1px;
   line-height: 25px;
   width: min(100% - 0px, 90%);
@@ -995,7 +1000,7 @@
 .my-whish-section .my-whish-contain .my-wish-list a h5 {
   margin: 0;
   letter-spacing: 1px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -1006,16 +1011,20 @@
 }
 
 .my-whish-section .my-whish-contain .my-wish-list h3 {
-  font-size: 14px;
+  font-size: 15px;
   margin: 0;
   line-height: 26px;
-  font-weight: 400;
+  font-weight: 500;
+display: flex;
+  align-items: center;
 }
 
 .my-whish-section .my-whish-contain .my-wish-list h3 span {
   color: #222222;
   font-weight: 400;
   font-size: 11px;
+  font-weight: 400;
+  margin-left: 10px;
 }
 
 .my-whish-section .my-whish-contain .my-wish-list .star i {
@@ -3467,6 +3476,8 @@ select:focus {
 }
 
 .slider-card .trending-head h1 {
+  display: flex;
+  align-items: center;
   color: #3B3B3B;
   font-size: 20px;
   letter-spacing: 2.1px;
@@ -3561,7 +3572,7 @@ select:focus {
   padding: 1rem 1rem;
 }
 
-.slider-card .slider-cat .box-card .card-body .card-con h1 {
+.slider-card .slider-cat .box-card .card-body .card-con .main-text {
   font-weight: 400;
   line-height: normal;
   font-size: 16px;
@@ -3569,9 +3580,9 @@ select:focus {
   line-height: normal;
   text-transform: capitalize;
   margin: 0;
-  display: flex;
-  justify-content: space-between;
+
   letter-spacing: 1px;
+  margin-bottom: 0;
 }
 
 .slider-card .slider-cat .box-card .card-body .card-con h6 {

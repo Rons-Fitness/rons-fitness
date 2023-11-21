@@ -116,7 +116,7 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
         <div className="card-con" style={{ position: 'relative' }}>
           <Link to={`/product/${product._id}`}>
             <p
-              className="align-items-center"
+              className="align-items-center main-text"
               style={{
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
