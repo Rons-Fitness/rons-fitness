@@ -95,12 +95,16 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
           <div className="cart-oty-body">
             <div className="cart-price-text"> {qty * value.price} $</div>
             <div className=" oty-box">
-              <label for="number" className='qty-text'> Qty </label>
+              <label for="number" className="qty-text">
+                Qty{' '}
+              </label>
               <input
                 min="1"
                 type="number"
                 defaultValue={qty}
-                onChange={(e) => setcartQty(e.target.value)}
+                onChange={(e) =>
+                  Number(e.target.value > 0) && setcartQty(e.target.value)
+                }
                 className="form-control cart-input"
                 id="number"
               />
