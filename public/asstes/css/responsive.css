@@ -1080,6 +1080,10 @@
   .Order-Details-traking-section .traking-progress-section .stepper-item::before {
     top: 35px;
   }
+
+  .cat-round .carte-body .carte-contain .carte-img-box {
+    width: 100px;
+  }
 }
 
 @media (max-width: 767px) {
@@ -1252,4 +1256,34 @@
   }
 }
 
-/*# sourceMappingURL=responsive.css.map */
+@media(min-width:1024px) and (max-width:1024px) {
+  .product-grid-left-section .product-grid-left-box {
+    background: var(--white);
+    padding: 10px 0px;
+    margin: 10px 0px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: min(100% - 0px, 95%);
+  }
+}
+
+@media (min-width:430px) and (max-width:430px) {
+  .products-grid-body .box-card {
+    width: 168px;
+  }
+}
+
+@media(min-width:768px) and (max-width:768px) {
+  .products-grid-body .box-card {
+    width: 214px;
+  }
+
+  .xzoom_part .xzoom_details .color-text {
+    padding: 4px 0px;
+  }
+}
+
+@media(min-width:820px) and (max-width:820px) {
+  .xzoom_part .xzoom_details .color-text {
+    padding: 4px 0px;
+  }
+}
