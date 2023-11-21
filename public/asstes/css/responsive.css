@@ -1198,7 +1198,7 @@
   }
 
   .cart-section .Delivery-fix-body .place-btn p {
-    margin-left: auto;
+    margin-right: auto !important;
   }
 
   .my-whish-section .my-whish-contain .my-wish-list a h5 {
@@ -1245,6 +1245,10 @@
 
   .contact-section .get-touch-body form .email-name {
     width: 100%;
+  }
+
+  .delivery-section .address-body .delivery-contain {
+    background: none;
   }
 }
 

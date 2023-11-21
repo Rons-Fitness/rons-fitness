@@ -111,7 +111,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
           </a>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
