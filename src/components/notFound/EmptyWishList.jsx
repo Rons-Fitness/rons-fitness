@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const EmptyWishList = () => {
   return (
-    <div className="empty-state">
+    <div className="empty-state" style={{ marginTop: 30 }}>
       <div className="content">
         <div className="empty-state__icon">
           <img src="/asstes/img/notFound/empty_wishList.jpg" alt="" />

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const EmptyOrder = () => {
   return (
-    <div className="empty-state" style={{ width: '80vw' }}>
+    <div className="empty-state" style={{ marginTop: 30 }}>
       <div className="content">
         <div className="empty-state__icon">
           <img src="/asstes/img/notFound/empty_order.jpg" alt="" />

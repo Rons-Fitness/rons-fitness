@@ -41,21 +41,20 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
               <span style={{ display: 'none' }}>.</span>
             </div>
             <div className="col-lg-9">
-              <div className="my-order-section">
-                <div className="container">
-                  <div className="col-lg-9 ">
-                    <div
-                      className="row"
-                      // style={{ justifyContent: 'center' }}
-                    >
-                      <div className="col-lg-12 com-md-9 col-sm-12">
-                        <div className="my-order-body">
-                          <div className="my-order-head">
-                            <h1 style={{ zIndex: 1 }}>My Order</h1>
-                          </div>
-
-                          {orders.length ? (
-                            orders.map((order) => (
+              {orders.length ? (
+                <div className="my-order-section">
+                  <div className="container">
+                    <div className="col-lg-9 ">
+                      <div
+                        className="row"
+                        // style={{ justifyContent: 'center' }}
+                      >
+                        <div className="col-lg-12 com-md-9 col-sm-12">
+                          <div className="my-order-body">
+                            <div className="my-order-head">
+                              <h1 style={{ zIndex: 1 }}>My Order</h1>
+                            </div>
+                            {orders.map((order) => (
                               <Link
                                 to={`/user/orders/${order._id}`}
                                 key={order._id}
@@ -125,16 +124,16 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
                                   </div>
                                 </div>
                               </Link>
-                            ))
-                          ) : (
-                            <EmptyOrder />
-                          )}
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <EmptyOrder />
+              )}
             </div>
           </div>
         </div>
