@@ -113,7 +113,9 @@ const Footer = () => {
             <Link className="icon-footer-box ">
               instagram <i className="fab fa-instagram" />
             </Link>
-            <Link className="icon-footer-box mt-2 ">Whatsapp <i className="fab fa-whatsapp" /></Link>
+            <Link className="icon-footer-box mt-2 ">
+              Whatsapp <i className="fab fa-whatsapp" />
+            </Link>
           </div>
         </div>
         <div className="d-flex justify-content-end mt-3">

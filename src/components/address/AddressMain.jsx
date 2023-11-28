@@ -10,10 +10,12 @@ function AddressMain({
   addressToDeliver,
 }) {
   return (
-    <div className='container-xxl'>
-      <div className='row'>
-        <div className='col-lg-2' style={{ borderRight: "1px solid #E9E9E9 " }}><span style={{ display: "none" }}>.</span></div>
-        <div className='col-lg-9'>
+    <div className="container-xxl">
+      <div className="row">
+        <div className="col-lg-2" style={{ borderRight: '1px solid #E9E9E9 ' }}>
+          <span style={{ display: 'none' }}>.</span>
+        </div>
+        <div className="col-lg-9">
           <div
             className="delivery-section"
             style={{ background: '#FFFFFF', minHeight: 'calc(100vh - 115px)' }}
@@ -30,7 +32,12 @@ function AddressMain({
                         </p>
                       </div>
                       {addresses.map(
-                        ({ _id, addressType, shippingAddress, billingAddress }) => (
+                        ({
+                          _id,
+                          addressType,
+                          shippingAddress,
+                          billingAddress,
+                        }) => (
                           <AddressBox
                             key={_id}
                             _id={_id}

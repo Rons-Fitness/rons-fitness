@@ -82,10 +82,12 @@ function CartMain({
   };
 
   return (
-    <div className='container-xxl'>
-      <div className='row'>
-        <div className='col-lg-2' style={{ borderRight: "1px solid #E9E9E9 " }}><span style={{ display: "none" }}>.</span></div>
-        <div className='col-lg-9'>
+    <div className="container-xxl">
+      <div className="row">
+        <div className="col-lg-2" style={{ borderRight: '1px solid #E9E9E9 ' }}>
+          <span style={{ display: 'none' }}>.</span>
+        </div>
+        <div className="col-lg-9">
           <div className="cart-section">
             <div className="container">
               {cart && cart?.products && cart?.products.length === 0 ? (
@@ -119,7 +121,11 @@ function CartMain({
                       <table className="table">
                         <thead>
                           <tr>
-                            <th scope="col" colSpan="4" className="Price-detal ">
+                            <th
+                              scope="col"
+                              colSpan="4"
+                              className="Price-detal "
+                            >
                               Price Details
                             </th>
                           </tr>
@@ -129,13 +135,16 @@ function CartMain({
                           <tr>
                             <th scope="row" />
                             <td className="subtotal">Subtotal :</td>
-                            <td className="text-end price-text">{cart?.subTotal} $</td>
+                            <td className="text-end price-text">
+                              {cart?.subTotal} $
+                            </td>
                           </tr>
                           <tr>
                             <th scope="row" />
                             <td className="discount">Discount :</td>
                             <td className="text-end price-text">
-                              <span className="me-2 ">-</span> {cart?.discount} $
+                              <span className="me-2 ">-</span> {cart?.discount}{' '}
+                              $
                             </td>
                           </tr>
                           <tr>
@@ -159,80 +168,82 @@ function CartMain({
                         </tbody>
                       </table>
                     </div>
-                    {
-                      addressToDeliver ? (
-                        <div className="Delivery-fix-body" >
-                          <div className="Delivery-at-contain">
-                            <div className="icon-box">
-                              <iconify-icon icon="mdi:map-marker-outline" />{' '}
-                            </div>
-                            <div style={{ width: '88%' }}>
-                              <div className="Delivery-at">
-                                <p>
+                    {addressToDeliver ? (
+                      <div className="Delivery-fix-body">
+                        <div className="Delivery-at-contain">
+                          <div className="icon-box">
+                            <iconify-icon icon="mdi:map-marker-outline" />{' '}
+                          </div>
+                          <div style={{ width: '88%' }}>
+                            <div className="Delivery-at">
+                              <p>
+                                {' '}
+                                Delivery at{' '}
+                                <span className="tag">
                                   {' '}
-                                  Delivery at{' '}
-                                  <span className="tag">
-                                    {' '}
-                                    {addressToDeliver?.addressType}
-                                  </span>
-                                </p>{' '}
-                                <span className="">
-                                  <Link to="/user/address" className="Change">
-                                    <a>Change</a>
-                                  </Link>
+                                  {addressToDeliver?.addressType}
                                 </span>
-                              </div>
-                              <p
-                                className="addres"
-                                style={{
-                                  whiteSpace: 'nowrap',
-                                  overflow: 'hidden',
-                                  textOverflow: 'ellipsis',
-                                }}
-                              >
-                                {addressToDeliver?.shippingAddress.addressLine1}
-                                <br />
-                                {/* {addressToDeliver?.shippingAddress.addressLine2} */}
-                              </p>
-                            </div>
-                          </div>
-                          <a
-                            onClick={() =>
-                              handlePayment(addressToDeliver && addressToDeliver._id)
-                            }
-                            className="place-btn"
-                          >
-                            <p>Place Order</p>
-                          </a>
-                        </div>
-                      ) : (
-                        <div className="Delivery-fix-body">
-                          <div className="Delivery-at-contain">
-                            <div className="icon-box">
-                              <iconify-icon icon="mdi:map-marker-outline" />{' '}
-                            </div>
-                            <div>
-                              <div className="Delivery-at">
-                                <Link to="/user/address/new" className="Change">
-                                  <p style={{ margin: 'auto', color: '#F9DF23' }}>
-                                    Select Delivery Address
-                                  </p>{' '}
+                              </p>{' '}
+                              <span className="">
+                                <Link to="/user/address" className="Change">
+                                  <a>Change</a>
                                 </Link>
-                              </div>
+                              </span>
+                            </div>
+                            <p
+                              className="addres"
+                              style={{
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                              }}
+                            >
+                              {addressToDeliver?.shippingAddress.addressLine1}
+                              <br />
+                              {/* {addressToDeliver?.shippingAddress.addressLine2} */}
+                            </p>
+                          </div>
+                        </div>
+                        <a
+                          onClick={() =>
+                            handlePayment(
+                              addressToDeliver && addressToDeliver._id,
+                            )
+                          }
+                          className="place-btn"
+                        >
+                          <p>Place Order</p>
+                        </a>
+                      </div>
+                    ) : (
+                      <div className="Delivery-fix-body">
+                        <div className="Delivery-at-contain">
+                          <div className="icon-box">
+                            <iconify-icon icon="mdi:map-marker-outline" />{' '}
+                          </div>
+                          <div>
+                            <div className="Delivery-at">
+                              <Link to="/user/address/new" className="Change">
+                                <p style={{ margin: 'auto', color: '#F9DF23' }}>
+                                  Select Delivery Address
+                                </p>{' '}
+                              </Link>
                             </div>
                           </div>
-                          <a
-                            onClick={() =>
-                              handlePayment(addressToDeliver && addressToDeliver._id)
-                            }
-                            className="place-btn"
-                            style={{ cursor: 'pointer' }}
-                          >
-                            <p>Place Order</p>
-                          </a>
                         </div>
-                      )
-                    }
+                        <a
+                          onClick={() =>
+                            handlePayment(
+                              addressToDeliver && addressToDeliver._id,
+                            )
+                          }
+                          className="place-btn"
+                          style={{ cursor: 'pointer' }}
+                        >
+                          <p>Place Order</p>
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -241,7 +252,6 @@ function CartMain({
         </div>
       </div>
     </div>
-
   );
 }
 

@@ -42,11 +42,13 @@ function UserProfile({
 
   return (
     <div>
-
-      <div className="container-xxl" >
+      <div className="container-xxl">
         <div className="profile-section">
           <div className="row">
-            <div className="col-lg-2 col-md-4 p-0 order-lg-1 order-2 order-md-1" style={{ borderRight: "1px solid #E9E9E9 " }}>
+            <div
+              className="col-lg-2 col-md-4 p-0 order-lg-1 order-2 order-md-1"
+              style={{ borderRight: '1px solid #E9E9E9 ' }}
+            >
               <div className="profile-left-body">
                 <div className="d-flex py-2">
                   <Link to="/user/orders" className="d-flex">
@@ -275,7 +277,7 @@ function UserProfile({
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 

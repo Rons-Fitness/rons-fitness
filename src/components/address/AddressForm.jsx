@@ -400,7 +400,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                 className={classNames(
                                   'address-btn  ',
                                   addressType === 'office' &&
-                                  'activeAddressType',
+                                    'activeAddressType',
                                 )}
                                 style={{
                                   margin: '0 10px',
@@ -417,7 +417,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                 className={classNames(
                                   'address-btn ',
                                   addressType === 'other' &&
-                                  'activeAddressType',
+                                    'activeAddressType',
                                 )}
                                 style={{
                                   height: 35.5,
