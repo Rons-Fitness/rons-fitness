@@ -111,7 +111,7 @@ const Footer = () => {
           </div> */}
           <div className="col-lg-6 col-md-6 col-sm-6 ">
             <Link className="icon-footer-box ">
-              instagram <i className="fab fa-instagram" />
+              Instagram <i className="fab fa-instagram" />
             </Link>
             <Link className="icon-footer-box mt-2 ">
               Whatsapp <i className="fab fa-whatsapp" />
@@ -120,11 +120,11 @@ const Footer = () => {
         </div>
         <div className="d-flex justify-content-end mt-3">
           <p className="copy-right-text">
-            2023<sup>©</sup> ESPACE CARRE All Right Reserved
+            Copyrights © 2023 All Rights Reserved | Creative Cartel
           </p>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 };
 
