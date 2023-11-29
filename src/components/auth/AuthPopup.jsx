@@ -3,19 +3,23 @@ import './auth.css';
 import { Modal } from 'react-bootstrap';
 import Notification from 'components/Notification/Notification';
 
+const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
+
 function AuthPopup({
   sendOtp,
   verifyUserOtp,
   authPopupState,
   changePopupState,
 }) {
-  const reg = new RegExp('^[0-9]*$');
-  const [mobileNo, setMobileNo] = useState('');
+  const reg = new RegExp('^[0-9]{0,10}$');
+
+  const [mobileNo, setMobileNo] = useState(countryCode);
   const [otp, setOtp] = useState('');
   const [otpSent, setOtpSent] = useState(false);
 
   const handleSubmit = () => {
-    if (reg.test(Number(mobileNo)) && mobileNo.length === 10) {
+    const numericPart = mobileNo.slice(3); // Get the part of the input excluding the country code
+    if (reg.test(numericPart)) {
       if (otpSent) {
         verifyUserOtp({ otp, mobileNo });
       } else {
@@ -57,15 +61,17 @@ function AuthPopup({
               <input
                 className="number-to-text"
                 type="tel"
-                minLength="10"
-                maxLength="10"
                 placeholder="Contact Number"
                 name="mobileNo"
                 value={mobileNo}
-                onChange={(e) =>
-                  reg.test(Number(e.target.value)) &&
-                  setMobileNo(e.target.value.trim())
-                }
+                onChange={(e) => {
+                  const input = e.target.value;
+                  const numericPart = input.slice(countryCode.length); // Get the part of the input excluding the country code
+
+                  if (reg.test(numericPart)) {
+                    setMobileNo(`${countryCode}${numericPart}`); // If it's only numbers, update the state
+                  }
+                }}
               />
               {otpSent ? (
                 <>

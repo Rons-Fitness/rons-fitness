@@ -159,7 +159,7 @@ export function* watchLoginUser() {
 const verifyOtpAsync = async (mobileNo, otp) => {
   try {
     const res = await API.post('/user/verify-otp', {
-      mobileNo: Number(mobileNo),
+      mobileNo,
       otp: Number(otp),
     });
 
