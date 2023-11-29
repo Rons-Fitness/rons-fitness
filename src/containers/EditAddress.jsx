@@ -9,6 +9,8 @@ import {
   updateUserAddress,
 } from 'redux/auth/actions';
 
+const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
+
 const EditAddress = ({
   getAddressFromId,
   selectedAddress,
@@ -30,7 +32,7 @@ const EditAddress = ({
       city: '',
       state: '',
       country: '',
-      phoneNo: '',
+      phoneNo: countryCode,
     },
     billingAddress: {
       firstName: '',
@@ -41,7 +43,7 @@ const EditAddress = ({
       city: '',
       state: '',
       country: '',
-      phoneNo: '',
+      phoneNo: countryCode,
     },
   });
   useEffect(() => {

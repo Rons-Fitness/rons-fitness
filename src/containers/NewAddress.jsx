@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { changeSearchText, createUserAddress } from 'redux/auth/actions';
 
+const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
+
 const NewAddress = ({ addNewAddress, keyword, setSearchText, loading }) => {
   const history = useNavigate();
   const [address, setAddress] = useState({
@@ -18,7 +20,7 @@ const NewAddress = ({ addNewAddress, keyword, setSearchText, loading }) => {
       city: '',
       state: '',
       country: '',
-      phoneNo: '',
+      phoneNo: countryCode,
     },
     billingAddress: {
       firstName: '',
@@ -29,7 +31,7 @@ const NewAddress = ({ addNewAddress, keyword, setSearchText, loading }) => {
       city: '',
       state: '',
       country: '',
-      phoneNo: '',
+      phoneNo: countryCode,
     },
   });
   useEffect(() => {

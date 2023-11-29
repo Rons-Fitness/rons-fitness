@@ -3,17 +3,16 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import classNames from 'classnames';
-import Notification from 'components/Notification/Notification';
-import API from 'helpers/API';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
+
 const AddressForm = ({ address, setAddress, saveAddress }) => {
   const history = useNavigate();
-  const reg = new RegExp('^[0-9]*$');
+  const reg = new RegExp('^[0-9]{0,10}$');
   const { shippingAddress, billingAddress, addressType, _id } = address;
   const [setAsAbove, setsetAsAbove] = useState(true);
-  const [isValidPincode, setisValidPincode] = useState(true);
 
   const changeDetails = (type, key, value) => {
     if (setAsAbove) {
@@ -50,53 +49,6 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
         addressType: value,
       };
     });
-  };
-
-  const updateDetailsBasedOnPin = async (pin, type) => {
-    if (pin.length === 6) {
-      const {
-        data: { data, success },
-      } = await API.get(`/address/pincode/${pin}`);
-      if (success) {
-        setisValidPincode(true);
-        const { stateName, districtName, country } = data;
-        if (setAsAbove) {
-          if (type === 'shippingAddress')
-            setAddress((oldVal) => {
-              return {
-                ...oldVal,
-                shippingAddress: {
-                  ...oldVal.shippingAddress,
-                  state: stateName,
-                  city: districtName,
-                  country,
-                },
-                billingAddress: {
-                  ...oldVal.billingAddress,
-                  state: stateName,
-                  city: districtName,
-                  country,
-                },
-              };
-            });
-        } else {
-          setAddress((oldVal) => {
-            return {
-              ...oldVal,
-              [type]: {
-                ...oldVal[type],
-                state: stateName,
-                city: districtName,
-                country,
-              },
-            };
-          });
-        }
-      } else {
-        setisValidPincode(false);
-        Notification('info', 'Invalid Pincode');
-      }
-    }
   };
 
   const setBillingAsShipping = () => {
@@ -144,11 +96,6 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                         <form
                           onSubmit={(e) => {
                             e.preventDefault();
-                            if (!isValidPincode)
-                              return Notification(
-                                'info',
-                                'Please Enter Valid Pincode',
-                              );
                             if (!Object.values(address).includes('" "')) {
                               saveAddress(
                                 {
@@ -264,10 +211,6 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                       'pinCode',
                                       e.target.value,
                                     );
-                                    updateDetailsBasedOnPin(
-                                      e.target.value,
-                                      'shippingAddress',
-                                    );
                                   }
                                 }}
                               />
@@ -311,17 +254,19 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                               <input
                                 required
                                 type="tel"
-                                minlength="10"
-                                maxlength="10"
                                 placeholder="Number"
                                 className="checkout-input-wid col-12"
                                 value={shippingAddress.phoneNo}
                                 onChange={(e) => {
-                                  if (reg.test(Number(e.target.value))) {
+                                  const input = e.target.value;
+                                  const numericPart = input.slice(
+                                    countryCode.length,
+                                  );
+                                  if (reg.test(numericPart)) {
                                     changeDetails(
                                       'shippingAddress',
                                       'phoneNo',
-                                      e.target.value.trim(),
+                                      `${countryCode}${numericPart}`,
                                     );
                                   }
                                 }}
@@ -563,10 +508,6 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                   'pinCode',
                                   e.target.value,
                                 );
-                                updateDetailsBasedOnPin(
-                                  e.target.value,
-                                  'billingAddress',
-                                );
                               }
                             }}
                           />
@@ -612,14 +553,19 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                             maxlength="10"
                             className="checkout-input-wid"
                             value={billingAddress.phoneNo}
-                            onChange={(e) =>
-                              reg.test(Number(e.target.value)) &&
-                              changeDetails(
-                                'billingAddress',
-                                'phoneNo',
-                                e.target.value.trim(),
-                              )
-                            }
+                            onChange={(e) => {
+                              const input = e.target.value;
+                              const numericPart = input.slice(
+                                countryCode.length,
+                              );
+                              if (reg.test(numericPart)) {
+                                changeDetails(
+                                  'billingAddress',
+                                  'phoneNo',
+                                  `${countryCode}${numericPart}`,
+                                );
+                              }
+                            }}
                           />
                         </div>
                         <div className="address-types-body">
