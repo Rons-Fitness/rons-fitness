@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <footer>
       <div className="container">
@@ -120,11 +121,11 @@ const Footer = () => {
         </div>
         <div className="d-flex justify-content-end mt-3">
           <p className="copy-right-text">
-            Copyrights © 2023 All Rights Reserved | Creative Cartel
+            Copyrights &copy; {currentYear} All Rights Reserved | Creative Cartel
           </p>
         </div>
       </div>
-    </footer >
+    </footer>
   );
 };
 
