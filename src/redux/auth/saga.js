@@ -95,7 +95,7 @@ export function* getUserWorker({ payload }) {
   const { history } = payload;
   try {
     const {
-      data: { data },
+      data: { data, message },
       status,
     } = yield call(getUSerDetailsAsync);
     if (status === 200) {
@@ -103,8 +103,9 @@ export function* getUserWorker({ payload }) {
       yield put(setAuthPopup(false));
     } else {
       history('/');
+      Notification('error', message);
       yield put(setAuthPopup(true));
-      yield put(getUserDetailsError('token expired'));
+      yield put(getUserDetailsError(message));
     }
   } catch (error) {
     history('/');
