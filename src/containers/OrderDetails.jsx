@@ -199,8 +199,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                         <br />
                         {shippingAddress && shippingAddress.addressLine2},
                         <br />
-                        {shippingAddress && shippingAddress.city}-
-                        {shippingAddress && shippingAddress.pinCode},
+                        {shippingAddress && shippingAddress.city}
                         {shippingAddress && shippingAddress.country}
                         <br />
                         +91 {shippingAddress && shippingAddress.phoneNo}

@@ -29,7 +29,7 @@ function AddressBox({
           {shippingAddress.addressLine1}
           <br />
           {shippingAddress.addressLine2}, <br />
-          {shippingAddress.city}-{shippingAddress.pinCode} <br />
+          {shippingAddress.city} <br />
           {shippingAddress.phoneNo}
         </p>
       </div>

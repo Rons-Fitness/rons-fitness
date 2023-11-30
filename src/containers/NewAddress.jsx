@@ -2,13 +2,11 @@ import AddressForm from 'components/address/AddressForm';
 import Loader from 'components/common/loader/Loader';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { changeSearchText, createUserAddress } from 'redux/auth/actions';
 
 const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
 
 const NewAddress = ({ addNewAddress, keyword, setSearchText, loading }) => {
-  const history = useNavigate();
   const [address, setAddress] = useState({
     addressType: 'home',
     shippingAddress: {
@@ -39,7 +37,7 @@ const NewAddress = ({ addNewAddress, keyword, setSearchText, loading }) => {
   }, []);
 
   useEffect(() => {
-    if (keyword && keyword.length > 0) history('/products');
+    //  if (keyword && keyword.length > 0) history('/products');
   }, [keyword]);
 
   return (

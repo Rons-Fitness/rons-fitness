@@ -2,7 +2,7 @@ import Loader from 'components/common/loader/Loader';
 import ProductDetailsMain from 'components/products/ProductDetailsMain';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getSingleProduct } from 'redux/actions';
 import {
   addProductToCart,
@@ -17,23 +17,16 @@ const ProductDetails = ({
   loading,
   addtoCart,
   addToWishlist,
-  keyword,
   setSearchText,
 }) => {
   const { id } = useParams();
-  const history = useNavigate();
-
-  useEffect(() => {
-    if (id) getProductById(id);
-  }, [id, getProductById]);
 
   useEffect(() => {
     setSearchText('');
   }, []);
-
   useEffect(() => {
-    if (keyword && keyword.length > 0) history('/products');
-  }, [keyword]);
+    if (id) getProductById(id);
+  }, [id, getProductById]);
 
   return (
     <div

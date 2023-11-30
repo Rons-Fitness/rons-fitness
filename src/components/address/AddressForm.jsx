@@ -196,7 +196,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                               />
                               <br />
                             </div>
-
+                            {/*
                             <div className="col-lg-3 col-md-6 col-sm-12">
                               <input
                                 required
@@ -214,7 +214,7 @@ const AddressForm = ({ address, setAddress, saveAddress }) => {
                                   }
                                 }}
                               />
-                            </div>
+                            </div> */}
 
                             {/* <div className="col-lg-6">
                       <input

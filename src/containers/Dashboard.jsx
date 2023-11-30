@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import DashboardMain from 'components/dashboard/DashboardMain';
-// import { getHomeScreenData } from 'redux/product/actions';
-import { useNavigate } from 'react-router-dom';
 
 import {
   addProductToCart,
@@ -15,13 +13,10 @@ import { getHomeScreenData } from 'redux/product/actions';
 const Dashboard = ({
   homeScreenData,
   getHomeScreenDetails,
-  keyword,
   addtoCart,
   addToWishlist,
   setSearchText,
 }) => {
-  const history = useNavigate();
-
   useEffect(() => {
     getHomeScreenDetails();
   }, [getHomeScreenDetails]);
@@ -29,14 +24,6 @@ const Dashboard = ({
   useEffect(() => {
     setSearchText('');
   }, []);
-
-  useEffect(() => {
-    if (keyword && keyword.length > 0) history('/products');
-  }, [keyword]);
-
-  useEffect(() => {
-    if (keyword && keyword.length > 0) history('/products');
-  }, [keyword]);
 
   return (
     <div

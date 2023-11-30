@@ -23,6 +23,7 @@ const Navbar = ({
   changePopupState,
   getHomeScreenDetails,
   homeScreenData,
+  keyword,
 }) => {
   const [show, setshow] = useState(false);
   const history = useNavigate();
@@ -43,6 +44,10 @@ const Navbar = ({
     getHomeScreenDetails();
   }, [getHomeScreenDetails]);
 
+  useEffect(() => {
+    if (keyword && keyword.length > 0) history('/products');
+    settext(keyword);
+  }, [keyword]);
   // search after delay
   React.useEffect(() => {
     const setData = setTimeout(() => {
@@ -193,6 +198,7 @@ const Navbar = ({
                 <input
                   type="text"
                   placeholder="Search for product"
+                  value={text}
                   onChange={(e) => settext(e.target.value)}
                 />
                 <button type="button">
@@ -262,9 +268,10 @@ const Navbar = ({
   );
 };
 const mapStateToProps = ({ user, product }) => {
-  const { currentUser, authPopupState } = user;
+  const { currentUser, authPopupState, keyword } = user;
+
   const { homeScreenData } = product;
-  return { currentUser, authPopupState, homeScreenData };
+  return { currentUser, authPopupState, homeScreenData, keyword };
 };
 const mapDispatchToProps = (dispatch) => ({
   getHomeScreenDetails: () => dispatch(getHomeScreenData()),

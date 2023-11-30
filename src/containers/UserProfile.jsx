@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   changeSearchText,
   logOutUser,
@@ -14,7 +14,6 @@ function UserProfile({
   setSearchText,
   updateDetails,
 }) {
-  const history = useNavigate();
   const [userDetails, setUserDetails] = useState({
     firstName: '',
     lastName: '',
@@ -37,7 +36,7 @@ function UserProfile({
   }, []);
 
   useEffect(() => {
-    if (keyword && keyword.length > 0) history('/products');
+    //  if (keyword && keyword.length > 0) history('/products');
   }, [keyword]);
 
   return (

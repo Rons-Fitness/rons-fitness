@@ -12,7 +12,6 @@ import {
   getUserDetails,
   reomveProductFromCart,
 } from 'redux/auth/actions';
-import { useNavigate } from 'react-router-dom';
 
 function Cart({
   keyword,
@@ -26,8 +25,6 @@ function Cart({
   getLoggedInUserDetails,
   setSearchText,
 }) {
-  // const selectedAdd = JSON.parse(localStorage.getItem('selected_address'));
-  const history = useNavigate();
   useEffect(() => {
     getLoggedInUserDetails();
     // if (selectedAdd) setDeliveryAddress(selectedAdd);
@@ -38,7 +35,7 @@ function Cart({
   }, []);
 
   useEffect(() => {
-    if (keyword && keyword.length > 0) history('/products');
+    //  if (keyword && keyword.length > 0) history('/products');
   }, [keyword]);
 
   return (

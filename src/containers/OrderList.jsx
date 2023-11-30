@@ -4,7 +4,7 @@ import EmptyOrder from 'components/notFound/EmptyOrder';
 import moment from 'moment';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { changeSearchText, getUserOrders } from 'redux/auth/actions';
 
 function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
@@ -12,13 +12,12 @@ function OrderList({ getOrders, loading, orders, keyword, setSearchText }) {
     getOrders();
   }, [getOrders]);
 
-  const history = useNavigate();
   useEffect(() => {
     setSearchText('');
   }, []);
 
   useEffect(() => {
-    if (keyword && keyword.length > 0) history('/products');
+    //  if (keyword && keyword.length > 0) history('/products');
   }, [keyword]);
 
   return (
