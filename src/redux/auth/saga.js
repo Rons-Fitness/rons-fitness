@@ -98,12 +98,15 @@ export function* getUserWorker({ payload }) {
       data: { data, message },
       status,
     } = yield call(getUSerDetailsAsync);
+    const currentRoute = history.location.pathname;
     if (status === 200) {
       yield put(getUserDetailSuccess(data));
       yield put(setAuthPopup(false));
     } else {
+      if (status === 401 && currentRoute !== '/') {
+        Notification('error', message);
+      }
       history('/');
-      Notification('error', message);
       yield put(setAuthPopup(true));
       yield put(getUserDetailsError(message));
     }
