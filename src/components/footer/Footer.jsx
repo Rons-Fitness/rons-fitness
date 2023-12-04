@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -111,22 +111,22 @@ const Footer = () => {
             </ul>
           </div> */}
           <div className="col-lg-6 col-md-6 col-sm-6 ">
-            <Link
+            <a
               className="icon-footer-box "
               target="_blank"
               rel="noreferrer"
               href="https://instagram.com/espacecarrelb?igshid=OGQ5ZDc2ODk2ZA=="
             >
               Instagram <i className="fab fa-instagram" />
-            </Link>
-            <Link
+            </a>
+            <a
               className="icon-footer-box mt-2 "
               target="_blank"
               rel="noreferrer"
               href="https://www.facebook.com/EspaceCarreLb?mibextid=LQQJ4d"
             >
               Whatsapp <i className="fab fa-whatsapp" />
-            </Link>
+            </a>
           </div>
         </div>
         <div className="d-flex justify-content-end mt-3">
