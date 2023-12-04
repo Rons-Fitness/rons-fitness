@@ -123,6 +123,14 @@ const Footer = () => {
               className="icon-footer-box mt-2 "
               target="_blank"
               rel="noreferrer"
+              href="https://www.facebook.com/EspaceCarreLb?mibextid=LQQJ4d"
+            >
+              Facebook <i className="fab fa-facebook" />
+            </a>
+            <a
+              className="icon-footer-box mt-2 "
+              target="_blank"
+              rel="noreferrer"
               href="https://wa.me/96171935735"
             >
               Whatsapp <i className="fab fa-whatsapp" />
