@@ -111,17 +111,35 @@ const Footer = () => {
             </ul>
           </div> */}
           <div className="col-lg-6 col-md-6 col-sm-6 ">
-            <Link className="icon-footer-box ">
+            <Link
+              className="icon-footer-box "
+              target="_blank"
+              rel="noreferrer"
+              href="https://instagram.com/espacecarrelb?igshid=OGQ5ZDc2ODk2ZA=="
+            >
               Instagram <i className="fab fa-instagram" />
             </Link>
-            <Link className="icon-footer-box mt-2 ">
+            <Link
+              className="icon-footer-box mt-2 "
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.facebook.com/EspaceCarreLb?mibextid=LQQJ4d"
+            >
               Whatsapp <i className="fab fa-whatsapp" />
             </Link>
           </div>
         </div>
         <div className="d-flex justify-content-end mt-3">
           <p className="copy-right-text">
-            Copyrights &copy; {currentYear} All Rights Reserved | Creative Cartel
+            Copyrights &copy; {currentYear} All Rights Reserved |{' '}
+            <a
+              href="http://creativecartel.me/"
+              target="_blank"
+              rel="noreferrer"
+              className="copy-right-text"
+            >
+              Creative Cartel
+            </a>
           </p>
         </div>
       </div>

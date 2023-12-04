@@ -3,7 +3,7 @@ import './auth.css';
 import { Modal } from 'react-bootstrap';
 import Notification from 'components/Notification/Notification';
 
-const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
+const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+961';
 
 function AuthPopup({
   sendOtp,
