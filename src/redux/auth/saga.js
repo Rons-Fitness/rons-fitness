@@ -98,7 +98,7 @@ export function* getUserWorker({ payload }) {
       data: { data, message },
       status,
     } = yield call(getUSerDetailsAsync);
-    const currentRoute = history?.location?.pathname;
+    const currentRoute = window.location.pathname;
     if (status === 200) {
       yield put(getUserDetailSuccess(data));
       yield put(setAuthPopup(false));
