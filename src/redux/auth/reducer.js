@@ -6,6 +6,9 @@ import {
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
+  SIGNUP_USER,
+  SIGNUP_USER_SUCCESS,
+  SIGNUP_USER_ERROR,
   LOGOUT_USER,
   FORGOT_PASSWORD,
   FORGOT_PASSWORD_SUCCESS,
@@ -48,6 +51,8 @@ import {
   DELETE_USER_ADDRESS_ERROR,
   DELETE_USER_ADDRESS_SUCCESS,
   SET_AUTH_POPUP,
+  SET_SIGNUP_AUTH_POPUP,
+  SET_FORGOT_AUTH_POPUP,
   GET_USER_ORDERS,
   GET_USER_ORDERS_SUCCESS,
   GET_USER_ORDERS_ERROR,
@@ -85,6 +90,8 @@ const INIT_STATE = {
   selectedAddress: null,
   addressToDeliver: null,
   authPopupState: false,
+  signupPopupState: false,
+  forgotAuthPop: false,
 };
 
 export default (state = INIT_STATE, action) => {
@@ -93,6 +100,16 @@ export default (state = INIT_STATE, action) => {
       return {
         ...state,
         authPopupState: action.payload,
+      };
+    case SET_SIGNUP_AUTH_POPUP:
+      return {
+        ...state,
+        signupPopupState: action.payload,
+      };
+    case SET_FORGOT_AUTH_POPUP:
+      return {
+        ...state,
+        forgotAuthPop: action.payload,
       };
     case SET_SEARCH_TEXT:
       return { ...state, keyword: action.payload };
@@ -181,6 +198,22 @@ export default (state = INIT_STATE, action) => {
         loading: false,
         newPassword: '',
         resetPasswordCode: '',
+        error: action.payload.message,
+      };
+    case SIGNUP_USER:
+      return { ...state, loading: true, error: '' };
+    case SIGNUP_USER_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        currentUser: action.payload,
+        error: '',
+      };
+    case SIGNUP_USER_ERROR:
+      return {
+        ...state,
+        loading: false,
+        currentUser: null,
         error: action.payload.message,
       };
     case REGISTER_USER:

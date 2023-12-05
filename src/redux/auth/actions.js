@@ -53,6 +53,7 @@ import {
   DELETE_USER_ADDRESS_SUCCESS,
   DELETE_USER_ADDRESS_ERROR,
   SET_AUTH_POPUP,
+  SET_SIGNUP_AUTH_POPUP,
   LIKE_DISLIKE_PRODUCT_REVIEW,
   GET_USER_ORDERS,
   GET_USER_ORDERS_SUCCESS,
@@ -71,11 +72,23 @@ import {
   GET_BLOG_BY_ID,
   GET_BLOG_BY_ID_SUCCESS,
   GET_BLOG_BY_ID_ERROR,
+  SIGNUP_USER_SUCCESS,
+  SIGNUP_USER_ERROR,
+  SIGNUP_USER,
+  SET_FORGOT_AUTH_POPUP,
   // GET_CART_DETAILS,
 } from '../contants';
 
 export const setAuthPopup = (state) => ({
   type: SET_AUTH_POPUP,
+  payload: state,
+});
+export const setSignupAuthPopup = (state) => ({
+  type: SET_SIGNUP_AUTH_POPUP,
+  payload: state,
+});
+export const setForgotPopup = (state) => ({
+  type: SET_FORGOT_AUTH_POPUP,
   payload: state,
 });
 
@@ -111,6 +124,10 @@ export const loginUserError = (message) => ({
 });
 
 export const verifyOtp = (otpValues, history) => ({
+  type: OTP_VERIFY,
+  payload: { otpValues, history },
+});
+export const userSignup = (otpValues, history) => ({
   type: OTP_VERIFY,
   payload: { otpValues, history },
 });
@@ -171,6 +188,18 @@ export const registerUserSuccess = (user) => ({
 });
 export const registerUserError = (message) => ({
   type: REGISTER_USER_ERROR,
+  payload: { message },
+});
+export const userSignupEmail = (user, history) => ({
+  type: SIGNUP_USER,
+  payload: { user, history },
+});
+export const userSignupEmailSuccess = (user) => ({
+  type: SIGNUP_USER_SUCCESS,
+  payload: user,
+});
+export const userSignupEmailError = (message) => ({
+  type: SIGNUP_USER_ERROR,
   payload: { message },
 });
 export const authSuccess = () => ({

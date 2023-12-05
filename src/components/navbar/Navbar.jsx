@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import AuthPopup from 'components/auth/AuthPopup';
+import SignupAuthPopup from 'components/auth/SignupAuthPopup';
+
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,6 +11,8 @@ import {
   changeSearchText,
   loginUser,
   setAuthPopup,
+  setSignupAuthPopup,
+  userSignupEmail,
   verifyOtp,
 } from 'redux/auth/actions';
 import { getHomeScreenData } from 'redux/product/actions';
@@ -20,7 +24,9 @@ const Navbar = ({
   getLoggedInUserDetails,
   setSearchText,
   authPopupState,
+  signupPopupState,
   changePopupState,
+  changeSignupPopupState,
   getHomeScreenDetails,
   homeScreenData,
   keyword,
@@ -56,6 +62,13 @@ const Navbar = ({
 
     return () => clearTimeout(setData);
   }, [text, setSearchText]);
+  useEffect(() => {
+    const storedUser = localStorage.getItem('userData');
+    if (storedUser) {
+      // Hide register button if user data is stored in localStorage
+      changeSignupPopupState(false);
+    }
+  }, [changeSignupPopupState]);
 
   return (
     <>
@@ -208,17 +221,29 @@ const Navbar = ({
             </div>
             <div className="col-md-3 col-sm-6 ">
               <div className=" login-section">
-                {!currentUser ? (
-                  <a>
-                    <p
-                      className="login-btn "
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop"
-                      onClick={() => changePopupState(true)}
-                    >
-                      Login
-                    </p>
-                  </a>
+                {!currentUser && !localStorage.getItem('auth_token') ? (
+                  <>
+                    <a>
+                      <p
+                        className="login-btn "
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                        onClick={() => changeSignupPopupState(true)}
+                      >
+                        Register
+                      </p>
+                    </a>
+                    <a>
+                      <p
+                        className="login-btn "
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                        onClick={() => changePopupState(true)}
+                      >
+                        Login
+                      </p>
+                    </a>
+                  </>
                 ) : (
                   <Link
                     to="/user/profile"
@@ -264,14 +289,26 @@ const Navbar = ({
         authPopupState={authPopupState}
         changePopupState={changePopupState}
       />
+      <SignupAuthPopup
+        sendOtp={sendOtp}
+        verifyUserOtp={verifyUserOtp}
+        signupPopupState={signupPopupState}
+        changeSignupPopupState={changeSignupPopupState}
+      />
     </>
   );
 };
 const mapStateToProps = ({ user, product }) => {
-  const { currentUser, authPopupState, keyword } = user;
+  const { currentUser, authPopupState, keyword, signupPopupState } = user;
 
   const { homeScreenData } = product;
-  return { currentUser, authPopupState, homeScreenData, keyword };
+  return {
+    currentUser,
+    authPopupState,
+    homeScreenData,
+    keyword,
+    signupPopupState,
+  };
 };
 const mapDispatchToProps = (dispatch) => ({
   getHomeScreenDetails: () => dispatch(getHomeScreenData()),
@@ -280,7 +317,10 @@ const mapDispatchToProps = (dispatch) => ({
   sendOtp: (mobileNo) => dispatch(loginUser(mobileNo)),
   verifyUserOtp: (otpValues, history) =>
     dispatch(verifyOtp(otpValues, history)),
+  userSignupEmail: (otpValues, history) =>
+    dispatch(userSignupEmail(otpValues, history)),
   changePopupState: (state) => dispatch(setAuthPopup(state)),
+  changeSignupPopupState: (state) => dispatch(setSignupAuthPopup(state)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

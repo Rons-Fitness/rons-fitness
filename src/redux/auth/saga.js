@@ -69,6 +69,8 @@ import {
   deleteUserAddressSuccess,
   deleteUserAddressError,
   setAuthPopup,
+  setSignupAuthPopup,
+  setForgotPopup,
   getUserOrdersSuccess,
   getUserOrderError,
   removeProductToWishList,
@@ -160,11 +162,11 @@ export function* watchLoginUser() {
   yield takeLatest(LOGIN_USER, loginWithPhoneNumber);
 }
 
-const verifyOtpAsync = async (mobileNo, otp) => {
+const verifyOtpAsync = async (email, password) => {
   try {
     const res = await API.post('/user/verify-otp', {
-      mobileNo,
-      otp: Number(otp),
+      email,
+      password,
     });
 
     return res;
@@ -174,14 +176,14 @@ const verifyOtpAsync = async (mobileNo, otp) => {
 };
 function* verifyOtp({ payload }) {
   const {
-    otpValues: { mobileNo, otp },
+    otpValues: { email, password },
   } = payload;
 
   try {
     const {
       data: { data, message, status: success },
       status,
-    } = yield call(verifyOtpAsync, mobileNo, otp);
+    } = yield call(verifyOtpAsync, email, password);
 
     if (status === 200 && success && data) {
       const { token } = data;
