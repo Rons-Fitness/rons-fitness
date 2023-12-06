@@ -274,7 +274,7 @@ function UserProfile({
                         className="py-2"
                       >
                         <label htmlFor="lname" className="pb-2">
-                          Change Passowrd
+                          Change Password
                         </label>
                       </div>
                       <div className="text-center py-2">
