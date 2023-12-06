@@ -47,7 +47,7 @@ function UserProfile({
   return (
     <>
       <div>
-        <div className="container-xxl">
+        <div className="container-xxl ">
           <div className="profile-section">
             <div className="row">
               <div
