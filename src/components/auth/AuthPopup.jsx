@@ -3,12 +3,15 @@ import './auth.css';
 import { Modal } from 'react-bootstrap';
 import axios from 'axios';
 import Notification from 'components/Notification/Notification';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 function AuthPopup({ verifyUserOtp, authPopupState, changePopupState }) {
   const [email, setEmail] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [password, setPassword] = useState('');
   const [resetEmail, setResetEmail] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleForgotPassword = () => {
     changePopupState(false);
@@ -77,20 +80,46 @@ function AuthPopup({ verifyUserOtp, authPopupState, changePopupState }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <input
+              {/* <input
                 type="password"
                 placeholder="Password"
                 name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              />
+              /> */}
+              <div style={{ position: 'relative' }}>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  style={{ paddingRight: '30px' }} // Adjust the padding to make space for the eye button
+                />
+                <button
+                  type="button"
+                  // className="fa fa-eye"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '5px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                </button>
+              </div>
               <div className="col-12 d-flex justify-content-end">
                 <span
                   className="forgot-password-link"
                   onClick={handleForgotPassword}
                   style={{
                     cursor: 'pointer',
-                    color: 'blue',
+                    color: '#5b3503de',
                     textDecoration: 'underline',
                   }}
                 >

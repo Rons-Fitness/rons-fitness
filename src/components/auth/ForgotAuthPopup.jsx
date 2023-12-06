@@ -3,11 +3,16 @@ import './auth.css';
 import { Modal } from 'react-bootstrap';
 import API from 'helpers/API';
 import Notification from 'components/Notification/Notification';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 function ForgotAuthPopup({ userDetails, authPopupState, changePopupState }) {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showOldPassword, setShowOldPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
 
   const changePassword = async (req) => {
     try {
@@ -62,27 +67,88 @@ function ForgotAuthPopup({ userDetails, authPopupState, changePopupState }) {
               />
             </div>
             <div className="modal-body">
-              <input
-                type="password"
-                placeholder="Old Password"
-                name="oldPassword"
-                value={oldPassword}
-                onChange={(e) => setOldPassword(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="New Password"
-                name="newPassword"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                name="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
+              <div style={{ position: 'relative' }}>
+                <input
+                  // type="password"
+                  type={showOldPassword ? 'text' : 'password'}
+                  placeholder="Old Password"
+                  name="oldPassword"
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  // className="fa fa-eye"
+                  onClick={() => setShowOldPassword(!showOldPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '5px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {showOldPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                </button>
+              </div>
+              <div style={{ position: 'relative' }}>
+                <input
+                  // type="password"
+                  type={showNewPassword ? 'text' : 'password'}
+                  placeholder="New Password"
+                  name="newPassword"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  // className="fa fa-eye"
+                  onClick={() => setShowNewPassword(!showNewPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '5px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {showNewPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                </button>
+              </div>
+              <div style={{ position: 'relative' }}>
+                <input
+                  // type="password"
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  // className="fa fa-eye"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '5px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {showConfirmPassword ? (
+                    <VisibilityIcon />
+                  ) : (
+                    <VisibilityOffIcon />
+                  )}
+                </button>
+              </div>
               <div className="col-12 d-flex justify-content-center">
                 <input
                   type="submit"

@@ -3,6 +3,8 @@ import './auth.css';
 import { Modal } from 'react-bootstrap';
 import Notification from 'components/Notification/Notification';
 import API from 'helpers/API';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
 
@@ -16,25 +18,52 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
   });
 
   const [errors, setErrors] = useState({});
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const validateForm = () => {
-    const { name, email, password, confirmPassword } = formData;
+    const { name, email, password, confirmPassword, mobileNo } = formData;
+    console.log(mobileNo);
     const errorsData = {};
 
     // Validation logic
     if (!name.trim()) {
       errorsData.name = 'Name is required';
+    } else if (!/^[a-zA-Z\s]+$/.test(name)) {
+      errorsData.name = 'Name should only contain letters and spaces';
     }
 
     // Validate email using a regular expression
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      errorsData.email = 'Enter a valid email address';
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // if (!emailRegex.test(email)) {
+    //   errorsData.email = 'Enter a valid email address';
+    // }
+
+    if (!email.trim()) {
+      errorsData.email = 'Email is required';
+    } else if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+      /[;]+/.test(email)
+    ) {
+      errorsData.email = 'Invalid email format';
+    }
+
+    // if (mobileNo !== '' && mobileNo.trim() && !/^[0-9]{8}$/.test(mobileNo)) {
+    //   errorsData.mobileNo =
+    //     'Invalid phone number format. Must be 8 digits and only contain numbers.';
+    // }
+
+    // Extract the numeric part of mobileNo (ignoring the country code)
+    const numericPart = mobileNo.replace('+91', '');
+
+    // Check if the numeric part is not empty and doesn't match the specified format
+    if (numericPart.trim() && !/^[0-9]{8}$/.test(numericPart)) {
+      errorsData.mobileNo =
+        'Invalid phone number format. Must be 8 digits and only contain numbers.';
     }
 
     if (password.length < 6) {
@@ -123,21 +152,65 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
                 onChange={handleChange}
               />
               {errors.email && <p className="error">{errors.email}</p>}
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
+              <div style={{ position: 'relative' }}>
+                <input
+                  // type="password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  style={{ paddingRight: '30px' }}
+                />
+                <button
+                  type="button"
+                  // className="fa fa-eye"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '5px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                </button>
+              </div>
               {errors.password && <p className="error">{errors.password}</p>}
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-              />
+              <div style={{ position: 'relative' }}>
+                <input
+                  // type="password"
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  style={{ paddingRight: '30px' }}
+                />
+                <button
+                  type="button"
+                  // className="fa fa-eye"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '5px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    border: 'none',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {showConfirmPassword ? (
+                    <VisibilityIcon />
+                  ) : (
+                    <VisibilityOffIcon />
+                  )}
+                </button>
+              </div>
               {errors.confirmPassword && (
                 <p className="error">{errors.confirmPassword}</p>
               )}
@@ -148,6 +221,7 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
                 value={formData.mobileNo}
                 onChange={handleChange}
               />
+              {errors.mobileNo && <p className="error">{errors.mobileNo}</p>}
               <div className="col-12 d-flex justify-content-center">
                 <input
                   type="submit"

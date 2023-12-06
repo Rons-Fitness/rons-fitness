@@ -11,6 +11,8 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@glidejs/glide": "^3.4.1",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/material": "^5.14.20",
     "@mui/styled-engine-sc": "^6.0.0-alpha.3",
     "@mui/styles": "^5.11.7",
     "@mui/system": "^5.11.5",
