@@ -71,7 +71,8 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
     }
 
     if (password !== confirmPassword) {
-      errorsData.confirmPassword = 'Passwords do not match';
+      errorsData.confirmPassword = 'Confirm password must match with Password';
+      Notification('error', 'Confirm password must match with Password');
     }
 
     setErrors(errorsData);

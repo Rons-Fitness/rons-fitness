@@ -387,6 +387,7 @@ export default (state = INIT_STATE, action) => {
       };
     case LOG_OUT_USER: {
       window.localStorage.removeItem('auth_token');
+      // Notification('success', 'User Logged out successfully');
       window.location.href = '/';
       return {
         ...state,

@@ -273,7 +273,11 @@ function UserProfile({
                         onClick={() => changeForgotPass(true)}
                         className="py-2"
                       >
-                        <label htmlFor="lname" className="pb-2">
+                        <label
+                          htmlFor="lname"
+                          className="pb-2"
+                          style={{ color: '#5b3503de' }}
+                        >
                           Change Password
                         </label>
                       </div>

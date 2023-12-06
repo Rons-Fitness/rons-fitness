@@ -26,7 +26,8 @@ function ForgotAuthPopup({ userDetails, authPopupState, changePopupState }) {
         changePopupState(false);
       } else {
         // Handle signup failure
-        Notification('error', 'Change failed. Please try again.');
+        // Notification('error', 'Change failed. Please try again.');
+        Notification('error', 'Please Enter Required Fields');
         // Additional logic if needed
       }
       // Handle success or other logic based on the response
@@ -154,7 +155,7 @@ function ForgotAuthPopup({ userDetails, authPopupState, changePopupState }) {
                   type="submit"
                   className="submit-profile"
                   onClick={handleSubmit}
-                  value="Change Password"
+                  value="Submit"
                   style={{ textAlign: 'center', cursor: 'pointer' }}
                 />
               </div>
