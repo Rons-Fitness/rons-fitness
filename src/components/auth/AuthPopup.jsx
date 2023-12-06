@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './auth.css';
 import { Modal } from 'react-bootstrap';
 import axios from 'axios';
+import Notification from 'components/Notification/Notification';
 
 function AuthPopup({ verifyUserOtp, authPopupState, changePopupState }) {
   const [email, setEmail] = useState('');
@@ -19,9 +20,11 @@ function AuthPopup({ verifyUserOtp, authPopupState, changePopupState }) {
 
   const handleForgetPassword = () => {
     axios
-      .post(`${apiUrl}/user/forget-password`, { resetEmail })
+      .post(`${apiUrl}/user/forgetpassword`, { email: resetEmail })
       .then((response) => {
+        Notification('Success', 'Password has been sent to your mail');
         console.log(response.data);
+        setResetEmail('');
       })
       .catch((error) => {
         console.error(error);
