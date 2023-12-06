@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
+const baseUrl = 'e-commerce-api-blue.vercel.app';
 
 export default axios.create({
   baseURL: baseUrl,
