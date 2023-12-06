@@ -122,9 +122,9 @@ const Navbar = ({
                     </span>
                   </Link>
 
-                  {Boolean(category.length) && (
+                  {Boolean(category?.length) && (
                     <ul className="dropdown-menu ">
-                      {category.map((elem) => (
+                      {category?.map((elem) => (
                         <Link
                           to={`/products/category=${elem._id}`}
                           key={elem._id}

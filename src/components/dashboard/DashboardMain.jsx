@@ -88,7 +88,7 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
         </section>
       </div>
       <Categories
-        category={homeScreenData.category}
+        category={homeScreenData?.category}
         isMobile={isMobile}
         isTablet={isTablet}
       />

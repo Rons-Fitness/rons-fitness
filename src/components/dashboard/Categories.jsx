@@ -20,7 +20,7 @@ const Categories = ({ category = [], isMobile, isTablet }) => {
               navigation
               modules={[Autoplay, Pagination, Navigation]}
             >
-              {category.map((elem) => (
+              {category?.map((elem) => (
                 <SwiperSlide className="swiper-slide" key={elem._id}>
                   <Link to={`/products/category=${elem._id}`}>
                     <div className="carte-contain">
