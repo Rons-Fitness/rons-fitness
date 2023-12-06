@@ -94,7 +94,7 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
       />
       <ProductListing
         type="TRENDING NOW"
-        products={homeScreenData.trendingProducts}
+        products={homeScreenData?.trendingProducts}
         addtoCart={addtoCart}
         addToWishlist={addToWishlist}
         isMobile={isMobile}
@@ -135,14 +135,14 @@ const DashboardMain = ({ homeScreenData, addtoCart, addToWishlist }) => {
       </div>
       <ProductListing
         type="NEW ARRIVAL"
-        products={homeScreenData.newArrivals}
+        products={homeScreenData?.newArrivals}
         addtoCart={addtoCart}
         addToWishlist={addToWishlist}
         isMobile={isMobile}
         isTablet={isTablet}
       />
       {/* <BrandListing
-        brands={homeScreenData.brands}
+        brands={homeScreenData?.brands}
         isMobile={isMobile}
         isTablet={isTablet}
       /> */}

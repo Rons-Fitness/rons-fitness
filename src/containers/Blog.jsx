@@ -77,7 +77,7 @@ const Blog = ({ blogs, getBlogList, homeScreenData, loading }) => {
                   <div className="blog-right-head-2">
                     <p>Tranding Product</p>
                   </div>
-                  {trendingProducts.map((product) => (
+                  {trendingProducts?.map((product) => (
                     <div className="blog-right-contain-2" key={product._id}>
                       <div className="col-lg-3 col-md-2 col-sm-3 blog-right-img-box-2">
                         <div className="img-contain">
