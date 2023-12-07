@@ -6,7 +6,7 @@ import API from 'helpers/API';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
+// const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
 
 function SignupPopup({ signupPopupState, changeSignupPopupState }) {
   const [formData, setFormData] = useState({
@@ -14,7 +14,7 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
     email: '',
     password: '',
     confirmPassword: '',
-    mobileNo: countryCode,
+    mobileNo: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -22,8 +22,20 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    if (name === 'mobileNo') {
+      let formattedValue = value;
+
+      // Ensure the value starts with "+91"
+      if (!value.startsWith('+91')) {
+        formattedValue = `+91${value}`;
+      }
+
+      setFormData({ ...formData, [name]: formattedValue });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
+  console.log('formData', formData);
 
   const validateForm = () => {
     const { name, email, password, confirmPassword, mobileNo } = formData;
@@ -61,9 +73,9 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
     const numericPart = mobileNo.replace('+91', '');
 
     // Check if the numeric part is not empty and doesn't match the specified format
-    if (numericPart.trim() && !/^[0-9]{8}$/.test(numericPart)) {
+    if (numericPart.trim() && !/^[0-9]{10}$/.test(numericPart)) {
       errorsData.mobileNo =
-        'Invalid phone number format. Must be 8 digits and only contain numbers.';
+        'Invalid phone number format. Must be 10 digits and only contain numbers.';
     }
 
     if (password.length < 6) {
@@ -85,6 +97,7 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
     if (isValid) {
       try {
         const response = await API.post('/user/signup', formData);
+        console.log('formdata', formData);
         const { data, status } = response;
         console.log('datatest', data);
         if (status === 201) {
@@ -220,13 +233,35 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
               {errors.confirmPassword && (
                 <p className="error">{errors.confirmPassword}</p>
               )}
-              <input
+              {/* <input
                 type="tel"
                 placeholder="Contact Number"
                 name="mobileNo"
                 value={formData.mobileNo}
                 onChange={handleChange}
-              />
+                maxLength="13" // Set maximum length to 10 digits
+              /> */}
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span
+                  className="pt-2 pb-2 ps-3 pe-3"
+                  style={{ marginRight: '5px', border: '1px solid black' }}
+                >
+                  +91
+                </span>
+                <input
+                  type="tel"
+                  placeholder="Contact Number"
+                  name="mobileNo"
+                  // value={formData.mobileNo}
+                  value={
+                    formData.mobileNo.startsWith('+91')
+                      ? formData.mobileNo.slice(3)
+                      : formData.mobileNo
+                  }
+                  onChange={handleChange}
+                  maxLength="10" // Set maximum length to 10 digits
+                />
+              </div>
               {errors.mobileNo && <p className="error">{errors.mobileNo}</p>}
               <div className="col-12 d-flex justify-content-center">
                 <input
