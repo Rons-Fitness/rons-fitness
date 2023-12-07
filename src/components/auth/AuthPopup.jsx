@@ -28,11 +28,12 @@ function AuthPopup({ verifyUserOtp, authPopupState, changePopupState }) {
         Notification('Success', 'Password has been sent to your mail');
         console.log(response.data);
         setResetEmail('');
+        setShowModal(false);
       })
       .catch((error) => {
-        console.error(error);
+        // console.error(error);
+        Notification('error', error.response.data.error);
       });
-    setShowModal(false);
   };
 
   // const handleCloseModal = () => {
