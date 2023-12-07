@@ -21,7 +21,7 @@ function ForgotAuthPopup({ userDetails, authPopupState, changePopupState }) {
       console.log(res.data); // Log the response
       if (status === 200) {
         // Handle successful signup
-        Notification('success', 'Change successful!');
+        Notification('success', 'Password changed successfully!');
 
         changePopupState(false);
       } else {
