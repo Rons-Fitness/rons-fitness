@@ -105,6 +105,13 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
           Notification('success', 'Signup successful!');
           changeSignupPopupState(false); // Close the signup modal or perform any other action
           localStorage.setItem('userData', JSON.stringify(formData));
+          setFormData({
+            name: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+            mobileNo: '',
+          });
           // Additional logic if needed
         } else {
           // Handle signup failure
@@ -136,7 +143,16 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                onClick={() => changeSignupPopupState(false)}
+                onClick={() => {
+                  changeSignupPopupState(false);
+                  setFormData({
+                    name: '',
+                    email: '',
+                    password: '',
+                    confirmPassword: '',
+                    mobileNo: '',
+                  });
+                }}
               />
             </div>
             <div className="modal-header">
