@@ -86,7 +86,7 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
       try {
         const response = await API.post('/user/signup', formData);
         const { data, status } = response;
-        console.log('data', data);
+        console.log('datatest', data);
         if (status === 201) {
           // Handle successful signup
           Notification('success', 'Signup successful!');
@@ -95,10 +95,11 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
           // Additional logic if needed
         } else {
           // Handle signup failure
-          Notification('error', 'Signup failed. Please try again.');
+          Notification('error', data.error);
           // Additional logic if needed
         }
       } catch (error) {
+        console.log(error);
         // Handle error from API request
         Notification('error', 'Error during signup. Please try again.');
         // Additional logic if needed
@@ -139,10 +140,14 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
             <div className="modal-body">
               <input
                 type="text"
-                placeholder="Name"
+                placeholder="Full Name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                onInput={(e) => {
+                  // Remove any non-alphabetic characters and non-whitespace characters from the input
+                  e.target.value = e.target.value.replace(/[^A-Za-z\s]/g, '');
+                }}
               />
               {errors.name && <p className="error">{errors.name}</p>}
               <input
