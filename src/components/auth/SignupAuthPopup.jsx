@@ -6,7 +6,7 @@ import API from 'helpers/API';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-// const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
+// const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+961';
 
 function SignupPopup({ signupPopupState, changeSignupPopupState }) {
   const [formData, setFormData] = useState({
@@ -25,9 +25,9 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
     if (name === 'mobileNo') {
       let formattedValue = value;
 
-      // Ensure the value starts with "+91"
-      if (!value.startsWith('+91')) {
-        formattedValue = `+91${value}`;
+      // Ensure the value starts with "+961"
+      if (!value.startsWith('+961')) {
+        formattedValue = `+961${value}`;
       }
 
       setFormData({ ...formData, [name]: formattedValue });
@@ -70,10 +70,10 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
     // }
 
     // Extract the numeric part of mobileNo (ignoring the country code)
-    const numericPart = mobileNo.replace('+91', '');
+    const numericPart = mobileNo.replace('+961', '');
 
     // Check if the numeric part is not empty and doesn't match the specified format
-    if (numericPart.trim() && !/^[0-9]{10}$/.test(numericPart)) {
+    if (numericPart.trim() && !/^[0-9]{8}$/.test(numericPart)) {
       errorsData.mobileNo =
         'Invalid phone number format. Must be 10 digits and only contain numbers.';
     }
@@ -262,7 +262,7 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
                   className="pt-2 pb-2 ps-3 pe-3"
                   style={{ marginRight: '5px', border: '1px solid black' }}
                 >
-                  +91
+                  +961
                 </span>
                 <input
                   type="tel"
@@ -270,12 +270,12 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
                   name="mobileNo"
                   // value={formData.mobileNo}
                   value={
-                    formData.mobileNo.startsWith('+91')
-                      ? formData.mobileNo.slice(3)
+                    formData.mobileNo.startsWith('+961')
+                      ? formData.mobileNo.slice(4)
                       : formData.mobileNo
                   }
                   onChange={handleChange}
-                  maxLength="10" // Set maximum length to 10 digits
+                  maxLength="8" // Set maximum length to 10 digits
                 />
               </div>
               {errors.mobileNo && <p className="error">{errors.mobileNo}</p>}

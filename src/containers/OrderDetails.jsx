@@ -202,7 +202,7 @@ const OrderDetails = ({ getOrderDetails, selectedOrder, loading }) => {
                         {shippingAddress && shippingAddress.city}
                         {shippingAddress && shippingAddress.country}
                         <br />
-                        +91 {shippingAddress && shippingAddress.phoneNo}
+                        +961 {shippingAddress && shippingAddress.phoneNo}
                       </p>
                     </div>
                   </div>

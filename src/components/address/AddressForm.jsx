@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
+const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+961';
 
 const AddressForm = ({ address, setAddress, saveAddress }) => {
   const history = useNavigate();

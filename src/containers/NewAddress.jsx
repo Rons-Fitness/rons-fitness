@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { changeSearchText, createUserAddress } from 'redux/auth/actions';
 
-const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+91';
+const countryCode = process.env.REACT_APP_COUNTRY_CODE || '+961';
 
 const NewAddress = ({ addNewAddress, keyword, setSearchText, loading }) => {
   const [address, setAddress] = useState({

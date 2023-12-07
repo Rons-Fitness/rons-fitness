@@ -58,7 +58,11 @@ function AuthPopup({ verifyUserOtp, authPopupState, changePopupState }) {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                onClick={() => changePopupState(false)}
+                onClick={() => {
+                  changePopupState(false);
+                  setEmail('');
+                  setPassword('');
+                }}
               />
             </div>
             <div className="modal-header">
@@ -151,7 +155,10 @@ function AuthPopup({ verifyUserOtp, authPopupState, changePopupState }) {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                onClick={() => setShowModal(false)}
+                onClick={() => {
+                  setShowModal(false);
+                  setResetEmail('');
+                }}
               />
             </div>
             <div className="modal-header">
