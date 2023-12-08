@@ -75,7 +75,7 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
       /\.com.+$/i.test(email) // Check if there are characters after ".com" (case-insensitive)
     ) {
       errorsData.email = 'Invalid email format';
-      Notification('error', 'Enter valid Email');
+      Notification('error', 'Please enter valid email');
     }
 
     // if (mobileNo !== '' && mobileNo.trim() && !/^[0-9]{8}$/.test(mobileNo)) {
@@ -179,6 +179,7 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
                     confirmPassword: '',
                     mobileNo: '',
                   });
+                  setErrors({});
                 }}
               />
             </div>
