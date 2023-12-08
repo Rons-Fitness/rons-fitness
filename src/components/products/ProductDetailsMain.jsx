@@ -300,7 +300,11 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                   </div>
                 )} */}
                       <div className="col-lg-10 col-md-12 col-sm-12 color-select-section">
-                        <p className="mb-2 color-title">Color</p>
+                        {/* <p className="mb-2 color-title">Color</p> */}
+                        {selectedProduct?.colors &&
+                          selectedProduct?.colors.length > 0 && (
+                            <p className="mb-2 color-title">Color</p>
+                          )}
                         {selectedProduct && selectedProduct?.colors && (
                           <Swiper
                             slidesPerView={
