@@ -45,8 +45,10 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
     // Validation logic
     if (!name.trim()) {
       errorsData.name = 'Name is required';
+      Notification('error', 'Name is required');
     } else if (!/^[a-zA-Z\s]+$/.test(name)) {
       errorsData.name = 'Name should only contain letters and spaces';
+      Notification('error', 'Name should only contain letters and spaces');
     }
 
     // Validate email using a regular expression
@@ -55,13 +57,25 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
     //   errorsData.email = 'Enter a valid email address';
     // }
 
+    // if (!email.trim()) {
+    //   errorsData.email = 'Email is required';
+    // } else if (
+    //   !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+    //   /[;]+/.test(email)
+    // ) {
+    //   errorsData.email = 'Invalid email format';
+    // }
+
     if (!email.trim()) {
       errorsData.email = 'Email is required';
+      Notification('error', 'Email is required');
     } else if (
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
-      /[;]+/.test(email)
+      /[;]+/.test(email) ||
+      /\.com.+$/i.test(email) // Check if there are characters after ".com" (case-insensitive)
     ) {
       errorsData.email = 'Invalid email format';
+      Notification('error', 'Enter valid Email');
     }
 
     // if (mobileNo !== '' && mobileNo.trim() && !/^[0-9]{8}$/.test(mobileNo)) {
@@ -75,11 +89,16 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
     // Check if the numeric part is not empty and doesn't match the specified format
     if (numericPart.trim() && !/^[0-9]{8}$/.test(numericPart)) {
       errorsData.mobileNo =
-        'Invalid phone number format. Must be 10 digits and only contain numbers.';
+        'Invalid phone number format. Must be 8 digits and only contain numbers.';
+      Notification(
+        'error',
+        'Invalid phone number format. Must be 8 digits and only contain numbers.',
+      );
     }
 
     if (password.length < 6) {
       errorsData.password = 'Password must be at least 6 characters';
+      Notification('error', 'Password must be at least 6 characters');
     }
 
     if (password !== confirmPassword) {
@@ -125,7 +144,7 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
         // Additional logic if needed
       }
     } else {
-      Notification('error', 'Please fill in the required fields correctly');
+      // Notification('error', 'Please fill in the required fields correctly');
     }
   };
 
