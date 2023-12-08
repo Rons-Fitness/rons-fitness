@@ -129,6 +129,14 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
     }
   };
 
+  const handleKeyDown = (event) => {
+    // Check if the pressed key is Enter (keyCode 13)
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleSubmit();
+    }
+  };
+
   return (
     <div>
       <Modal show={signupPopupState}>
@@ -166,7 +174,7 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
                 <p>Please fill in your details to create an account.</p>
               </div>
             </div>
-            <div className="modal-body">
+            <div className="modal-body" onKeyDown={handleKeyDown}>
               <input
                 type="text"
                 placeholder="Full Name"
@@ -286,6 +294,7 @@ function SignupPopup({ signupPopupState, changeSignupPopupState }) {
                   onClick={handleSubmit}
                   value="Sign Up"
                   style={{ textAlign: 'center', cursor: 'pointer' }}
+                  // onKeyDown={handleKeyDown}
                 />
               </div>
             </div>

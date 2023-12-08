@@ -36,15 +36,26 @@ function AuthPopup({ verifyUserOtp, authPopupState, changePopupState }) {
       });
   };
 
-  // const handleCloseModal = () => {
-  //   setShowModal(false);
-  //   // Optionally, you can reset the entered email when closing the modal
-  //   setResetEmail('');
-  // };
-
   const handleSubmit = () => {
     verifyUserOtp({ email, password });
   };
+
+  const handleKeyDownlogin = (event) => {
+    // Check if the pressed key is Enter (keyCode 13)
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleSubmit();
+    }
+  };
+
+  const handleKeyDownforgetpass = (event) => {
+    // Check if the pressed key is Enter (keyCode 13)
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleForgetPassword();
+    }
+  };
+
   return (
     <div>
       <Modal show={authPopupState}>
@@ -77,7 +88,7 @@ function AuthPopup({ verifyUserOtp, authPopupState, changePopupState }) {
                 <p>Please login using your account details.</p>
               </div>
             </div>
-            <div className="modal-body">
+            <div className="modal-body" onKeyDown={handleKeyDownlogin}>
               <input
                 type="email"
                 placeholder="Email"
@@ -173,7 +184,7 @@ function AuthPopup({ verifyUserOtp, authPopupState, changePopupState }) {
                 <p>Please enter your email to change the password.</p>
               </div>
             </div>
-            <div className="modal-body">
+            <div className="modal-body" onKeyDown={handleKeyDownforgetpass}>
               <input
                 type="email"
                 placeholder="Email"
