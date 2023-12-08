@@ -219,8 +219,8 @@ const Navbar = ({
                 </button>
               </div>
             </div>
-            <div className="col-md-3 col-sm-6 ">
-              <div className=" login-section">
+            <div className="col-md-3 col-sm-6 ml-3 custom-width ">
+              <div className="login-section">
                 {!currentUser && !localStorage.getItem('auth_token') ? (
                   <>
                     <a>

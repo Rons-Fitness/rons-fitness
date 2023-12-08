@@ -3171,6 +3171,11 @@ select:focus {
   color: #3B3B3B;
   font-size: 17px;
 }
+@media (min-width: 768px) {
+  .custom-width {
+    width: 31%;
+  }
+}
 
 .min-hed .login-section {
   display: flex;
