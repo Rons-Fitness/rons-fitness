@@ -107,9 +107,10 @@ export function* getUserWorker({ payload }) {
     } else {
       if (status === 401 && currentRoute !== '/') {
         Notification('error', message);
+        yield put(setAuthPopup(true));
       }
       history('/');
-      yield put(setAuthPopup(true));
+
       yield put(getUserDetailsError(message));
     }
   } catch (error) {
