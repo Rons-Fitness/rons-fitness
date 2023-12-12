@@ -28,6 +28,7 @@ function ProductList({
   homeScreenData,
 }) {
   const { params } = useParams();
+  console.log(params);
 
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -6,6 +6,7 @@ import Loader from 'components/common/loader/Loader';
 import NoItemsFound from 'components/notFound/NoItemsFound';
 import API from 'helpers/API';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { useParams } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import ProductsFilters from './ProductsFilters';
 
@@ -19,10 +20,13 @@ function ProductListMain({
 }) {
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
   const [subcategories, setSubcategories] = useState([]);
+  const { params } = useParams();
+  const id = params.split('=').pop();
+  console.log(id);
   // const url = process.env.REACT_APP_BASE_URL;
   const getSubcategory = async () => {
     try {
-      const response = await API.get('subcategory');
+      const response = await API.get(`subcategory/${id}`);
       console.log(response);
       setSubcategories(response.data.data);
     } catch (error) {
@@ -76,7 +80,14 @@ function ProductListMain({
                   style={{ flex: '0 0 auto', marginLeft: 16 }}
                 >
                   <FormControl>
-                    <InputLabel id="subcategory-label">Subcategory</InputLabel>
+                    {/* <InputLabel id="subcategory-label">Subcategory</InputLabel> */}
+                    {selectedSubcategory ? (
+                      <InputLabel id="subcategory-label">&nbsp;</InputLabel>
+                    ) : (
+                      <InputLabel id="subcategory-label">
+                        Subcategory
+                      </InputLabel>
+                    )}
                     <Select
                       labelId="subcategory-label"
                       id="subcategory-select"
