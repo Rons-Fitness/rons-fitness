@@ -207,7 +207,10 @@ function ForgotAuthPopup({ userDetails, authPopupState, changePopupState }) {
   };
 
   const handleSubmit = () => {
-    if (newPassword === confirmPassword) {
+    if (!oldPassword || !newPassword || !confirmPassword) {
+      // Set an error message if any of the fields is empty
+      Notification('error', 'Please fill in all the required fields');
+    } else if (newPassword === confirmPassword) {
       changePassword({ oldPassword, newPassword, email: userDetails.email });
     } else {
       setPasswordMatchError('New Password and Confirm Password must match');

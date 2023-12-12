@@ -109,7 +109,7 @@ const Footer = () => {
                 </Link>
               </li>
             </ul>
-          </div> */}
+™          </div> */}
           <div className="col-lg-6 col-md-6 col-sm-6 ">
             <a
               className="icon-footer-box "
@@ -160,14 +160,14 @@ const Footer = () => {
         </div>
         <div className="d-flex justify-content-end mt-3">
           <p className="copy-right-text">
-            Copyrights &copy; {currentYear} All Rights Reserved |{' '}
+            Copyrights &copy; {currentYear} All Rights Reserved | Powered by
             <a
               href="http://creativecartel.me/"
               target="_blank"
               rel="noreferrer"
-              className="copy-right-text"
+              className="copy-right-text ms-1"
             >
-              Creative Cartel
+              <b>Creative Cartel</b>
             </a>
           </p>
         </div>
