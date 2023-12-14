@@ -5,11 +5,17 @@ import React, { useEffect, useState } from 'react';
 import Loader from 'components/common/loader/Loader';
 import NoItemsFound from 'components/notFound/NoItemsFound';
 import API from 'helpers/API';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { FormControl, Select, MenuItem, InputLabel } from '@mui/material';
+import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import ProductCard from './ProductCard';
 import ProductsFilters from './ProductsFilters';
 
+const CustomTextField = styled(FormControl)`
+  .MuiSelect-select {
+    padding: 12.5px 11px;
+  }
+`;
 function ProductListMain({
   products,
   addtoCart,
@@ -18,7 +24,7 @@ function ProductListMain({
   getProductList,
   loading,
 }) {
-  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState('');
   const [subcategories, setSubcategories] = useState([]);
   const { params } = useParams();
   const id = params.split('=').pop();
@@ -50,6 +56,11 @@ function ProductListMain({
   console.log('subcategory', subcategories);
   console.log('products', products);
   console.log('selectedsubcategory', selectedSubcategory);
+  // const [age, setAge] = React.useState('');
+
+  // const handleChange = (event) => {
+  //   setAge(event.target.value);
+  // };
   return (
     <div className="container-xxl">
       <div className="prodct-section">
@@ -79,8 +90,8 @@ function ProductListMain({
                   className="subcategory-dropdown"
                   style={{ flex: '0 0 auto', marginLeft: 16 }}
                 >
-                  <FormControl>
-                    {/* <InputLabel id="subcategory-label">Subcategory</InputLabel> */}
+                  {/* <CustomTextField>
+                    <InputLabel id="subcategory-label">Subcategory</InputLabel>
                     {selectedSubcategory ? (
                       <InputLabel id="subcategory-label">&nbsp;</InputLabel>
                     ) : (
@@ -95,8 +106,8 @@ function ProductListMain({
                       onChange={(e) => handleSubcategoryChange(e.target.value)}
                       style={{ width: '150px' }}
                     >
-                      <MenuItem value="">
-                        <em>Select</em>
+                      <MenuItem value="all">
+                        <em>All</em>
                       </MenuItem>
                       {subcategories.map((subcategory) => (
                         <MenuItem key={subcategory} value={subcategory}>
@@ -104,7 +115,26 @@ function ProductListMain({
                         </MenuItem>
                       ))}
                     </Select>
-                  </FormControl>
+                  </CustomTextField> */}
+                  <CustomTextField sx={{ minWidth: 150 }}>
+                    <InputLabel id="subcategory-label">Subcategory</InputLabel>
+                    <Select
+                      labelId="subcategory-label"
+                      id="subcategory-select"
+                      label="Subcategory"
+                      value={selectedSubcategory}
+                      onChange={(e) => handleSubcategoryChange(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>All</em>
+                      </MenuItem>
+                      {subcategories.map((subcategory) => (
+                        <MenuItem key={subcategory} value={subcategory}>
+                          {subcategory}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </CustomTextField>
                 </div>
               </div>
               {/* <div className="product-grid-section-header">

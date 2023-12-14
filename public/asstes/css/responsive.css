@@ -296,7 +296,6 @@
   .products-grid-body {
     padding: 0px 0px;
     padding-bottom: 20px;
-    justify-content: center;
     gap: 30px;
   }
 
@@ -310,6 +309,7 @@
 
   .product-grid-section-header h1 {
     font-size: 17px !important;
+    line-height: 21px;
   }
 
   .product-grid-section-header h1::after {
@@ -1253,6 +1253,9 @@
 
   .delivery-section .address-body .delivery-contain {
     background: none;
+  }
+  .products-grid-body{
+    justify-content: center;
   }
 }
 
