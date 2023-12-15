@@ -27,7 +27,7 @@ function ProductListMain({
   const [selectedSubcategory, setSelectedSubcategory] = useState('');
   const [subcategories, setSubcategories] = useState([]);
   const { params } = useParams();
-  const id = params.split('=').pop();
+  const id = params?.split('=').pop();
   console.log(id);
   // const url = process.env.REACT_APP_BASE_URL;
   const getSubcategory = async () => {
@@ -128,7 +128,7 @@ function ProductListMain({
                       <MenuItem value="">
                         <em>All</em>
                       </MenuItem>
-                      {subcategories.map((subcategory) => (
+                      {subcategories?.map((subcategory) => (
                         <MenuItem key={subcategory} value={subcategory}>
                           {subcategory}
                         </MenuItem>
