@@ -247,6 +247,7 @@ function ForgotAuthPopup({ userDetails, authPopupState, changePopupState }) {
                   placeholder="Old Password"
                   name="oldPassword"
                   value={oldPassword}
+                  autoComplete="new-password"
                   onChange={(e) => setOldPassword(e.target.value)}
                 />
                 <button
@@ -270,6 +271,7 @@ function ForgotAuthPopup({ userDetails, authPopupState, changePopupState }) {
                   type={showNewPassword ? 'text' : 'password'}
                   placeholder="New Password"
                   name="newPassword"
+                  autoComplete="new-password"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                 />
@@ -294,6 +296,7 @@ function ForgotAuthPopup({ userDetails, authPopupState, changePopupState }) {
                   type={showConfirmPassword ? 'text' : 'password'}
                   placeholder="Confirm Password"
                   name="confirmPassword"
+                  autoComplete="new-password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
