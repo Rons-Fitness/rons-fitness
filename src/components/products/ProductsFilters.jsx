@@ -33,16 +33,16 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
   const toggleSortRating = () => {
     setIsRatingOpen(!isRatingOpen); // Toggle the visibility of the options
   };
-  useEffect(() => {
-    setFilterState((oldState) => {
-      return {
-        ...oldState,
-        [Object.keys(queryStringToObject(params))[0]]: [
-          Object.values(queryStringToObject(params))[0],
-        ],
-      };
-    });
-  }, []);
+  // useEffect(() => {
+  //   setFilterState((oldState) => {
+  //     return {
+  //       ...oldState,
+  //       [Object.keys(queryStringToObject(params))[0]]: [
+  //         Object.values(queryStringToObject(params))[0],
+  //       ],
+  //     };
+  //   });
+  // }, []);
 
   const handleChangeFilter = (key, val, reset) => {
     const include = filterState[key].includes(val);

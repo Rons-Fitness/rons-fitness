@@ -27,13 +27,13 @@ function ProductListMain({
   const [selectedSubcategory, setSelectedSubcategory] = useState('');
   const [subcategories, setSubcategories] = useState([]);
   const { params } = useParams();
-  const id = params?.split('=').pop();
-  console.log(id);
+  const id = params?.split('=').pop() ? params?.split('=').pop() : 'nocategory';
+  console.log('id', id);
   // const url = process.env.REACT_APP_BASE_URL;
   const getSubcategory = async () => {
     try {
       const response = await API.get(`subcategory/${id}`);
-      console.log(response);
+      console.log('subcategory::>>', response);
       setSubcategories(response.data.data);
     } catch (error) {
       console.log(error);
