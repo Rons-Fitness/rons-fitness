@@ -25,7 +25,7 @@ function ProductListMain({
   keyword,
   loading,
 }) {
-  const [selectedSubcategory, setSelectedSubcategory] = useState('');
+  const [selectedSubcategory, setSelectedSubcategory] = useState('All');
   const [subcategories, setSubcategories] = useState([]);
   const { params } = useParams();
   const id = params?.split('=').pop() ? params?.split('=').pop() : 'nocategory';
@@ -50,9 +50,12 @@ function ProductListMain({
     setSelectedSubcategory(subcategory);
   };
 
-  const filteredProducts = selectedSubcategory
-    ? products.filter((product) => product.subCategory === selectedSubcategory)
-    : products;
+  const filteredProducts =
+    selectedSubcategory !== 'All'
+      ? products.filter(
+          (product) => product.subCategory === selectedSubcategory,
+        )
+      : products;
 
   console.log('subcategory', subcategories);
   console.log('products', products);
@@ -128,7 +131,7 @@ function ProductListMain({
                       value={selectedSubcategory}
                       onChange={(e) => handleSubcategoryChange(e.target.value)}
                     >
-                      <MenuItem value="">
+                      <MenuItem value="All">
                         <em>All</em>
                       </MenuItem>
                       {subcategories?.map((subcategory) => (
