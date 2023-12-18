@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Loader from 'components/common/loader/Loader';
 import NoItemsFound from 'components/notFound/NoItemsFound';
 import API from 'helpers/API';
-import { FormControl, Select, MenuItem, InputLabel } from '@mui/material';
+import { FormControl, Select, MenuItem } from '@mui/material';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import ProductCard from './ProductCard';
@@ -13,7 +13,7 @@ import ProductsFilters from './ProductsFilters';
 
 const CustomTextField = styled(FormControl)`
   .MuiSelect-select {
-    padding: 12.5px 11px;
+    padding: 6.5px 14px;
   }
 `;
 function ProductListMain({
@@ -90,6 +90,7 @@ function ProductListMain({
                   className="subcategory-dropdown"
                   style={{ flex: '0 0 auto', marginLeft: 16 }}
                 >
+                  <div>Subcategory</div>
                   {/* <CustomTextField>
                     <InputLabel id="subcategory-label">Subcategory</InputLabel>
                     {selectedSubcategory ? (
@@ -117,11 +118,11 @@ function ProductListMain({
                     </Select>
                   </CustomTextField> */}
                   <CustomTextField sx={{ minWidth: 150 }}>
-                    <InputLabel id="subcategory-label">Subcategory</InputLabel>
+                    {/* <InputLabel id="subcategory-label">Subcategory</InputLabel> */}
                     <Select
                       labelId="subcategory-label"
                       id="subcategory-select"
-                      label="Subcategory"
+                      // label="Subcategory"
                       value={selectedSubcategory}
                       onChange={(e) => handleSubcategoryChange(e.target.value)}
                     >
