@@ -16,32 +16,39 @@ function queryStringToObject(queryString = '') {
   return Object.fromEntries(array);
 }
 
-const ProductsFilters = ({ homeScreenData, getProductList }) => {
+const ProductsFilters = ({ homeScreenData, getProductList, keyword }) => {
   const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [isRatingOpen, setIsRatingOpen] = useState(false);
 
   const { brands } = homeScreenData;
   const { params } = useParams();
+  const filteredparamsdata = queryStringToObject(params);
+  console.log('params', queryStringToObject(params));
+  console.log('params', keyword);
+
   const [sortBy, setSortBy] = useState('');
   const [filterState, setFilterState] = useState({
     brand: [],
     rating: [],
   });
+  console.log('params', filterState);
   const toggleSortBy = () => {
     setIsOptionsOpen(!isOptionsOpen); // Toggle the visibility of the options
   };
   const toggleSortRating = () => {
     setIsRatingOpen(!isRatingOpen); // Toggle the visibility of the options
   };
+
   useEffect(() => {
-    setFilterState((oldState) => {
-      return {
-        ...oldState,
-        [Object.keys(queryStringToObject(params))[0]]: [
-          Object.values(queryStringToObject(params))[0],
-        ],
-      };
-    });
+    if (keyword) {
+      setFilterState({ ...filterState, keyword });
+    }
+  }, [keyword]);
+
+  useEffect(() => {
+    if (params) {
+      setFilterState({ ...filterState, ...filteredparamsdata });
+    }
   }, []);
 
   const handleChangeFilter = (key, val, reset) => {
@@ -70,6 +77,7 @@ const ProductsFilters = ({ homeScreenData, getProductList }) => {
       brand: filterState.brand.join(';'),
       rating: filterState.rating.join(';'),
     };
+    // console.log('valuee', filter);
     getProductList({ ...filter, sortBy: val });
   };
 

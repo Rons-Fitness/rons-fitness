@@ -53,7 +53,9 @@ export function* watchAddProduct() {
 }
 
 const getProductAsync = async (payload) => {
+  console.log('params', payload);
   const res = await API.get('/product', { params: { ...payload } });
+  console.log('params', res);
   return res;
 };
 function* getProductWorker({ payload }) {

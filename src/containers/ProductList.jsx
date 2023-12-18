@@ -28,7 +28,8 @@ function ProductList({
   homeScreenData,
 }) {
   const { params } = useParams();
-  console.log(params);
+  console.log('keyword', params);
+  console.log('keyword', keyword);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,6 +51,7 @@ function ProductList({
         addToWishlist={addToWishlist}
         homeScreenData={homeScreenData}
         getProductList={getProductList}
+        keyword={keyword}
         loading={loading}
       />
     </div>

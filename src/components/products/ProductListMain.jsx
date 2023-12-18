@@ -22,6 +22,7 @@ function ProductListMain({
   addToWishlist,
   homeScreenData,
   getProductList,
+  keyword,
   loading,
 }) {
   const [selectedSubcategory, setSelectedSubcategory] = useState('');
@@ -68,6 +69,7 @@ function ProductListMain({
           <ProductsFilters
             homeScreenData={homeScreenData}
             getProductList={getProductList}
+            keyword={keyword}
           />
 
           {loading ? (
