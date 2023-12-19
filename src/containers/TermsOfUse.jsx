@@ -2,116 +2,36 @@ import React from 'react';
 
 const TermsOfUse = () => {
   return (
-    <div className="policy">
-      <div className="container">
-        <div className="policy-hed  ">
-          <h1>Terms of Use</h1>
+    <div className="container-xxl">
+      <div className="row">
+        <div className="col-lg-2" style={{ borderRight: '1px solid #E9E9E9' }}>
+          <span style={{ display: 'none' }}>.</span>
         </div>
-      </div>
+        <div className="col-lg-9" style={{ minHeight: 'calc(100vh - 115px)' }}>
+          <div className="container">
+            {' '}
+            <div className="policy">
+              <div className="container">
+                <div className="policy-hed  ">
+                  <h1>Terms of Use</h1>
+                </div>
+              </div>
 
-      <div className="policy-body">
-        <div className="policy-box1">
-          <div>
-            <h1>
-              TERMS AND CONDITIONS FOR FASTAG sold by Metrolink Outsourcing
-              Services Pvt.Ltd on behalf of IDFC bank and IDBI Bank
-            </h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-              as
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-              ex cum aut provident voluptatibus{' '}
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores
-              beatae vel non consectetur omnis iusto{' '}
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
-              illum rerum dolorem obcaecati quod deserunt libero consectetur
-              error harum, quia hic nihil. Sequi nam ad, fugit incidunt dolores
-              doloribus repellendus.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-              culpa sed optio, eius atione expedita eos voluptas totam facere
-              est neque quam.
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Excepturi, nihil adipisci deleniti expedita magnam consequuntur
-              omnis a corporis eveniet quae, laborpiente repellendus voluptate
-              eius ea.
-            </p>
-            <div className="cheak-add">
-              <p>
-                {' '}
-                <span>
-                  <i className="fas fa-check-circle" />
-                </span>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Excepturi, nihil adipisci deleniti expedita magnam consequuntur
-                omnis a corporis eveniet quae, laborpiente repellendus voluptate
-                eius ea.
-              </p>
-              <p>
-                {' '}
-                <span>
-                  <i className="fas fa-check-circle" />
-                </span>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Excepturi, nihil adipisci deleniti expedita magnam consequuntur
-                omnis a corporis eveniet quae, laborpiente Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Iusto esse modi eum, ex,
-                sequi impedit animi tempore in unde rem debitis eius fugiat.
-                Asperiores assumenda voluptate nisi quae deleniti! Corrupti?
-                repellendus voluptate eius ea.
-              </p>
-              <p>
-                {' '}
-                <span>
-                  <i className="fas fa-check-circle" />
-                </span>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Excepturi, nihil adipisci deleniti expedita magnam consequuntur
-                omnis a corporis eveniet quae, laborpiente repellendus voluptate
-                eius ea.
-              </p>
-              <p>
-                {' '}
-                <span>
-                  <i className="fas fa-check-circle" />
-                </span>
-                Lorem ipsum dolor sit, Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Pariatur ipsum sapiente neque dolorum eligendi
-                repellendus, molestiae labore est, expedita, architecto ab alias
-                commodi distinctio quaerat quo quam reiciendis dolorem.
-                Quisquam? amet consectetur adipisicing elit. Excepturi, nihil
-                adipisci deleniti expedita magnam consequuntur omnis a corporis
-                eveniet quae, laborpiente repellendus voluptate eius ea.
-              </p>
-              <p>
-                {' '}
-                <span>
-                  <i className="fas fa-check-circle" />
-                </span>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Excepturi, nihil adipisci deleniti expedita magnam consequuntur
-                omnis a corporis eveniet quae, laborpiente repellendus voluptate
-                eius ea.
-              </p>
-              <p>
-                {' '}
-                <span>
-                  <i className="fas fa-check-circle" />
-                </span>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Excepturi, nihil adipisci deleniti expedita magnam consequuntur
-                omnis a corporis eveniet quae, laborpiente repellendus voluptate
-                eius ea.
-              </p>
+              <div className="policy-body">
+                <div className="policy-box1">
+                  <div>
+                    <p>
+                      Using Our <br />
+                      Site Welcome to our website! By using our site, you agree
+                      to these terms. Please use our site responsibly. Don’t
+                      copy or misuse the content here. We provide information
+                      about our products and services. Remember, prices and
+                      details can change. If you have any questions, feel free
+                      to contact us.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

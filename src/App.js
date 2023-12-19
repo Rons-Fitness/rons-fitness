@@ -7,6 +7,9 @@ import ProtectedRoute from 'helpers/authHelper';
 import ProductList from 'containers/ProductList';
 import Footer from 'components/footer/Footer';
 import Loader from 'components/common/loader/Loader';
+import PrivacyNPolicy from 'containers/PrivacyNPolicy';
+import TermsOfUse from 'containers/TermsOfUse';
+import AboutUs from 'containers/AboutUs';
 
 const Dashboard = lazy(() => import('./containers/Dashboard'));
 const ProductDetails = lazy(() => import('./containers/ProductDetails'));
@@ -42,13 +45,13 @@ function App() {
             <Route exact path="/contact-us" element={<ContactUs />} />
             {/* <Route exact path="/blog" element={<Blog />} /> */}
             {/* <Route exact path="/blog/:id" element={<BlogDetails />} /> */}
-            {/* <Route exact path="/about-us" element={<AboutUs />} /> */}
-            {/* <Route
+            <Route exact path="/about-us" element={<AboutUs />} />
+            <Route
               exact
               path="/privacy-n-policy"
               element={<PrivacyNPolicy />}
-            /> */}
-            {/* <Route exact path="/terms-of-use" element={<TermsOfUse />} /> */}
+            />
+            <Route exact path="/terms-of-use" element={<TermsOfUse />} />
             <Route exact path="/refund-policy" element={<RefundPolicy />} />
             <Route exact path="/shipping-policy" element={<ShippingPolicy />} />
 
