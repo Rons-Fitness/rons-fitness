@@ -1,3 +1,5 @@
+import Notification from 'components/Notification/Notification';
+import API from 'helpers/API';
 import React, { useState } from 'react';
 
 const ContactUs = () => {
@@ -6,6 +8,38 @@ const ContactUs = () => {
     setContactDetails((oldState) => {
       return { ...oldState, [e.target.name]: e.target.value };
     });
+  };
+  console.log('ContactDetails', ContactDetails);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      !ContactDetails.name ||
+      !ContactDetails.email ||
+      !ContactDetails.message ||
+      !ContactDetails.number ||
+      !ContactDetails.subject
+    ) {
+      // Handle error, show a message, or prevent form submission
+      Notification('error', 'Please fill in all fields');
+      return;
+    }
+
+    try {
+      const {
+        data: { message },
+      } = await API.post('/order/contactus', ContactDetails);
+      if (message) Notification('success', 'Thank you for contacting us');
+      setContactDetails({
+        name: '',
+        number: '',
+        subject: '',
+        message: '',
+        email: '',
+      });
+    } catch {
+      Notification('error', 'Something Went Wrong');
+    }
   };
 
   return (
@@ -41,19 +75,19 @@ const ContactUs = () => {
                               </div>
                             </div>
                             <div className="col-10 contact-detailes ">
-                              <div className="ps-1 py-2">
+                              <div className="ps-1 py-2 pe-4">
                                 <p>
                                   Tel:
                                   <span className="num-email-colour">
                                     {' '}
-                                    877-67-88-99
+                                    +961 71 935 735
                                   </span>
                                 </p>
                                 <p>
                                   E-Mail:{' '}
                                   <span className="num-email-colour">
                                     {' '}
-                                    shop@store.com{' '}
+                                    info@espacecarre.com{' '}
                                   </span>
                                 </p>
                               </div>
@@ -69,8 +103,8 @@ const ContactUs = () => {
                             </div>
                             <div className="col-10  contact-detailes">
                               <div className="ps-1 py-2">
-                                <p>20 Margaret st, London</p>
-                                <p>Great britain, 3NM98-LK</p>
+                                <p>kaslik main street Joünié</p>
+                                <p>Joünié</p>
                               </div>
                             </div>
                           </div>
@@ -98,9 +132,9 @@ const ContactUs = () => {
                               </div>
                             </div>
                             <div className="col-10 ">
-                              <div className="ps-1 py-3">
-                                <p>Free standard shipping</p>
-                                <p>on all orders.</p>
+                              <div className="ps-1 py-1">
+                                <p>Free shipping on orders</p>
+                                <p>above 100$</p>
                               </div>
                             </div>
                           </div>
@@ -113,9 +147,12 @@ const ContactUs = () => {
                   <div className="get-touch-body">
                     <h4 className="pb-3 ">Get In Touch</h4>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Mattis neque ultrices tristique amet erat vitae eget dolor
-                      los vitae lobortis quis bibendum quam.
+                      Your Own Espace
+                      <p>
+                        {' '}
+                        Uncover a unique and sophisticated home accessories
+                        collection
+                      </p>
                     </p>
                     <form>
                       <div className="">
@@ -192,6 +229,7 @@ const ContactUs = () => {
                                 type="submit"
                                 placeholder="Submit"
                                 value="Submit"
+                                onClick={(e) => handleSubmit(e)}
                               />
                             </div>
                           </div>
