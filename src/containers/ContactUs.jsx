@@ -48,7 +48,7 @@ const ContactUs = () => {
         <div className="col-lg-2" style={{ borderRight: '1px solid #E9E9E9' }}>
           <span style={{ display: 'none' }}>.</span>
         </div>
-        <div className="col-lg-9">
+        <div className="col-lg-10">
           <div className="contact-section">
             <div className="container">
               <div className="contact-header">
@@ -75,20 +75,26 @@ const ContactUs = () => {
                               </div>
                             </div>
                             <div className="col-10 contact-detailes ">
-                              <div className="ps-1 py-2 pe-4">
+                              <div className="ps-1 py-2 ">
                                 <p>
                                   Tel:
-                                  <span className="num-email-colour">
+                                  <a
+                                    href="tel:+961 71 935 735"
+                                    className="num-email-colour"
+                                  >
                                     {' '}
                                     +961 71 935 735
-                                  </span>
+                                  </a>
                                 </p>
                                 <p>
                                   E-Mail:{' '}
-                                  <span className="num-email-colour">
+                                  <a
+                                    href="mailto:info@espacecarre.com"
+                                    className="num-email-colour"
+                                  >
                                     {' '}
                                     info@espacecarre.com{' '}
-                                  </span>
+                                  </a>
                                 </p>
                               </div>
                             </div>
@@ -103,8 +109,14 @@ const ContactUs = () => {
                             </div>
                             <div className="col-10  contact-detailes">
                               <div className="ps-1 py-2">
-                                <p>kaslik main street Joünié</p>
-                                <p>Joünié</p>
+                                <a
+                                  href="https://maps.app.goo.gl/NuMgXHQAUjt1zVK1A"
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  <p>kaslik main street Joünié</p>
+                                  <p>Joünié</p>
+                                </a>
                               </div>
                             </div>
                           </div>
@@ -146,14 +158,15 @@ const ContactUs = () => {
                 <div className="col-lg-8 order-lg-2 order-1 order-md-1">
                   <div className="get-touch-body">
                     <h4 className="pb-3 ">Get In Touch</h4>
-                    <p>
+                    <p style={{}} className="own-espace-text">
                       Your Own Espace
-                      <p>
-                        {' '}
-                        Uncover a unique and sophisticated home accessories
-                        collection
-                      </p>
                     </p>
+                    <p className="own-espace-text">
+                      {' '}
+                      Uncover a unique and sophisticated home accessories
+                      collection
+                    </p>
+
                     <form>
                       <div className="">
                         <div className="row justify-content-between">

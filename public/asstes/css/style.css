@@ -1919,7 +1919,9 @@
   font-size: 14px;
   font-weight: 500;
 }
-
+.contact-section .get-touch-body .own-espace-text{
+  font-size: 17px;
+}
 /* ============ Contact section End ================*/
 /* =============== Profile Setion Start ================ */
 .profile-section {
