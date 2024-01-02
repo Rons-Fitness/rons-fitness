@@ -389,7 +389,9 @@
   .xzoom_part {
     padding-top: 15px;
   }
-
+.x-zoom-body .xzoom-body-responsive {
+  margin: 60px auto 60px auto;
+}
   .xzoom_part .xzoom-heart-hide {
     display: block !important;
     position: absolute;
@@ -1111,7 +1113,14 @@
   .cat-round .carte-body .carte-contain .carte-img-box {
     padding: 10px;
   }
-
+  .slider-card .slider-cat .box-card .card-img{
+    width: min(100% - 0px, 250px);
+    height: 200px;
+  }
+    .products-grid-body .box-card .card-img{
+          width: min(100% - 0px, 260px);
+            height: 200px;
+    }
   .offer-boday .img-box {
     display: flex;
     justify-content: end;

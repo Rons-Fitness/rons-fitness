@@ -96,7 +96,7 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                         </p>
                       </div>
                     </div>
-                    <div className="col-lg-10  col-sm-12   ">
+                    <div className="col-lg-11  col-sm-12   ">
                       <div className="">
                         <div
                           className="xzoom-body-responsive"
@@ -108,11 +108,12 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                           // }}
                           style={{
                             width: 'calc(100% - 40px)',
-                            margin: '60px auto',
+                            // margin: '60px auto',
                           }}
                         >
                           {/* <img src={activeImage} alt="" className="xzoom" /> */}
                           <ReactImageMagnify
+                            style={{ zIndex: 9 }}
                             {...{
                               smallImage: {
                                 alt: 'none',
@@ -121,8 +122,8 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                               },
                               largeImage: {
                                 src: activeImage,
-                                width: 500,
-                                height: 500,
+                                width: 1200,
+                                height: 1200,
                               },
                               isHintEnabled: true,
                             }}
