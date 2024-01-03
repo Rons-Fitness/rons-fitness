@@ -1113,13 +1113,34 @@
   .cat-round .carte-body .carte-contain .carte-img-box {
     padding: 10px;
   }
-  .slider-card .slider-cat .box-card .card-img{
-    width: min(100% - 0px, 250px);
-    height: 200px;
-  }
-    .products-grid-body .box-card .card-img{
-          width: min(100% - 0px, 260px);
-            height: 200px;
+    .slider-card .slider-cat .box-card .card-img {
+      width: min(100% - 0px, 250px);
+      height: 200px;
+    }
+  
+    .slider-card .slider-cat .box-card .card-img a {
+      height: 100%;
+      width: 100%;
+    }
+  
+    .slider-card .slider-cat .box-card .card-img a img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  
+    .products-grid-body .box-card .card-img {
+      width: min(100% - 0px, 260px);
+      height: 200px;
+    }
+  
+    .products-grid-body .box-card .card-img a {
+      width: 100%;
+      height: 100%;
+    }
+  
+    .products-grid-body .box-card .card-img a img {
+      object-fit: contain;
     }
   .offer-boday .img-box {
     display: flex;
