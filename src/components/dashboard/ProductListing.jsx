@@ -143,9 +143,11 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
           <h6 style={{ width: '100%' }}>The specific products included</h6>
           <p>
             <a className="card-price">
-              <span className="px-1">{product.price}$</span>
+              <span className="px-1">
+                {product.price ? product.price : product.mrp}$
+              </span>
               <span className="px-1 discount-text">
-                DISCOUNT:<del>{product.mrp - product.price}$</del>
+                MRP:<del>{product.mrp}$</del>
               </span>
             </a>
           </p>

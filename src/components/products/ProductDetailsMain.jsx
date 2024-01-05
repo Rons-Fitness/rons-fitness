@@ -223,13 +223,14 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                         {selectedProduct && selectedProduct.rating}
                       </p>
                       <h3>
-                        {selectedProduct && selectedProduct.price} ${' '}
+                        {selectedProduct && selectedProduct.price
+                          ? selectedProduct.price
+                          : selectedProduct?.mrp}{' '}
+                        ${' '}
                         <span>
-                          DISCOUNT:
+                          MRP:
                           <del className="ms-1">
-                            {selectedProduct &&
-                              selectedProduct.mrp - selectedProduct.price}
-                            $
+                            {selectedProduct && selectedProduct.mrp}$
                           </del>
                         </span>{' '}
                       </h3>

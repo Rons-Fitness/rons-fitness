@@ -81,6 +81,8 @@ function CartMain({
     }
   };
 
+  console.log('Cart', cart);
+
   return (
     <div className="container-xxl">
       <div className="row">

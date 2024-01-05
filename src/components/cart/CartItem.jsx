@@ -93,7 +93,10 @@ const CartItem = ({ value, removeItemFromCart, addtoCart, qty }) => {
         </div>
         <div className="col-lg-3 col-md-3 col-sm-12   bin-box ">
           <div className="cart-oty-body">
-            <div className="cart-price-text"> {qty * value.price} $</div>
+            <div className="cart-price-text">
+              {' '}
+              {qty * (value.price ? value.price : value.mrp)} $
+            </div>
             <div className=" oty-box">
               <label for="number" className="qty-text">
                 Qty{' '}
