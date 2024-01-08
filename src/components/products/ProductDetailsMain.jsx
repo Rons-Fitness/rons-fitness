@@ -227,12 +227,16 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                           ? selectedProduct.price
                           : selectedProduct?.mrp}{' '}
                         ${' '}
-                        <span>
-                          MRP:
-                          <del className="ms-1">
-                            {selectedProduct && selectedProduct.mrp}$
-                          </del>
-                        </span>{' '}
+                        {selectedProduct?.price ? (
+                          <span>
+                            MRP:
+                            <del className="ms-1">
+                              {selectedProduct && selectedProduct.mrp}$
+                            </del>
+                          </span>
+                        ) : (
+                          ''
+                        )}
                       </h3>
                       {/* <div className=" btn-contain mb-2">
                   <p>Unit</p>

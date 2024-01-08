@@ -78,13 +78,14 @@ const WishlistMain = ({ wishlist, removeFromWishList, addtoCart }) => {
                             </a>
                             {/* <p>{wish.brand}</p> */}
                             <h3>
-                              {wish.price} ${' '}
-                              <span>
-                                DISCOUNT :
-                                <del className="ms-1">
-                                  {wish.mrp - wish.price}$
-                                </del>
-                              </span>
+                              {wish.price ? wish.price : wish.mrp} $
+                              {wish.price ? (
+                                <span>
+                                  MRP :<del className="ms-1">{wish.mrp}$</del>
+                                </span>
+                              ) : (
+                                ''
+                              )}
                             </h3>
                             <p className="star">
                               <i className="fas fa-star" />

@@ -146,9 +146,13 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
               <span className="px-1">
                 {product.price ? product.price : product.mrp}$
               </span>
-              <span className="px-1 discount-text">
-                MRP:<del>{product.mrp}$</del>
-              </span>
+              {product.price ? (
+                <span className="px-1 discount-text">
+                  MRP:<del>{product.mrp}$</del>
+                </span>
+              ) : (
+                ''
+              )}
             </a>
           </p>
           <a
