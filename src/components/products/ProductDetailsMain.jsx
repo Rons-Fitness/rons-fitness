@@ -354,25 +354,56 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                     className="form-control"
                     min="1"
                   /> */}
+
                         <div className="btn-xzone-body ">
-                          <a
-                            style={{ cursor: 'pointer' }}
-                            onClick={() =>
-                              addtoCart(
-                                {
-                                  _id: selectedProduct && selectedProduct._id,
-                                  qty,
-                                },
-                                history,
-                              )
-                            }
-                          >
-                            <p className="btn-xzone">
-                              {' '}
-                              <i className="bi bi-cart2" />
-                              <span> Add To Cart</span>
-                            </p>
-                          </a>
+                          {selectedProduct?.stock !== 0 ? (
+                            <a
+                              style={{ cursor: 'pointer' }}
+                              onClick={() =>
+                                addtoCart(
+                                  {
+                                    _id: selectedProduct && selectedProduct._id,
+                                    qty,
+                                  },
+                                  history,
+                                )
+                              }
+                            >
+                              <p className="btn-xzone">
+                                {' '}
+                                <i className="bi bi-cart2" />
+                                <span> Add To Cart</span>
+                              </p>
+                            </a>
+                          ) : (
+                            <a
+                              style={{
+                                cursor: 'pointer',
+                              }}
+                              className="disabled-link"
+                              //
+                              // onClick={() =>
+                              //   addtoCart(
+                              //     {
+                              //       _id: selectedProduct && selectedProduct._id,
+                              //       qty,
+                              //     },
+                              //     history,
+                              //   )
+                              // }
+                            >
+                              <p
+                                className="btn btn-secondary"
+                                style={{
+                                  backgroundColor: 'grey',
+                                  color: 'white',
+                                }}
+                              >
+                                <i className="bi " />
+                                <span> Out of Stock</span>
+                              </p>
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>

@@ -36,7 +36,7 @@ function CartMain({
       if (cartLimitExceeded) {
         Notification(
           'error',
-          'Cart limit exceeded. Maximum limit reached for one or more products.',
+          'Product limit exceeded for one or more products.',
         );
         return;
       }

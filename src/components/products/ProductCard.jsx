@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product, addtoCart, addToWishlist }) => {
+  console.log('product', product);
   const history = useNavigate();
   const [wishList, setWishlist] = useState(product.inWishlist);
   return (
@@ -97,24 +98,45 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
               )}
             </a>
           </p>
-          <a
-            className=""
-            style={{ pointer: 'cursor' }}
-            onClick={() =>
-              addtoCart(
-                {
-                  _id: product._id,
-                  qty: 1,
-                },
-                history,
-              )
-            }
-          >
-            <p className="shpoing-btn">
-              <i className="bi bi-cart2" />
-              Add to Cart
-            </p>
-          </a>
+          {product.stock !== 0 ? (
+            <a
+              className=""
+              style={{ pointer: 'cursor' }}
+              onClick={() =>
+                addtoCart(
+                  {
+                    _id: product._id,
+                    qty: 1,
+                  },
+                  history,
+                )
+              }
+            >
+              <p className="shpoing-btn">
+                <i className="bi bi-cart2" />
+                Add to Cart
+              </p>
+            </a>
+          ) : (
+            <a
+              className="disabled-link"
+              style={{ pointer: 'cursor', color: 'black' }}
+              // onClick={() =>
+              //   addtoCart(
+              //     {
+              //       _id: product._id,
+              //       qty: 1,
+              //     },
+              //     history,
+              //   )
+              // }
+            >
+              <p className="shpoing-btn">
+                <i className="mt-2 mb-3" />
+                Out of Stock
+              </p>
+            </a>
+          )}
         </div>
       </div>
     </div>

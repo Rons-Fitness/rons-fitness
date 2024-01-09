@@ -17,6 +17,7 @@ const ProductListing = ({
   isMobile = false,
   isTablet,
 }) => {
+  console.log(products);
   const history = useNavigate();
   return (
     <section id="trendinslider-cardg-sec">
@@ -155,24 +156,45 @@ const Product = ({ product, addToWishlist, addtoCart, history }) => {
               )}
             </a>
           </p>
-          <a
-            className=""
-            style={{ cursor: 'pointer' }}
-            onClick={() =>
-              addtoCart(
-                {
-                  _id: product._id,
-                  qty: 1,
-                },
-                history,
-              )
-            }
-          >
-            <p className="shpoing-btn">
-              <i className="bi bi-cart2" />
-              Add to Cart
-            </p>
-          </a>
+          {product.stock !== 0 ? (
+            <a
+              className=""
+              style={{ cursor: 'pointer' }}
+              onClick={() =>
+                addtoCart(
+                  {
+                    _id: product._id,
+                    qty: 1,
+                  },
+                  history,
+                )
+              }
+            >
+              <p className="shpoing-btn">
+                <i className="bi bi-cart2" />
+                Add to Cart
+              </p>
+            </a>
+          ) : (
+            <a
+              className="disabled-link"
+              style={{ cursor: 'pointer' }}
+              // onClick={() =>
+              //   addtoCart(
+              //     {
+              //       _id: product._id,
+              //       qty: 1,
+              //     },
+              //     history,
+              //   )
+              // }
+            >
+              <p className="shpoing-btn">
+                <i className="bi mt-2 mb-3" />
+                Out of Stock
+              </p>
+            </a>
+          )}
         </div>
       </div>
     </>
