@@ -28,6 +28,18 @@ function CartMain({
         Notification('info', 'Please Select An Address');
         return;
       }
+
+      const cartLimitExceeded = cart.products.some(
+        (product) => product.qty > product.stock,
+      );
+
+      if (cartLimitExceeded) {
+        Notification(
+          'error',
+          'Cart limit exceeded. Maximum limit reached for one or more products.',
+        );
+        return;
+      }
       // let orderState = {};
       // if (oldOrderState) {
       //   orderState = { ...oldOrderState };
