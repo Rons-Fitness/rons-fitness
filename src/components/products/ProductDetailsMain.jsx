@@ -238,6 +238,25 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                           ''
                         )}
                       </h3>
+                      <p>
+                        <a className="card-price ms-1">
+                          {selectedProduct?.price ? (
+                            <span
+                              className=" discount-text"
+                              style={{ color: 'green' }}
+                            >
+                              {Math.floor(
+                                ((selectedProduct.mrp - selectedProduct.price) /
+                                  selectedProduct.mrp) *
+                                  100,
+                              )}
+                              % OFF
+                            </span>
+                          ) : (
+                            ''
+                          )}
+                        </a>
+                      </p>
                       {/* <div className=" btn-contain mb-2">
                   <p>Unit</p>
                   <div className="btn-body">
@@ -393,13 +412,13 @@ const ProductDetailsMain = ({ selectedProduct, addtoCart, addToWishlist }) => {
                               // }
                             >
                               <p
-                                className="btn btn-secondary"
+                                // className="btn btn-secondary"
                                 style={{
-                                  backgroundColor: 'grey',
-                                  color: 'white',
+                                  // backgroundColor: 'grey',
+                                  color: 'red',
                                 }}
                               >
-                                <i className="bi " />
+                                <i style={{ color: 'red' }} />
                                 <span> Out of Stock</span>
                               </p>
                             </a>

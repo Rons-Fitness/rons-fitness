@@ -84,7 +84,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
             )} */}
           </a>
           <h6 style={{ width: '100%' }}>The specific products included</h6>
-          <p>
+          <p style={{ marginBottom: '0' }}>
             <a className="card-price">
               <span className="px-1">
                 {product.price ? product.price : product.mrp}$
@@ -92,6 +92,20 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
               {product.price ? (
                 <span className="px-1 discount-text">
                   MRP:<del>{product.mrp}$</del>
+                </span>
+              ) : (
+                ''
+              )}
+            </a>
+          </p>
+          <p>
+            <a className="card-price ms-1">
+              {product.price ? (
+                <span className=" discount-text" style={{ color: 'green' }}>
+                  {Math.floor(
+                    ((product.mrp - product.price) / product.mrp) * 100,
+                  )}
+                  % OFF
                 </span>
               ) : (
                 ''
@@ -120,7 +134,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
           ) : (
             <a
               className="disabled-link"
-              style={{ pointer: 'cursor', color: 'black' }}
+              style={{ pointer: 'cursor' }}
               // onClick={() =>
               //   addtoCart(
               //     {
@@ -131,7 +145,7 @@ const ProductCard = ({ product, addtoCart, addToWishlist }) => {
               //   )
               // }
             >
-              <p className="shpoing-btn">
+              <p className="shpoing-btn" style={{ color: 'red' }}>
                 <i className="mt-2 mb-3" />
                 Out of Stock
               </p>
