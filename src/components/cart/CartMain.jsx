@@ -34,10 +34,7 @@ function CartMain({
       );
 
       if (cartLimitExceeded) {
-        Notification(
-          'error',
-          'Product limit exceeded for one or more products.',
-        );
+        Notification('error', 'Product limit exceeded ');
         return;
       }
       // let orderState = {};
