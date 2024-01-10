@@ -29,12 +29,25 @@ function CartMain({
         return;
       }
 
-      const cartLimitExceeded = cart.products.some(
+      // const cartLimitExceeded = cart.products.some(
+      //   (product) => product.qty > product.stock,
+      // );
+
+      // if (cartLimitExceeded) {
+      //   Notification('error', 'Product limit exceeded ');
+      //   return;
+      // }
+      const exceededProducts = cart.products.filter(
         (product) => product.qty > product.stock,
       );
 
-      if (cartLimitExceeded) {
-        Notification('error', 'Product limit exceeded ');
+      if (exceededProducts.length > 0) {
+        exceededProducts.forEach((product) => {
+          Notification(
+            'error',
+            `Limit exceeded for ${product.name}. Available stock: ${product.stock}`,
+          );
+        });
         return;
       }
       // let orderState = {};
